@@ -140,7 +140,7 @@ async function chamarOllama(f, modelo, messages) {
       messages,
       format: "json",
       stream: false,
-      options: { temperature: 0.7, num_ctx: 12288, num_predict: 4500 },
+      options: { temperature: 0.7, num_ctx: 8192, num_predict: 4000 },
     }),
   });
   const bruto = await r.text();
