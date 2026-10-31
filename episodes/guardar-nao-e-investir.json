@@ -1,0 +1,85 @@
+{
+  "id": "guardar-nao-e-investir",
+  "title": "Por que guardar dinheiro não é o mesmo que investir?",
+  "description": "Guardar protege, investir faz crescer. Veja em 40 segundos como a inflação corrói o dinheiro parado e por que os juros compostos mudam o jogo.",
+  "tags": ["educação financeira", "investimentos", "inflação", "juros compostos", "finanças pessoais"],
+  "targetDurationSeconds": 40,
+  "disclaimer": "Conteúdo educativo. Valores ilustrativos, não é recomendação de investimento.",
+  "scenes": [
+    {
+      "id": "abertura",
+      "template": "hook",
+      "narration": "Guardar dinheiro e investir parecem a mesma coisa. Mas não são. E confundir as duas pode custar muito caro.",
+      "data": {
+        "kicker": "Educação financeira",
+        "title": "Guardar ≠ Investir",
+        "subtitle": "A diferença que muda o seu futuro"
+      }
+    },
+    {
+      "id": "guardar",
+      "template": "split",
+      "narration": "Guardar é tirar o dinheiro do caminho. Na gaveta ou parado na conta, ele fica seguro, mas não trabalha para você.",
+      "data": {
+        "left": {
+          "label": "Guardar",
+          "icon": "safe",
+          "points": ["Protege do gasto", "Fica parado", "Não rende"]
+        },
+        "right": {
+          "label": "Investir",
+          "icon": "growth",
+          "points": ["Põe o dinheiro para trabalhar", "Rende juros", "Cresce com o tempo"]
+        }
+      }
+    },
+    {
+      "id": "inflacao",
+      "template": "counter",
+      "narration": "O vilão é a inflação. Com os preços subindo quatro e meio por cento ao ano, dez mil reais parados compram só o equivalente a seis mil e quatrocentos depois de dez anos.",
+      "data": {
+        "label": "Poder de compra de R$ 10.000 parados",
+        "from": 10000,
+        "to": 6439,
+        "prefix": "R$ ",
+        "decimals": 0,
+        "trend": "down",
+        "caption": "Inflação de 4,5% ao ano, durante 10 anos",
+        "badge": "-36%"
+      }
+    },
+    {
+      "id": "investir",
+      "template": "lineChart",
+      "narration": "Investir é fazer o dinheiro render acima da inflação. A dez por cento ao ano, os mesmos dez mil viram cerca de dezesseis mil e setecentos em poder de compra.",
+      "data": {
+        "title": "Poder de compra em 10 anos",
+        "xLabels": ["Hoje", "2", "4", "6", "8", "10 anos"],
+        "valuePrefix": "R$ ",
+        "series": [
+          {
+            "label": "Investido (10% a.a.)",
+            "color": "green",
+            "values": [10000, 11080, 12277, 13604, 15073, 16702]
+          },
+          {
+            "label": "Parado",
+            "color": "red",
+            "values": [10000, 9157, 8386, 7679, 7032, 6439]
+          }
+        ],
+        "caption": "Valores reais, descontada inflação de 4,5% a.a."
+      }
+    },
+    {
+      "id": "fechamento",
+      "template": "outro",
+      "narration": "Então guarde para emergências, mas invista para o futuro. Siga o canal para entender como o dinheiro realmente funciona.",
+      "data": {
+        "title": "Guarde para emergências.\nInvista para o futuro.",
+        "points": ["Reserva de emergência: segurança", "Investimento: crescimento"],
+        "cta": "Siga para mais"
+      }
+    }
+  ]
+}

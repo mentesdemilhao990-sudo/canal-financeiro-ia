@@ -1,0 +1,8 @@
+node_modules/
+build/
+out/
+voices/
+public/generated/
+.venv/
+__pycache__/
+*.pyc

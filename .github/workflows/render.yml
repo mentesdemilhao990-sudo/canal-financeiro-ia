@@ -1,0 +1,140 @@
+name: Gerar vídeo
+
+on:
+  workflow_dispatch:
+    inputs:
+      episodios:
+        description: "Nome do arquivo do episódio, sem .json (vários separados por vírgula, ou 'todos')"
+        required: true
+        default: guardar-nao-e-investir
+  pull_request:
+    paths-ignore: ["**.md"]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: render-${{ github.ref }}-${{ github.event.inputs.episodios || 'pr' }}
+  cancel-in-progress: true
+
+jobs:
+  preparar:
+    name: Validar episódios
+    runs-on: ubuntu-latest
+    outputs:
+      lista: ${{ steps.lista.outputs.lista }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Checar tipos
+        run: npm run typecheck
+      - name: Testes unitários (episódios, legendas)
+        run: npm run test:unit
+      - name: Montar lista de episódios
+        id: lista
+        env:
+          PEDIDO: ${{ github.event.inputs.episodios || 'guardar-nao-e-investir' }}
+        run: |
+          node -e '
+            const fs = require("fs");
+            const pedido = process.env.PEDIDO.trim();
+            const todos = fs.readdirSync("episodes").filter(f => f.endsWith(".json")).map(f => f.slice(0, -5));
+            const lista = pedido === "todos" ? todos : pedido.split(",").map(s => s.trim().replace(/\.json$/, "").replace(/^episodes\//, "")).filter(Boolean);
+            const faltando = lista.filter(e => !todos.includes(e));
+            if (faltando.length) { console.error("::error::Episódio não encontrado em episodes/: " + faltando.join(", ") + ". Disponíveis: " + todos.join(", ")); process.exit(1); }
+            fs.appendFileSync(process.env.GITHUB_OUTPUT, "lista=" + JSON.stringify(lista) + "\n");
+            console.log("Episódios:", lista.join(", "));
+          '
+
+  renderizar:
+    name: Renderizar ${{ matrix.episodio }}
+    needs: preparar
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    strategy:
+      fail-fast: false
+      max-parallel: 3
+      matrix:
+        episodio: ${{ fromJSON(needs.preparar.outputs.lista) }}
+    env:
+      VOICE: pt_BR-faber-medium
+      VOICE_DIR: voices
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Instalar dependências
+        run: |
+          npm ci
+          pip install -r requirements.txt
+          sudo apt-get update -qq && sudo apt-get install -y -qq --no-install-recommends ffmpeg fonts-dejavu-core >/dev/null
+          ffmpeg -version | head -1
+
+      - name: Cache da voz Piper
+        uses: actions/cache@v4
+        with:
+          path: voices
+          key: piper-${{ env.VOICE }}-v1
+
+      - name: Baixar voz ${{ env.VOICE }}
+        run: |
+          if [ ! -f "voices/$VOICE.onnx" ]; then python -m piper.download_voices "$VOICE" --data-dir voices; fi
+          ls -la voices
+
+      - name: Cache do navegador do Remotion
+        uses: actions/cache@v4
+        with:
+          path: node_modules/.remotion
+          key: remotion-browser-${{ hashFiles('package-lock.json') }}
+
+      - name: Preparar navegador headless
+        run: npx remotion browser ensure
+
+      - name: Gerar episódio (narração + vídeo + capa + SRT + roteiro)
+        run: node scripts/build-episode.mjs "episodes/${{ matrix.episodio }}.json"
+
+      - name: Testes de áudio e vídeo
+        env:
+          EPISODE: ${{ matrix.episodio }}
+        run: npm run test:media
+
+      - name: Relatório (ffprobe)
+        if: always()
+        env:
+          EP: ${{ matrix.episodio }}
+        run: |
+          f="out/$EP/$EP.mp4"
+          {
+            echo "## 🎬 $EP"
+            if [ -f "$f" ]; then
+              echo '```'
+              ffprobe -v error -show_entries format=duration,size:stream=codec_name,width,height,r_frame_rate,sample_rate -of default=noprint_wrappers=1 "$f"
+              echo '```'
+              echo '```'; cat "out/$EP/$EP-info.json"; echo; echo '```'
+              ls -la "out/$EP" | sed 's/^/    /'
+            else
+              echo "❌ MP4 não foi gerado."
+            fi
+          } | tee -a "$GITHUB_STEP_SUMMARY"
+
+      - name: Enviar arquivos para download
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ matrix.episodio }}
+          path: out/${{ matrix.episodio }}/
+          if-no-files-found: warn
+          retention-days: 30

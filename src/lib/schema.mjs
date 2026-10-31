@@ -1,0 +1,120 @@
+// Formato dos arquivos de episódio (episodes/*.json).
+import { z } from "zod";
+
+const text = (max) => z.string().trim().min(1).max(max);
+
+const hook = z.object({
+  template: z.literal("hook"),
+  data: z.object({
+    kicker: text(40).optional(),
+    title: text(60),
+    subtitle: text(90).optional(),
+  }),
+});
+
+const side = z.object({
+  label: text(20),
+  icon: z.enum(["safe", "growth", "piggy", "chart", "coin", "warning"]).default("coin"),
+  points: z.array(text(40)).min(1).max(4),
+});
+
+const split = z.object({
+  template: z.literal("split"),
+  data: z.object({ left: side, right: side }),
+});
+
+const counter = z.object({
+  template: z.literal("counter"),
+  data: z.object({
+    label: text(60),
+    from: z.number(),
+    to: z.number(),
+    prefix: z.string().max(6).default(""),
+    suffix: z.string().max(6).default(""),
+    decimals: z.number().int().min(0).max(2).default(0),
+    trend: z.enum(["up", "down"]).default("up"),
+    caption: text(80).optional(),
+    badge: text(10).optional(),
+  }),
+});
+
+const color = z.enum(["green", "gold", "red", "white"]);
+
+const lineChart = z.object({
+  template: z.literal("lineChart"),
+  data: z
+    .object({
+      title: text(50),
+      xLabels: z.array(z.string().max(10)).min(2).max(12),
+      valuePrefix: z.string().max(6).default(""),
+      valueSuffix: z.string().max(6).default(""),
+      series: z
+        .array(z.object({ label: text(30), color: color.default("green"), values: z.array(z.number()).min(2).max(12) }))
+        .min(1)
+        .max(3),
+      caption: text(80).optional(),
+    })
+    .refine((d) => d.series.every((s) => s.values.length === d.xLabels.length), {
+      message: "cada série precisa ter um valor para cada item de xLabels",
+    }),
+});
+
+const bars = z.object({
+  template: z.literal("bars"),
+  data: z.object({
+    title: text(50),
+    valuePrefix: z.string().max(6).default(""),
+    valueSuffix: z.string().max(6).default(""),
+    items: z.array(z.object({ label: text(24), value: z.number(), color: color.default("green") })).min(2).max(5),
+    caption: text(80).optional(),
+  }),
+});
+
+const list = z.object({
+  template: z.literal("list"),
+  data: z.object({ title: text(50), items: z.array(text(50)).min(2).max(5) }),
+});
+
+const outro = z.object({
+  template: z.literal("outro"),
+  data: z.object({
+    title: text(80),
+    points: z.array(text(45)).max(3).default([]),
+    cta: text(30).default("Siga para mais"),
+  }),
+});
+
+const base = z.object({
+  id: z.string().regex(/^[a-z0-9-]+$/, "use só letras minúsculas, números e hífen"),
+  narration: z.string().trim().min(10).max(400),
+});
+
+export const sceneSchema = z.discriminatedUnion("template", [hook, split, counter, lineChart, bars, list, outro]).and(base);
+
+export const TEMPLATES = ["hook", "split", "counter", "lineChart", "bars", "list", "outro"];
+
+export const episodeSchema = z
+  .object({
+    id: z.string().regex(/^[a-z0-9-]+$/, "use só letras minúsculas, números e hífen"),
+    title: text(100),
+    description: z.string().max(500).default(""),
+    tags: z.array(z.string()).max(15).default([]),
+    targetDurationSeconds: z.number().min(30).max(60).default(45),
+    disclaimer: z.string().max(120).optional(),
+    voice: z.object({ lengthScale: z.number().min(0.7).max(1.4).optional() }).optional(),
+    music: z.object({ enabled: z.boolean().optional(), volume: z.number().min(0).max(0.4).optional() }).optional(),
+    scenes: z.array(sceneSchema).min(3).max(8),
+  })
+  .refine((e) => new Set(e.scenes.map((s) => s.id)).size === e.scenes.length, {
+    message: "ids de cena repetidos",
+  });
+
+/** Valida um episódio e devolve os dados com valores padrão, ou lança erro legível. */
+export function parseEpisode(raw, source = "episódio") {
+  const r = episodeSchema.safeParse(raw);
+  if (!r.success) {
+    const lines = r.error.issues.map((i) => `  - ${i.path.join(".") || "(raiz)"}: ${i.message}`);
+    throw new Error(`${source} inválido:\n${lines.join("\n")}`);
+  }
+  return r.data;
+}
