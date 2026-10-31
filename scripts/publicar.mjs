@@ -176,7 +176,7 @@ async function lerPedido() {
   let p = { episodios: "agendados", confirmacao: "", execucao: "" };
   if (ev === "workflow_dispatch") p = { episodios: process.env.IN_EPISODIOS || "agendados", confirmacao: process.env.IN_CONFIRMACAO ?? "", execucao: process.env.IN_EXECUCAO ?? "" };
   if (ev === "push") {
-    const arq = JSON.parse(readFileSync("pedidos/youtube.json", "utf8"));
+    const arq = JSON.parse(readFileSync(process.env.PEDIDO_YOUTUBE ?? "pedidos/youtube.json", "utf8"));
     p = { episodios: arq.episodios ?? "agendados", confirmacao: arq.confirmacao ?? "", execucao: String(arq.reaproveitarExecucao ?? "") };
     // Arquivo sem confirmação não dispara nada (nem simulação, para não gastar minutos).
     if (p.confirmacao.trim() !== "ENVIAR-PRIVADO") p = { episodios: "nenhum", confirmacao: "", execucao: "" };

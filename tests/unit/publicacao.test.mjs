@@ -258,7 +258,10 @@ test("canal diferente do esperado: diagnóstico falha e envio é bloqueado", () 
 
 test("pedido por arquivo sem confirmação não dispara nada", () => {
   const dir = ambiente();
-  const r = spawnSync("node", ["scripts/publicar.mjs", "pedido"], { encoding: "utf8", env: { PATH: process.env.PATH, EVENTO: "push", GITHUB_OUTPUT: path.join(dir, "saida.txt") } });
+  // Usa um pedido próprio do teste: o pedidos/youtube.json real pode ter um envio pedido.
+  const pedido = path.join(dir, "pedido.json");
+  writeFileSync(pedido, JSON.stringify({ episodios: "guardar-nao-e-investir", confirmacao: "", reaproveitarExecucao: "123" }));
+  const r = spawnSync("node", ["scripts/publicar.mjs", "pedido"], { encoding: "utf8", env: { PATH: process.env.PATH, EVENTO: "push", PEDIDO_YOUTUBE: pedido, GITHUB_OUTPUT: path.join(dir, "saida.txt") } });
   assert.equal(r.status, 0, r.stderr);
   assert.match(readFileSync(path.join(dir, "saida.txt"), "utf8"), /episodios=nenhum\nconfirmacao=\nexecucao=\n/);
 });
