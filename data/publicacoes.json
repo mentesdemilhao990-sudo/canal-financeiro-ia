@@ -1,0 +1,30 @@
+{
+  "_leia": "Gerado automaticamente. Registro de tudo que foi enviado, para nunca publicar duas vezes.",
+  "itens": [
+    {
+      "historico": [
+        {
+          "em": "2026-10-31T16:17:53.337Z",
+          "status": "enviando"
+        },
+        {
+          "em": "2026-10-31T16:17:55.070Z",
+          "status": "privado",
+          "nota": "enviado como privado"
+        }
+      ],
+      "plataforma": "youtube",
+      "episodio": "guardar-nao-e-investir",
+      "titulo": "Por que guardar dinheiro não é o mesmo que investir?",
+      "hashEpisodio": "829df1ecfe213f92",
+      "hashVideo": "e22e79d768b24dc2",
+      "duracao": 39.241,
+      "status": "privado",
+      "atualizadoEm": "2026-10-31T16:17:55.070Z",
+      "privacidade": "private",
+      "videoId": "TMz0LcQ5hQI",
+      "url": "https://youtu.be/TMz0LcQ5hQI",
+      "enviadoEm": "2026-10-31T16:17:55.070Z"
+    }
+  ]
+}
