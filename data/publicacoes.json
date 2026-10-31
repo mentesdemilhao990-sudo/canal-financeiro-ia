@@ -11,6 +11,11 @@
           "em": "2026-10-31T16:17:55.070Z",
           "status": "privado",
           "nota": "enviado como privado"
+        },
+        {
+          "em": "2026-10-31T17:09:55.325Z",
+          "status": "publico",
+          "nota": "visibilidade: publico"
         }
       ],
       "plataforma": "youtube",
@@ -19,9 +24,9 @@
       "hashEpisodio": "829df1ecfe213f92",
       "hashVideo": "e22e79d768b24dc2",
       "duracao": 39.241,
-      "status": "privado",
-      "atualizadoEm": "2026-10-31T16:17:55.070Z",
-      "privacidade": "private",
+      "status": "publico",
+      "atualizadoEm": "2026-10-31T17:09:55.325Z",
+      "privacidade": "public",
       "videoId": "TMz0LcQ5hQI",
       "url": "https://youtu.be/TMz0LcQ5hQI",
       "enviadoEm": "2026-10-31T16:17:55.070Z"
