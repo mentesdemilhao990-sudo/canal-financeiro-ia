@@ -1,0 +1,30 @@
+name: Estruturar canal
+
+# Cria playlists por tema, monta as seções da página inicial e acerta país, idioma e trailer.
+# Só roda de verdade quando pedidos/estrutura.json tem confirmacao = ESTRUTURAR-CANAL.
+on:
+  workflow_dispatch:
+  push:
+    paths: ["pedidos/estrutura.json"]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: publicar-youtube
+  cancel-in-progress: false
+
+jobs:
+  estruturar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Estruturar canal (nenhum segredo é exibido)
+        env:
+          YOUTUBE_CLIENT_ID: ${{ secrets.YOUTUBE_CLIENT_ID }}
+          YOUTUBE_CLIENT_SECRET: ${{ secrets.YOUTUBE_CLIENT_SECRET }}
+          YOUTUBE_REFRESH_TOKEN: ${{ secrets.YOUTUBE_REFRESH_TOKEN }}
+        run: node scripts/estrutura-canal.mjs
