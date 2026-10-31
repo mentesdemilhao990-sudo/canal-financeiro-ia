@@ -12,6 +12,7 @@ import { bundle } from "@remotion/bundler";
 import { renderMedia, renderStill, selectComposition } from "@remotion/renderer";
 import { parseEpisode } from "../src/lib/schema.mjs";
 import { groupWords, srtTime, toSrt } from "../src/lib/captions.mjs";
+import { youtubeMetadata } from "./lib/metadata.mjs";
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const args = process.argv.slice(2);
@@ -129,7 +130,12 @@ const roteiro = [
   }),
   ...(episode.disclaimer ? ["---", "", `_${episode.disclaimer}_`, ""] : []),
 ].join("\n");
-writeFileSync(path.join(outDir, `${id}-roteiro.md`), roteiro, "utf8");
+// Metadados prontos para o YouTube (título, descrição, hashtags e tags automáticos).
+const pubCfg = JSON.parse(readFileSync(path.join(ROOT, "config/publicacao.json"), "utf8"));
+const yt = youtubeMetadata(episode, pubCfg.youtube, { duration: timeline.duration });
+writeFileSync(path.join(outDir, `${id}-youtube.json`), JSON.stringify(yt, null, 2));
+const roteiroFinal = [roteiro, "", "## YouTube (gerado automaticamente)", "", `**Título:** ${yt.title}`, "", "**Descrição:**", "", "```", yt.description, "```", "", `**Tags:** ${yt.tags.join(", ")}`, ""].join("\n");
+writeFileSync(path.join(outDir, `${id}-roteiro.md`), roteiroFinal, "utf8");
 writeFileSync(
   path.join(outDir, `${id}-info.json`),
   JSON.stringify({ id, title: episode.title, duration: timeline.duration, engine: timeline.engine, alignment: timeline.alignment, targetDurationSeconds: episode.targetDurationSeconds }, null, 2),

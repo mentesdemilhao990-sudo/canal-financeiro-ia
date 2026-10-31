@@ -1,0 +1,26 @@
+name: Salvar estado
+description: Atualiza o painel e faz commit de data/ e PAINEL.md (só se o estado mudou).
+runs:
+  using: composite
+  steps:
+    - shell: bash
+      run: |
+        node scripts/painel.mjs
+        git config user.name "github-actions[bot]"
+        git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+        mkdir -p data
+        git add -A data
+        if git diff --cached --quiet -- data; then
+          echo "Estado sem mudanças: nada para salvar."
+          git checkout -- PAINEL.md 2>/dev/null || true
+          exit 0
+        fi
+        git add PAINEL.md
+        git commit -q -m "Atualiza registro e painel do canal [skip ci]"
+        for i in 1 2 3 4; do
+          # Em conflito, mantém a versão desta execução (cada workflow cuida dos seus arquivos).
+          if git pull -q --rebase -X theirs && git push -q; then echo "Estado salvo."; exit 0; fi
+          sleep $((i * 5))
+        done
+        echo "::error::Não consegui salvar o estado no repositório."
+        exit 1

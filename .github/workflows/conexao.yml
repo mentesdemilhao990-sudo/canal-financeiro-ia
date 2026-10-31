@@ -1,0 +1,27 @@
+name: Testar conexão com o YouTube
+
+# Só leitura: confere se os Secrets funcionam e mostra o nome do canal.
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  testar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Testar login
+        env:
+          YOUTUBE_CLIENT_ID: ${{ secrets.YOUTUBE_CLIENT_ID }}
+          YOUTUBE_CLIENT_SECRET: ${{ secrets.YOUTUBE_CLIENT_SECRET }}
+          YOUTUBE_REFRESH_TOKEN: ${{ secrets.YOUTUBE_REFRESH_TOKEN }}
+          YOUTUBE_PUBLICACAO: ${{ vars.YOUTUBE_PUBLICACAO }}
+          DATA_DIR: /tmp/estado
+        run: node scripts/publicar.mjs testar-conexao

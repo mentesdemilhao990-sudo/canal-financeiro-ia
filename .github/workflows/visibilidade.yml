@@ -1,0 +1,55 @@
+name: Mudar visibilidade no YouTube
+
+# Passo manual, depois de você conferir o vídeo privado no YouTube Studio.
+on:
+  workflow_dispatch:
+    inputs:
+      episodio:
+        description: "Episódio (sem .json) ou id do vídeo no YouTube"
+        required: true
+      visibilidade:
+        description: "Nova visibilidade"
+        type: choice
+        options: [publico, nao_listado, agendado, privado]
+        default: publico
+      data:
+        description: "Só para 'agendado': data e hora de Brasília, ex.: 2026-11-05T18:00"
+        required: false
+
+permissions:
+  contents: write
+
+concurrency:
+  group: publicar-youtube
+  cancel-in-progress: false
+
+jobs:
+  mudar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Mudar visibilidade
+        env:
+          EPISODIO: ${{ inputs.episodio }}
+          PARA: ${{ inputs.visibilidade }}
+          DATA: ${{ inputs.data }}
+          YOUTUBE_CLIENT_ID: ${{ secrets.YOUTUBE_CLIENT_ID }}
+          YOUTUBE_CLIENT_SECRET: ${{ secrets.YOUTUBE_CLIENT_SECRET }}
+          YOUTUBE_REFRESH_TOKEN: ${{ secrets.YOUTUBE_REFRESH_TOKEN }}
+          YOUTUBE_PUBLICACAO: ${{ vars.YOUTUBE_PUBLICACAO }}
+        run: node scripts/publicar.mjs visibilidade "$EPISODIO" "$PARA" "$DATA"
+      - name: Salvar registro e painel
+        if: always()
+        uses: ./.github/actions/salvar-estado
+        env:
+          YOUTUBE_REFRESH_TOKEN: ${{ secrets.YOUTUBE_REFRESH_TOKEN }}
+          YOUTUBE_CLIENT_ID: ${{ secrets.YOUTUBE_CLIENT_ID }}
+          YOUTUBE_CLIENT_SECRET: ${{ secrets.YOUTUBE_CLIENT_SECRET }}
+          YOUTUBE_PUBLICACAO: ${{ vars.YOUTUBE_PUBLICACAO }}
+          YOUTUBE_RESPOSTAS: ${{ vars.YOUTUBE_RESPOSTAS }}
+          YOUTUBE_RESPOSTA_AUTOMATICA: ${{ vars.YOUTUBE_RESPOSTA_AUTOMATICA }}

@@ -1,0 +1,101 @@
+name: Publicar no YouTube
+
+# Todo dia confere os episódios com "publicacao.youtube.enviarEm" vencido e ainda
+# não enviados, renderiza e envia como PRIVADO. Sem as chaves ligadas, só simula.
+on:
+  schedule:
+    - cron: "0 12 * * *" # 9h de Brasília
+  workflow_dispatch:
+    inputs:
+      episodios:
+        description: "Episódios (sem .json, separados por vírgula), 'agendados' ou 'todos'"
+        required: true
+        default: agendados
+
+permissions:
+  contents: write
+
+concurrency:
+  group: publicar-youtube
+  cancel-in-progress: false
+
+jobs:
+  selecionar:
+    name: Escolher episódios
+    runs-on: ubuntu-latest
+    outputs:
+      csv: ${{ steps.sel.outputs.csv }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Testes unitários
+        run: npm run test:unit
+      - name: Selecionar
+        id: sel
+        env:
+          PEDIDO: ${{ inputs.episodios || 'agendados' }}
+          AGENDADO: ${{ github.event_name == 'schedule' }}
+          YOUTUBE_PUBLICACAO: ${{ vars.YOUTUBE_PUBLICACAO }}
+          TEM_CREDENCIAIS: ${{ secrets.YOUTUBE_REFRESH_TOKEN != '' }}
+        run: |
+          # No horário automático, sem publicação ligada, não gasta minutos renderizando.
+          if [ "$AGENDADO" = "true" ] && { [ "$YOUTUBE_PUBLICACAO" != "ligada" ] || [ "$TEM_CREDENCIAIS" != "true" ]; }; then
+            echo "Publicação desligada: nada a fazer no horário automático."
+            echo "csv=" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          node scripts/publicar.mjs selecionar "$PEDIDO"
+
+  renderizar:
+    name: Renderizar
+    needs: selecionar
+    if: needs.selecionar.outputs.csv != ''
+    uses: ./.github/workflows/render.yml
+    with:
+      episodios: ${{ needs.selecionar.outputs.csv }}
+
+  enviar:
+    name: Enviar (privado) ou simular
+    needs: [selecionar, renderizar]
+    if: needs.selecionar.outputs.csv != '' && needs.renderizar.result == 'success'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Baixar vídeos renderizados
+        uses: actions/download-artifact@v4
+        with:
+          path: out
+      - name: Enviar
+        env:
+          EPISODIOS: ${{ needs.selecionar.outputs.csv }}
+          YOUTUBE_CLIENT_ID: ${{ secrets.YOUTUBE_CLIENT_ID }}
+          YOUTUBE_CLIENT_SECRET: ${{ secrets.YOUTUBE_CLIENT_SECRET }}
+          YOUTUBE_REFRESH_TOKEN: ${{ secrets.YOUTUBE_REFRESH_TOKEN }}
+          YOUTUBE_PUBLICACAO: ${{ vars.YOUTUBE_PUBLICACAO }}
+        run: node scripts/publicar.mjs enviar "$EPISODIOS"
+      - name: Salvar registro e painel
+        if: always()
+        uses: ./.github/actions/salvar-estado
+        env:
+          YOUTUBE_CLIENT_ID: ${{ secrets.YOUTUBE_CLIENT_ID }}
+          YOUTUBE_CLIENT_SECRET: ${{ secrets.YOUTUBE_CLIENT_SECRET }}
+          YOUTUBE_REFRESH_TOKEN: ${{ secrets.YOUTUBE_REFRESH_TOKEN }}
+          YOUTUBE_PUBLICACAO: ${{ vars.YOUTUBE_PUBLICACAO }}
+          YOUTUBE_RESPOSTAS: ${{ vars.YOUTUBE_RESPOSTAS }}
+          YOUTUBE_RESPOSTA_AUTOMATICA: ${{ vars.YOUTUBE_RESPOSTA_AUTOMATICA }}
+      - name: Painel para download
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: painel
+          path: out/painel/
+          if-no-files-found: ignore

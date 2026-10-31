@@ -7,6 +7,12 @@ on:
         description: "Nome do arquivo do episódio, sem .json (vários separados por vírgula, ou 'todos')"
         required: true
         default: guardar-nao-e-investir
+  # Também pode ser chamado por outro workflow (ex.: Publicar no YouTube).
+  workflow_call:
+    inputs:
+      episodios:
+        type: string
+        required: true
   pull_request:
     paths-ignore: ["**.md"]
 
@@ -14,7 +20,7 @@ permissions:
   contents: read
 
 concurrency:
-  group: render-${{ github.ref }}-${{ github.event.inputs.episodios || 'pr' }}
+  group: render-${{ github.ref }}-${{ inputs.episodios || 'pr' }}-${{ github.workflow }}
   cancel-in-progress: true
 
 jobs:
@@ -37,7 +43,7 @@ jobs:
       - name: Montar lista de episódios
         id: lista
         env:
-          PEDIDO: ${{ github.event.inputs.episodios || 'guardar-nao-e-investir' }}
+          PEDIDO: ${{ inputs.episodios || 'guardar-nao-e-investir' }}
         run: |
           node -e '
             const fs = require("fs");

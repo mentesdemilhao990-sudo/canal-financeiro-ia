@@ -1,0 +1,48 @@
+{
+  "_leia": "Ajustes de publicação e comentários. As chaves que LIGAM envio real não ficam aqui: ficam em Settings → Secrets and variables → Actions → Variables (veja docs/tutorial-youtube.md). Sem elas, tudo roda em modo simulação.",
+  "youtube": {
+    "categoryId": "27",
+    "defaultLanguage": "pt-BR",
+    "madeForKids": false,
+    "containsSyntheticMedia": false,
+    "hashtagsFixas": [
+      "educacaofinanceira",
+      "financaspessoais"
+    ],
+    "tagsFixas": [
+      "educação financeira",
+      "finanças pessoais",
+      "dinheiro",
+      "Mente de Milhão"
+    ],
+    "maxHashtags": 5,
+    "marcarComoShorts": true,
+    "rodapeDescricao": "📌 Inscreva-se para entender como o dinheiro realmente funciona.",
+    "maxEnviosPorExecucao": 2,
+    "verificarTitulosRecentesNoCanal": true
+  },
+  "comentarios": {
+    "maxComentariosPorVideo": 200,
+    "respostaAutomatica": {
+      "habilitada": false,
+      "maxPorExecucao": 10,
+      "maxPorAutorPorDia": 1,
+      "maxCaracteresComentario": 80
+    },
+    "assinatura": ""
+  },
+  "cota": {
+    "_leia": "Cota gratuita do YouTube Data API (tabela oficial em developers.google.com/youtube/v3/determine_quota_cost): 10.000 unidades por dia para quase tudo e um limite separado de 100 envios de vídeo (videos.insert) por dia. Zera à meia-noite no horário do Pacífico. Os limites abaixo deixam folga.",
+    "limiteDiario": 9000,
+    "limiteEnviosDia": 10,
+    "custos": {
+      "videos.insert": 1,
+      "videos.update": 50,
+      "videos.list": 1,
+      "channels.list": 1,
+      "playlistItems.list": 1,
+      "commentThreads.list": 1,
+      "comments.insert": 50
+    }
+  }
+}

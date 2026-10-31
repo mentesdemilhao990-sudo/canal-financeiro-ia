@@ -91,7 +91,9 @@ const base = z.object({
 
 export const sceneSchema = z.discriminatedUnion("template", [hook, split, counter, lineChart, bars, list, outro]).and(base);
 
-export const TEMPLATES = ["hook", "split", "counter", "lineChart", "bars", "list", "outro"];
+const dataHora = /^\d{4}-\d{2}-\d{2}(T\d{2}:\d{2}(:\d{2})?(Z|[+-]\d{2}:\d{2})?)?$/;
+
+export const TEMPLATES =["hook", "split", "counter", "lineChart", "bars", "list", "outro"];
 
 export const episodeSchema = z
   .object({
@@ -104,6 +106,21 @@ export const episodeSchema = z
     voice: z.object({ lengthScale: z.number().min(0.7).max(1.4).optional() }).optional(),
     music: z.object({ enabled: z.boolean().optional(), volume: z.number().min(0).max(0.4).optional() }).optional(),
     scenes: z.array(sceneSchema).min(3).max(8),
+    // Opcional: quando e como publicar (veja docs/publicacao.md).
+    publicacao: z
+      .object({
+        youtube: z
+          .object({
+            enviarEm: z.string().regex(dataHora, "use o formato 2026-11-05 ou 2026-11-05T10:00-03:00").optional(),
+            titulo: text(100).optional(),
+            hashtags: z.array(z.string().regex(/^#?[\p{L}\p{N}_]+$/u, "hashtag sem espaços")).max(5).optional(),
+            tagsExtras: z.array(z.string().max(60)).max(15).optional(),
+          })
+          .optional(),
+        instagram: z.object({ enviarEm: z.string().regex(dataHora).optional(), legenda: z.string().max(2200).optional() }).optional(),
+        tiktok: z.object({ enviarEm: z.string().regex(dataHora).optional(), legenda: z.string().max(2200).optional() }).optional(),
+      })
+      .optional(),
   })
   .refine((e) => new Set(e.scenes.map((s) => s.id)).size === e.scenes.length, {
     message: "ids de cena repetidos",

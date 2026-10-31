@@ -57,6 +57,7 @@ Nome do canal, @, velocidade da voz e volume da trilha ficam em `config/channel.
 - `<id>.srt`: legendas separadas, para subir na plataforma
 - `<id>-roteiro.md`: título, descrição, tags e roteiro com os tempos de cada cena
 - `<id>-capa.png`: capa vertical 1080x1920
+- `<id>-youtube.json`: título, descrição, hashtags e tags prontos para o YouTube
 
 ## Testes automáticos
 
@@ -78,6 +79,33 @@ Pull requests também rodam tudo isso com o episódio de exemplo.
 3. `src/` tem as cenas (`src/scenes/`), o fundo, o cabeçalho e as legendas (`src/components/`).
 
 Para mexer no visual com pré-visualização ao vivo, é preciso rodar localmente (`npm ci && npm run studio`), mas isso é opcional.
+
+## Publicação no YouTube e comentários
+
+Tudo começa **desligado**: sem as credenciais e sem as chaves abaixo, os workflows só simulam e mostram o que fariam. O passo a passo para conectar o canal está em **[docs/tutorial-youtube.md](docs/tutorial-youtube.md)**.
+
+| Workflow (aba Actions) | Quando roda | O que faz |
+| --- | --- | --- |
+| **Publicar no YouTube** | todo dia às 9h e manual | renderiza, testa e envia **como privado** os episódios com data vencida; nunca envia o mesmo episódio ou arquivo duas vezes |
+| **Mudar visibilidade no YouTube** | manual | depois de você conferir: público, não listado ou agendado |
+| **Comentários do YouTube** | a cada 3 h, manual e quando você marca a issue | lê comentários novos, classifica, sugere respostas e envia as que você aprovou |
+| **Testar conexão com o YouTube** | manual | só confere o login |
+
+| Chave (Settings → Secrets and variables → Actions → **Variables**) | Valor | Libera |
+| --- | --- | --- |
+| `YOUTUBE_PUBLICACAO` | `ligada` | envio de vídeos (sempre privados) |
+| `YOUTUBE_RESPOSTAS` | `ligadas` | envio das respostas aprovadas por você |
+| `YOUTUBE_RESPOSTA_AUTOMATICA` | `ligada` | resposta sozinha só para elogios curtos (também exige `habilitada: true` em `config/publicacao.json`) |
+
+As credenciais (`YOUTUBE_CLIENT_ID`, `YOUTUBE_CLIENT_SECRET`, `YOUTUBE_REFRESH_TOKEN`) ficam **só** em **Secrets**.
+
+- **Metadados automáticos:** título (até 100 caracteres), descrição com aviso legal e hashtags, tags do nicho achadas na narração. Saem em `out/<id>/<id>-youtube.json` e na seção "YouTube" do roteiro. Ajustes em `config/publicacao.json`.
+- **Agenda:** no episódio, `"publicacao": { "youtube": { "enviarEm": "2026-11-05T10:00" } }` (horário de Brasília). Também aceita `"titulo"` e `"hashtags"`.
+- **Comentários:** cada um vira `simples`, `financeira`, `pergunta`, `negativo`, `spam` ou `outro`. Perguntas sobre dinheiro (💰) sempre esperam a sua revisão. Você aprova marcando caixas na issue **💬 Comentários para aprovar**.
+- **Painel:** [PAINEL.md](PAINEL.md) mostra chaves, cota do dia, vídeos com status e números, fila de episódios e comentários. Cada execução também deixa o painel em HTML para download.
+- **Registro:** `data/publicacoes.json` (envios), `data/comentarios.json`, `data/estatisticas.json` e `data/cota.json`, atualizados pelos workflows.
+- **Limites:** respeita a cota gratuita do YouTube (10.000 unidades/dia e 100 envios/dia), com parada de segurança antes.
+- **Instagram e TikTok:** estrutura pronta, envio ainda não implementado. Veja [docs/plataformas-futuras.md](docs/plataformas-futuras.md).
 
 ## Licenças
 
