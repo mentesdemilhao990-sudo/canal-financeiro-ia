@@ -107,6 +107,17 @@ function pedido({ tema, manchetes, formato, tituloIrmao, titulosUsados }) {
   return linhas.filter(Boolean).join("\n\n");
 }
 
+/**
+ * POST que segue redirecionamento mantendo o método e o corpo (o fetch
+ * transformaria um 301/302 em GET, e a resposta viria vazia).
+ */
+async function postar(f, url, init, saltos = 3) {
+  const r = await f(url, { ...init, method: "POST", redirect: "manual" });
+  const destino = r.headers?.get?.("location");
+  if (r.status >= 300 && r.status < 400 && destino && saltos > 0) return postar(f, new URL(destino, url).toString(), init, saltos - 1);
+  return r;
+}
+
 /** Monta o episódio final a partir da resposta da IA (id, formato, aviso e meta de duração são nossos). */
 export function montarEpisodio(bruto, { id, formato }) {
   const scenes = Array.isArray(bruto?.scenes) ? bruto.scenes : [];
@@ -151,9 +162,13 @@ export async function escreverEpisodio(
     for (let n = 1; n <= tentativas; n++) {
       let texto;
       try {
-        const r = await f(URL_MODELOS, {
-          method: "POST",
-          headers: { authorization: `Bearer ${token}`, "content-type": "application/json", accept: "application/json" },
+        const r = await postar(f, URL_MODELOS, {
+          headers: {
+            authorization: `Bearer ${token}`,
+            "content-type": "application/json",
+            accept: "application/vnd.github+json",
+            "x-github-api-version": "2022-11-28",
+          },
           body: JSON.stringify({ model: modelo, temperature: 0.7, max_tokens: 4000, response_format: { type: "json_object" }, messages: mensagens }),
         });
         if (r.status === 401 || r.status === 403) throw Object.assign(new Error(`sem permissão para o GitHub Models (HTTP ${r.status}); o workflow precisa de "models: read"`), { fatal: true });
@@ -169,7 +184,7 @@ export async function escreverEpisodio(
         } catch {}
         if (!r.ok) throw new Error(`${modelo}: HTTP ${r.status} ${j.error?.message ?? bruto.slice(0, 300)}`.trim());
         texto = j.choices?.[0]?.message?.content ?? "";
-        if (!texto.trim()) throw new Error(`${modelo}: resposta sem texto (HTTP ${r.status}): ${bruto.slice(0, 300)}`);
+        if (!texto.trim()) throw new Error(`${modelo}: resposta sem texto (HTTP ${r.status}, ${r.url || URL_MODELOS}): ${bruto.slice(0, 300)}`);
       } catch (e) {
         if (e.fatal) throw e;
         ultimo = e.message;
