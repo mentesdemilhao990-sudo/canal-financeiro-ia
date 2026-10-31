@@ -65,7 +65,9 @@ async function enviar(ids) {
   const yt = real ? new YouTube({ credenciais: credenciaisDoAmbiente(), cota }) : null;
   resumo(`## 📤 Publicação no YouTube · ${real ? "**ENVIO REAL (privado)**" : "simulação"}`);
   if (!real) resumo(`> Nada foi enviado: ${motivoSimulacao(m, "publicacao")}.`);
-  if (m.pedidos.publicacao && !m.credenciais) throw new Error("YOUTUBE_PUBLICACAO está ligada, mas faltam as credenciais nos Secrets.");
+  if (m.pedidos.publicacao && !m.credenciais) throw new Error(
+      "O envio foi autorizado, mas os Secrets YOUTUBE_CLIENT_ID, YOUTUBE_CLIENT_SECRET e YOUTUBE_REFRESH_TOKEN chegaram vazios. Confira se os nomes são exatamente esses e se estão em Settings → Secrets and variables → Actions → aba Secrets → Repository secrets (não em Environments, Codespaces ou Dependabot).",
+    );
 
   let canal;
   let recentes = [];
