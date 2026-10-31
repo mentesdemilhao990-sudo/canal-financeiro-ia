@@ -1,6 +1,7 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { classificar, problemaResposta, sugerirResposta } from "../../scripts/lib/comentarios.mjs";
+import { limparSugestao } from "../../scripts/lib/ia.mjs";
 import { corpoIssue, escolherAutomaticas, lerIssue } from "../../scripts/lib/aprovacao.mjs";
 
 const casos = {
@@ -75,4 +76,11 @@ test("issue: texto do comentário não consegue injetar marcação nem mencionar
   const { corpo } = corpoIssue({ itens: [item({ id: "Ug9", texto: malicioso, autor: "@hacker" })] }, { itens: [] });
   assert.deepEqual(lerIssue(corpo).aprovar, []);
   assert.ok(!/@pvalerio89/.test(corpo) && !/@hacker/.test(corpo));
+});
+
+test("saída da IA com link, menção ou recomendação é descartada", () => {
+  assert.equal(limparSugestao("Veja https://x.com"), null);
+  assert.equal(limparSugestao("Fala com @fulano"), null);
+  assert.equal(limparSugestao("Invista em ações da empresa X"), null);
+  assert.equal(limparSugestao("\"Depende do seu objetivo!\""), "Depende do seu objetivo!");
 });

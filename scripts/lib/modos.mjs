@@ -8,24 +8,31 @@ export const CHAVES = {
   automatica: { variavel: "YOUTUBE_RESPOSTA_AUTOMATICA", valor: "ligada", oQueFaz: "responde sozinho só comentários simples (elogios curtos)" },
 };
 
+/** Texto que você digita numa execução manual para autorizar o envio (sempre privado) só daquela vez. */
+export const CONFIRMACAO = "ENVIAR-PRIVADO";
+
 export function modos(env = process.env, cfg = {}) {
   const cred = credenciaisDoAmbiente(env);
   const ligada = (k) => env[CHAVES[k].variavel]?.trim().toLowerCase() === CHAVES[k].valor;
   const respostas = Boolean(cred) && ligada("respostas");
   return {
     credenciais: Boolean(cred),
-    publicacao: Boolean(cred) && ligada("publicacao"),
+    // Também vale a confirmação digitada numa execução manual (só para aquela execução).
+    publicacao: Boolean(cred) && (ligada("publicacao") || env.CONFIRMACAO_ENVIO?.trim() === CONFIRMACAO),
     leitura: Boolean(cred),
     respostas,
     automatica: respostas && ligada("automatica") && cfg.comentarios?.respostaAutomatica?.habilitada === true,
-    pedidos: Object.fromEntries(Object.keys(CHAVES).map((k) => [k, ligada(k)])),
+    pedidos: { ...Object.fromEntries(Object.keys(CHAVES).map((k) => [k, ligada(k)])), ...(env.CONFIRMACAO_ENVIO?.trim() === CONFIRMACAO ? { publicacao: true } : {}) },
   };
 }
 
 /** Texto curto explicando por que algo ficou em simulação. */
 export function motivoSimulacao(m, chave) {
   if (!m.credenciais) return "sem credenciais do YouTube nos Secrets (YOUTUBE_CLIENT_ID, YOUTUBE_CLIENT_SECRET, YOUTUBE_REFRESH_TOKEN)";
-  if (!m.pedidos[chave]) return `variável ${CHAVES[chave].variavel} não está como "${CHAVES[chave].valor}"`;
+  if (!m.pedidos[chave])
+    return chave === "publicacao"
+      ? `variável ${CHAVES[chave].variavel} não está como "${CHAVES[chave].valor}" e a execução não trouxe a confirmação ${CONFIRMACAO}`
+      : `variável ${CHAVES[chave].variavel} não está como "${CHAVES[chave].valor}"`;
   if (chave === "automatica" && !m.pedidos.respostas) return `precisa também de ${CHAVES.respostas.variavel}=${CHAVES.respostas.valor}`;
   if (chave === "automatica") return "respostaAutomatica.habilitada está false em config/publicacao.json";
   return "";

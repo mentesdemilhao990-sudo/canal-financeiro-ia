@@ -29,7 +29,13 @@
       "maxPorAutorPorDia": 1,
       "maxCaracteresComentario": 80
     },
-    "assinatura": ""
+    "assinatura": "",
+    "ia": {
+      "_leia": "Sugestões com IA gratuita do GitHub Models (usa o GITHUB_TOKEN do Actions, sem chave paga). Só sugere: você aprova antes de sair.",
+      "habilitada": true,
+      "modelo": "openai/gpt-4o-mini",
+      "maxPorExecucao": 30
+    }
   },
   "cota": {
     "_leia": "Cota gratuita do YouTube Data API (tabela oficial em developers.google.com/youtube/v3/determine_quota_cost): 10.000 unidades por dia para quase tudo e um limite separado de 100 envios de vídeo (videos.insert) por dia. Zera à meia-noite no horário do Pacífico. Os limites abaixo deixam folga.",

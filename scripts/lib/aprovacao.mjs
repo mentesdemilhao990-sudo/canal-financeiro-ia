@@ -38,7 +38,7 @@ export function corpoIssue(dados, pubs, { envioLigado = false } = {}) {
   for (const [n, c] of pend.slice(0, 25).entries()) {
     linhas.push(
       "---",
-      `**${n + 1}. ${seguro(c.autor)}** · ${ROTULO[c.categoria] ?? c.categoria} · [${seguro(titulos[c.videoId] ?? c.episodio)}](https://www.youtube.com/watch?v=${c.videoId}&lc=${c.id}) · ${c.publicadoEm?.slice(0, 10)}`,
+      `**${n + 1}. ${seguro(c.autor)}** · ${ROTULO[c.categoria] ?? c.categoria} · [${seguro(titulos[c.videoId] ?? c.episodio)}](https://www.youtube.com/watch?v=${c.videoId}&lc=${c.id}) · ${c.publicadoEm?.slice(0, 10)}${c.sugestaoOrigem === "ia" ? " · 🤖 sugestão da IA" : ""}`,
       "",
       ...seguro(c.texto).split("\n").map((l) => `> ${l}`),
       "",

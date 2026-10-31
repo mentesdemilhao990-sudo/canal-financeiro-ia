@@ -179,3 +179,22 @@ test("datas: sem fuso vale horário de Brasília; cota usa o dia do Pacífico", 
   assert.equal(quando("2026-11-05T10:00").toISOString(), "2026-11-05T13:00:00.000Z");
   assert.equal(diaPacifico(new Date("2026-11-05T06:00:00Z")), "2026-11-04");
 });
+
+test("IA gratuita sugere para perguntas; elogio simples usa texto pronto; nada é enviado", () => {
+  const dir = ambiente({ cenario: cenarioComentarios });
+  comVideoPublicado(dir);
+  const r = rodar(dir, "scripts/comentarios.mjs", ["ler"], { ...CRED, GITHUB_TOKEN: "falso", GITHUB_REPOSITORY: "x/y" });
+  assert.equal(r.status, 0, r.saida);
+  const itens = ler(dir, "comentarios.json").itens;
+  assert.equal(itens.find((c) => c.id === "T2").sugestaoOrigem, "ia");
+  assert.match(itens.find((c) => c.id === "T2").sugestao, /Depende/);
+  assert.equal(itens.find((c) => c.id === "T1").sugestaoOrigem, "modelo");
+  assert.equal(itens.find((c) => c.id === "T3").sugestaoOrigem, "modelo", "spam não vai para a IA");
+  assert.equal(chamadas(dir).filter((c) => c.url.endsWith("/comments")).length, 0);
+});
+
+test("envio com a confirmação ENVIAR-PRIVADO vale como autorização da execução", () => {
+  assert.equal(modos({ ...CRED, CONFIRMACAO_ENVIO: "ENVIAR-PRIVADO" }).publicacao, true);
+  assert.equal(modos({ ...CRED, CONFIRMACAO_ENVIO: "enviar" }).publicacao, false);
+  assert.equal(modos({ CONFIRMACAO_ENVIO: "ENVIAR-PRIVADO" }).publicacao, false);
+});

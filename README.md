@@ -88,7 +88,7 @@ Tudo começa **desligado**: sem as credenciais e sem as chaves abaixo, os workfl
 | --- | --- | --- |
 | **Publicar no YouTube** | todo dia às 9h e manual | renderiza, testa e envia **como privado** os episódios com data vencida; nunca envia o mesmo episódio ou arquivo duas vezes |
 | **Mudar visibilidade no YouTube** | manual | depois de você conferir: público, não listado ou agendado |
-| **Comentários do YouTube** | a cada 3 h, manual e quando você marca a issue | lê comentários novos, classifica, sugere respostas e envia as que você aprovou |
+| **Comentários do YouTube** | a cada 3 h, manual e quando você marca a issue | lê comentários novos, classifica, sugere respostas (IA gratuita do GitHub Models) e envia as que você aprovou |
 | **Testar conexão com o YouTube** | manual | só confere o login |
 
 | Chave (Settings → Secrets and variables → Actions → **Variables**) | Valor | Libera |
@@ -96,6 +96,8 @@ Tudo começa **desligado**: sem as credenciais e sem as chaves abaixo, os workfl
 | `YOUTUBE_PUBLICACAO` | `ligada` | envio de vídeos (sempre privados) |
 | `YOUTUBE_RESPOSTAS` | `ligadas` | envio das respostas aprovadas por você |
 | `YOUTUBE_RESPOSTA_AUTOMATICA` | `ligada` | resposta sozinha só para elogios curtos (também exige `habilitada: true` em `config/publicacao.json`) |
+
+Para autorizar um envio só uma vez, sem ligar a Variable: digite `ENVIAR-PRIVADO` ao rodar **Publicar no YouTube**, ou edite `pedidos/youtube.json` (salvar o arquivo dispara o envio). Esse arquivo também permite reaproveitar o MP4 de uma execução que já terminou verde.
 
 As credenciais (`YOUTUBE_CLIENT_ID`, `YOUTUBE_CLIENT_SECRET`, `YOUTUBE_REFRESH_TOKEN`) ficam **só** em **Secrets**.
 

@@ -157,11 +157,44 @@ async function visibilidade(id, para, data) {
   }
 }
 
+/**
+ * Junta o pedido da execução: entradas manuais, arquivo pedidos/youtube.json (push)
+ * ou agenda diária. Confere que a execução reaproveitada terminou com sucesso
+ * (ou seja, o MP4 passou em todos os testes de áudio e vídeo).
+ */
+async function lerPedido() {
+  const ev = process.env.EVENTO;
+  let p = { episodios: "agendados", confirmacao: "", execucao: "" };
+  if (ev === "workflow_dispatch") p = { episodios: process.env.IN_EPISODIOS || "agendados", confirmacao: process.env.IN_CONFIRMACAO ?? "", execucao: process.env.IN_EXECUCAO ?? "" };
+  if (ev === "push") {
+    const arq = JSON.parse(readFileSync("pedidos/youtube.json", "utf8"));
+    p = { episodios: arq.episodios ?? "agendados", confirmacao: arq.confirmacao ?? "", execucao: String(arq.reaproveitarExecucao ?? "") };
+  }
+  p.execucao = String(p.execucao).trim();
+  if (p.execucao && !/^\d+$/.test(p.execucao)) throw new Error(`execução para reaproveitar inválida: "${p.execucao}"`);
+  if (p.execucao) {
+    const token = process.env.GITHUB_TOKEN;
+    const r = await fetch(`https://api.github.com/repos/${process.env.GITHUB_REPOSITORY}/actions/runs/${p.execucao}`, {
+      headers: { authorization: `Bearer ${token}`, accept: "application/vnd.github+json" },
+    });
+    const run = await r.json();
+    if (!r.ok) throw new Error(`não achei a execução ${p.execucao}: ${run.message ?? r.status}`);
+    if (run.conclusion !== "success") throw new Error(`a execução ${p.execucao} terminou como "${run.conclusion}"; só reaproveito vídeo que passou em todos os testes`);
+    resumo(`♻️ Reaproveitando o MP4 da execução [${p.execucao}](${run.html_url}) (${run.name}, ${run.head_branch}).`);
+  }
+  const conf = p.confirmacao.trim() === "ENVIAR-PRIVADO";
+  resumo(`Pedido: \`${p.episodios}\` · ${conf ? "envio real autorizado nesta execução (privado)" : "sem confirmação: simulação, a não ser que YOUTUBE_PUBLICACAO esteja ligada"}`);
+  if (process.env.GITHUB_OUTPUT)
+    appendFileSync(process.env.GITHUB_OUTPUT, `episodios=${p.episodios.replace(/[\r\n]/g, "")}\nconfirmacao=${conf ? "ENVIAR-PRIVADO" : ""}\nexecucao=${p.execucao}\n`);
+}
+
 try {
   if (cmd === "selecionar") {
     const lista = selecionar(resto[0]);
     console.log(JSON.stringify(lista));
     if (process.env.GITHUB_OUTPUT) appendFileSync(process.env.GITHUB_OUTPUT, `lista=${JSON.stringify(lista)}\ncsv=${lista.join(",")}\n`);
+  } else if (cmd === "pedido") {
+    await lerPedido();
   } else if (cmd === "testar-conexao") {
     // Só leitura: faz login e mostra o canal. Não envia nem muda nada.
     const cred = credenciaisDoAmbiente();

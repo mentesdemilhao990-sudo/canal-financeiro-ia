@@ -95,6 +95,8 @@ Na mesma tela, aba **Variables** → **New repository variable**:
 | --- | --- | --- |
 | `YOUTUBE_PUBLICACAO` | `ligada` | enviar vídeos, **sempre como privados** |
 
+Se preferir autorizar **uma execução por vez**, em vez da Variable: em **Run workflow**, preencha o campo de confirmação com `ENVIAR-PRIVADO`. Outra forma, que funciona até pelo celular: edite `pedidos/youtube.json` com o episódio e `"confirmacao": "ENVIAR-PRIVADO"`. Salvar o arquivo dispara o envio. Para aproveitar um MP4 que já foi gerado, informe o número da execução que o gerou (está no endereço da página da execução) em `reaproveitar_execucao` ou `reaproveitarExecucao`. Só vale uma execução que terminou verde, com todos os testes passando.
+
 Depois: **Actions → Publicar no YouTube → Run workflow**, digite o episódio (ex.: `guardar-nao-e-investir`). O workflow renderiza, roda todos os testes de áudio e vídeo e só então envia. O link aparece no resumo da execução e no [PAINEL.md](../PAINEL.md).
 
 Confira o vídeo no YouTube Studio. Quando estiver bom: **Actions → Mudar visibilidade no YouTube** → escolha `publico`, `nao_listado` ou `agendado` (com data e hora de Brasília).
@@ -122,6 +124,8 @@ As respostas aprovadas só são enviadas com:
 Sem ela, o que você aprova fica guardado e sai quando você ligar.
 
 **Perguntas sobre dinheiro** (investimentos, dívidas, quanto rende, etc.) aparecem primeiro e marcadas com 💰: elas **nunca** recebem resposta sem você aprovar.
+
+As sugestões das perguntas, críticas e outros comentários são escritas por uma **IA gratuita do GitHub Models**, que usa o próprio token do GitHub Actions (sem chave nem cobrança). A IA segue regras fixas: respostas curtas, sem links e sem recomendar investimento. Ela só sugere: nada sai sem a sua aprovação. Se o limite gratuito do dia acabar, as sugestões voltam a usar os textos prontos. Para desligar a IA: `"ia": { "habilitada": false }` em `config/publicacao.json`. Os elogios simples sempre usam os textos prontos.
 
 ## 11. (Opcional) Resposta automática para comentários simples
 

@@ -15,6 +15,7 @@ import { appendFileSync, readFileSync } from "node:fs";
 import { classificar, problemaResposta, sugerirResposta } from "./lib/comentarios.mjs";
 import { Cota, gravarJson, lerJson, lerPublicacoes, STATUS_REAIS } from "./lib/estado.mjs";
 import { YouTube, credenciaisDoAmbiente } from "./lib/youtube-api.mjs";
+import { IA } from "./lib/ia.mjs";
 import { modos, motivoSimulacao } from "./lib/modos.mjs";
 import { GitHub } from "./lib/github.mjs";
 import { corpoIssue, escolherAutomaticas, lerIssue } from "./lib/aprovacao.mjs";
@@ -75,6 +76,7 @@ async function ler() {
   }
   gravarJson("estatisticas.json", est);
 
+  const ia = new IA({ modelo: cc.ia?.modelo, maxPorExecucao: cc.ia?.maxPorExecucao ?? 30, desligada: cc.ia?.habilitada === false || process.env.IA_RESPOSTAS === "desligada" });
   let novos = 0;
   for (const v of videos.filter((x) => !["privado", "agendado"].includes(est.videos[x.videoId]?.status ?? x.status))) {
     let threads;
@@ -95,6 +97,9 @@ async function ler() {
       }
       if (c.authorChannelId?.value === canal.id) continue; // comentário do próprio canal
       const cls = classificar(c.textOriginal ?? c.textDisplay, { maxCaracteres: cc.respostaAutomatica?.maxCaracteresComentario ?? 80 });
+      // Elogios simples usam os textos prontos (são os únicos que podem sair sozinhos);
+      // o resto ganha sugestão da IA gratuita, sempre para a sua aprovação.
+      const sugIA = cls.categoria === "simples" ? null : await ia.sugerir({ texto: c.textOriginal ?? c.textDisplay, categoria: cls.categoria, tituloVideo: v.titulo });
       dados.itens.push({
         id: t.id,
         videoId: v.videoId,
@@ -105,7 +110,8 @@ async function ler() {
         publicadoEm: c.publishedAt,
         curtidas: c.likeCount ?? 0,
         ...cls,
-        sugestao: sugerirResposta(cls.categoria, t.id, { nome: c.authorDisplayName, assinatura: cc.assinatura }),
+        sugestao: sugIA ? `${sugIA}${cc.assinatura ? ` ${cc.assinatura}` : ""}` : sugerirResposta(cls.categoria, t.id, { nome: c.authorDisplayName, assinatura: cc.assinatura }),
+        sugestaoOrigem: sugIA ? "ia" : "modelo",
         status: respostaDoCanal ? "respondido" : cls.categoria === "spam" ? "ignorar_sugerido" : "pendente",
         podeResponder: t.snippet.canReply !== false,
         lidoEm: new Date().toISOString(),
@@ -114,7 +120,7 @@ async function ler() {
     }
   }
   dados.ultimaLeitura = new Date().toISOString();
-  resumo(`Lidos ${videos.length} vídeo(s), ${novos} comentário(s) novo(s).`);
+  resumo(`Lidos ${videos.length} vídeo(s), ${novos} comentário(s) novo(s). Sugestões com IA: ${ia.ativa ? "ligadas" : `usando textos prontos (${ia.motivoParada})`}.`);
   gravar(dados);
   return dados;
 }

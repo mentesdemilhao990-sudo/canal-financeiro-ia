@@ -24,6 +24,7 @@ globalThis.fetch = async (url, init = {}) => {
   if (u.pathname.endsWith("/videos") && init.method === "PUT") return json({ id: corpo.id, status: corpo.status });
   if (u.pathname.endsWith("/commentThreads")) return json({ items: cenario.threads ?? [] });
   if (u.pathname.endsWith("/comments") && init.method === "POST") return json({ id: `R-${corpo.snippet.parentId}` });
+  if (u.hostname === "models.github.ai") return json({ choices: [{ message: { content: cenario.ia ?? "Depende do seu objetivo e prazo. Vou trazer isso num vídeo!" } }] });
   if (u.hostname === "api.github.com") return json(init.method === "GET" || !init.method ? [] : { number: 1 });
   return json({ error: { message: `rota falsa não prevista: ${u}` } }, 404);
 };
