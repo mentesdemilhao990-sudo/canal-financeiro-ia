@@ -9,12 +9,12 @@ export const Background: React.FC = () => {
 
   const candles = useMemo(
     () =>
-      new Array(26).fill(0).map((_, i) => {
-        const base = 1300 - i * 22 + Math.sin(i * 0.9) * 90;
+      new Array(Math.ceil(width / 48) + 2).fill(0).map((_, i) => {
+        const base = height > width ? 1300 - i * 22 + Math.sin(i * 0.9) * 90 : height * 0.82 - i * 9 + Math.sin(i * 0.9) * 60;
         const body = 40 + random(`cb${i}`) * 110;
         return { x: i * 48, y: base - body / 2, body, wick: body + 30 + random(`cw${i}`) * 80, up: random(`cu${i}`) > 0.35 };
       }),
-    [],
+    [width, height],
   );
 
   const dust = useMemo(

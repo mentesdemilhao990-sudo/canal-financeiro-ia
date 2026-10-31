@@ -86,14 +86,24 @@ const outro = z.object({
 
 const base = z.object({
   id: z.string().regex(/^[a-z0-9-]+$/, "use só letras minúsculas, números e hífen"),
-  narration: z.string().trim().min(10).max(400),
+  narration: z.string().trim().min(10).max(600),
 });
 
 export const sceneSchema = z.discriminatedUnion("template", [hook, split, counter, lineChart, bars, list, outro]).and(base);
 
 const dataHora = /^\d{4}-\d{2}-\d{2}(T\d{2}:\d{2}(:\d{2})?(Z|[+-]\d{2}:\d{2})?)?$/;
 
-export const TEMPLATES =["hook", "split", "counter", "lineChart", "bars", "list", "outro"];
+export const TEMPLATES = ["hook", "split", "counter", "lineChart", "bars", "list", "outro"];
+
+/**
+ * Formatos de vídeo:
+ *  - short: vertical 1080x1920, 30 a 60 s (YouTube Shorts)
+ *  - longo: horizontal 1920x1080, 2 a 8 min (vídeo normal)
+ */
+export const FORMATOS = {
+  short: { width: 1080, height: 1920, minDuracao: 30, maxDuracao: 60, minCenas: 3, maxCenas: 8, maxNarracao: 400 },
+  longo: { width: 1920, height: 1080, minDuracao: 120, maxDuracao: 480, minCenas: 6, maxCenas: 20, maxNarracao: 600 },
+};
 
 export const episodeSchema = z
   .object({
@@ -101,11 +111,12 @@ export const episodeSchema = z
     title: text(100),
     description: z.string().max(500).default(""),
     tags: z.array(z.string()).max(15).default([]),
-    targetDurationSeconds: z.number().min(30).max(60).default(45),
+    formato: z.enum(["short", "longo"]).default("short"),
+    targetDurationSeconds: z.number().min(30).max(480).default(45),
     disclaimer: z.string().max(120).optional(),
     voice: z.object({ lengthScale: z.number().min(0.7).max(1.4).optional() }).optional(),
     music: z.object({ enabled: z.boolean().optional(), volume: z.number().min(0).max(0.4).optional() }).optional(),
-    scenes: z.array(sceneSchema).min(3).max(8),
+    scenes: z.array(sceneSchema).min(3).max(20),
     // Opcional: quando e como publicar (veja docs/publicacao.md).
     publicacao: z
       .object({
@@ -124,7 +135,22 @@ export const episodeSchema = z
   })
   .refine((e) => new Set(e.scenes.map((s) => s.id)).size === e.scenes.length, {
     message: "ids de cena repetidos",
+  })
+  .superRefine((e, ctx) => {
+    const f = FORMATOS[e.formato];
+    const nome = e.formato === "short" ? "Short" : "vídeo longo";
+    if (e.targetDurationSeconds < f.minDuracao || e.targetDurationSeconds > f.maxDuracao)
+      ctx.addIssue({ code: "custom", path: ["targetDurationSeconds"], message: `no ${nome} a duração vai de ${f.minDuracao} a ${f.maxDuracao} s` });
+    if (e.scenes.length < f.minCenas || e.scenes.length > f.maxCenas)
+      ctx.addIssue({ code: "custom", path: ["scenes"], message: `no ${nome} use de ${f.minCenas} a ${f.maxCenas} cenas` });
+    e.scenes.forEach((s, i) => {
+      if (s.narration.length > f.maxNarracao)
+        ctx.addIssue({ code: "custom", path: ["scenes", i, "narration"], message: `narração com mais de ${f.maxNarracao} caracteres` });
+    });
   });
+
+/** Largura e altura do vídeo conforme o formato. */
+export const dimensoes = (episode) => FORMATOS[episode?.formato ?? "short"] ?? FORMATOS.short;
 
 /** Valida um episódio e devolve os dados com valores padrão, ou lança erro legível. */
 export function parseEpisode(raw, source = "episódio") {

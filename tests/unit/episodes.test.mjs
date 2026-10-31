@@ -1,7 +1,7 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { readdirSync, readFileSync } from "node:fs";
-import { parseEpisode } from "../../src/lib/schema.mjs";
+import { FORMATOS, parseEpisode } from "../../src/lib/schema.mjs";
 
 const files = readdirSync("episodes").filter((f) => f.endsWith(".json"));
 
@@ -13,7 +13,8 @@ for (const f of files) {
     assert.equal(`${ep.id}.json`, f, "o campo id deve ser igual ao nome do arquivo");
     const chars = ep.scenes.reduce((n, s) => n + s.narration.length, 0);
     // ~13 a 18 caracteres por segundo na voz faber: avisa roteiros muito curtos ou longos.
-    assert.ok(chars / 18 <= 60 && chars / 13 >= 30, `roteiro com ${chars} caracteres fica fora de 30–60 s`);
+    const F = FORMATOS[ep.formato];
+    assert.ok(chars / 18 <= F.maxDuracao && chars / 13 >= F.minDuracao, `roteiro com ${chars} caracteres fica fora de ${F.minDuracao}–${F.maxDuracao} s`);
   });
 }
 

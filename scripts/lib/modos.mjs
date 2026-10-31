@@ -10,6 +10,13 @@ export const CHAVES = {
 
 /** Texto que você digita numa execução manual para autorizar o envio (sempre privado) só daquela vez. */
 export const CONFIRMACAO = "ENVIAR-PRIVADO";
+/**
+ * Usado só pelo workflow "Vídeos do dia" (diario.yml): o Patrick autorizou em 2026-10-31
+ * publicar um vídeo e um Short por dia, PÚBLICOS, sem aprovação. Desliga com a
+ * Variable PUBLICACAO_DIARIA = desligada.
+ */
+export const CONFIRMACAO_DIARIA = "PUBLICACAO-DIARIA";
+const autorizado = (env) => [CONFIRMACAO, CONFIRMACAO_DIARIA].includes(env.CONFIRMACAO_ENVIO?.trim());
 
 export function modos(env = process.env, cfg = {}) {
   const cred = credenciaisDoAmbiente(env);
@@ -18,11 +25,13 @@ export function modos(env = process.env, cfg = {}) {
   return {
     credenciais: Boolean(cred),
     // Também vale a confirmação digitada numa execução manual (só para aquela execução).
-    publicacao: Boolean(cred) && (ligada("publicacao") || env.CONFIRMACAO_ENVIO?.trim() === CONFIRMACAO),
+    publicacao: Boolean(cred) && (ligada("publicacao") || autorizado(env)),
+    // Só a pauta diária pode subir vídeo direto como público.
+    publicoDireto: Boolean(cred) && env.CONFIRMACAO_ENVIO?.trim() === CONFIRMACAO_DIARIA,
     leitura: Boolean(cred),
     respostas,
     automatica: respostas && ligada("automatica") && cfg.comentarios?.respostaAutomatica?.habilitada === true,
-    pedidos: { ...Object.fromEntries(Object.keys(CHAVES).map((k) => [k, ligada(k)])), ...(env.CONFIRMACAO_ENVIO?.trim() === CONFIRMACAO ? { publicacao: true } : {}) },
+    pedidos: { ...Object.fromEntries(Object.keys(CHAVES).map((k) => [k, ligada(k)])), ...(autorizado(env) ? { publicacao: true } : {}) },
   };
 }
 

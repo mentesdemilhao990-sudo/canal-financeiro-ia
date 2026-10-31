@@ -123,10 +123,10 @@ export class YouTube {
   }
 
   /**
-   * Envia o vídeo SEMPRE como privado (upload retomável, em uma parte).
-   * A troca para público é um passo separado, feito por você.
+   * Envia o vídeo (upload retomável, em uma parte). Por padrão PRIVADO; só a
+   * pauta diária pede "public" (autorizada pelo Patrick).
    */
-  async enviarVideo(arquivo, meta) {
+  async enviarVideo(arquivo, meta, { privacidade = "private", notificar = false } = {}) {
     if (!this.token) await this.autenticar();
     const tamanho = statSync(arquivo).size;
     const corpo = {
@@ -139,7 +139,7 @@ export class YouTube {
         defaultAudioLanguage: meta.defaultLanguage,
       },
       status: {
-        privacyStatus: "private",
+        privacyStatus: privacidade,
         selfDeclaredMadeForKids: meta.madeForKids,
         containsSyntheticMedia: meta.containsSyntheticMedia,
         embeddable: true,
@@ -147,7 +147,7 @@ export class YouTube {
       },
     };
     this.cota.reservar("videos.insert");
-    const ini = await this.fetch(`${UPLOAD}?uploadType=resumable&part=snippet,status&notifySubscribers=false`, {
+    const ini = await this.fetch(`${UPLOAD}?uploadType=resumable&part=snippet,status&notifySubscribers=${notificar ? "true" : "false"}`, {
       method: "POST",
       headers: {
         authorization: `Bearer ${this.token}`,

@@ -27,6 +27,7 @@ const opt = (nome, def) => {
   return i >= 0 ? resto[i + 1] : def;
 };
 const saida = opt("--saida", "out");
+const visibilidadePedida = opt("--visibilidade", "privado");
 const resumo = (linha) => {
   console.log(linha);
   if (process.env.GITHUB_STEP_SUMMARY) appendFileSync(process.env.GITHUB_STEP_SUMMARY, `${linha}\n`);
@@ -65,10 +66,15 @@ function selecionar(pedido) {
 async function enviar(ids) {
   const m = modos();
   const real = m.publicacao;
+  if (!["privado", "publico"].includes(visibilidadePedida)) throw new Error('--visibilidade aceita "privado" ou "publico"');
+  if (visibilidadePedida === "publico" && m.credenciais && !m.publicoDireto)
+    throw new Error("envio direto como público só é permitido pela pauta diária (workflow Vídeos do dia)");
+  const publico = real && visibilidadePedida === "publico";
+  const rotulo = publico ? "público" : "privado";
   const pubs = lerPublicacoes();
   const cota = new Cota(cfg.cota);
   const yt = real ? new YouTube({ credenciais: credenciaisDoAmbiente(), cota }) : null;
-  resumo(`## 📤 Publicação no YouTube · ${real ? "**ENVIO REAL (privado)**" : "simulação"}`);
+  resumo(`## 📤 Publicação no YouTube · ${real ? `**ENVIO REAL (${rotulo})**` : "simulação"}`);
   if (!real) resumo(`> Nada foi enviado: ${motivoSimulacao(m, "publicacao")}.`);
   if (m.pedidos.publicacao && !m.credenciais) throw new Error(
       "O envio foi autorizado, mas os Secrets YOUTUBE_CLIENT_ID, YOUTUBE_CLIENT_SECRET e YOUTUBE_REFRESH_TOKEN chegaram vazios. Confira se os nomes são exatamente esses e se estão em Settings → Secrets and variables → Actions → aba Secrets → Repository secrets (não em Environments, Codespaces ou Dependabot).",
@@ -114,15 +120,25 @@ async function enviar(ids) {
       const base = { plataforma: "youtube", episodio: id, titulo: meta.title, hashEpisodio: hashEpisodio(ep), hashVideo, duracao: info.duration };
       if (!real) {
         if (!buscarPublicacao(pubs, "youtube", id)) registrar(pubs, { ...base, status: "simulado", nota: "simulação: nada enviado" });
-        resumo(`- 🧪 **${id}**: enviaria como privado → “${meta.title}” · ${meta.tags.length} tags · ${meta.hashtags.map((h) => `#${h}`).join(" ")}`);
+        resumo(`- 🧪 **${id}**: enviaria como ${visibilidadePedida === "publico" ? "público" : "privado"} → “${meta.title}” · ${meta.tags.length} tags · ${meta.hashtags.map((h) => `#${h}`).join(" ")}`);
         continue;
       }
       // Marca "enviando" ANTES de subir: se o job morrer no meio, a próxima execução não duplica.
       registrar(pubs, { ...base, status: "enviando" });
       gravarPublicacoes(pubs);
-      const v = await yt.enviarVideo(mp4, meta);
-      registrar(pubs, { ...base, status: "privado", privacidade: v.status?.privacyStatus ?? "private", videoId: v.id, url: `https://youtu.be/${v.id}`, enviadoEm: new Date().toISOString(), nota: "enviado como privado" });
-      resumo(`- ✅ **${id}** enviado como **privado**: https://youtu.be/${v.id}`);
+      const v = await yt.enviarVideo(mp4, meta, { privacidade: publico ? "public" : "private", notificar: publico });
+      let priv = v.status?.privacyStatus ?? (publico ? "public" : "private");
+      registrar(pubs, { ...base, status: "privado", privacidade: priv, videoId: v.id, url: `https://youtu.be/${v.id}`, enviadoEm: new Date().toISOString(), nota: `enviado (${priv})` });
+      gravarPublicacoes(pubs);
+      if (publico && priv !== "public") {
+        // O YouTube às vezes guarda como privado; tenta tornar público na hora.
+        const u = await yt.mudarVisibilidade(v.id, "public", { madeForKids: cfg.youtube.madeForKids });
+        priv = u.status?.privacyStatus ?? priv;
+      }
+      const status = priv === "public" ? "publico" : "privado";
+      registrar(pubs, { ...base, status, privacidade: priv, videoId: v.id, url: `https://youtu.be/${v.id}`, nota: `publicado (${priv})` });
+      if (publico && status !== "publico") throw new Error(`o vídeo subiu (https://youtu.be/${v.id}) mas o YouTube deixou como ${priv}. Projetos do Google Cloud sem auditoria podem ter envios travados como privados.`);
+      resumo(`- ✅ **${id}** enviado como **${status === "publico" ? "público" : "privado"}**: https://youtu.be/${v.id}`);
     } catch (e) {
       falhas++;
       resumo(`- ❌ **${id}**: ${e.message}`);

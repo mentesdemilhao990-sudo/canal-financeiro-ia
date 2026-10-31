@@ -5,12 +5,16 @@ import assert from "node:assert/strict";
 import { execFileSync, spawnSync } from "node:child_process";
 import { existsSync, readFileSync, statSync } from "node:fs";
 import { parseSrt } from "../../src/lib/captions.mjs";
+import { FORMATOS } from "../../src/lib/schema.mjs";
 
 const id = process.env.EPISODE ?? "guardar-nao-e-investir";
 const dir = `${process.env.OUT_DIR ?? "out"}/${id}`;
 const video = `${dir}/${id}.mp4`;
 const info = existsSync(`${dir}/${id}-info.json`) ? JSON.parse(readFileSync(`${dir}/${id}-info.json`, "utf8")) : {};
 const allowMock = process.env.ALLOW_MOCK === "1";
+const formato = info.formato ?? "short";
+const F = FORMATOS[formato];
+const capa = formato === "longo" ? { width: 1280, height: 720 } : { width: 1080, height: 1920 };
 
 const probe = (file) => JSON.parse(execFileSync("ffprobe", ["-v", "error", "-print_format", "json", "-show_streams", "-show_format", file]).toString());
 const ffmpegLog = (...args) => spawnSync("ffmpeg", ["-hide_banner", "-nostats", ...args, "-f", "null", "-"], { encoding: "utf8" }).stderr;
@@ -26,19 +30,21 @@ test("narração veio do Piper (não do modo de teste)", { skip: allowMock }, ()
   assert.match(info.engine ?? "", /^piper:pt_BR-faber-medium$/);
 });
 
-test("vídeo: H.264 1080x1920, 30 fps, entre 30 e 60 s", () => {
+test(`vídeo (${formato}): H.264 ${F.width}x${F.height}, 30 fps, entre ${F.minDuracao} e ${F.maxDuracao} s`, () => {
   const p = probe(video);
   const v = p.streams.find((s) => s.codec_type === "video");
   assert.equal(v.codec_name, "h264");
-  assert.equal(v.width, 1080);
-  assert.equal(v.height, 1920);
+  assert.equal(v.width, F.width);
+  assert.equal(v.height, F.height);
   assert.equal(v.r_frame_rate, "30/1");
   assert.equal(v.pix_fmt, "yuv420p");
   const d = Number(p.format.duration);
   console.log(`duração: ${d.toFixed(2)} s`);
-  assert.ok(d >= 30 && d <= 60, `duração ${d}s fora de 30–60 s`);
+  assert.ok(d >= F.minDuracao && d <= F.maxDuracao, `duração ${d}s fora de ${F.minDuracao}–${F.maxDuracao} s`);
   if (info.targetDurationSeconds) {
-    assert.ok(Math.abs(d - info.targetDurationSeconds) <= info.targetDurationSeconds * 0.2, `duração ${d.toFixed(1)}s longe da meta de ${info.targetDurationSeconds}s (±20%)`);
+    // O Short é curto e precisa bater a meta; no longo a narração escrita pela IA varia mais.
+    const folga = formato === "longo" ? 0.35 : 0.2;
+    assert.ok(Math.abs(d - info.targetDurationSeconds) <= info.targetDurationSeconds * folga, `duração ${d.toFixed(1)}s longe da meta de ${info.targetDurationSeconds}s (±${folga * 100}%)`);
   }
 });
 
@@ -83,8 +89,8 @@ test("legendas SRT: válidas, em ordem e dentro da duração", () => {
   assert.ok(cues.at(-1).end <= d + 0.3, "última legenda passa do fim do vídeo");
 });
 
-test("capa: PNG 1080x1920", () => {
+test(`capa: PNG ${capa.width}x${capa.height}`, () => {
   const s = probe(`${dir}/${id}-capa.png`).streams[0];
-  assert.equal(s.width, 1080);
-  assert.equal(s.height, 1920);
+  assert.equal(s.width, capa.width);
+  assert.equal(s.height, capa.height);
 });

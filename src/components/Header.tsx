@@ -5,7 +5,8 @@ import { BODY } from "../fonts";
 
 export const Header: React.FC<{ name: string }> = ({ name }) => {
   const frame = useCurrentFrame();
-  const { durationInFrames } = useVideoConfig();
+  const { durationInFrames, width, height } = useVideoConfig();
+  const horizontal = width > height;
   const progress = frame / Math.max(1, durationInFrames - 1);
   const intro = interpolate(frame, [0, 18], [0, 1], { extrapolateRight: "clamp" });
   return (
@@ -23,7 +24,7 @@ export const Header: React.FC<{ name: string }> = ({ name }) => {
       <div
         style={{
           position: "absolute",
-          top: 70,
+          top: horizontal ? 40 : 70,
           left: 0,
           right: 0,
           display: "flex",
@@ -33,7 +34,7 @@ export const Header: React.FC<{ name: string }> = ({ name }) => {
           opacity: intro,
           fontFamily: BODY,
           fontWeight: 800,
-          fontSize: 30,
+          fontSize: horizontal ? 24 : 30,
           letterSpacing: 8,
           color: C.white,
         }}

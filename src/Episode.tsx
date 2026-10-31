@@ -13,6 +13,7 @@ import { LineChart } from "./scenes/LineChart";
 import { Bars } from "./scenes/Bars";
 import { List } from "./scenes/List";
 import { Outro } from "./scenes/Outro";
+import { Divisoria, PainelLateral, PalcoHorizontal } from "./components/Landscape";
 
 ensureFonts();
 
@@ -28,7 +29,8 @@ const TEMPLATES: Record<Scene["template"], React.FC<SceneProps<any>>> = {
 };
 
 export const EpisodeVideo: React.FC<EpisodeProps> = ({ episode, timeline, channel, audio }) => {
-  const { fps, durationInFrames } = useVideoConfig();
+  const { fps, durationInFrames, width, height } = useVideoConfig();
+  const horizontal = width > height;
   const words = timeline.scenes.flatMap((s) => s.words);
   return (
     <AbsoluteFill style={{ backgroundColor: "#06080B" }}>
@@ -40,12 +42,22 @@ export const EpisodeVideo: React.FC<EpisodeProps> = ({ episode, timeline, channe
         const Comp = TEMPLATES[scene.template];
         return (
           <Sequence key={scene.id} from={from} durationInFrames={Math.max(1, to - from)} name={`${i + 1}. ${scene.template}`}>
-            <SceneShell duration={to - from}>
-              <Comp scene={scene} duration={to - from} channel={channel} episode={episode} />
-            </SceneShell>
+            {horizontal ? (
+              <SceneShell duration={to - from}>
+                <PainelLateral episode={episode} index={i} />
+                <PalcoHorizontal duration={to - from}>
+                  <Comp scene={scene} duration={to - from} channel={channel} episode={episode} />
+                </PalcoHorizontal>
+              </SceneShell>
+            ) : (
+              <SceneShell duration={to - from}>
+                <Comp scene={scene} duration={to - from} channel={channel} episode={episode} />
+              </SceneShell>
+            )}
           </Sequence>
         );
       })}
+      {horizontal && <Divisoria />}
       <Header name={channel.name} />
       <Captions words={words} />
       {audio.narration && <Html5Audio src={staticFile(audio.narration)} />}

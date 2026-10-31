@@ -71,7 +71,7 @@ export function youtubeMetadata(episode, cfg = {}, info = {}) {
 
   const title = cortarTitulo(limpa(yt.titulo ?? episode.title));
 
-  const curto = (info.duration ?? episode.targetDurationSeconds ?? 60) <= 180;
+  const curto = episode.formato ? episode.formato === "short" : (info.duration ?? episode.targetDurationSeconds ?? 60) <= 180;
   const hashtags = unicos(
     [
       ...(yt.hashtags ?? []),
@@ -88,8 +88,10 @@ export function youtubeMetadata(episode, cfg = {}, info = {}) {
   );
   while (tags.length && tamanhoTags(tags) > LIMITES.tagsTotal) tags = tags.slice(0, -1);
 
+  const caps = !curto && Array.isArray(info.capitulos) ? info.capitulos : [];
   const partes = [
     limpa(episode.description || episode.title),
+    caps.length ? ["Capítulos:", ...caps.map((c) => `${c.tempo} ${limpa(c.titulo)}`)].join("\n") : "",
     episode.disclaimer ? `⚠️ ${limpa(episode.disclaimer)}` : "",
     cfg.rodapeDescricao ? limpa(cfg.rodapeDescricao) : "",
     hashtags.map((h) => `#${h}`).join(" "),

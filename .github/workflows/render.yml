@@ -13,6 +13,11 @@ on:
       episodios:
         type: string
         required: true
+      artefato_episodios:
+        description: "Opcional: nome de um artefato desta execução com episódios novos (ex.: os roteiros da pauta diária)"
+        type: string
+        required: false
+        default: ""
   pull_request:
     paths-ignore: ["**.md"]
 
@@ -31,6 +36,12 @@ jobs:
       lista: ${{ steps.lista.outputs.lista }}
     steps:
       - uses: actions/checkout@v4
+      - name: Episódios novos desta execução
+        if: inputs.artefato_episodios != ''
+        uses: actions/download-artifact@v4
+        with:
+          name: ${{ inputs.artefato_episodios }}
+          path: .
       - uses: actions/setup-node@v4
         with:
           node-version: 22
@@ -60,7 +71,7 @@ jobs:
     name: Renderizar ${{ matrix.episodio }}
     needs: preparar
     runs-on: ubuntu-latest
-    timeout-minutes: 45
+    timeout-minutes: 90 # o vídeo longo (~4 min) leva bem mais que o Short
     strategy:
       fail-fast: false
       max-parallel: 3
@@ -71,6 +82,13 @@ jobs:
       VOICE_DIR: voices
     steps:
       - uses: actions/checkout@v4
+
+      - name: Episódios novos desta execução
+        if: inputs.artefato_episodios != ''
+        uses: actions/download-artifact@v4
+        with:
+          name: ${{ inputs.artefato_episodios }}
+          path: .
 
       - uses: actions/setup-node@v4
         with:

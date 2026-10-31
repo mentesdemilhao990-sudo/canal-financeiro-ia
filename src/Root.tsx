@@ -4,7 +4,7 @@ import { EpisodeVideo } from "./Episode";
 import { Cover } from "./Cover";
 import { FPS, HEIGHT, WIDTH } from "./theme";
 import type { EpisodeProps } from "./types";
-import { parseEpisode } from "./lib/schema.mjs";
+import { dimensoes, parseEpisode } from "./lib/schema.mjs";
 import { estimateTimeline } from "./lib/estimate.mjs";
 import sample from "../episodes/guardar-nao-e-investir.json";
 import channel from "../config/channel.json";
@@ -18,9 +18,13 @@ const defaultProps: EpisodeProps = {
   audio: { narration: null, ambient: null },
 };
 
-const calculateMetadata: CalculateMetadataFunction<EpisodeProps> = ({ props }) => ({
-  durationInFrames: Math.ceil(props.timeline.duration * FPS),
-});
+// Short: vertical 1080x1920. Vídeo longo: horizontal 1920x1080 (capa 1280x720, padrão de miniatura do YouTube).
+const calculateMetadata: CalculateMetadataFunction<EpisodeProps> = ({ props }) => {
+  const d = dimensoes(props.episode);
+  return { durationInFrames: Math.ceil(props.timeline.duration * FPS), width: d.width, height: d.height };
+};
+const coverMetadata: CalculateMetadataFunction<EpisodeProps> = ({ props }) =>
+  props.episode.formato === "longo" ? { width: 1280, height: 720 } : { width: WIDTH, height: HEIGHT };
 
 export const RemotionRoot: React.FC = () => (
   <>
@@ -34,6 +38,6 @@ export const RemotionRoot: React.FC = () => (
       defaultProps={defaultProps}
       calculateMetadata={calculateMetadata}
     />
-    <Still id="Cover" component={Cover} width={WIDTH} height={HEIGHT} defaultProps={defaultProps} />
+    <Still id="Cover" component={Cover} width={WIDTH} height={HEIGHT} defaultProps={defaultProps} calculateMetadata={coverMetadata} />
   </>
 );

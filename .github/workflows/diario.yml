@@ -1,0 +1,141 @@
+name: Vídeos do dia
+
+# Uma vez por dia: escolhe o tema de educação financeira mais em alta (Google
+# Trends + Google Notícias, grátis), escreve dois roteiros com IA gratuita
+# (GitHub Models), gera um vídeo longo horizontal e um Short vertical, testa os
+# dois e publica no YouTube como PÚBLICOS. Autorizado pelo Patrick em 2026-10-31.
+#
+# Para pausar: Settings → Secrets and variables → Actions → Variables →
+#   PUBLICACAO_DIARIA = desligada   (apague a variável para voltar a publicar)
+#
+# Ensaio (gera e testa tudo, mas não publica nem salva nada): rode manualmente
+# com modo "ensaio", ou edite pedidos/diario.json com "modo": "ensaio".
+on:
+  schedule:
+    - cron: "0 13 * * *" # 10h de Brasília
+  workflow_dispatch:
+    inputs:
+      modo:
+        description: "publicar = publica de verdade (público); ensaio = só gera e testa"
+        type: choice
+        options: [publicar, ensaio]
+        default: publicar
+  push:
+    paths: ["pedidos/diario.json"]
+
+permissions:
+  contents: write
+  actions: read
+  models: read # IA gratuita do GitHub Models para escrever os roteiros
+
+concurrency:
+  group: videos-do-dia
+  cancel-in-progress: false
+
+jobs:
+  pauta:
+    name: Escolher tema e escrever roteiros
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    outputs:
+      csv: ${{ steps.pauta.outputs.csv }}
+      tema: ${{ steps.pauta.outputs.tema }}
+      modo: ${{ steps.modo.outputs.modo }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Modo desta execução
+        id: modo
+        env:
+          EVENTO: ${{ github.event_name }}
+          IN_MODO: ${{ inputs.modo }}
+          DESLIGADA: ${{ vars.PUBLICACAO_DIARIA == 'desligada' }}
+        run: |
+          modo=publicar
+          if [ "$EVENTO" = "workflow_dispatch" ]; then modo="$IN_MODO"; fi
+          if [ "$EVENTO" = "push" ]; then modo=$(node -p 'require("./pedidos/diario.json").modo || "nenhum"'); fi
+          if [ "$modo" = "publicar" ] && [ "$DESLIGADA" = "true" ]; then
+            echo "Publicação diária pausada (variável PUBLICACAO_DIARIA = desligada)." | tee -a "$GITHUB_STEP_SUMMARY"
+            modo=nenhum
+          fi
+          case "$modo" in publicar|ensaio|nenhum) ;; *) echo "::error::modo inválido em pedidos/diario.json: $modo (use publicar ou ensaio)"; exit 1;; esac
+          echo "Modo: $modo" | tee -a "$GITHUB_STEP_SUMMARY"
+          echo "modo=$modo" >> "$GITHUB_OUTPUT"
+      - uses: actions/setup-node@v4
+        if: steps.modo.outputs.modo != 'nenhum'
+        with:
+          node-version: 22
+          cache: npm
+      - if: steps.modo.outputs.modo != 'nenhum'
+        run: npm ci
+      - name: Testes unitários
+        if: steps.modo.outputs.modo != 'nenhum'
+        run: npm run test:unit
+      - name: Pauta do dia
+        id: pauta
+        if: steps.modo.outputs.modo != 'nenhum'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          # No ensaio, gera mesmo que hoje já tenha saído vídeo.
+          FORCAR: ${{ steps.modo.outputs.modo == 'ensaio' && 'sim' || '' }}
+        run: node scripts/pauta-diaria.mjs
+      - name: Guardar roteiros para as próximas etapas
+        if: steps.pauta.outputs.csv != ''
+        uses: actions/upload-artifact@v4
+        with:
+          name: pauta-diaria
+          path: |
+            episodes/*.json
+            data/pautas.json
+          retention-days: 30
+
+  renderizar:
+    name: Gerar vídeos
+    needs: pauta
+    if: needs.pauta.outputs.csv != ''
+    uses: ./.github/workflows/render.yml
+    with:
+      episodios: ${{ needs.pauta.outputs.csv }}
+      artefato_episodios: pauta-diaria
+
+  publicar:
+    # No ensaio roda sem as credenciais: só simula e mostra título, descrição e tags.
+    name: ${{ needs.pauta.outputs.modo == 'publicar' && 'Publicar no YouTube (público)' || 'Simular publicação (ensaio)' }}
+    needs: [pauta, renderizar]
+    if: needs.pauta.outputs.csv != '' && needs.renderizar.result == 'success'
+    runs-on: ubuntu-latest
+    env:
+      REAL: ${{ needs.pauta.outputs.modo == 'publicar' }}
+      YOUTUBE_CLIENT_ID: ${{ needs.pauta.outputs.modo == 'publicar' && secrets.YOUTUBE_CLIENT_ID || '' }}
+      YOUTUBE_CLIENT_SECRET: ${{ needs.pauta.outputs.modo == 'publicar' && secrets.YOUTUBE_CLIENT_SECRET || '' }}
+      YOUTUBE_REFRESH_TOKEN: ${{ needs.pauta.outputs.modo == 'publicar' && secrets.YOUTUBE_REFRESH_TOKEN || '' }}
+      CONFIRMACAO_ENVIO: ${{ needs.pauta.outputs.modo == 'publicar' && 'PUBLICACAO-DIARIA' || '' }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Baixar roteiros e vídeos
+        uses: actions/download-artifact@v4
+        with:
+          path: baixados
+      - name: Organizar arquivos
+        run: |
+          cp baixados/pauta-diaria/episodes/*.json episodes/
+          mkdir -p data out && cp baixados/pauta-diaria/data/pautas.json data/
+          for ep in $(echo "${{ needs.pauta.outputs.csv }}" | tr ',' ' '); do
+            mv "baixados/$ep" "out/$ep"
+            ffprobe -v error -show_entries format=duration,size:stream=codec_name,width,height -of default=noprint_wrappers=1 "out/$ep/$ep.mp4" || true
+          done
+      - name: Confirmar login no YouTube
+        if: env.REAL == 'true'
+        run: node scripts/publicar.mjs testar-conexao
+      - name: Publicar (vídeo longo primeiro, depois o Short)
+        run: node scripts/publicar.mjs enviar "${{ needs.pauta.outputs.csv }}" --visibilidade publico
+      - name: Guardar roteiros no repositório
+        if: always() && env.REAL == 'true'
+        run: git add episodes/*.json data/pautas.json
+      - name: Salvar registro e painel
+        if: always() && env.REAL == 'true'
+        uses: ./.github/actions/salvar-estado

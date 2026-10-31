@@ -1,0 +1,222 @@
+// Pauta diária: vídeo longo, temas em alta, roteiros da IA e publicação pública.
+import { test } from "node:test";
+import assert from "node:assert/strict";
+import { spawnSync } from "node:child_process";
+import { mkdirSync, mkdtempSync, readFileSync, writeFileSync } from "node:fs";
+import { tmpdir } from "node:os";
+import path from "node:path";
+import { dimensoes, parseEpisode } from "../../src/lib/schema.mjs";
+import { capitulos } from "../../src/lib/capitulos.mjs";
+import { escolher, lerRss, menciona, pontuar } from "../../scripts/lib/tendencias.mjs";
+import { escreverEpisodio, estimarDuracao, montarEpisodio, problemasDeConteudo } from "../../scripts/lib/roteirista.mjs";
+import { problemasMetadata, youtubeMetadata } from "../../scripts/lib/metadata.mjs";
+import { modos } from "../../scripts/lib/modos.mjs";
+
+const longo = () => JSON.parse(readFileSync("tests/fixtures/exemplo-longo.json", "utf8"));
+const short = () => JSON.parse(readFileSync("episodes/guardar-nao-e-investir.json", "utf8"));
+const temas = JSON.parse(readFileSync("config/temas.json", "utf8"));
+const cfgYt = JSON.parse(readFileSync("config/publicacao.json", "utf8")).youtube;
+
+test("formatos: Short vertical por padrão, longo horizontal", () => {
+  assert.equal(parseEpisode(short()).formato, "short");
+  assert.deepEqual([dimensoes(parseEpisode(short())).width, dimensoes(parseEpisode(short())).height], [1080, 1920]);
+  const l = parseEpisode(longo());
+  assert.deepEqual([dimensoes(l).width, dimensoes(l).height], [1920, 1080]);
+});
+
+test("formatos: limites de duração e cenas valem para cada um", () => {
+  assert.throws(() => parseEpisode({ ...short(), targetDurationSeconds: 120 }), /Short a duração vai de 30 a 60/);
+  assert.throws(() => parseEpisode({ ...longo(), targetDurationSeconds: 50 }), /longo a duração vai de 120 a 480/);
+  assert.throws(() => parseEpisode({ ...longo(), scenes: longo().scenes.slice(0, 4) }), /de 6 a 20 cenas/);
+  const s = short();
+  s.scenes[0].narration = "a ".repeat(250);
+  assert.throws(() => parseEpisode(s), /mais de 400 caracteres/);
+});
+
+test("capítulos do vídeo longo começam em 0:00 e juntam cenas curtas", () => {
+  const ep = parseEpisode(longo());
+  const tempos = ep.scenes.map((_, i) => ({ start: i * 15, end: i * 15 + 15 }));
+  tempos[2] = { start: 30, end: 35 }; // cena curta
+  tempos[3] = { start: 35, end: 60 };
+  const caps = capitulos(ep, tempos);
+  assert.equal(caps[0].tempo, "0:00");
+  assert.ok(caps.length >= 3);
+  for (let i = 1; i < caps.length; i++) assert.ok(caps[i].start - caps[i - 1].start >= 10);
+  assert.ok(!caps.some((c) => c.start === 35), "cena com menos de 10 s não vira capítulo");
+});
+
+test("metadados: longo sem #shorts e com capítulos; Short continua com #shorts", () => {
+  const ep = parseEpisode(longo());
+  const caps = capitulos(ep, ep.scenes.map((_, i) => ({ start: i * 20, end: i * 20 + 20 })));
+  const m = youtubeMetadata(ep, cfgYt, { duration: 180, capitulos: caps });
+  assert.ok(!m.hashtags.includes("shorts"));
+  assert.match(m.description, /Capítulos:\n0:00 Juros sobre juros\n0:20 /);
+  assert.deepEqual(problemasMetadata(m), []);
+  assert.ok(youtubeMetadata(parseEpisode(short()), cfgYt, { duration: 42 }).hashtags.includes("shorts"));
+});
+
+const RSS_TRENDS = `<?xml version="1.0"?><rss><channel>
+<item><title>black friday 2026</title><ht:approx_traffic>200,000+</ht:approx_traffic><pubDate>Sat, 31 Oct 2026 10:00:00 -0300</pubDate>
+<ht:news_item><ht:news_item_title><![CDATA[Procon dá dicas para não cair em golpe na Black Friday]]></ht:news_item_title></ht:news_item></item>
+<item><title>flamengo x palmeiras</title><ht:approx_traffic>500,000+</ht:approx_traffic></item>
+</channel></rss>`;
+
+test("RSS: lê títulos, tráfego e manchetes do Google Trends", () => {
+  const itens = lerRss(RSS_TRENDS);
+  assert.equal(itens.length, 2);
+  assert.equal(itens[0].titulo, "black friday 2026");
+  assert.equal(itens[0].trafego, 200000);
+  assert.deepEqual(itens[0].manchetes, ["Procon dá dicas para não cair em golpe na Black Friday"]);
+});
+
+test("menciona: palavra inteira e sem acento", () => {
+  assert.ok(menciona("Copom mantém a SELIC", ["selic"]));
+  assert.ok(menciona("Inflação acelera", ["inflacao"]));
+  assert.ok(!menciona("Betinho ganhou", ["bet"]));
+});
+
+test("pontuação: tema em alta ganha e tema usado há pouco fica de fora", () => {
+  const fontes = { trends: lerRss(RSS_TRENDS), noticias: [{ titulo: "Endividamento das famílias bate recorde" }, { titulo: "Serasa: inadimplência sobe" }] };
+  const hoje = new Date("2026-11-01T12:00:00-03:00");
+  let r = pontuar(temas.temas, fontes, { hoje });
+  assert.equal(escolher(r).tema.id, "black-friday");
+  r = pontuar(temas.temas, fontes, { hoje, usados: [{ tema: "black-friday", data: "2026-10-25" }], diasSemRepetir: 30 });
+  assert.ok(r.find((x) => x.tema.id === "black-friday").bloqueado);
+  assert.notEqual(escolher(r).tema.id, "black-friday");
+  // "golpe" aparece na manchete da busca em alta, então golpes passa à frente das dívidas.
+  assert.equal(escolher(r).tema.id, "pix-golpes");
+});
+
+test("pontuação sem internet: ainda escolhe um tema (época do ano e menos usado)", () => {
+  const r = pontuar(temas.temas, { trends: [], noticias: [] }, { hoje: new Date("2026-11-01T12:00:00-03:00") });
+  assert.ok(["decimo-terceiro", "black-friday"].includes(escolher(r).tema.id));
+});
+
+/** Resposta de IA válida para o Short, construída a partir do episódio de exemplo. */
+function respostaShort() {
+  const e = short();
+  e.scenes[2].narration += " Por isso vale entender bem essa diferença antes de decidir.";
+  return { title: "Guardar dinheiro parado faz você perder?", description: e.description, tags: e.tags, scenes: e.scenes };
+}
+
+test("roteiro: montar, validar duração e regras de conteúdo", () => {
+  const ep = montarEpisodio(respostaShort(), { id: "2026-11-01-inflacao-short", formato: "short" });
+  assert.equal(ep.formato, "short");
+  assert.match(ep.disclaimer, /não é recomendação/);
+  assert.ok(ep.targetDurationSeconds >= 30 && ep.targetDurationSeconds <= 60);
+  parseEpisode(ep);
+  assert.deepEqual(problemasDeConteudo(ep, "short"), []);
+  const ruim = structuredClone(ep);
+  ruim.scenes[1].narration = "Abra uma conta no Nubank e tenha 10% de lucro garantido.";
+  const p = problemasDeConteudo(ruim, "short").join(" | ");
+  assert.match(p, /nubank/);
+  assert.match(p, /prometa/);
+  assert.match(p, /por extenso/);
+  assert.match(p, /por cento/);
+  assert.match(problemasDeConteudo(ep, "short", { titulosUsados: ["guardar dinheiro parado faz voce perder?"] }).join(), /já foi usado/);
+});
+
+test("roteiro: duração estimada bate com a voz real do episódio de exemplo (39 s)", () => {
+  const d = estimarDuracao(short().scenes);
+  assert.ok(Math.abs(d - 39.2) < 3, `estimativa ${d.toFixed(1)} s`);
+});
+
+test("roteiro: IA errou na primeira, recebe os problemas e corrige", async () => {
+  const pedidos = [];
+  const respostas = [{ title: "x", scenes: [] }, respostaShort()];
+  const f = async (url, init) => {
+    pedidos.push(JSON.parse(init.body));
+    return new Response(JSON.stringify({ choices: [{ message: { content: JSON.stringify(respostas.shift()) } }] }), { status: 200 });
+  };
+  const r = await escreverEpisodio(
+    { tema: temas.temas[0], formato: "short", id: "2026-11-01-reserva-de-emergencia-short", manchetes: ["Manchete de teste"] },
+    { token: "t", fetch: f, log: () => {} },
+  );
+  assert.equal(r.tentativas, 2);
+  assert.equal(r.episodio.id, "2026-11-01-reserva-de-emergencia-short");
+  assert.equal(pedidos[0].response_format.type, "json_object");
+  assert.match(pedidos[0].messages[1].content, /Manchete de teste/);
+  assert.match(pedidos[1].messages.at(-1).content, /Corrija/);
+  assert.equal(pedidos[1].messages.length, 4, "na correção vai só a última resposta");
+});
+
+test("roteiro: limite gratuito (429) passa para o próximo modelo", async () => {
+  const modelos = [];
+  const f = async (url, init) => {
+    const b = JSON.parse(init.body);
+    modelos.push(b.model);
+    if (b.model === "openai/gpt-4.1") return new Response("{}", { status: 429 });
+    return new Response(JSON.stringify({ choices: [{ message: { content: JSON.stringify(respostaShort()) } }] }), { status: 200 });
+  };
+  const r = await escreverEpisodio({ tema: temas.temas[0], formato: "short", id: "a-short" }, { token: "t", fetch: f, log: () => {} });
+  assert.deepEqual(modelos, ["openai/gpt-4.1", "openai/gpt-4o-mini"]);
+  assert.equal(r.modelo, "openai/gpt-4o-mini");
+});
+
+test("chaves: só a pauta diária libera envio direto como público", () => {
+  const CRED = { YOUTUBE_CLIENT_ID: "id", YOUTUBE_CLIENT_SECRET: "s", YOUTUBE_REFRESH_TOKEN: "t" };
+  assert.equal(modos({ ...CRED, CONFIRMACAO_ENVIO: "PUBLICACAO-DIARIA" }).publicoDireto, true);
+  assert.equal(modos({ ...CRED, CONFIRMACAO_ENVIO: "PUBLICACAO-DIARIA" }).publicacao, true);
+  assert.equal(modos({ ...CRED, CONFIRMACAO_ENVIO: "ENVIAR-PRIVADO" }).publicoDireto, false);
+  assert.equal(modos({ ...CRED, YOUTUBE_PUBLICACAO: "ligada" }).publicoDireto, false);
+  assert.equal(modos({ CONFIRMACAO_ENVIO: "PUBLICACAO-DIARIA" }).publicoDireto, false);
+});
+
+function ambientePublicar(ids) {
+  const dir = mkdtempSync(path.join(tmpdir(), "diario-"));
+  for (const id of ids) {
+    mkdirSync(path.join(dir, "out", id), { recursive: true });
+    writeFileSync(path.join(dir, "out", id, `${id}.mp4`), Buffer.alloc(2048, id.length));
+    writeFileSync(path.join(dir, "out", id, `${id}-info.json`), JSON.stringify({ duration: 42, engine: "piper:pt_BR-faber-medium" }));
+  }
+  writeFileSync(path.join(dir, "cenario.json"), "{}");
+  writeFileSync(path.join(dir, "chamadas.jsonl"), "");
+  const cfg = JSON.parse(readFileSync("config/publicacao.json", "utf8"));
+  cfg.youtube.canalEsperado = "Canal Teste";
+  writeFileSync(path.join(dir, "publicacao.json"), JSON.stringify(cfg));
+  return dir;
+}
+
+const rodarPublicar = (dir, args, env) =>
+  spawnSync("node", ["--import", "./tests/helpers/youtube-falso.mjs", "scripts/publicar.mjs", ...args, "--saida", path.join(dir, "out")], {
+    encoding: "utf8",
+    env: {
+      PATH: process.env.PATH,
+      DATA_DIR: path.join(dir, "data"),
+      CHAMADAS_ARQ: path.join(dir, "chamadas.jsonl"),
+      CENARIO_ARQ: path.join(dir, "cenario.json"),
+      PUBLICACAO_CONFIG: path.join(dir, "publicacao.json"),
+      YOUTUBE_CLIENT_ID: "id",
+      YOUTUBE_CLIENT_SECRET: "s",
+      YOUTUBE_REFRESH_TOKEN: "t",
+      ...env,
+    },
+  });
+
+test("publicação diária (YouTube falso): sobe público, avisa inscritos e registra como público", () => {
+  const EP = "guardar-nao-e-investir";
+  const dir = ambientePublicar([EP]);
+  const r = rodarPublicar(dir, ["enviar", EP, "--visibilidade", "publico"], { CONFIRMACAO_ENVIO: "PUBLICACAO-DIARIA" });
+  assert.equal(r.status, 0, r.stdout + r.stderr);
+  const ch = readFileSync(path.join(dir, "chamadas.jsonl"), "utf8").trim().split("\n").map((l) => JSON.parse(l));
+  const ini = ch.find((c) => c.url.endsWith("/upload/youtube/v3/videos"));
+  assert.equal(ini.corpo.status.privacyStatus, "public");
+  assert.equal(ini.query.notifySubscribers, "true");
+  // O YouTube falso devolve "private": o script tenta tornar público na hora.
+  assert.ok(ch.some((c) => c.metodo === "PUT" && c.corpo?.status?.privacyStatus === "public"));
+  const pub = JSON.parse(readFileSync(path.join(dir, "data", "publicacoes.json"), "utf8")).itens[0];
+  assert.equal(pub.status, "publico");
+  assert.equal(pub.privacidade, "public");
+  // Rodar de novo não duplica.
+  const r2 = rodarPublicar(dir, ["enviar", EP, "--visibilidade", "publico"], { CONFIRMACAO_ENVIO: "PUBLICACAO-DIARIA" });
+  assert.match(r2.stdout + r2.stderr, /já foi enviado/);
+});
+
+test("publicação manual não pode pedir público direto", () => {
+  const EP = "guardar-nao-e-investir";
+  const dir = ambientePublicar([EP]);
+  const r = rodarPublicar(dir, ["enviar", EP, "--visibilidade", "publico"], { CONFIRMACAO_ENVIO: "ENVIAR-PRIVADO" });
+  assert.notEqual(r.status, 0);
+  assert.match(r.stdout + r.stderr, /só é permitido pela pauta diária/);
+  assert.equal(readFileSync(path.join(dir, "chamadas.jsonl"), "utf8"), "");
+});
