@@ -1,0 +1,93 @@
+name: Comentários do YouTube
+
+# A cada 3 horas lê comentários novos, classifica e sugere respostas.
+# Você aprova marcando caixas na issue "💬 Comentários para aprovar".
+# Respostas só saem com YOUTUBE_RESPOSTAS=ligadas; perguntas sobre dinheiro
+# nunca são respondidas sem a sua aprovação.
+on:
+  schedule:
+    - cron: "17 */3 * * *"
+  issues:
+    types: [edited]
+  workflow_dispatch:
+    inputs:
+      acao:
+        description: "O que fazer"
+        type: choice
+        options: [ler, aprovar, ignorar, enviar]
+        default: ler
+      ids:
+        description: "Para aprovar/ignorar: ids dos comentários, separados por vírgula (estão no painel e na issue)"
+        required: false
+      texto:
+        description: "Opcional, ao aprovar UM comentário: o texto exato da resposta"
+        required: false
+
+permissions:
+  contents: write
+  issues: write
+  models: read # IA gratuita do GitHub Models para sugerir respostas
+
+concurrency:
+  group: comentarios-youtube
+  cancel-in-progress: false
+
+jobs:
+  comentarios:
+    # Edições da issue só contam se forem do dono do repositório e na issue de aprovação.
+    if: >-
+      github.event_name != 'issues' ||
+      (github.event.sender.login == github.repository_owner &&
+       contains(github.event.issue.body, '<!-- painel-comentarios -->'))
+    runs-on: ubuntu-latest
+    env:
+      YOUTUBE_CLIENT_ID: ${{ secrets.YOUTUBE_CLIENT_ID }}
+      YOUTUBE_CLIENT_SECRET: ${{ secrets.YOUTUBE_CLIENT_SECRET }}
+      YOUTUBE_REFRESH_TOKEN: ${{ secrets.YOUTUBE_REFRESH_TOKEN }}
+      YOUTUBE_PUBLICACAO: ${{ vars.YOUTUBE_PUBLICACAO }}
+      YOUTUBE_RESPOSTAS: ${{ vars.YOUTUBE_RESPOSTAS }}
+      YOUTUBE_RESPOSTA_AUTOMATICA: ${{ vars.YOUTUBE_RESPOSTA_AUTOMATICA }}
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+      - name: Conferir se há o que fazer
+        id: guarda
+        env:
+          EVENTO: ${{ github.event_name }}
+        run: |
+          # Sem credenciais, o horário automático não gasta minutos do Actions.
+          if [ "$EVENTO" = "schedule" ] && [ -z "$YOUTUBE_REFRESH_TOKEN" ]; then
+            echo "Sem credenciais do YouTube ainda: nada a ler."
+            echo "rodar=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "rodar=true" >> "$GITHUB_OUTPUT"
+          fi
+      - uses: actions/checkout@v4
+        if: steps.guarda.outputs.rodar == 'true'
+      - uses: actions/setup-node@v4
+        if: steps.guarda.outputs.rodar == 'true'
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+        if: steps.guarda.outputs.rodar == 'true'
+      - name: Comentários
+        if: steps.guarda.outputs.rodar == 'true'
+        env:
+          EVENTO: ${{ github.event_name }}
+          ACAO: ${{ inputs.acao || 'ler' }}
+          IDS: ${{ inputs.ids }}
+          TEXTO: ${{ inputs.texto }}
+          ISSUE_BODY: ${{ github.event.issue.body }}
+        run: |
+          if [ "$EVENTO" = "issues" ]; then
+            node scripts/comentarios.mjs aplicar-issue
+          elif [ "$ACAO" = "aprovar" ] && [ -n "$TEXTO" ]; then
+            node scripts/comentarios.mjs aprovar "$IDS" --texto "$TEXTO"
+          elif [ "$ACAO" = "aprovar" ] || [ "$ACAO" = "ignorar" ]; then
+            node scripts/comentarios.mjs "$ACAO" "$IDS"
+          else
+            node scripts/comentarios.mjs "$ACAO"
+          fi
+      - name: Salvar comentários e painel
+        if: always() && steps.guarda.outputs.rodar == 'true'
+        uses: ./.github/actions/salvar-estado
