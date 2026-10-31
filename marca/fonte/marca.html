@@ -1,0 +1,37 @@
+<!doctype html><html><head><meta charset="utf-8"><style>
+@font-face{font-family:Mont;font-weight:800;src:url(../../public/fonts/montserrat-latin-800-normal.woff2)}
+@font-face{font-family:Mont;font-weight:700;src:url(../../public/fonts/montserrat-latin-700-normal.woff2)}
+@font-face{font-family:Mont;font-weight:500;src:url(../../public/fonts/montserrat-latin-500-normal.woff2)}
+html,body{margin:0;background:#fff}.page{display:none;position:relative;overflow:hidden;background:#fff}
+</style></head><body>
+<svg width="0" height="0" style="position:absolute"><defs>
+<linearGradient id="gold" x1="0" x2="1" y1="0" y2="1"><stop offset="0" stop-color="#EBCB72"/><stop offset=".55" stop-color="#CFA046"/><stop offset="1" stop-color="#A97B26"/></linearGradient>
+<g id="mark">
+ <path d="M40 410 V50 H135 L215 160 L295 50 H390 V410 H300 V190 L215 300 L130 190 V410 Z" fill="#14284B"/>
+ <polyline points="0,430 150,270 222,330 392,112" fill="none" stroke="#FFFFFF" stroke-width="78" stroke-linejoin="miter" stroke-miterlimit="8"/>
+ <path d="M450.4 37.1 L440.9 150.1 L343.1 73.9 Z" fill="#FFFFFF" stroke="#FFFFFF" stroke-width="26" stroke-linejoin="miter"/>
+ <polyline points="0,430 150,270 222,330 392,112" fill="none" stroke="url(#gold)" stroke-width="46" stroke-linejoin="miter" stroke-miterlimit="8"/>
+ <path d="M450.4 37.1 L440.9 150.1 L343.1 73.9 Z" fill="url(#gold)"/>
+ <path d="M470.0 -36.0 L476.4 -18.8 L494.7 -18.0 L480.4 -6.6 L485.3 11.0 L470.0 0.9 L454.7 11.0 L459.6 -6.6 L445.3 -18.0 L463.6 -18.8 Z" fill="url(#gold)"/>
+</g></defs></svg>
+<div class="page" id="perfil" style="width:800px;height:800px"><svg width="800" height="800">
+ <use href="#mark" transform="translate(200 120) scale(0.9)"/>
+ <text x="400" y="625" text-anchor="middle" font-family="Mont" font-weight="800" font-size="50" fill="#14284B">MENTE DE MILHÃO</text>
+ <text x="400" y="672" text-anchor="middle" font-family="Mont" font-weight="700" font-size="26" letter-spacing="4" fill="#B8872A">EDUCAÇÃO FINANCEIRA</text>
+</svg></div>
+<div class="page" id="banner" style="width:2560px;height:1440px">
+ <svg width="2560" height="1440" style="position:absolute;inset:0">
+  <rect width="2560" height="1440" fill="#FFFFFF"/>
+  <g stroke="#14284B" stroke-opacity=".05" stroke-width="2"><line x1="0" y1="400" x2="2560" y2="400"/><line x1="0" y1="560" x2="2560" y2="560"/><line x1="0" y1="720" x2="2560" y2="720"/><line x1="0" y1="880" x2="2560" y2="880"/><line x1="0" y1="1040" x2="2560" y2="1040"/></g>
+  <polyline points="0,1260 300,1220 600,1250 900,1170 1200,1200 1500,1120 1800,1140 2100,1030 2350,1050 2560,860" fill="none" stroke="#CFA046" stroke-opacity=".45" stroke-width="8" stroke-linejoin="round"/>
+  <use href="#mark" transform="translate(560 560) scale(0.74)"/>
+ </svg>
+ <div style="position:absolute;left:930px;top:600px;white-space:nowrap">
+  <div style="font-family:Mont;font-weight:800;font-size:104px;line-height:1.05;color:#14284B">MENTE DE MILHÃO</div>
+  <div style="font-family:Mont;font-weight:700;font-size:40px;letter-spacing:8px;color:#B8872A;margin-top:10px">EDUCAÇÃO FINANCEIRA</div>
+  <div style="height:5px;width:520px;background:linear-gradient(90deg,#14284B,#CFA046);margin:28px 0 24px;border-radius:3px"></div>
+  <div style="font-family:Mont;font-weight:500;font-size:40px;color:#3A4A66">Entenda como o dinheiro realmente funciona</div>
+ </div>
+</div>
+<script>const id=(location.hash||'#perfil').slice(1);document.getElementById(id).style.display='block';</script>
+</body></html>

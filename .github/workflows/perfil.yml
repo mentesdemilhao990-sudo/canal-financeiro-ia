@@ -1,0 +1,30 @@
+name: Atualizar perfil do canal
+
+# Troca a descrição e o banner do canal no YouTube.
+# Só roda de verdade quando pedidos/perfil.json tem confirmacao = ATUALIZAR-PERFIL.
+on:
+  workflow_dispatch:
+  push:
+    paths: ["pedidos/perfil.json"]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: publicar-youtube
+  cancel-in-progress: false
+
+jobs:
+  perfil:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Atualizar perfil (nenhum segredo é exibido)
+        env:
+          YOUTUBE_CLIENT_ID: ${{ secrets.YOUTUBE_CLIENT_ID }}
+          YOUTUBE_CLIENT_SECRET: ${{ secrets.YOUTUBE_CLIENT_SECRET }}
+          YOUTUBE_REFRESH_TOKEN: ${{ secrets.YOUTUBE_REFRESH_TOKEN }}
+        run: node scripts/perfil-canal.mjs
