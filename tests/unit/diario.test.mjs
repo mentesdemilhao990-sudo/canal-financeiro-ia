@@ -220,3 +220,17 @@ test("publicação manual não pode pedir público direto", () => {
   assert.match(r.stdout + r.stderr, /só é permitido pela pauta diária/);
   assert.equal(readFileSync(path.join(dir, "chamadas.jsonl"), "utf8"), "");
 });
+
+test("roteiro: com OLLAMA_MODELO usa a IA local, sem token", async () => {
+  const urls = [];
+  const f = async (url, init) => {
+    urls.push(String(url));
+    const b = JSON.parse(init.body);
+    assert.equal(b.model, "qwen2.5:7b");
+    assert.equal(b.format, "json");
+    return new Response(JSON.stringify({ message: { content: JSON.stringify(respostaShort()) } }), { status: 200 });
+  };
+  const r = await escreverEpisodio({ tema: temas.temas[0], formato: "short", id: "b-short" }, { token: "", modelos: ["ollama:qwen2.5:7b"], fetch: f, log: () => {} });
+  assert.equal(r.modelo, "ollama:qwen2.5:7b");
+  assert.match(urls[0], /:11434\/api\/chat$/);
+});

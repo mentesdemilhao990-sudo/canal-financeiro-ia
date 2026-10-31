@@ -5,11 +5,17 @@
 import { FORMATOS, parseEpisode } from "../../src/lib/schema.mjs";
 import { semAcento } from "./metadata.mjs";
 
-// Endereço atual do GitHub Models e o antigo (Azure), que também aceita o GITHUB_TOKEN.
-const ENDERECOS = [
-  { url: "https://models.github.ai/inference/chat/completions", nome: (m) => m },
-  { url: "https://models.inference.ai.azure.com/chat/completions", nome: (m) => m.replace(/^[^/]+\//, "") },
-];
+// IA gratuita, em duas opções:
+//  - GitHub Models (na nuvem, usa o GITHUB_TOKEN do Actions);
+//  - um modelo aberto rodando no próprio computador do Actions com o Ollama
+//    (modelos "ollama:<nome>"), usado quando o GitHub Models não responde.
+const ENDERECOS = [{ url: "https://models.github.ai/inference/chat/completions", nome: (m) => m }];
+const OLLAMA = process.env.OLLAMA_HOST ?? "http://127.0.0.1:11434";
+
+/** Modelos na ordem de tentativa. Com OLLAMA_MODELO definido, usa só o modelo local. */
+export function modelosPadrao(env = process.env) {
+  return env.OLLAMA_MODELO ? [`ollama:${env.OLLAMA_MODELO}`] : ["openai/gpt-4.1", "openai/gpt-4o-mini"];
+}
 
 /** Metas de tamanho por formato (a voz fala ~19 caracteres por segundo, mais as pausas). */
 export const METAS = {
@@ -124,8 +130,33 @@ async function postar(f, url, init, saltos = 3) {
 
 let enderecoQueFunciona = null;
 
-/** Pede uma resposta ao modelo, tentando o endereço atual e o antigo do GitHub Models. */
+/** Modelo aberto no próprio runner (Ollama). Saída forçada em JSON. */
+async function chamarOllama(f, modelo, messages) {
+  const r = await f(`${OLLAMA}/api/chat`, {
+    method: "POST",
+    headers: { "content-type": "application/json" },
+    body: JSON.stringify({
+      model: modelo.replace(/^ollama:/, ""),
+      messages,
+      format: "json",
+      stream: false,
+      options: { temperature: 0.7, num_ctx: 12288, num_predict: 4500 },
+    }),
+  });
+  const bruto = await r.text();
+  let j = {};
+  try {
+    j = JSON.parse(bruto);
+  } catch {}
+  if (!r.ok) throw new Error(`${modelo}: HTTP ${r.status} ${j.error ?? bruto.slice(0, 300)}`);
+  const texto = j.message?.content ?? "";
+  if (!texto.trim()) throw new Error(`${modelo}: resposta vazia`);
+  return texto;
+}
+
+/** Pede uma resposta ao modelo. */
 async function chamarIA(f, token, modelo, messages) {
+  if (modelo.startsWith("ollama:")) return chamarOllama(f, modelo, messages);
   const erros = [];
   for (const e of enderecoQueFunciona ? [enderecoQueFunciona] : ENDERECOS) {
     const host = new URL(e.url).host;
@@ -196,9 +227,9 @@ export function montarEpisodio(bruto, { id, formato }) {
  */
 export async function escreverEpisodio(
   { tema, manchetes = [], formato, id, tituloIrmao, titulosUsados = [] },
-  { token = process.env.GITHUB_TOKEN, modelos = ["openai/gpt-4.1", "openai/gpt-4o-mini"], tentativas = 3, fetch: f = globalThis.fetch, log = console.log } = {},
+  { token = process.env.GITHUB_TOKEN, modelos = modelosPadrao(), tentativas = 3, fetch: f = globalThis.fetch, log = console.log } = {},
 ) {
-  if (!token) throw new Error("sem GITHUB_TOKEN para usar a IA gratuita do GitHub Models");
+  if (!token && !modelos.every((m) => m.startsWith("ollama:"))) throw new Error("sem GITHUB_TOKEN para usar a IA gratuita do GitHub Models");
   let ultimo = "nenhuma resposta";
   for (const modelo of modelos) {
     const inicio = [

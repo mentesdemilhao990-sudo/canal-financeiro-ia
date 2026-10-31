@@ -36,7 +36,11 @@ jobs:
   pauta:
     name: Escolher tema e escrever roteiros
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 90 # com a IA local no processador, os roteiros levam alguns minutos
+    env:
+      # IA aberta usada quando o GitHub Models não responde: roda no próprio Actions, sem chave e sem custo.
+      OLLAMA_VERSAO: v0.5.7
+      OLLAMA_MODELO_PADRAO: qwen2.5:7b
     outputs:
       csv: ${{ steps.pauta.outputs.csv }}
       tema: ${{ steps.pauta.outputs.tema }}
@@ -70,15 +74,42 @@ jobs:
       - name: Testes unitários
         if: steps.modo.outputs.modo != 'nenhum'
         run: npm run test:unit
-      - name: Teste rápido da IA gratuita (só no ensaio)
-        if: steps.modo.outputs.modo == 'ensaio'
+      - name: IA gratuita na nuvem (GitHub Models) está respondendo?
+        id: ia
+        if: steps.modo.outputs.modo != 'nenhum'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          curl -sS -i -X POST https://models.github.ai/inference/chat/completions \
+          resp=$(curl -sS -m 60 -X POST https://models.github.ai/inference/chat/completions \
             -H "Authorization: Bearer $GITHUB_TOKEN" -H "Content-Type: application/json" -H "Accept: application/json" \
-            -d '{"model":"openai/gpt-4o-mini","messages":[{"role":"user","content":"Diga oi em uma palavra."}],"max_tokens":10}' \
-            | grep -iv '^authorization' | head -40 || true
+            -d '{"model":"openai/gpt-4o-mini","messages":[{"role":"user","content":"Responda só: ok"}],"max_tokens":5}' || true)
+          if echo "$resp" | grep -q '"choices"'; then
+            echo "GitHub Models respondeu: roteiros na nuvem." | tee -a "$GITHUB_STEP_SUMMARY"
+          else
+            echo "GitHub Models não respondeu (${resp:0:80}). Roteiros com IA aberta rodando aqui mesmo (Ollama, $OLLAMA_MODELO_PADRAO)." | tee -a "$GITHUB_STEP_SUMMARY"
+            echo "local=sim" >> "$GITHUB_OUTPUT"
+          fi
+      - name: Cache do Ollama e do modelo de IA local
+        if: steps.ia.outputs.local == 'sim'
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/ollama
+            ~/.ollama-models
+          key: ollama-${{ env.OLLAMA_VERSAO }}-${{ env.OLLAMA_MODELO_PADRAO }}-v1
+      - name: Ligar a IA local (Ollama, grátis)
+        if: steps.ia.outputs.local == 'sim'
+        run: |
+          if [ ! -x ~/ollama/bin/ollama ]; then
+            mkdir -p ~/ollama
+            curl -fsSL -o /tmp/ollama.tgz "https://github.com/ollama/ollama/releases/download/$OLLAMA_VERSAO/ollama-linux-amd64.tgz"
+            tar -xzf /tmp/ollama.tgz -C ~/ollama
+          fi
+          mkdir -p ~/.ollama-models
+          OLLAMA_MODELS=~/.ollama-models nohup ~/ollama/bin/ollama serve > ollama.log 2>&1 &
+          for i in $(seq 1 30); do curl -sf http://127.0.0.1:11434/api/version && break; sleep 2; done
+          OLLAMA_MODELS=~/.ollama-models ~/ollama/bin/ollama pull "$OLLAMA_MODELO_PADRAO" 2>&1 | tail -2
+          echo "OLLAMA_MODELO=$OLLAMA_MODELO_PADRAO" >> "$GITHUB_ENV"
       - name: Pauta do dia
         id: pauta
         if: steps.modo.outputs.modo != 'nenhum'
