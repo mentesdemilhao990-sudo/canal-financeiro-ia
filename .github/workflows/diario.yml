@@ -70,6 +70,15 @@ jobs:
       - name: Testes unitários
         if: steps.modo.outputs.modo != 'nenhum'
         run: npm run test:unit
+      - name: Teste rápido da IA gratuita (só no ensaio)
+        if: steps.modo.outputs.modo == 'ensaio'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          curl -sS -i -X POST https://models.github.ai/inference/chat/completions \
+            -H "Authorization: Bearer $GITHUB_TOKEN" -H "Content-Type: application/json" -H "Accept: application/json" \
+            -d '{"model":"openai/gpt-4o-mini","messages":[{"role":"user","content":"Diga oi em uma palavra."}],"max_tokens":10}' \
+            | grep -iv '^authorization' | head -40 || true
       - name: Pauta do dia
         id: pauta
         if: steps.modo.outputs.modo != 'nenhum'

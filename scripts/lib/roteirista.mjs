@@ -128,16 +128,23 @@ let enderecoQueFunciona = null;
 async function chamarIA(f, token, modelo, messages) {
   const erros = [];
   for (const e of enderecoQueFunciona ? [enderecoQueFunciona] : ENDERECOS) {
-    const r = await postar(f, e.url, {
-      headers: { authorization: `Bearer ${token}`, "content-type": "application/json", accept: "application/json" },
-      body: JSON.stringify({ model: e.nome(modelo), temperature: 0.7, max_tokens: 4000, response_format: { type: "json_object" }, messages }),
-    });
-    const bruto = await r.text();
+    const host = new URL(e.url).host;
+    let r;
+    let bruto;
+    try {
+      r = await postar(f, e.url, {
+        headers: { authorization: `Bearer ${token}`, "content-type": "application/json", accept: "application/json" },
+        body: JSON.stringify({ model: e.nome(modelo), temperature: 0.7, max_tokens: 4000, response_format: { type: "json_object" }, messages }),
+      });
+      bruto = await r.text();
+    } catch (err) {
+      erros.push(`${host}: ${err.message}${err.cause?.code ? ` (${err.cause.code})` : ""}`);
+      continue;
+    }
     let j = {};
     try {
       j = JSON.parse(bruto);
     } catch {}
-    const host = new URL(e.url).host;
     if (r.status === 429) throw Object.assign(new Error(`${modelo}: limite gratuito atingido (HTTP 429)`), { limite: true });
     if (r.status === 401 || r.status === 403) {
       erros.push(`${host}: sem permissão (HTTP ${r.status}) ${j.error?.message ?? bruto.slice(0, 200)}`);
