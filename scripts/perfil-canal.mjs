@@ -76,9 +76,24 @@ async function main() {
     body: JSON.stringify({ id: canal.id, brandingSettings: branding }),
   });
 
-  const depois = (await yt.get("channels.list", "channels", { part: "brandingSettings", id: canal.id })).items?.[0]?.brandingSettings ?? {};
-  if (mudar.descricao !== undefined)
-    linha(depois.channel?.description?.trim() === mudar.descricao ? "✅ Descrição atualizada." : "⚠️ O YouTube não confirmou a descrição nova.");
+  const ler = async () => (await yt.get("channels.list", "channels", { part: "brandingSettings,snippet", id: canal.id })).items?.[0] ?? {};
+  let depois = await ler();
+  const igual = (c) => normaliza(c.brandingSettings?.channel?.description) === normaliza(mudar.descricao);
+  if (mudar.descricao !== undefined && !igual(depois)) {
+    await new Promise((r) => setTimeout(r, 8000)); // o YouTube às vezes demora para refletir
+    depois = await ler();
+  }
+  if (mudar.descricao !== undefined) {
+    if (igual(depois)) linha("✅ Descrição atualizada.");
+    else {
+      const volta = depois.brandingSettings?.channel?.description ?? "";
+      const n = normaliza(volta), e = normaliza(mudar.descricao);
+      let i = 0;
+      while (i < n.length && n[i] === e[i]) i++;
+      linha(`⚠️ O YouTube não confirmou a descrição nova (enviados ${mudar.descricao.length} caracteres, voltaram ${volta.length}; snippet tem ${(depois.snippet?.description ?? "").length}; primeira diferença na posição ${i}: "${JSON.stringify(volta.slice(i, i + 40))}").`);
+    }
+  }
+  depois = depois.brandingSettings ?? {};
   if (mudar.bannerUrl) linha(depois.image?.bannerExternalUrl ? "✅ Banner aplicado ao canal." : "⚠️ O YouTube não confirmou o banner novo.");
   linha("Foto de perfil: troque à mão no YouTube Studio (a API não permite).");
   return 0;

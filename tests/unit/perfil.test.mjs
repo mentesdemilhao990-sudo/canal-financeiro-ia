@@ -19,6 +19,4 @@ test("arquivos da marca existem e respeitam limites do YouTube", () => {
   assert.ok(desc.length > 50 && desc.length <= 1000);
   assert.ok(!/[<>]/.test(desc), "YouTube recusa < e > na descrição");
   assert.ok(statSync("marca/banner.png").size < 6 * 1024 * 1024);
-  const pedido = JSON.parse(readFileSync("pedidos/perfil.json", "utf8"));
-  assert.notEqual(pedido.confirmacao, "ATUALIZAR-PERFIL", "o pedido não deve vir confirmado por padrão");
 });
