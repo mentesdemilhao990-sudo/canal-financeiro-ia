@@ -5,29 +5,29 @@
 @font-face{font-family:Mont;font-weight:800;src:url(../../public/fonts/montserrat-latin-800-normal.woff2)}
 @font-face{font-family:Mont;font-weight:700;src:url(../../public/fonts/montserrat-latin-700-normal.woff2)}
 @font-face{font-family:Mont;font-weight:500;src:url(../../public/fonts/montserrat-latin-500-normal.woff2)}
-html,body{margin:0;background:#06080B}
+html,body{margin:0;background:#FBF8F1}
 .page{display:none;position:relative;overflow:hidden}
 </style></head>
 <body>
 <svg width="0" height="0" style="position:absolute">
   <defs>
     <linearGradient id="gold" x1="0" x2="0" y1="0" y2="1">
-      <stop offset="0" stop-color="#FFE7A3"/><stop offset=".45" stop-color="#F2C14E"/><stop offset="1" stop-color="#B8860B"/>
+      <stop offset="0" stop-color="#EDC25A"/><stop offset=".5" stop-color="#C9961F"/><stop offset="1" stop-color="#8F6612"/>
     </linearGradient>
     <linearGradient id="green" x1="0" x2="0" y1="0" y2="1">
-      <stop offset="0" stop-color="#9CF7C4"/><stop offset=".5" stop-color="#2BD97C"/><stop offset="1" stop-color="#0E7A43"/>
+      <stop offset="0" stop-color="#3FD68A"/><stop offset=".5" stop-color="#17A35A"/><stop offset="1" stop-color="#0B6A39"/>
     </linearGradient>
     <radialGradient id="bg" cx=".5" cy=".38" r=".75">
-      <stop offset="0" stop-color="#14202A"/><stop offset=".6" stop-color="#06080B"/><stop offset="1" stop-color="#020304"/>
+      <stop offset="0" stop-color="#FFFFFF"/><stop offset=".65" stop-color="#FAF6EC"/><stop offset="1" stop-color="#EFE7D4"/>
     </radialGradient>
     <filter id="glowG" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="14"/></filter>
     <!-- O símbolo: um "M" que é também um gráfico subindo. Caixa 0..400 -->
     <clipPath id="leftOfBar"><rect x="-100" y="-100" width="401" height="600"/></clipPath>
     <g id="mark">
       <!-- brilho -->
-      <g filter="url(#glowG)" opacity=".55">
-        <path clip-path="url(#leftOfBar)" d="M60 360 V120 L200 270 L340 80" fill="none" stroke="#F2C14E" stroke-width="58"/>
-        <path d="M330 60 V360" stroke="#2BD97C" stroke-width="58"/>
+      <g filter="url(#glowG)" opacity=".18" transform="translate(0 14)">
+        <path clip-path="url(#leftOfBar)" d="M60 360 V120 L200 270 L340 80" fill="none" stroke="#5A4A20" stroke-width="58"/>
+        <path d="M330 60 V360" stroke="#1E4A33" stroke-width="58"/>
       </g>
       <!-- perna esquerda + V (ouro) -->
       <path clip-path="url(#leftOfBar)" d="M60 360 V120 L200 270 L340 80" fill="none" stroke="url(#gold)" stroke-width="58" stroke-linejoin="miter" stroke-miterlimit="10"/>
@@ -43,13 +43,13 @@ html,body{margin:0;background:#06080B}
 <div class="page" id="perfil" style="width:800px;height:800px">
   <svg width="800" height="800" viewBox="0 0 800 800">
     <rect width="800" height="800" fill="url(#bg)"/>
-    <g stroke="rgba(255,255,255,.05)" stroke-width="2">
+    <g stroke="rgba(20,30,40,.05)" stroke-width="2">
       <line x1="0" y1="200" x2="800" y2="200"/><line x1="0" y1="300" x2="800" y2="300"/>
       <line x1="0" y1="400" x2="800" y2="400"/><line x1="0" y1="500" x2="800" y2="500"/><line x1="0" y1="600" x2="800" y2="600"/>
     </g>
     <circle cx="400" cy="400" r="352" fill="none" stroke="url(#gold)" stroke-width="10" opacity=".9"/>
     <use href="#mark" transform="translate(205 185) scale(0.98)"/>
-    <text x="400" y="625" text-anchor="middle" font-family="Mont" font-weight="800" font-size="40" letter-spacing="9" fill="#F4F6F7">MENTE DE MILHÃO</text>
+    <text x="400" y="625" text-anchor="middle" font-family="Mont" font-weight="800" font-size="40" letter-spacing="9" fill="#1B2430">MENTE DE MILHÃO</text>
   </svg>
 </div>
 
@@ -58,32 +58,32 @@ html,body{margin:0;background:#06080B}
   <svg width="2560" height="1440" viewBox="0 0 2560 1440" style="position:absolute;inset:0">
     <defs>
       <radialGradient id="bgB" cx=".5" cy=".5" r=".7">
-        <stop offset="0" stop-color="#121C25"/><stop offset=".55" stop-color="#06080B"/><stop offset="1" stop-color="#020304"/>
+        <stop offset="0" stop-color="#FFFFFF"/><stop offset=".6" stop-color="#FAF6EC"/><stop offset="1" stop-color="#EFE7D4"/>
       </radialGradient>
       <linearGradient id="area" x1="0" x2="0" y1="0" y2="1">
-        <stop offset="0" stop-color="#2BD97C" stop-opacity=".28"/><stop offset="1" stop-color="#2BD97C" stop-opacity="0"/>
+        <stop offset="0" stop-color="#17A35A" stop-opacity=".16"/><stop offset="1" stop-color="#17A35A" stop-opacity="0"/>
       </linearGradient>
       <linearGradient id="line" x1="0" x2="1">
-        <stop offset="0" stop-color="#2BD97C" stop-opacity=".15"/><stop offset=".5" stop-color="#2BD97C"/><stop offset="1" stop-color="#F2C14E"/>
+        <stop offset="0" stop-color="#17A35A" stop-opacity=".2"/><stop offset=".5" stop-color="#17A35A"/><stop offset="1" stop-color="#C9961F"/>
       </linearGradient>
     </defs>
     <rect width="2560" height="1440" fill="url(#bgB)"/>
-    <g stroke="rgba(255,255,255,.045)" stroke-width="2">
+    <g stroke="rgba(20,30,40,.05)" stroke-width="2">
       <line x1="0" y1="560" x2="2560" y2="560"/><line x1="0" y1="720" x2="2560" y2="720"/><line x1="0" y1="880" x2="2560" y2="880"/>
       <line x1="0" y1="1040" x2="2560" y2="1040"/><line x1="0" y1="400" x2="2560" y2="400"/>
     </g>
     <path d="M0 1260 L300 1220 L600 1250 L900 1170 L1200 1200 L1500 1120 L1800 1140 L2100 1030 L2350 1050 L2560 860 L2560 1440 L0 1440 Z" fill="url(#area)"/>
     <polyline points="0,1260 300,1220 600,1250 900,1170 1200,1200 1500,1120 1800,1140 2100,1030 2350,1050 2560,860" fill="none" stroke="url(#line)" stroke-width="8" stroke-linejoin="round"/>
     <!-- moedas/pontos -->
-    <g fill="#F2C14E" opacity=".5"><circle cx="2100" cy="1030" r="9"/><circle cx="1500" cy="1120" r="7"/></g>
+    <g fill="#C9961F" opacity=".7"><circle cx="2100" cy="1030" r="9"/><circle cx="1500" cy="1120" r="7"/></g>
     <!-- símbolo na área segura -->
     <use href="#mark" transform="translate(560 575) scale(0.72)"/>
   </svg>
   <div style="position:absolute;left:900px;top:560px;width:1160px;white-space:nowrap">
-    <div style="font-family:Bebas;font-size:190px;line-height:1;padding-top:30px;margin-top:-30px;letter-spacing:4px;background:linear-gradient(180deg,#FFE7A3 0%,#F2C14E 45%,#B8860B 100%);-webkit-background-clip:text;color:transparent;filter:drop-shadow(0 10px 36px rgba(242,193,78,.3))">MENTE DE MILHÃO</div>
-    <div style="height:6px;width:560px;border-radius:3px;background:linear-gradient(90deg,#2BD97C,#F2C14E);margin:26px 0 30px"></div>
-    <div style="font-family:Mont;font-weight:700;font-size:46px;color:#F4F6F7;letter-spacing:1px">Entenda como o dinheiro realmente funciona</div>
-    <div style="font-family:Mont;font-weight:500;font-size:34px;color:#8B97A3;margin-top:14px;letter-spacing:2px">EDUCAÇÃO FINANCEIRA · SEM ENROLAÇÃO</div>
+    <div style="font-family:Bebas;font-size:190px;line-height:1;padding-top:30px;margin-top:-30px;letter-spacing:4px;background:linear-gradient(180deg,#E3B44A 0%,#C9961F 50%,#8F6612 100%);-webkit-background-clip:text;color:transparent;filter:drop-shadow(0 6px 14px rgba(143,102,18,.18))">MENTE DE MILHÃO</div>
+    <div style="height:6px;width:560px;border-radius:3px;background:linear-gradient(90deg,#17A35A,#C9961F);margin:26px 0 30px"></div>
+    <div style="font-family:Mont;font-weight:700;font-size:46px;color:#1B2430;letter-spacing:1px">Entenda como o dinheiro realmente funciona</div>
+    <div style="font-family:Mont;font-weight:500;font-size:34px;color:#6B7480;margin-top:14px;letter-spacing:2px">EDUCAÇÃO FINANCEIRA · SEM ENROLAÇÃO</div>
   </div>
 </div>
 
