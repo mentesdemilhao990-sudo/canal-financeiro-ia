@@ -14,8 +14,11 @@ globalThis.fetch = async (url, init = {}) => {
   else if (corpo) corpo = `<${corpo.length} bytes>`;
   log({ metodo: init.method ?? "GET", url: `${u.origin}${u.pathname}`, query: Object.fromEntries(u.searchParams), corpo });
 
-  if (u.hostname === "oauth2.googleapis.com") return json({ access_token: "falso", expires_in: 3600 });
-  if (u.pathname.endsWith("/channels")) return json({ items: [{ id: "UCcanal", snippet: { title: "Canal Teste" }, contentDetails: { relatedPlaylists: { uploads: "UUcanal" } } }] });
+  if (u.hostname === "oauth2.googleapis.com")
+    return cenario.erroToken
+      ? json({ error: cenario.erroToken, error_description: `Unauthorized for ${corpo.client_id} token ${corpo.refresh_token}` }, 401)
+      : json({ access_token: "ya29.falso", expires_in: 3599, scope: "https://www.googleapis.com/auth/youtube.force-ssl", token_type: "Bearer", corpoRecebido: corpo });
+  if (u.pathname.endsWith("/channels")) return json({ items: [{ id: "UCcanal", snippet: { title: cenario.nomeCanal ?? "Canal Teste" }, contentDetails: { relatedPlaylists: { uploads: "UUcanal" } } }] });
   if (u.pathname.endsWith("/playlistItems")) return json({ items: cenario.recentes ?? [] });
   if (u.pathname === "/upload/youtube/v3/videos") return new Response(null, { status: 200, headers: { location: "https://upload.falso/sessao1" } });
   if (u.hostname === "upload.falso") return json({ id: "VID123", status: { privacyStatus: "private" } });

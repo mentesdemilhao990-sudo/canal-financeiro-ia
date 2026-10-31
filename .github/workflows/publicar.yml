@@ -43,6 +43,8 @@ jobs:
       execucao: ${{ steps.pedido.outputs.execucao }}
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # para conferir se o código mudou desde a execução reaproveitada
       - uses: actions/setup-node@v4
         with:
           node-version: 22

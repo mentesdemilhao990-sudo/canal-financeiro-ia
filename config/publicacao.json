@@ -3,6 +3,7 @@
   "youtube": {
     "categoryId": "27",
     "defaultLanguage": "pt-BR",
+    "canalEsperado": "Mente de Milhões",
     "madeForKids": false,
     "containsSyntheticMedia": false,
     "hashtagsFixas": [
@@ -19,7 +20,8 @@
     "marcarComoShorts": true,
     "rodapeDescricao": "📌 Inscreva-se para entender como o dinheiro realmente funciona.",
     "maxEnviosPorExecucao": 2,
-    "verificarTitulosRecentesNoCanal": true
+    "verificarTitulosRecentesNoCanal": true,
+    "_canalEsperado": "Nome do canal que deve aparecer no login. Se for outro, nada é enviado. Maiúsculas e acentos não importam."
   },
   "comentarios": {
     "maxComentariosPorVideo": 200,

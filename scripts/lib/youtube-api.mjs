@@ -15,9 +15,49 @@ export class ErroYouTube extends Error {
 }
 
 /** Lê as credenciais das variáveis de ambiente (vindas dos GitHub Actions Secrets). */
+/**
+ * Limpa o valor colado no Secret: espaços, quebras de linha, aspas em volta e
+ * prefixos comuns de cópia ("client_id=", "Bearer "). Um espaço ou quebra de
+ * linha no fim já basta para o Google recusar o login.
+ */
+export function limparCredencial(v) {
+  if (v == null) return "";
+  let s = String(v).replace(/^\uFEFF/, "").trim();
+  s = s.replace(/^(["'`])(.*)\1$/s, "$2").trim();
+  s = s.replace(/^(client_id|client_secret|refresh_token)\s*[:=]\s*/i, "").trim();
+  return s.replace(/\s+/g, "");
+}
+
+/** Lê as credenciais das variáveis de ambiente (vindas dos GitHub Actions Secrets). */
 export function credenciaisDoAmbiente(env = process.env) {
-  const c = { clientId: env.YOUTUBE_CLIENT_ID, clientSecret: env.YOUTUBE_CLIENT_SECRET, refreshToken: env.YOUTUBE_REFRESH_TOKEN };
+  const c = {
+    clientId: limparCredencial(env.YOUTUBE_CLIENT_ID),
+    clientSecret: limparCredencial(env.YOUTUBE_CLIENT_SECRET),
+    refreshToken: limparCredencial(env.YOUTUBE_REFRESH_TOKEN),
+  };
   return c.clientId && c.clientSecret && c.refreshToken ? c : null;
+}
+
+/** Explicação em português para os erros do endpoint de token do Google. */
+export const DICAS_OAUTH = {
+  unauthorized_client:
+    "O refresh token não pertence a este Client ID (foi gerado com outro cliente OAuth, por exemplo com as credenciais padrão do Playground ou com um cliente que foi recriado), ou o Client ID e o Client Secret são de clientes diferentes. Gere o refresh token de novo no Playground com 'Use your own OAuth credentials' marcado ANTES de autorizar, usando exatamente o mesmo Client ID e Secret, e atualize os Secrets YOUTUBE_CLIENT_ID e YOUTUBE_REFRESH_TOKEN (e YOUTUBE_CLIENT_SECRET se tiver dúvida) com os valores dessa mesma sessão.",
+  invalid_client: "Client ID ou Client Secret errado, ou o cliente OAuth foi apagado. Confira YOUTUBE_CLIENT_ID e YOUTUBE_CLIENT_SECRET no Google Cloud (Clientes).",
+  invalid_grant:
+    "O refresh token expirou ou foi revogado. Se o app está em modo 'Teste', ele expira em 7 dias: publique o app (passo 4 do tutorial) e gere um token novo. Atualize YOUTUBE_REFRESH_TOKEN.",
+  invalid_request: "Falta algum parâmetro. Algum dos três Secrets chegou vazio.",
+  invalid_scope: "O escopo pedido não foi autorizado. Gere o token com https://www.googleapis.com/auth/youtube.force-ssl.",
+};
+
+/** Tira de um texto qualquer coisa parecida com segredo antes de mostrar no log. */
+export function sanitizar(texto, cred = {}) {
+  let s = String(texto ?? "");
+  for (const v of Object.values(cred)) if (v && v.length > 4) s = s.split(v).join("[oculto]");
+  return s
+    .replace(/GOCSPX-[\w-]+/g, "[oculto]")
+    .replace(/1\/\/[\w-]+/g, "[oculto]")
+    .replace(/ya29\.[\w.-]+/g, "[oculto]")
+    .replace(/\d+-[a-z0-9]+\.apps\.googleusercontent\.com/gi, "[client_id]");
 }
 
 export class YouTube {
@@ -42,13 +82,14 @@ export class YouTube {
     });
     const j = await r.json().catch(() => ({}));
     if (!r.ok || !j.access_token) {
-      const dica =
-        j.error === "invalid_grant"
-          ? " O refresh token expirou ou foi revogado. Se o app do Google Cloud está em modo 'Teste', ele expira em 7 dias: publique o app (passo 4 do tutorial) e gere um token novo."
-          : "";
-      throw new ErroYouTube(`Falha no login OAuth (${j.error ?? r.status}).${dica}`, r.status, j.error);
+      const desc = j.error_description ? `: ${sanitizar(j.error_description, this.cred)}` : "";
+      const dica = DICAS_OAUTH[j.error] ? ` ${DICAS_OAUTH[j.error]}` : "";
+      const e = new ErroYouTube(`Falha no login OAuth (HTTP ${r.status}, ${j.error ?? "sem código"}${desc}).${dica}`, r.status, j.error);
+      e.descricao = j.error_description ? sanitizar(j.error_description, this.cred) : undefined;
+      throw e;
     }
     this.token = j.access_token;
+    this.escopos = j.scope;
   }
 
   async chamar(metodo, url, init = {}) {

@@ -20,6 +20,7 @@ function ambiente({ engine = "piper:pt_BR-faber-medium", cenario = {}, config } 
   writeFileSync(path.join(dir, "chamadas.jsonl"), "");
   const cfgArq = path.join(dir, "publicacao.json");
   const cfg = JSON.parse(readFileSync("config/publicacao.json", "utf8"));
+  cfg.youtube.canalEsperado = "Canal Teste";
   writeFileSync(cfgArq, JSON.stringify(config ? config(cfg) : cfg));
   return dir;
 }
@@ -197,4 +198,67 @@ test("envio com a confirmação ENVIAR-PRIVADO vale como autorização da execu�
   assert.equal(modos({ ...CRED, CONFIRMACAO_ENVIO: "ENVIAR-PRIVADO" }).publicacao, true);
   assert.equal(modos({ ...CRED, CONFIRMACAO_ENVIO: "enviar" }).publicacao, false);
   assert.equal(modos({ CONFIRMACAO_ENVIO: "ENVIAR-PRIVADO" }).publicacao, false);
+});
+
+// ------------------------------------------------------------------ OAuth
+const CRED_REAIS = {
+  YOUTUBE_CLIENT_ID: "123456789-abcdefghijk.apps.googleusercontent.com",
+  YOUTUBE_CLIENT_SECRET: "GOCSPX-abcdefghijklmnopqrstuvwx",
+  YOUTUBE_REFRESH_TOKEN: "1//0abcdefghijklmnopqrstuvwxyz0123456789",
+};
+
+test("credenciais com espaço/quebra de linha/aspas são limpas antes do POST de token", () => {
+  const dir = ambiente();
+  const sujas = { YOUTUBE_CLIENT_ID: ` ${CRED_REAIS.YOUTUBE_CLIENT_ID}\n`, YOUTUBE_CLIENT_SECRET: `"${CRED_REAIS.YOUTUBE_CLIENT_SECRET}"`, YOUTUBE_REFRESH_TOKEN: `${CRED_REAIS.YOUTUBE_REFRESH_TOKEN}\r\n` };
+  const r = rodar(dir, "scripts/publicar.mjs", ["testar-conexao"], sujas);
+  assert.equal(r.status, 0, r.saida);
+  const tok = chamadas(dir).find((c) => c.url === "https://oauth2.googleapis.com/token");
+  assert.deepEqual(tok.corpo, { client_id: CRED_REAIS.YOUTUBE_CLIENT_ID, client_secret: CRED_REAIS.YOUTUBE_CLIENT_SECRET, refresh_token: CRED_REAIS.YOUTUBE_REFRESH_TOKEN, grant_type: "refresh_token" });
+});
+
+test("unauthorized_client: mostra HTTP, error e explicação, sem vazar valores", () => {
+  const dir = ambiente({ cenario: { erroToken: "unauthorized_client" } });
+  const r = rodar(dir, "scripts/publicar.mjs", ["testar-conexao"], CRED_REAIS);
+  assert.notEqual(r.status, 0);
+  assert.match(r.saida, /HTTP 401, unauthorized_client/);
+  assert.match(r.saida, /não pertence a este Client ID/);
+  for (const v of Object.values(CRED_REAIS)) assert.ok(!r.saida.includes(v), "valor de Secret apareceu no log");
+});
+
+test("diagnóstico OAuth: aponta Secret vazio, trocado ou sujo, sem mostrar valores", () => {
+  const dir = ambiente();
+  const r = rodar(dir, "scripts/diagnostico-oauth.mjs", [], { YOUTUBE_CLIENT_ID: CRED_REAIS.YOUTUBE_REFRESH_TOKEN, YOUTUBE_CLIENT_SECRET: ` ${CRED_REAIS.YOUTUBE_CLIENT_SECRET} ` });
+  assert.notEqual(r.status, 0);
+  assert.match(r.saida, /YOUTUBE_REFRESH_TOKEN` \| ❌ vazio/);
+  assert.match(r.saida, /cara de \*\*YOUTUBE_REFRESH_TOKEN\*\*/);
+  assert.match(r.saida, /tinha espaço/);
+  assert.deepEqual(chamadas(dir), [], "com Secret faltando nem chama o Google");
+  for (const v of Object.values(CRED_REAIS)) assert.ok(!r.saida.includes(v));
+});
+
+test("diagnóstico OAuth completo: login, escopo e canal esperado", () => {
+  const dir = ambiente({ cenario: { nomeCanal: "Mente de Milhões" }, config: (c) => ((c.youtube.canalEsperado = "mente de milhoes"), c) });
+  const r = rodar(dir, "scripts/diagnostico-oauth.mjs", [], CRED_REAIS);
+  assert.equal(r.status, 0, r.saida);
+  assert.match(r.saida, /HTTP: \*\*200\*\*/);
+  assert.match(r.saida, /Canal: \*\*Mente de Milhões\*\*/);
+  assert.match(r.saida, /confere/);
+  assert.ok(!r.saida.includes("ya29.falso"), "access token não pode aparecer");
+  assert.deepEqual(chamadas(dir).map((c) => c.metodo + " " + c.url), ["POST https://oauth2.googleapis.com/token", "GET https://www.googleapis.com/youtube/v3/channels"]);
+});
+
+test("canal diferente do esperado: diagnóstico falha e envio é bloqueado", () => {
+  const dir = ambiente({ cenario: { nomeCanal: "Outro Canal" } });
+  assert.notEqual(rodar(dir, "scripts/diagnostico-oauth.mjs", [], CRED_REAIS).status, 0);
+  const r = rodar(dir, "scripts/publicar.mjs", ["enviar", EP, "--saida", path.join(dir, "out")], { ...CRED_REAIS, CONFIRMACAO_ENVIO: "ENVIAR-PRIVADO" });
+  assert.notEqual(r.status, 0);
+  assert.match(r.saida, /esperado é “Canal Teste”/);
+  assert.equal(chamadas(dir).filter((c) => c.url.includes("/upload/")).length, 0);
+});
+
+test("pedido por arquivo sem confirmação não dispara nada", () => {
+  const dir = ambiente();
+  const r = spawnSync("node", ["scripts/publicar.mjs", "pedido"], { encoding: "utf8", env: { PATH: process.env.PATH, EVENTO: "push", GITHUB_OUTPUT: path.join(dir, "saida.txt") } });
+  assert.equal(r.status, 0, r.stderr);
+  assert.match(readFileSync(path.join(dir, "saida.txt"), "utf8"), /episodios=nenhum\nconfirmacao=\nexecucao=\n/);
 });

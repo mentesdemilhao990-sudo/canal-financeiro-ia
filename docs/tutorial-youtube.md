@@ -83,6 +83,9 @@ Depois apague o bloco de notas temporário.
 
 ## 8. Testar a conexão (não envia nada)
 
+Para um diagnóstico completo: **Actions → Diagnóstico OAuth do YouTube → Run workflow** (ou edite `pedidos/diagnostico-oauth.json`). Ele mostra, sem revelar nenhum valor, se cada Secret existe, se tem espaço ou aspas sobrando, se parece trocado com outro, o status HTTP e o erro que o Google devolveu, os escopos e o nome do canal conectado. O canal precisa ser o de `youtube.canalEsperado` em `config/publicacao.json` (hoje “Mente de Milhões”). Se for outro, nenhum vídeo é enviado.
+
+
 **Actions → Testar conexão com o YouTube → Run workflow**. Ficando verde, o resumo mostra "Conexão OK com o canal …". Se der erro, veja "Problemas comuns" no fim.
 
 Até aqui **nada foi publicado**. Os workflows de publicação e comentários continuam em simulação.
@@ -168,6 +171,7 @@ O uso do dia fica em `data/cota.json` e no painel. A cota zera à meia-noite do 
 | Mensagem | O que fazer |
 | --- | --- |
 | `invalid_grant` | O token expirou ou foi revogado. Confira o passo 4 (app **Em produção**) e gere um novo no passo 6. |
+| `unauthorized_client` | O refresh token foi gerado com **outro** cliente OAuth (por exemplo, sem marcar "Use your own OAuth credentials" no Playground antes de autorizar, ou com um cliente que foi recriado), ou o Client ID e o Secret são de clientes diferentes. Refaça o passo 6 com a engrenagem configurada **antes** de clicar em Authorize e atualize `YOUTUBE_CLIENT_ID`, `YOUTUBE_CLIENT_SECRET` e `YOUTUBE_REFRESH_TOKEN` com os valores dessa mesma sessão. |
 | `redirect_uri_mismatch` | O URI do passo 5 está diferente. Tem que ser exatamente `https://developers.google.com/oauthplayground`. |
 | `access_denied` / app bloqueado | No passo 3, adicione seu e-mail como usuário de teste ou faça o passo 4. |
 | `youtubeSignupRequired` / "não tem canal" | No passo 6 você escolheu a conta, não o canal. Refaça escolhendo o canal. |

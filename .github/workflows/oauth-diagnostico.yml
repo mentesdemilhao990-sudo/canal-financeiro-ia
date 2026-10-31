@@ -1,0 +1,29 @@
+name: Diagnóstico OAuth do YouTube
+
+# Só leitura: confere os Secrets (sem mostrar valores), troca o refresh token por um
+# access token, mostra o que o Google respondeu e qual canal está conectado.
+# Não envia vídeo, não responde comentário, não muda nada no repositório.
+on:
+  workflow_dispatch:
+  push:
+    paths: ["pedidos/diagnostico-oauth.json"]
+
+permissions:
+  contents: read
+
+jobs:
+  diagnostico:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Diagnóstico (nenhum valor é exibido)
+        env:
+          YOUTUBE_CLIENT_ID: ${{ secrets.YOUTUBE_CLIENT_ID }}
+          YOUTUBE_CLIENT_SECRET: ${{ secrets.YOUTUBE_CLIENT_SECRET }}
+          YOUTUBE_REFRESH_TOKEN: ${{ secrets.YOUTUBE_REFRESH_TOKEN }}
+        run: node scripts/diagnostico-oauth.mjs

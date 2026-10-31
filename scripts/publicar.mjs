@@ -8,6 +8,7 @@
 //   node scripts/publicar.mjs visibilidade <episodio> <publico|nao_listado|privado|agendado> [data]
 //
 // Todo vídeo sobe como PRIVADO. Tornar público é sempre um passo seu (visibilidade).
+import { spawnSync } from "node:child_process";
 import { appendFileSync, existsSync, readdirSync, readFileSync, writeFileSync } from "node:fs";
 import path from "node:path";
 import { parseEpisode } from "../src/lib/schema.mjs";
@@ -15,6 +16,9 @@ import { problemasMetadata, youtubeMetadata } from "./lib/metadata.mjs";
 import { Cota, buscarPublicacao, checarDuplicado, hashEpisodio, lerPublicacoes, gravarPublicacoes, registrar, sha256, quando } from "./lib/estado.mjs";
 import { YouTube, credenciaisDoAmbiente } from "./lib/youtube-api.mjs";
 import { modos, motivoSimulacao } from "./lib/modos.mjs";
+import { semAcento } from "./lib/metadata.mjs";
+
+const mesmoCanal = (a, b) => semAcento(String(a)).toLowerCase().trim() === semAcento(String(b)).toLowerCase().trim();
 
 const cfg = JSON.parse(readFileSync(process.env.PUBLICACAO_CONFIG ?? "config/publicacao.json", "utf8"));
 const [cmd, ...resto] = process.argv.slice(2);
@@ -33,6 +37,7 @@ const carregar = (id) => parseEpisode(JSON.parse(readFileSync(`episodes/${id}.js
 const listaPedida = (txt) => (txt ?? "").split(",").map((s) => s.trim().replace(/\.json$/, "").replace(/^episodes\//, "")).filter(Boolean);
 
 function selecionar(pedido) {
+  if (pedido === "nenhum") return [];
   const pubs = lerPublicacoes();
   const agora = new Date();
   let lista;
@@ -74,6 +79,8 @@ async function enviar(ids) {
   if (real) {
     canal = await yt.meuCanal();
     resumo(`Canal: **${canal.nome}** (${canal.id})`);
+    if (cfg.youtube.canalEsperado && !mesmoCanal(canal.nome, cfg.youtube.canalEsperado))
+      throw new Error(`o login é do canal “${canal.nome}”, mas o esperado é “${cfg.youtube.canalEsperado}” (config/publicacao.json). Nada foi enviado.`);
     if (cfg.youtube.verificarTitulosRecentesNoCanal) recentes = await yt.titulosRecentes(canal.uploads);
   }
 
@@ -171,6 +178,8 @@ async function lerPedido() {
   if (ev === "push") {
     const arq = JSON.parse(readFileSync("pedidos/youtube.json", "utf8"));
     p = { episodios: arq.episodios ?? "agendados", confirmacao: arq.confirmacao ?? "", execucao: String(arq.reaproveitarExecucao ?? "") };
+    // Arquivo sem confirmação não dispara nada (nem simulação, para não gastar minutos).
+    if (p.confirmacao.trim() !== "ENVIAR-PRIVADO") p = { episodios: "nenhum", confirmacao: "", execucao: "" };
   }
   p.execucao = String(p.execucao).trim();
   if (p.execucao && !/^\d+$/.test(p.execucao)) throw new Error(`execução para reaproveitar inválida: "${p.execucao}"`);
@@ -182,6 +191,12 @@ async function lerPedido() {
     const run = await r.json();
     if (!r.ok) throw new Error(`não achei a execução ${p.execucao}: ${run.message ?? r.status}`);
     if (run.conclusion !== "success") throw new Error(`a execução ${p.execucao} terminou como "${run.conclusion}"; só reaproveito vídeo que passou em todos os testes`);
+    // Só reaproveita se nada que muda o vídeo foi alterado desde aquela execução.
+    const MUDAM_VIDEO = ["src", "public", "episodes", "scripts/build-episode.mjs", "scripts/tts.py", "config/channel.json", "package-lock.json", "remotion.config.ts", "requirements.txt"];
+    const d = spawnSync("git", ["diff", "--name-only", run.head_sha, "HEAD", "--", ...MUDAM_VIDEO], { encoding: "utf8" });
+    if (d.status !== 0) throw new Error(`não consegui comparar o código com a execução ${p.execucao} (${d.stderr.trim()}). Renderize de novo, sem reaproveitar.`);
+    if (d.stdout.trim())
+      throw new Error(`o gerador de vídeo ou o episódio mudou desde a execução ${p.execucao} (${d.stdout.trim().split("\n").join(", ")}). Não reaproveito: deixe reaproveitar_execucao vazio para renderizar de novo.`);
     resumo(`♻️ Reaproveitando o MP4 da execução [${p.execucao}](${run.html_url}) (${run.name}, ${run.head_branch}).`);
   }
   const conf = p.confirmacao.trim() === "ENVIAR-PRIVADO";
@@ -205,6 +220,10 @@ try {
     const canal = await new YouTube({ credenciais: cred, cota }).meuCanal();
     cota.salvar();
     resumo(`✅ Conexão OK com o canal **${canal.nome}** (${canal.id}). Nada foi enviado.`);
+    if (cfg.youtube.canalEsperado && !mesmoCanal(canal.nome, cfg.youtube.canalEsperado)) {
+      resumo(`❌ O canal esperado é “${cfg.youtube.canalEsperado}”. Envios ficam bloqueados até conferir.`);
+      process.exitCode = 1;
+    }
     const m = modos();
     resumo(`Publicação: ${m.publicacao ? "ligada" : `desligada (${motivoSimulacao(m, "publicacao")})`}.`);
   } else if (cmd === "metadados") {
