@@ -5,7 +5,11 @@
 import { FORMATOS, parseEpisode } from "../../src/lib/schema.mjs";
 import { semAcento } from "./metadata.mjs";
 
-const URL_MODELOS = "https://models.github.ai/inference/chat/completions";
+// Endereço atual do GitHub Models e o antigo (Azure), que também aceita o GITHUB_TOKEN.
+const ENDERECOS = [
+  { url: "https://models.github.ai/inference/chat/completions", nome: (m) => m },
+  { url: "https://models.inference.ai.azure.com/chat/completions", nome: (m) => m.replace(/^[^/]+\//, "") },
+];
 
 /** Metas de tamanho por formato (a voz fala ~19 caracteres por segundo, mais as pausas). */
 export const METAS = {
@@ -118,6 +122,43 @@ async function postar(f, url, init, saltos = 3) {
   return r;
 }
 
+let enderecoQueFunciona = null;
+
+/** Pede uma resposta ao modelo, tentando o endereço atual e o antigo do GitHub Models. */
+async function chamarIA(f, token, modelo, messages) {
+  const erros = [];
+  for (const e of enderecoQueFunciona ? [enderecoQueFunciona] : ENDERECOS) {
+    const r = await postar(f, e.url, {
+      headers: { authorization: `Bearer ${token}`, "content-type": "application/json", accept: "application/json" },
+      body: JSON.stringify({ model: e.nome(modelo), temperature: 0.7, max_tokens: 4000, response_format: { type: "json_object" }, messages }),
+    });
+    const bruto = await r.text();
+    let j = {};
+    try {
+      j = JSON.parse(bruto);
+    } catch {}
+    const host = new URL(e.url).host;
+    if (r.status === 429) throw Object.assign(new Error(`${modelo}: limite gratuito atingido (HTTP 429)`), { limite: true });
+    if (r.status === 401 || r.status === 403) {
+      erros.push(`${host}: sem permissão (HTTP ${r.status}) ${j.error?.message ?? bruto.slice(0, 200)}`);
+      continue;
+    }
+    if (!r.ok) {
+      erros.push(`${host}: HTTP ${r.status} ${j.error?.message ?? bruto.slice(0, 300)}`);
+      continue;
+    }
+    const texto = j.choices?.[0]?.message?.content ?? "";
+    if (!texto.trim()) {
+      erros.push(`${host}: resposta sem texto (HTTP ${r.status}, ${r.headers?.get?.("content-type") ?? "?"}): ${bruto.slice(0, 200)}`);
+      continue;
+    }
+    enderecoQueFunciona = e;
+    return texto;
+  }
+  const semPermissao = erros.length && erros.every((x) => /sem permissão/.test(x));
+  throw Object.assign(new Error(`${modelo}: ${erros.join(" | ")}${semPermissao ? ' (o workflow precisa de "models: read")' : ""}`), { fatal: semPermissao });
+}
+
 /** Monta o episódio final a partir da resposta da IA (id, formato, aviso e meta de duração são nossos). */
 export function montarEpisodio(bruto, { id, formato }) {
   const scenes = Array.isArray(bruto?.scenes) ? bruto.scenes : [];
@@ -162,32 +203,14 @@ export async function escreverEpisodio(
     for (let n = 1; n <= tentativas; n++) {
       let texto;
       try {
-        const r = await postar(f, URL_MODELOS, {
-          headers: {
-            authorization: `Bearer ${token}`,
-            "content-type": "application/json",
-            accept: "application/vnd.github+json",
-            "x-github-api-version": "2022-11-28",
-          },
-          body: JSON.stringify({ model: modelo, temperature: 0.7, max_tokens: 4000, response_format: { type: "json_object" }, messages: mensagens }),
-        });
-        if (r.status === 401 || r.status === 403) throw Object.assign(new Error(`sem permissão para o GitHub Models (HTTP ${r.status}); o workflow precisa de "models: read"`), { fatal: true });
-        if (r.status === 429) {
-          ultimo = `${modelo}: limite gratuito atingido (HTTP 429)`;
-          log(`  · ${ultimo}`);
-          break; // tenta o próximo modelo
-        }
-        const bruto = await r.text();
-        let j = {};
-        try {
-          j = JSON.parse(bruto);
-        } catch {}
-        if (!r.ok) throw new Error(`${modelo}: HTTP ${r.status} ${j.error?.message ?? bruto.slice(0, 300)}`.trim());
-        texto = j.choices?.[0]?.message?.content ?? "";
-        if (!texto.trim()) throw new Error(`${modelo}: resposta sem texto (HTTP ${r.status}, ${r.url || URL_MODELOS}): ${bruto.slice(0, 300)}`);
+        texto = await chamarIA(f, token, modelo, mensagens);
       } catch (e) {
         if (e.fatal) throw e;
         ultimo = e.message;
+        if (e.limite) {
+          log(`  · ${ultimo}`);
+          break; // tenta o próximo modelo
+        }
         log(`  · tentativa ${n} (${modelo}): ${ultimo}`);
         continue;
       }
