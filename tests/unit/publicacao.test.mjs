@@ -46,7 +46,7 @@ test("sem credenciais e sem chave ligada: só simula, nenhuma chamada à interne
     const dir = ambiente();
     const r = rodar(dir, "scripts/publicar.mjs", ["enviar", EP, "--saida", path.join(dir, "out")], env);
     if (env.YOUTUBE_PUBLICACAO && !env.YOUTUBE_CLIENT_ID) {
-      assert.match(r.saida, /faltam as credenciais/);
+      assert.match(r.saida, /chegaram vazios/);
       continue;
     }
     assert.equal(r.status, 0, r.saida);
