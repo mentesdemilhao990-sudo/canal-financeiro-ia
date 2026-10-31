@@ -1,7 +1,7 @@
 {
   "_leia": "Editar e salvar este arquivo dispara o workflow 'Publicar no YouTube'. Com confirmacao = ENVIAR-PRIVADO, envia de verdade, sempre como PRIVADO. Episódios já enviados nunca são reenviados. Deixe confirmacao vazia para só simular. reaproveitarExecucao só é aceito se o gerador de vídeo e o episódio não mudaram desde aquela execução.",
   "episodios": "guardar-nao-e-investir",
-  "confirmacao": "",
-  "reaproveitarExecucao": "",
-  "pedidoPor": ""
+  "confirmacao": "ENVIAR-PRIVADO",
+  "reaproveitarExecucao": "41216735818",
+  "pedidoPor": "Patrick (2026-10-31 16:15)"
 }
