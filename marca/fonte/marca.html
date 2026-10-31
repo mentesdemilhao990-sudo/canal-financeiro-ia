@@ -1,94 +1,37 @@
-<!doctype html>
-<html><head><meta charset="utf-8">
-<style>
-@font-face{font-family:Bebas;src:url(../../public/fonts/bebas-neue-latin-400-normal.woff2)}
+<!doctype html><html><head><meta charset="utf-8"><style>
 @font-face{font-family:Mont;font-weight:800;src:url(../../public/fonts/montserrat-latin-800-normal.woff2)}
 @font-face{font-family:Mont;font-weight:700;src:url(../../public/fonts/montserrat-latin-700-normal.woff2)}
 @font-face{font-family:Mont;font-weight:500;src:url(../../public/fonts/montserrat-latin-500-normal.woff2)}
-html,body{margin:0;background:#FBF8F1}
-.page{display:none;position:relative;overflow:hidden}
-</style></head>
-<body>
-<svg width="0" height="0" style="position:absolute">
-  <defs>
-    <linearGradient id="gold" x1="0" x2="0" y1="0" y2="1">
-      <stop offset="0" stop-color="#EDC25A"/><stop offset=".5" stop-color="#C9961F"/><stop offset="1" stop-color="#8F6612"/>
-    </linearGradient>
-    <linearGradient id="green" x1="0" x2="0" y1="0" y2="1">
-      <stop offset="0" stop-color="#3FD68A"/><stop offset=".5" stop-color="#17A35A"/><stop offset="1" stop-color="#0B6A39"/>
-    </linearGradient>
-    <radialGradient id="bg" cx=".5" cy=".38" r=".75">
-      <stop offset="0" stop-color="#FFFFFF"/><stop offset=".65" stop-color="#FAF6EC"/><stop offset="1" stop-color="#EFE7D4"/>
-    </radialGradient>
-    <filter id="glowG" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="14"/></filter>
-    <!-- O símbolo: um "M" que é também um gráfico subindo. Caixa 0..400 -->
-    <clipPath id="leftOfBar"><rect x="-100" y="-100" width="401" height="600"/></clipPath>
-    <g id="mark">
-      <!-- brilho -->
-      <g filter="url(#glowG)" opacity=".18" transform="translate(0 14)">
-        <path clip-path="url(#leftOfBar)" d="M60 360 V120 L200 270 L340 80" fill="none" stroke="#5A4A20" stroke-width="58"/>
-        <path d="M330 60 V360" stroke="#1E4A33" stroke-width="58"/>
-      </g>
-      <!-- perna esquerda + V (ouro) -->
-      <path clip-path="url(#leftOfBar)" d="M60 360 V120 L200 270 L340 80" fill="none" stroke="url(#gold)" stroke-width="58" stroke-linejoin="miter" stroke-miterlimit="10"/>
-      <!-- perna direita = barra subindo (verde) -->
-      <rect x="301" y="118" width="58" height="242" fill="url(#green)"/>
-      <!-- seta -->
-      <path d="M330 0 L396 96 L264 96 Z" fill="url(#green)"/>
-    </g>
-  </defs>
-</svg>
-
-<!-- FOTO DE PERFIL 800x800 -->
-<div class="page" id="perfil" style="width:800px;height:800px">
-  <svg width="800" height="800" viewBox="0 0 800 800">
-    <rect width="800" height="800" fill="url(#bg)"/>
-    <g stroke="rgba(20,30,40,.05)" stroke-width="2">
-      <line x1="0" y1="200" x2="800" y2="200"/><line x1="0" y1="300" x2="800" y2="300"/>
-      <line x1="0" y1="400" x2="800" y2="400"/><line x1="0" y1="500" x2="800" y2="500"/><line x1="0" y1="600" x2="800" y2="600"/>
-    </g>
-    <circle cx="400" cy="400" r="352" fill="none" stroke="url(#gold)" stroke-width="10" opacity=".9"/>
-    <use href="#mark" transform="translate(205 185) scale(0.98)"/>
-    <text x="400" y="625" text-anchor="middle" font-family="Mont" font-weight="800" font-size="40" letter-spacing="9" fill="#1B2430">MENTE DE MILHÃO</text>
-  </svg>
-</div>
-
-<!-- BANNER 2560x1440 (área segura central 1546x423) -->
+html,body{margin:0;background:#fff}.page{display:none;position:relative;overflow:hidden;background:#fff}
+</style></head><body>
+<svg width="0" height="0" style="position:absolute"><defs>
+<linearGradient id="gold" x1="0" x2="1" y1="0" y2="1"><stop offset="0" stop-color="#EBCB72"/><stop offset=".55" stop-color="#CFA046"/><stop offset="1" stop-color="#A97B26"/></linearGradient>
+<g id="mark">
+ <path d="M40 410 V50 H135 L215 160 L295 50 H390 V410 H300 V190 L215 300 L130 190 V410 Z" fill="#14284B"/>
+ <polyline points="0,430 150,270 222,330 392,112" fill="none" stroke="#FFFFFF" stroke-width="78" stroke-linejoin="miter" stroke-miterlimit="8"/>
+ <path d="M450.4 37.1 L440.9 150.1 L343.1 73.9 Z" fill="#FFFFFF" stroke="#FFFFFF" stroke-width="26" stroke-linejoin="miter"/>
+ <polyline points="0,430 150,270 222,330 392,112" fill="none" stroke="url(#gold)" stroke-width="46" stroke-linejoin="miter" stroke-miterlimit="8"/>
+ <path d="M450.4 37.1 L440.9 150.1 L343.1 73.9 Z" fill="url(#gold)"/>
+ <path d="M470.0 -36.0 L476.4 -18.8 L494.7 -18.0 L480.4 -6.6 L485.3 11.0 L470.0 0.9 L454.7 11.0 L459.6 -6.6 L445.3 -18.0 L463.6 -18.8 Z" fill="url(#gold)"/>
+</g></defs></svg>
+<div class="page" id="perfil" style="width:800px;height:800px"><svg width="800" height="800">
+ <use href="#mark" transform="translate(200 120) scale(0.9)"/>
+ <text x="400" y="625" text-anchor="middle" font-family="Mont" font-weight="800" font-size="50" fill="#14284B">MENTE DE MILHÃO</text>
+ <text x="400" y="672" text-anchor="middle" font-family="Mont" font-weight="700" font-size="26" letter-spacing="4" fill="#B8872A">EDUCAÇÃO FINANCEIRA</text>
+</svg></div>
 <div class="page" id="banner" style="width:2560px;height:1440px">
-  <svg width="2560" height="1440" viewBox="0 0 2560 1440" style="position:absolute;inset:0">
-    <defs>
-      <radialGradient id="bgB" cx=".5" cy=".5" r=".7">
-        <stop offset="0" stop-color="#FFFFFF"/><stop offset=".6" stop-color="#FAF6EC"/><stop offset="1" stop-color="#EFE7D4"/>
-      </radialGradient>
-      <linearGradient id="area" x1="0" x2="0" y1="0" y2="1">
-        <stop offset="0" stop-color="#17A35A" stop-opacity=".16"/><stop offset="1" stop-color="#17A35A" stop-opacity="0"/>
-      </linearGradient>
-      <linearGradient id="line" x1="0" x2="1">
-        <stop offset="0" stop-color="#17A35A" stop-opacity=".2"/><stop offset=".5" stop-color="#17A35A"/><stop offset="1" stop-color="#C9961F"/>
-      </linearGradient>
-    </defs>
-    <rect width="2560" height="1440" fill="url(#bgB)"/>
-    <g stroke="rgba(20,30,40,.05)" stroke-width="2">
-      <line x1="0" y1="560" x2="2560" y2="560"/><line x1="0" y1="720" x2="2560" y2="720"/><line x1="0" y1="880" x2="2560" y2="880"/>
-      <line x1="0" y1="1040" x2="2560" y2="1040"/><line x1="0" y1="400" x2="2560" y2="400"/>
-    </g>
-    <path d="M0 1260 L300 1220 L600 1250 L900 1170 L1200 1200 L1500 1120 L1800 1140 L2100 1030 L2350 1050 L2560 860 L2560 1440 L0 1440 Z" fill="url(#area)"/>
-    <polyline points="0,1260 300,1220 600,1250 900,1170 1200,1200 1500,1120 1800,1140 2100,1030 2350,1050 2560,860" fill="none" stroke="url(#line)" stroke-width="8" stroke-linejoin="round"/>
-    <!-- moedas/pontos -->
-    <g fill="#C9961F" opacity=".7"><circle cx="2100" cy="1030" r="9"/><circle cx="1500" cy="1120" r="7"/></g>
-    <!-- símbolo na área segura -->
-    <use href="#mark" transform="translate(560 575) scale(0.72)"/>
-  </svg>
-  <div style="position:absolute;left:900px;top:560px;width:1160px;white-space:nowrap">
-    <div style="font-family:Bebas;font-size:190px;line-height:1;padding-top:30px;margin-top:-30px;letter-spacing:4px;background:linear-gradient(180deg,#E3B44A 0%,#C9961F 50%,#8F6612 100%);-webkit-background-clip:text;color:transparent;filter:drop-shadow(0 6px 14px rgba(143,102,18,.18))">MENTE DE MILHÃO</div>
-    <div style="height:6px;width:560px;border-radius:3px;background:linear-gradient(90deg,#17A35A,#C9961F);margin:26px 0 30px"></div>
-    <div style="font-family:Mont;font-weight:700;font-size:46px;color:#1B2430;letter-spacing:1px">Entenda como o dinheiro realmente funciona</div>
-    <div style="font-family:Mont;font-weight:500;font-size:34px;color:#6B7480;margin-top:14px;letter-spacing:2px">EDUCAÇÃO FINANCEIRA · SEM ENROLAÇÃO</div>
-  </div>
+ <svg width="2560" height="1440" style="position:absolute;inset:0">
+  <rect width="2560" height="1440" fill="#FFFFFF"/>
+  <g stroke="#14284B" stroke-opacity=".05" stroke-width="2"><line x1="0" y1="400" x2="2560" y2="400"/><line x1="0" y1="560" x2="2560" y2="560"/><line x1="0" y1="720" x2="2560" y2="720"/><line x1="0" y1="880" x2="2560" y2="880"/><line x1="0" y1="1040" x2="2560" y2="1040"/></g>
+  <polyline points="0,1260 300,1220 600,1250 900,1170 1200,1200 1500,1120 1800,1140 2100,1030 2350,1050 2560,860" fill="none" stroke="#CFA046" stroke-opacity=".45" stroke-width="8" stroke-linejoin="round"/>
+  <use href="#mark" transform="translate(560 560) scale(0.74)"/>
+ </svg>
+ <div style="position:absolute;left:930px;top:600px;white-space:nowrap">
+  <div style="font-family:Mont;font-weight:800;font-size:104px;line-height:1.05;color:#14284B">MENTE DE MILHÃO</div>
+  <div style="font-family:Mont;font-weight:700;font-size:40px;letter-spacing:8px;color:#B8872A;margin-top:10px">EDUCAÇÃO FINANCEIRA</div>
+  <div style="height:5px;width:520px;background:linear-gradient(90deg,#14284B,#CFA046);margin:28px 0 24px;border-radius:3px"></div>
+  <div style="font-family:Mont;font-weight:500;font-size:40px;color:#3A4A66">Entenda como o dinheiro realmente funciona</div>
+ </div>
 </div>
-
-<script>
-const id = (location.hash || '#perfil').slice(1);
-document.getElementById(id).style.display = 'block';
-</script>
+<script>const id=(location.hash||'#perfil').slice(1);document.getElementById(id).style.display='block';</script>
 </body></html>
