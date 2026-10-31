@@ -2,6 +2,7 @@
 // usando o GITHUB_TOKEN do próprio Actions (permissão "models: read").
 // Tudo que a IA devolve passa pela mesma validação dos episódios feitos à mão
 // e por regras extras de segurança; se falhar, ela recebe os erros e tenta de novo.
+import http from "node:http";
 import { z } from "zod";
 import { FORMATOS, MODELOS_CENA, parseEpisode } from "../../src/lib/schema.mjs";
 import { semAcento } from "./metadata.mjs";
@@ -20,8 +21,9 @@ export function modelosPadrao(env = process.env) {
 
 /** Metas de tamanho por formato (a voz fala ~19 caracteres por segundo, mais as pausas). */
 export const METAS = {
-  short: { cenas: [5, 7], caracteres: [620, 820], duracao: [34, 56], cta: "Siga para mais", porCena: 380 },
-  longo: { cenas: [10, 14], caracteres: [3300, 4300], duracao: [170, 330], cta: "Inscreva-se", porCena: 520 },
+  // caracteres: meta pedida à IA; aceite: duração estimada que ainda aprovamos (a IA nem sempre acerta o tamanho).
+  short: { cenas: [5, 7], caracteres: [620, 820], duracao: [34, 56], aceite: [32, 57], cta: "Siga para mais", porCena: 380, minCena: 60 },
+  longo: { cenas: [9, 13], caracteres: [2800, 3800], duracao: [150, 300], aceite: [125, 420], cta: "Inscreva-se", porCena: 520, minCena: 140 },
 };
 
 export const AVISO = "Conteúdo educativo. Valores ilustrativos, não é recomendação de investimento.";
@@ -57,10 +59,10 @@ export function problemasDeConteudo(ep, formato, { titulosUsados = [] } = {}) {
   if (ep.scenes[0]?.template !== "hook") p.push('a primeira cena precisa ser "hook"');
   if (ep.scenes.at(-1)?.template !== "outro") p.push('a última cena precisa ser "outro"');
   const chars = ep.scenes.reduce((t, s) => t + s.narration.length, 0);
-  if (chars < meta.caracteres[0] || chars > meta.caracteres[1])
-    p.push(`a narração somada tem ${chars} caracteres; precisa ficar entre ${meta.caracteres[0]} e ${meta.caracteres[1]}`);
+  const fora = chars < meta.caracteres[0] ? "curta" : chars > meta.caracteres[1] ? "longa" : null;
   const d = estimarDuracao(ep.scenes);
-  if (d < meta.duracao[0] || d > meta.duracao[1]) p.push(`duração estimada de ${Math.round(d)} s; precisa ficar entre ${meta.duracao[0]} e ${meta.duracao[1]} s`);
+  if (d < meta.aceite[0] || d > meta.aceite[1])
+    p.push(`a narração somada tem ${chars} caracteres (${fora ?? "fora do tamanho"}): precisa ficar entre ${meta.caracteres[0]} e ${meta.caracteres[1]}`);
   const t = semAcento(ep.title).toLowerCase().trim();
   if (titulosUsados.some((u) => semAcento(u).toLowerCase().trim() === t)) p.push("esse título já foi usado no canal; crie outro");
   return p;
@@ -148,7 +150,7 @@ export function esquemaResposta(formato) {
     data.required = Object.keys(data.properties ?? {});
     return {
       type: "object",
-      properties: { id: { type: "string" }, template: { type: "string", enum: [nome] }, narration: { type: "string" }, data },
+      properties: { id: { type: "string" }, template: { type: "string", enum: [nome] }, narration: { type: "string", minLength: m.minCena, maxLength: m.porCena }, data },
       required: ["id", "template", "narration", "data"],
     };
   });
@@ -169,17 +171,16 @@ export function esquemaResposta(formato) {
  * Usa streaming: sem ele o Node desiste depois de 5 min esperando a resposta.
  */
 async function chamarOllama(f, modelo, messages, formato) {
-  const r = await f(`${OLLAMA}/api/chat`, {
-    method: "POST",
-    headers: { "content-type": "application/json" },
-    body: JSON.stringify({
-      model: modelo.replace(/^ollama:/, ""),
-      messages,
-      format: formato ? esquemaResposta(formato) : "json",
-      stream: true,
-      options: { temperature: 0.6, num_ctx: 8192, num_predict: 4000 },
-    }),
+  const corpo = JSON.stringify({
+    model: modelo.replace(/^ollama:/, ""),
+    messages,
+    format: formato ? esquemaResposta(formato) : "json",
+    stream: true,
+    options: { temperature: 0.6, num_ctx: 8192, num_predict: 4000 },
   });
+  // No processador do Actions a resposta pode levar mais de 10 min; o fetch do
+  // Node desiste em 5. Fora dos testes, usa http direto, sem limite de espera.
+  const r = f === globalThis.fetch ? await postarSemLimite(`${OLLAMA}/api/chat`, corpo) : await f(`${OLLAMA}/api/chat`, { method: "POST", headers: { "content-type": "application/json" }, body: corpo });
   const bruto = await r.text();
   if (!r.ok) {
     let j = {};
@@ -202,6 +203,24 @@ async function chamarOllama(f, modelo, messages, formato) {
   }
   if (!texto.trim()) throw new Error(`${modelo}: resposta vazia`);
   return texto;
+}
+
+/** POST sem tempo máximo de espera; devolve algo parecido com a resposta do fetch. */
+function postarSemLimite(url, corpo) {
+  return new Promise((ok, erro) => {
+    const req = http.request(url, { method: "POST", headers: { "content-type": "application/json", "content-length": Buffer.byteLength(corpo) } }, (res) => {
+      const partes = [];
+      res.on("data", (c) => partes.push(c));
+      res.on("end", () => {
+        const texto = Buffer.concat(partes).toString("utf8");
+        ok({ ok: res.statusCode >= 200 && res.statusCode < 300, status: res.statusCode, text: async () => texto });
+      });
+      res.on("error", erro);
+    });
+    req.setTimeout(0);
+    req.on("error", erro);
+    req.end(corpo);
+  });
 }
 
 /** Pede uma resposta ao modelo. */

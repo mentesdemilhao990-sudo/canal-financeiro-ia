@@ -36,7 +36,7 @@ jobs:
   pauta:
     name: Escolher tema e escrever roteiros
     runs-on: ubuntu-latest
-    timeout-minutes: 90 # com a IA local no processador, os roteiros levam alguns minutos
+    timeout-minutes: 150 # com a IA local no processador, cada roteiro leva de 5 a 15 min
     env:
       # IA aberta usada quando o GitHub Models não responde: roda no próprio Actions, sem chave e sem custo.
       OLLAMA_VERSAO: v0.5.7
