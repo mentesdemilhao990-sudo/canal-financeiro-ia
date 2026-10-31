@@ -83,7 +83,7 @@ Depois apague o bloco de notas temporário.
 
 ## 8. Testar a conexão (não envia nada)
 
-Para um diagnóstico completo: **Actions → Diagnóstico OAuth do YouTube → Run workflow** (ou edite `pedidos/diagnostico-oauth.json`). Ele mostra, sem revelar nenhum valor, se cada Secret existe, se tem espaço ou aspas sobrando, se parece trocado com outro, o status HTTP e o erro que o Google devolveu, os escopos e o nome do canal conectado. O canal precisa ser o de `youtube.canalEsperado` em `config/publicacao.json` (hoje “Mente de Milhões”). Se for outro, nenhum vídeo é enviado.
+Para um diagnóstico completo: **Actions → Diagnóstico OAuth do YouTube → Run workflow** (ou edite `pedidos/diagnostico-oauth.json`). Ele mostra, sem revelar nenhum valor, se cada Secret existe, se tem espaço ou aspas sobrando, se parece trocado com outro, o status HTTP e o erro que o Google devolveu, os escopos e o nome do canal conectado. O canal precisa ser o de `youtube.canalEsperado` em `config/publicacao.json` (hoje “Mente de Milhão”). Se for outro, nenhum vídeo é enviado.
 
 
 **Actions → Testar conexão com o YouTube → Run workflow**. Ficando verde, o resumo mostra "Conexão OK com o canal …". Se der erro, veja "Problemas comuns" no fim.
