@@ -81,7 +81,7 @@ export function menciona(texto, palavras) {
 /**
  * Dá pontos a cada tema:
  *  - busca em alta no Google que fala do tema: 5 pontos + até 5 pelo volume de buscas
- *  - cada manchete das últimas 48 h que fala do tema: 1 ponto (até 15)
+ *  - manchetes das últimas 48 h que falam do tema: 3 × log2(1 + quantidade)
  *  - época do ano (campo "meses"): 4 pontos
  * Temas usados nos últimos `diasSemRepetir` dias ficam de fora.
  */
@@ -97,7 +97,7 @@ export function pontuar(temas, { trends = [], noticias = [] }, { hoje = new Date
       const emAlta = trends.filter((x) => menciona([x.titulo, ...x.manchetes].join(" "), t.palavras));
       const manchetes = noticias.filter((n) => menciona(n.titulo, t.palavras));
       const pTrends = emAlta.reduce((n, x) => n + 5 + Math.min(5, Math.log10(Math.max(1, x.trafego)) - 2), 0);
-      const pNoticias = Math.min(15, manchetes.length);
+      const pNoticias = 3 * Math.log2(1 + manchetes.length);
       const pEpoca = t.meses?.includes(mes) ? 4 : 0;
       const ultimo = ultimoUso.get(t.id);
       const dias = ultimo ? (hoje - ultimo) / 86400000 : Infinity;

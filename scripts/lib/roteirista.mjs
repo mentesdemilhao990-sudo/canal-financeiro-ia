@@ -162,9 +162,14 @@ export async function escreverEpisodio(
           log(`  · ${ultimo}`);
           break; // tenta o próximo modelo
         }
-        const j = await r.json().catch(() => ({}));
-        if (!r.ok) throw new Error(`${modelo}: HTTP ${r.status} ${j.error?.message ?? ""}`.trim());
+        const bruto = await r.text();
+        let j = {};
+        try {
+          j = JSON.parse(bruto);
+        } catch {}
+        if (!r.ok) throw new Error(`${modelo}: HTTP ${r.status} ${j.error?.message ?? bruto.slice(0, 300)}`.trim());
         texto = j.choices?.[0]?.message?.content ?? "";
+        if (!texto.trim()) throw new Error(`${modelo}: resposta sem texto (HTTP ${r.status}): ${bruto.slice(0, 300)}`);
       } catch (e) {
         if (e.fatal) throw e;
         ultimo = e.message;
