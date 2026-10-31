@@ -15,6 +15,10 @@ on:
       data:
         description: "Só para 'agendado': data e hora de Brasília, ex.: 2026-11-05T18:00"
         required: false
+  # Pedido por arquivo: editar pedidos/visibilidade.json dispara uma execução.
+  # Só muda algo se o arquivo tiver confirmacao = MUDAR-VISIBILIDADE.
+  push:
+    paths: ["pedidos/visibilidade.json"]
 
 permissions:
   contents: write
@@ -33,18 +37,41 @@ jobs:
           node-version: 22
           cache: npm
       - run: npm ci
-      - name: Mudar visibilidade
+      - name: Ler pedido
+        id: pedido
         env:
-          EPISODIO: ${{ inputs.episodio }}
-          PARA: ${{ inputs.visibilidade }}
-          DATA: ${{ inputs.data }}
+          EVENTO: ${{ github.event_name }}
+          IN_EPISODIO: ${{ inputs.episodio }}
+          IN_PARA: ${{ inputs.visibilidade }}
+          IN_DATA: ${{ inputs.data }}
+        run: |
+          node -e '
+            const fs = require("fs");
+            const limpa = (v) => String(v ?? "").replace(/[\r\n]/g, "").trim();
+            let p = { episodio: process.env.IN_EPISODIO, para: process.env.IN_PARA, data: process.env.IN_DATA, conf: "MUDAR-VISIBILIDADE" };
+            if (process.env.EVENTO === "push") {
+              const a = JSON.parse(fs.readFileSync("pedidos/visibilidade.json", "utf8"));
+              p = { episodio: a.episodio, para: a.visibilidade, data: a.data, conf: a.confirmacao };
+            }
+            const ok = limpa(p.conf) === "MUDAR-VISIBILIDADE" && limpa(p.episodio) !== "";
+            fs.appendFileSync(process.env.GITHUB_OUTPUT, `ok=${ok}\nepisodio=${limpa(p.episodio)}\npara=${limpa(p.para) || "publico"}\ndata=${limpa(p.data)}\n`);
+            if (!ok) console.log("Pedido sem confirmacao MUDAR-VISIBILIDADE: nada a fazer.");
+          '
+      - name: Mudar visibilidade
+        if: steps.pedido.outputs.ok == 'true'
+        env:
+          EPISODIO: ${{ steps.pedido.outputs.episodio }}
+          PARA: ${{ steps.pedido.outputs.para }}
+          DATA: ${{ steps.pedido.outputs.data }}
+          # A execução manual ou o pedido confirmado autorizam só esta mudança.
+          CONFIRMACAO_ENVIO: ENVIAR-PRIVADO
           YOUTUBE_CLIENT_ID: ${{ secrets.YOUTUBE_CLIENT_ID }}
           YOUTUBE_CLIENT_SECRET: ${{ secrets.YOUTUBE_CLIENT_SECRET }}
           YOUTUBE_REFRESH_TOKEN: ${{ secrets.YOUTUBE_REFRESH_TOKEN }}
           YOUTUBE_PUBLICACAO: ${{ vars.YOUTUBE_PUBLICACAO }}
         run: node scripts/publicar.mjs visibilidade "$EPISODIO" "$PARA" "$DATA"
       - name: Salvar registro e painel
-        if: always()
+        if: always() && steps.pedido.outputs.ok == 'true'
         uses: ./.github/actions/salvar-estado
         env:
           YOUTUBE_REFRESH_TOKEN: ${{ secrets.YOUTUBE_REFRESH_TOKEN }}
