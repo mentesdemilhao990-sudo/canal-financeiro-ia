@@ -2,7 +2,8 @@
 // usando o GITHUB_TOKEN do próprio Actions (permissão "models: read").
 // Tudo que a IA devolve passa pela mesma validação dos episódios feitos à mão
 // e por regras extras de segurança; se falhar, ela recebe os erros e tenta de novo.
-import { FORMATOS, parseEpisode } from "../../src/lib/schema.mjs";
+import { z } from "zod";
+import { FORMATOS, MODELOS_CENA, parseEpisode } from "../../src/lib/schema.mjs";
 import { semAcento } from "./metadata.mjs";
 
 // IA gratuita, em duas opções:
@@ -130,33 +131,82 @@ async function postar(f, url, init, saltos = 3) {
 
 let enderecoQueFunciona = null;
 
-/** Modelo aberto no próprio runner (Ollama). Saída forçada em JSON. */
-async function chamarOllama(f, modelo, messages) {
+/**
+ * Formato exato da resposta (JSON Schema). O Ollama usa isso para obrigar o
+ * modelo a devolver exatamente esses campos, o que ajuda muito modelos menores.
+ */
+export function esquemaResposta(formato) {
+  const m = METAS[formato];
+  const limpar = (o) => {
+    if (Array.isArray(o)) return o.map(limpar);
+    if (!o || typeof o !== "object") return o;
+    const { $schema, default: _d, ...resto } = o;
+    return Object.fromEntries(Object.entries(resto).map(([k, v]) => [k, limpar(v)]));
+  };
+  const cenas = Object.entries(MODELOS_CENA).map(([nome, obj]) => {
+    const data = limpar(z.toJSONSchema(obj.shape.data, { io: "input", unrepresentable: "any" }));
+    data.required = Object.keys(data.properties ?? {});
+    return {
+      type: "object",
+      properties: { id: { type: "string" }, template: { type: "string", enum: [nome] }, narration: { type: "string" }, data },
+      required: ["id", "template", "narration", "data"],
+    };
+  });
+  return {
+    type: "object",
+    properties: {
+      title: { type: "string" },
+      description: { type: "string" },
+      tags: { type: "array", items: { type: "string" } },
+      scenes: { type: "array", minItems: m.cenas[0], maxItems: m.cenas[1], items: { anyOf: cenas } },
+    },
+    required: ["title", "description", "tags", "scenes"],
+  };
+}
+
+/**
+ * Modelo aberto no próprio runner (Ollama), com a resposta presa ao formato.
+ * Usa streaming: sem ele o Node desiste depois de 5 min esperando a resposta.
+ */
+async function chamarOllama(f, modelo, messages, formato) {
   const r = await f(`${OLLAMA}/api/chat`, {
     method: "POST",
     headers: { "content-type": "application/json" },
     body: JSON.stringify({
       model: modelo.replace(/^ollama:/, ""),
       messages,
-      format: "json",
-      stream: false,
-      options: { temperature: 0.7, num_ctx: 8192, num_predict: 4000 },
+      format: formato ? esquemaResposta(formato) : "json",
+      stream: true,
+      options: { temperature: 0.6, num_ctx: 8192, num_predict: 4000 },
     }),
   });
   const bruto = await r.text();
-  let j = {};
-  try {
-    j = JSON.parse(bruto);
-  } catch {}
-  if (!r.ok) throw new Error(`${modelo}: HTTP ${r.status} ${j.error ?? bruto.slice(0, 300)}`);
-  const texto = j.message?.content ?? "";
+  if (!r.ok) {
+    let j = {};
+    try {
+      j = JSON.parse(bruto);
+    } catch {}
+    throw new Error(`${modelo}: HTTP ${r.status} ${j.error ?? bruto.slice(0, 300)}`);
+  }
+  // Resposta em várias linhas JSON (uma por pedaço) ou numa só.
+  let texto = "";
+  for (const linha of bruto.split("\n")) {
+    if (!linha.trim()) continue;
+    try {
+      const j = JSON.parse(linha);
+      if (j.error) throw new Error(`${modelo}: ${j.error}`);
+      texto += j.message?.content ?? "";
+    } catch (e) {
+      if (/^ollama/.test(e.message)) throw e;
+    }
+  }
   if (!texto.trim()) throw new Error(`${modelo}: resposta vazia`);
   return texto;
 }
 
 /** Pede uma resposta ao modelo. */
-async function chamarIA(f, token, modelo, messages) {
-  if (modelo.startsWith("ollama:")) return chamarOllama(f, modelo, messages);
+async function chamarIA(f, token, modelo, messages, formato) {
+  if (modelo.startsWith("ollama:")) return chamarOllama(f, modelo, messages, formato);
   const erros = [];
   for (const e of enderecoQueFunciona ? [enderecoQueFunciona] : ENDERECOS) {
     const host = new URL(e.url).host;
@@ -241,7 +291,7 @@ export async function escreverEpisodio(
     for (let n = 1; n <= tentativas; n++) {
       let texto;
       try {
-        texto = await chamarIA(f, token, modelo, mensagens);
+        texto = await chamarIA(f, token, modelo, mensagens, formato);
       } catch (e) {
         if (e.fatal) throw e;
         ultimo = e.message;

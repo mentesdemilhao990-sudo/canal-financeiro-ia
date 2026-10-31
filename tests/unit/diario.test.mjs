@@ -227,7 +227,8 @@ test("roteiro: com OLLAMA_MODELO usa a IA local, sem token", async () => {
     urls.push(String(url));
     const b = JSON.parse(init.body);
     assert.equal(b.model, "qwen2.5:7b");
-    assert.equal(b.format, "json");
+    assert.equal(b.format.properties.scenes.minItems, 5, "resposta presa ao formato do Short");
+    assert.equal(b.stream, true);
     return new Response(JSON.stringify({ message: { content: JSON.stringify(respostaShort()) } }), { status: 200 });
   };
   const r = await escreverEpisodio({ tema: temas.temas[0], formato: "short", id: "b-short" }, { token: "", modelos: ["ollama:qwen2.5:7b"], fetch: f, log: () => {} });

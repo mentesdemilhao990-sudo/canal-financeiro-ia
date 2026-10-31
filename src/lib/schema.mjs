@@ -89,6 +89,9 @@ const base = z.object({
   narration: z.string().trim().min(10).max(600),
 });
 
+/** Modelos de cena, para quem precisa do formato de cada um (ex.: a IA que escreve roteiros). */
+export const MODELOS_CENA = { hook, split, counter, lineChart, bars, list, outro };
+
 export const sceneSchema = z.discriminatedUnion("template", [hook, split, counter, lineChart, bars, list, outro]).and(base);
 
 const dataHora = /^\d{4}-\d{2}-\d{2}(T\d{2}:\d{2}(:\d{2})?(Z|[+-]\d{2}:\d{2})?)?$/;
