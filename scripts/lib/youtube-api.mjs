@@ -14,7 +14,6 @@ export class ErroYouTube extends Error {
   }
 }
 
-/** Lê as credenciais das variáveis de ambiente (vindas dos GitHub Actions Secrets). */
 /**
  * Limpa o valor colado no Secret: espaços, quebras de linha, aspas em volta e
  * prefixos comuns de cópia ("client_id=", "Bearer "). Um espaço ou quebra de
