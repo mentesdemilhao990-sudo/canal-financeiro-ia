@@ -6,6 +6,7 @@ import http from "node:http";
 import { z } from "zod";
 import { FORMATOS, MODELOS_CENA, parseEpisode } from "../../src/lib/schema.mjs";
 import { semAcento } from "./metadata.mjs";
+import { narracaoPorExtenso } from "./por-extenso.mjs";
 
 // IA gratuita, em duas opções:
 //  - GitHub Models (na nuvem, usa o GITHUB_TOKEN do Actions);
@@ -23,7 +24,7 @@ export function modelosPadrao(env = process.env) {
 export const METAS = {
   // caracteres: meta pedida à IA; aceite: duração estimada que ainda aprovamos (a IA nem sempre acerta o tamanho).
   short: { cenas: [5, 7], caracteres: [620, 820], duracao: [34, 56], aceite: [32, 57], cta: "Siga para mais", porCena: 380, minCena: 60 },
-  longo: { cenas: [9, 13], caracteres: [2800, 3800], duracao: [150, 300], aceite: [125, 420], cta: "Inscreva-se", porCena: 520, minCena: 140 },
+  longo: { cenas: [9, 13], caracteres: [2800, 3800], duracao: [150, 300], aceite: [95, 420], cta: "Inscreva-se", porCena: 520, minCena: 240 },
 };
 
 export const AVISO = "Conteúdo educativo. Valores ilustrativos, não é recomendação de investimento.";
@@ -274,7 +275,8 @@ export function montarEpisodio(bruto, { id, formato }) {
     let sid = String(s?.id ?? `cena-${i + 1}`).toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "").replace(/[^a-z0-9-]+/g, "-").replace(/^-+|-+$/g, "") || `cena-${i + 1}`;
     while (vistos.has(sid)) sid = `${sid}-${i + 1}`;
     vistos.add(sid);
-    return { ...s, id: sid };
+    // A IA às vezes escreve "R$ 10.000" ou "4,5%" na narração: vira texto falado.
+    return { ...s, id: sid, ...(typeof s?.narration === "string" ? { narration: narracaoPorExtenso(s.narration) } : {}) };
   });
   const F = FORMATOS[formato];
   const alvo = cenas.every((s) => typeof s?.narration === "string") && cenas.length ? estimarDuracao(cenas) : F.minDuracao;

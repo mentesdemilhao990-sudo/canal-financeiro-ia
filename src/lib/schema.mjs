@@ -101,11 +101,11 @@ export const TEMPLATES = ["hook", "split", "counter", "lineChart", "bars", "list
 /**
  * Formatos de vídeo:
  *  - short: vertical 1080x1920, 30 a 60 s (YouTube Shorts)
- *  - longo: horizontal 1920x1080, 2 a 8 min (vídeo normal)
+ *  - longo: horizontal 1920x1080, 1,5 a 8 min (vídeo normal)
  */
 export const FORMATOS = {
   short: { width: 1080, height: 1920, minDuracao: 30, maxDuracao: 60, minCenas: 3, maxCenas: 8, maxNarracao: 400 },
-  longo: { width: 1920, height: 1080, minDuracao: 120, maxDuracao: 480, minCenas: 6, maxCenas: 20, maxNarracao: 600 },
+  longo: { width: 1920, height: 1080, minDuracao: 90, maxDuracao: 480, minCenas: 6, maxCenas: 20, maxNarracao: 600 },
 };
 
 export const episodeSchema = z

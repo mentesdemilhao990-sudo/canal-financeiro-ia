@@ -1,5 +1,5 @@
 {
   "_leia": "Editar e salvar este arquivo dispara o workflow 'Vídeos do dia'. modo = ensaio: gera e testa o vídeo longo e o Short, sem publicar. modo = publicar: publica de verdade (público). modo = nenhum: não faz nada. O horário automático (10h de Brasília) não depende deste arquivo.",
   "modo": "ensaio",
-  "pedidoPor": "teste antes do merge (2026-10-31, 9ª tentativa, IA local sem limite de espera)"
+  "pedidoPor": "teste antes do merge (2026-10-31, 10ª tentativa, números por extenso automáticos)"
 }

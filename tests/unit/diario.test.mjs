@@ -26,7 +26,7 @@ test("formatos: Short vertical por padrão, longo horizontal", () => {
 
 test("formatos: limites de duração e cenas valem para cada um", () => {
   assert.throws(() => parseEpisode({ ...short(), targetDurationSeconds: 120 }), /Short a duração vai de 30 a 60/);
-  assert.throws(() => parseEpisode({ ...longo(), targetDurationSeconds: 50 }), /longo a duração vai de 120 a 480/);
+  assert.throws(() => parseEpisode({ ...longo(), targetDurationSeconds: 50 }), /longo a duração vai de 90 a 480/);
   assert.throws(() => parseEpisode({ ...longo(), scenes: longo().scenes.slice(0, 4) }), /de 6 a 20 cenas/);
   const s = short();
   s.scenes[0].narration = "a ".repeat(250);
@@ -234,4 +234,15 @@ test("roteiro: com OLLAMA_MODELO usa a IA local, sem token", async () => {
   const r = await escreverEpisodio({ tema: temas.temas[0], formato: "short", id: "b-short" }, { token: "", modelos: ["ollama:qwen2.5:7b"], fetch: f, log: () => {} });
   assert.equal(r.modelo, "ollama:qwen2.5:7b");
   assert.match(urls[0], /:11434\/api\/chat$/);
+});
+
+test("narração: números e símbolos viram palavras", async () => {
+  const { narracaoPorExtenso, inteiroPorExtenso } = await import("../../scripts/lib/por-extenso.mjs");
+  assert.equal(inteiroPorExtenso(2026), "dois mil e vinte e seis");
+  assert.equal(inteiroPorExtenso(16702), "dezesseis mil setecentos e dois");
+  assert.equal(narracaoPorExtenso("R$ 10.000 a 4,5% ao ano"), "dez mil reais a quatro vírgula cinco por cento ao ano");
+  assert.equal(narracaoPorExtenso("R$ 1 mil e R$ 2 milhões"), "mil reais e dois milhões de reais");
+  assert.equal(narracaoPorExtenso("o 13º salário"), "o décimo terceiro salário");
+  const ep = montarEpisodio({ title: "t", scenes: [{ id: "a", template: "hook", narration: "Guarde R$ 300 por mês.", data: {} }] }, { id: "x", formato: "short" });
+  assert.equal(ep.scenes[0].narration, "Guarde trezentos reais por mês.");
 });
