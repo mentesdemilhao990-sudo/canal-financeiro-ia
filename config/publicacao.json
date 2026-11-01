@@ -21,7 +21,13 @@
     "rodapeDescricao": "📌 Inscreva-se para entender como o dinheiro realmente funciona.",
     "maxEnviosPorExecucao": 2,
     "verificarTitulosRecentesNoCanal": true,
-    "_canalEsperado": "Nome do canal que deve aparecer no login. Se for outro, nada é enviado. Maiúsculas e acentos não importam."
+    "_canalEsperado": "Nome do canal que deve aparecer no login. Se for outro, nada é enviado. Maiúsculas e acentos não importam.",
+    "horarioAleatorio": {
+      "_leia": "Vídeos do dia: cada vídeo fica público numa hora sorteada entre inicio e fim (horário de Brasília), com pelo menos intervaloMin minutos entre eles.",
+      "inicio": 10,
+      "fim": 21,
+      "intervaloMin": 120
+    }
   },
   "comentarios": {
     "maxComentariosPorVideo": 200,

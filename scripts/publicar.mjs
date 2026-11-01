@@ -17,6 +17,7 @@ import { Cota, buscarPublicacao, checarDuplicado, hashEpisodio, lerPublicacoes, 
 import { YouTube, credenciaisDoAmbiente } from "./lib/youtube-api.mjs";
 import { modos, motivoSimulacao } from "./lib/modos.mjs";
 import { semAcento } from "./lib/metadata.mjs";
+import { horaBrasilia, horariosAleatorios, hojeEmBrasilia } from "./lib/horarios.mjs";
 
 const mesmoCanal = (a, b) => semAcento(String(a)).toLowerCase().trim() === semAcento(String(b)).toLowerCase().trim();
 
@@ -28,6 +29,8 @@ const opt = (nome, def) => {
 };
 const saida = opt("--saida", "out");
 const visibilidadePedida = opt("--visibilidade", "privado");
+// --horario aleatorio: cada vídeo público sai numa hora sorteada do dia (janela em config/publicacao.json).
+const horarioPedido = opt("--horario", "agora");
 const resumo = (linha) => {
   console.log(linha);
   if (process.env.GITHUB_STEP_SUMMARY) appendFileSync(process.env.GITHUB_STEP_SUMMARY, `${linha}\n`);
@@ -69,8 +72,13 @@ async function enviar(ids) {
   if (!["privado", "publico"].includes(visibilidadePedida)) throw new Error('--visibilidade aceita "privado" ou "publico"');
   if (visibilidadePedida === "publico" && m.credenciais && !m.publicoDireto)
     throw new Error("envio direto como público só é permitido pela pauta diária (workflow Vídeos do dia)");
+  if (!["agora", "aleatorio"].includes(horarioPedido)) throw new Error('--horario aceita "agora" ou "aleatorio"');
+  if (horarioPedido === "aleatorio" && visibilidadePedida !== "publico") throw new Error("--horario aleatorio só vale com --visibilidade publico");
   const publico = real && visibilidadePedida === "publico";
   const rotulo = publico ? "público" : "privado";
+  const { _leia, ...janela } = cfg.youtube.horarioAleatorio ?? {};
+  const dia = ids.map((i) => /^\d{4}-\d{2}-\d{2}/.exec(i)?.[0]).find(Boolean) ?? hojeEmBrasilia();
+  const horarios = horarioPedido === "aleatorio" ? horariosAleatorios(ids, { dia, ...janela, agora: process.env.AGORA_TESTE ? new Date(process.env.AGORA_TESTE) : new Date() }) : {};
   const pubs = lerPublicacoes();
   const cota = new Cota(cfg.cota);
   const yt = real ? new YouTube({ credenciais: credenciaisDoAmbiente(), cota }) : null;
@@ -120,12 +128,28 @@ async function enviar(ids) {
       const base = { plataforma: "youtube", episodio: id, titulo: meta.title, hashEpisodio: hashEpisodio(ep), hashVideo, duracao: info.duration };
       if (!real) {
         if (!buscarPublicacao(pubs, "youtube", id)) registrar(pubs, { ...base, status: "simulado", nota: "simulação: nada enviado" });
-        resumo(`- 🧪 **${id}**: enviaria como ${visibilidadePedida === "publico" ? "público" : "privado"} → “${meta.title}” · ${meta.tags.length} tags · ${meta.hashtags.map((h) => `#${h}`).join(" ")}`);
+        const quandoSim = horarios[id] ? ` às ${horaBrasilia(horarios[id])} (Brasília)` : "";
+        resumo(`- 🧪 **${id}**: enviaria como ${visibilidadePedida === "publico" ? "público" : "privado"}${quandoSim} → “${meta.title}” · ${meta.tags.length} tags · ${meta.hashtags.map((h) => `#${h}`).join(" ")}`);
         continue;
       }
       // Marca "enviando" ANTES de subir: se o job morrer no meio, a próxima execução não duplica.
       registrar(pubs, { ...base, status: "enviando" });
       gravarPublicacoes(pubs);
+      const publicarEm = publico ? horarios[id] ?? null : null;
+      if (publicarEm) {
+        const v = await yt.enviarVideo(mp4, meta, { privacidade: "private", notificar: true, publicarEm });
+        let agendadoPara = v.status?.publishAt;
+        registrar(pubs, { ...base, status: "privado", privacidade: v.status?.privacyStatus, videoId: v.id, url: `https://youtu.be/${v.id}`, enviadoEm: new Date().toISOString(), nota: "enviado (agendando)" });
+        gravarPublicacoes(pubs);
+        if (!agendadoPara) {
+          const u = await yt.mudarVisibilidade(v.id, "public", { publicarEm, madeForKids: cfg.youtube.madeForKids });
+          agendadoPara = u.status?.publishAt;
+        }
+        if (!agendadoPara) throw new Error(`o vídeo subiu (https://youtu.be/${v.id}) mas o YouTube não aceitou o agendamento; ficou privado.`);
+        registrar(pubs, { ...base, status: "agendado", privacidade: "private", videoId: v.id, url: `https://youtu.be/${v.id}`, publicarEm: new Date(agendadoPara).toISOString(), nota: `fica público às ${horaBrasilia(new Date(agendadoPara))} (Brasília)` });
+        resumo(`- ⏰ **${id}** enviado e agendado: fica **público às ${horaBrasilia(new Date(agendadoPara))}** (Brasília): https://youtu.be/${v.id}`);
+        continue;
+      }
       const v = await yt.enviarVideo(mp4, meta, { privacidade: publico ? "public" : "private", notificar: publico });
       let priv = v.status?.privacyStatus ?? (publico ? "public" : "private");
       registrar(pubs, { ...base, status: "privado", privacidade: priv, videoId: v.id, url: `https://youtu.be/${v.id}`, enviadoEm: new Date().toISOString(), nota: `enviado (${priv})` });

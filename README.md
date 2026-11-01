@@ -82,19 +82,19 @@ Para mexer no visual com pré-visualização ao vivo, é preciso rodar localment
 
 ## Vídeos do dia (automático, público)
 
-Todo dia às **10h de Brasília** o workflow **Vídeos do dia** (`.github/workflows/diario.yml`):
+Todo dia às **6h de Brasília** o workflow **Vídeos do dia** (`.github/workflows/diario.yml`):
 
 1. **Escolhe o tema.** Lê as buscas em alta do Google no Brasil (Google Trends) e as manchetes das últimas 48 h do Google Notícias, dá pontos a cada tema de `config/temas.json` e soma um bônus de época do ano (13º em novembro, IR em março...). Fica com o mais forte que não foi usado nos últimos 30 dias. Tudo grátis, sem chave.
-2. **Escreve dois roteiros** com a IA gratuita do GitHub Models: um **vídeo longo** (horizontal 1920x1080, ~3 a 5 min, mini-aula com capítulos) e um **Short** (vertical, 35 a 55 s). Cada roteiro passa pela validação normal e por regras extras: sem citar banco/corretora, sem prometer ganho, números por extenso na narração, título que ainda não foi usado. Se algo falhar, a IA recebe os erros e corrige.
+2. **Escreve dois roteiros** com IA gratuita (GitHub Models ou, se ele não responder, uma IA aberta rodando no próprio Actions): um **vídeo longo** (horizontal 1920x1080, ~3 a 5 min, mini-aula com capítulos) e um **Short** (vertical, 35 a 55 s). Cada roteiro passa pela validação normal e por regras extras: sem citar banco/corretora, sem prometer ganho, números por extenso na narração, título que ainda não foi usado. Se algo falhar, a IA recebe os erros e corrige.
 3. **Gera e testa** os dois vídeos (mesmos testes de áudio e vídeo de sempre).
-4. **Publica os dois como públicos** (o longo primeiro), avisando os inscritos. Nunca publica o mesmo episódio duas vezes, nem dois pacotes no mesmo dia.
+4. **Publica os dois como públicos, cada um numa hora sorteada** entre 10h e 21h (com pelo menos 2 h entre eles; muda todo dia). Os vídeos sobem agendados e o próprio YouTube os torna públicos na hora, avisando os inscritos. A janela fica em `config/publicacao.json` → `youtube.horarioAleatorio`. Nunca publica o mesmo episódio duas vezes, nem dois pacotes no mesmo dia.
 5. **Guarda** os roteiros em `episodes/` e o histórico de temas em `data/pautas.json`.
 
 | Quero... | Como |
 | --- | --- |
 | Pausar | Settings → Secrets and variables → Actions → **Variables** → `PUBLICACAO_DIARIA` = `desligada`. Apague para voltar. |
 | Testar sem publicar | Actions → Vídeos do dia → Run workflow → modo `ensaio` (ou `"modo": "ensaio"` em `pedidos/diario.json`). Os vídeos ficam para download em Artifacts. |
-| Publicar agora, fora do horário | Actions → Vídeos do dia → Run workflow → modo `publicar` |
+| Publicar fora do horário | Actions → Vídeos do dia → Run workflow → modo `publicar` (se a janela do dia já passou, publica na hora) |
 | Mudar os temas | Edite `config/temas.json` |
 
 O vídeo longo usa os mesmos modelos de cena do Short: a cena aparece à direita e, à esquerda, a pauta da aula ("Parte 3 de 10"). No arquivo do episódio, `"formato": "longo"` liga esse modo (o padrão é `"short"`).
