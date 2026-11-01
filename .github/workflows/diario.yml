@@ -2,7 +2,8 @@ name: Vídeos do dia
 
 # Uma vez por dia: escolhe o tema de educação financeira mais em alta (Google
 # Trends + Google Notícias, grátis), escreve dois roteiros com IA gratuita
-# (GitHub Models), gera um vídeo longo horizontal e um Short vertical, testa os
+# (GitHub Models ou, se ele não responder, uma IA aberta rodando no próprio
+# Actions com o Ollama), gera um vídeo longo horizontal e um Short vertical, testa os
 # dois e publica no YouTube como PÚBLICOS. Autorizado pelo Patrick em 2026-10-31.
 #
 # Para pausar: Settings → Secrets and variables → Actions → Variables →
@@ -36,7 +37,7 @@ jobs:
   pauta:
     name: Escolher tema e escrever roteiros
     runs-on: ubuntu-latest
-    timeout-minutes: 150 # com a IA local no processador, cada roteiro leva de 5 a 15 min
+    timeout-minutes: 240 # com a IA local no processador, cada tentativa de roteiro leva de 10 a 35 min
     env:
       # IA aberta usada quando o GitHub Models não responde: roda no próprio Actions, sem chave e sem custo.
       OLLAMA_VERSAO: v0.5.7
@@ -166,7 +167,7 @@ jobs:
           mkdir -p data out && cp baixados/pauta-diaria/data/pautas.json data/
           for ep in $(echo "${{ needs.pauta.outputs.csv }}" | tr ',' ' '); do
             mv "baixados/$ep" "out/$ep"
-            ffprobe -v error -show_entries format=duration,size:stream=codec_name,width,height -of default=noprint_wrappers=1 "out/$ep/$ep.mp4" || true
+            ls -la "out/$ep/" # o vídeo já passou pelos testes de áudio e vídeo na etapa anterior
           done
       - name: Confirmar login no YouTube
         if: env.REAL == 'true'
