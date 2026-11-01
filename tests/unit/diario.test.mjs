@@ -246,3 +246,17 @@ test("narração: números e símbolos viram palavras", async () => {
   const ep = montarEpisodio({ title: "t", scenes: [{ id: "a", template: "hook", narration: "Guarde R$ 300 por mês.", data: {} }] }, { id: "x", formato: "short" });
   assert.equal(ep.scenes[0].narration, "Guarde trezentos reais por mês.");
 });
+
+test("roteiro: fechamento esquecido é colocado e alerta negado não conta como promessa", () => {
+  const r = respostaShort();
+  r.scenes = r.scenes.filter((s) => s.template !== "outro");
+  const ep = montarEpisodio(r, { id: "2026-11-01-x-short", formato: "short" });
+  assert.equal(ep.scenes.at(-1).template, "outro");
+  assert.equal(ep.scenes.at(-1).data.cta, "Siga para mais");
+  parseEpisode(ep);
+  const alerta = structuredClone(ep);
+  alerta.scenes[1].narration = "Lembre que não existe retorno garantido e nenhum investimento é sem risco.";
+  assert.doesNotMatch(problemasDeConteudo(alerta, "short").join(), /prometa/);
+  alerta.scenes[1].narration = "Aqui o retorno é garantido.";
+  assert.match(problemasDeConteudo(alerta, "short").join(), /prometa/);
+});

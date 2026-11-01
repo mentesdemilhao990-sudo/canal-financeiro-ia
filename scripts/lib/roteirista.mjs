@@ -48,7 +48,9 @@ export function problemasDeConteudo(ep, formato, { titulosUsados = [] } = {}) {
   const meta = METAS[formato];
   const todo = semAcento([ep.title, ep.description, ...ep.scenes.map((s) => `${s.narration} ${JSON.stringify(s.data)}`)].join(" ").toLowerCase());
   for (const m of MARCAS) if (new RegExp(`(^|[^a-z])${semAcento(m)}([^a-z]|$)`).test(todo)) p.push(`não cite marcas, bancos ou corretoras (apareceu "${m}")`);
-  for (const r of PROMESSAS) if (r.test(todo)) p.push(`não prometa resultado (apareceu algo como ${r.source.replace(/\\b/g, "")})`);
+  // "Não existe retorno garantido" é um alerta, não uma promessa: frases negadas não contam.
+  const semNegadas = todo.replace(/\b(nao|nada|nunca|nenhuma?|jamais)\b[^.!?]{0,40}?\b(garantid[oa]s?|sem risco|lucro certo)\b/g, " ");
+  for (const r of PROMESSAS) if (r.test(semNegadas)) p.push(`não prometa resultado (apareceu algo como ${r.source.replace(/\\b/g, "")})`);
   if (/https?:|www\.|@\w/.test(todo)) p.push("sem links nem @menções");
   ep.scenes.forEach((s, i) => {
     if (/\d/.test(s.narration)) p.push(`cena ${i + 1}: escreva os números por extenso na narração (ex.: "dez mil reais"), sem algarismos`);
@@ -278,6 +280,24 @@ export function montarEpisodio(bruto, { id, formato }) {
     // A IA às vezes escreve "R$ 10.000" ou "4,5%" na narração: vira texto falado.
     return { ...s, id: sid, ...(typeof s?.narration === "string" ? { narration: narracaoPorExtenso(s.narration) } : {}) };
   });
+  // A IA às vezes esquece a cena de fechamento: colocamos uma padrão (ou trocamos a última, se já tem cenas demais).
+  if (cenas.length && cenas.at(-1)?.template !== "outro") {
+    const m = METAS[formato];
+    const outro = {
+      template: "outro",
+      data: { title: String(bruto?.title ?? "Até o próximo vídeo").trim().slice(0, 80), points: [], cta: m.cta },
+    };
+    if (cenas.length >= m.cenas[1]) Object.assign(cenas[cenas.length - 1], outro);
+    else
+      cenas.push({
+        id: vistos.has("fechamento") ? `fechamento-${cenas.length + 1}` : "fechamento",
+        ...outro,
+        narration:
+          formato === "short"
+            ? "Gostou? Siga o canal para aprender mais sobre dinheiro sem complicação."
+            : "Se esse vídeo te ajudou, inscreva-se no canal e mande para alguém que também quer organizar as finanças. Até o próximo vídeo!",
+      });
+  }
   const F = FORMATOS[formato];
   const alvo = cenas.every((s) => typeof s?.narration === "string") && cenas.length ? estimarDuracao(cenas) : F.minDuracao;
   return {
