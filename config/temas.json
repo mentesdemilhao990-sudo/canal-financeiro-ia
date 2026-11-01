@@ -1,0 +1,470 @@
+{
+  "_leia": "Temas de educação financeira que a pauta diária pode escolher. Todo dia o robô conta quantas vezes cada tema aparece nas buscas em alta do Google (Brasil) e nas notícias do Google Notícias, soma um bônus de época do ano e escolhe o mais forte que não foi usado nos últimos 'diasSemRepetir' dias. Para tirar um tema, apague o bloco dele. Para criar um, copie um bloco e troque id, nome, palavras e angulo.",
+  "diasSemRepetir": 30,
+  "buscasNoticias": [
+    "educação financeira",
+    "finanças pessoais",
+    "economia brasileira",
+    "bolso do consumidor",
+    "dinheiro",
+    "mercado financeiro"
+  ],
+  "temas": [
+    {
+      "id": "reserva-de-emergencia",
+      "nome": "Reserva de emergência",
+      "palavras": [
+        "reserva de emergência",
+        "colchão financeiro",
+        "imprevisto"
+      ],
+      "meses": [
+        1,
+        2
+      ],
+      "angulo": "quanto guardar, onde deixar com liquidez e como começar com pouco"
+    },
+    {
+      "id": "juros-compostos",
+      "nome": "Juros compostos",
+      "palavras": [
+        "juros compostos",
+        "juros sobre juros"
+      ],
+      "meses": [],
+      "angulo": "como o tempo multiplica o dinheiro, com exemplo numérico simples"
+    },
+    {
+      "id": "selic",
+      "nome": "Taxa Selic",
+      "palavras": [
+        "selic",
+        "copom",
+        "taxa básica de juros",
+        "banco central"
+      ],
+      "meses": [],
+      "angulo": "o que é a Selic e como ela mexe no seu bolso: crédito, renda fixa e poupança"
+    },
+    {
+      "id": "inflacao",
+      "nome": "Inflação",
+      "palavras": [
+        "inflação",
+        "ipca",
+        "custo de vida",
+        "preços sobem",
+        "alta dos preços"
+      ],
+      "meses": [],
+      "angulo": "como a inflação corrói o poder de compra e como se proteger"
+    },
+    {
+      "id": "cartao-de-credito",
+      "nome": "Cartão de crédito",
+      "palavras": [
+        "cartão de crédito",
+        "rotativo",
+        "fatura do cartão",
+        "anuidade"
+      ],
+      "meses": [],
+      "angulo": "como usar o cartão a favor e fugir do rotativo"
+    },
+    {
+      "id": "dividas",
+      "nome": "Sair das dívidas",
+      "palavras": [
+        "dívida",
+        "dívidas",
+        "endividamento",
+        "endividados",
+        "inadimplência",
+        "nome sujo",
+        "serasa",
+        "desenrola"
+      ],
+      "meses": [
+        3
+      ],
+      "angulo": "passo a passo para organizar e negociar dívidas"
+    },
+    {
+      "id": "decimo-terceiro",
+      "nome": "13º salário",
+      "palavras": [
+        "13º",
+        "décimo terceiro",
+        "13o salário"
+      ],
+      "meses": [
+        11,
+        12
+      ],
+      "angulo": "o que fazer com o 13º: dívidas, reserva e metas"
+    },
+    {
+      "id": "black-friday",
+      "nome": "Black Friday sem cair em armadilha",
+      "palavras": [
+        "black friday",
+        "promoção",
+        "promoções",
+        "desconto"
+      ],
+      "meses": [
+        11
+      ],
+      "angulo": "como comprar com consciência e evitar falsos descontos e parcelamentos"
+    },
+    {
+      "id": "imposto-de-renda",
+      "nome": "Imposto de Renda",
+      "palavras": [
+        "imposto de renda",
+        "declaração do ir",
+        "restituição",
+        "receita federal",
+        "leão"
+      ],
+      "meses": [
+        3,
+        4,
+        5
+      ],
+      "angulo": "o básico do IR para pessoa física e erros comuns"
+    },
+    {
+      "id": "tesouro-direto",
+      "nome": "Tesouro Direto",
+      "palavras": [
+        "tesouro direto",
+        "tesouro selic",
+        "tesouro ipca",
+        "títulos públicos"
+      ],
+      "meses": [],
+      "angulo": "como funcionam os títulos públicos e para que objetivo serve cada tipo"
+    },
+    {
+      "id": "cdb-lci-lca",
+      "nome": "CDB, LCI e LCA",
+      "palavras": [
+        "cdb",
+        "lci",
+        "lca",
+        "renda fixa",
+        "fgc"
+      ],
+      "meses": [],
+      "angulo": "diferenças, imposto e garantia do FGC, sem indicar banco"
+    },
+    {
+      "id": "poupanca",
+      "nome": "Poupança vale a pena?",
+      "palavras": [
+        "poupança",
+        "caderneta"
+      ],
+      "meses": [],
+      "angulo": "como a poupança rende e comparação educativa com outras opções de renda fixa"
+    },
+    {
+      "id": "orcamento-50-30-20",
+      "nome": "Orçamento 50-30-20",
+      "palavras": [
+        "orçamento",
+        "planilha de gastos",
+        "controle financeiro",
+        "50 30 20"
+      ],
+      "meses": [
+        1
+      ],
+      "angulo": "um método simples para dividir o salário"
+    },
+    {
+      "id": "salario-minimo",
+      "nome": "Salário mínimo e poder de compra",
+      "palavras": [
+        "salário mínimo",
+        "reajuste do salário",
+        "piso salarial"
+      ],
+      "meses": [
+        12,
+        1
+      ],
+      "angulo": "como organizar as finanças com renda apertada"
+    },
+    {
+      "id": "fgts",
+      "nome": "FGTS",
+      "palavras": [
+        "fgts",
+        "saque-aniversário",
+        "saque aniversário",
+        "fundo de garantia"
+      ],
+      "meses": [],
+      "angulo": "como funciona o FGTS e os prós e contras do saque-aniversário"
+    },
+    {
+      "id": "pix-golpes",
+      "nome": "Golpes financeiros e Pix",
+      "palavras": [
+        "golpe",
+        "golpes",
+        "fraude",
+        "pix",
+        "falso boleto",
+        "phishing"
+      ],
+      "meses": [],
+      "angulo": "golpes mais comuns e como se proteger"
+    },
+    {
+      "id": "aposentadoria",
+      "nome": "Aposentadoria e previdência",
+      "palavras": [
+        "aposentadoria",
+        "inss",
+        "previdência",
+        "pgbl",
+        "vgbl"
+      ],
+      "meses": [],
+      "angulo": "por que começar cedo e o papel do INSS e da previdência privada"
+    },
+    {
+      "id": "dolar",
+      "nome": "Dólar e seu bolso",
+      "palavras": [
+        "dólar",
+        "câmbio",
+        "moeda americana"
+      ],
+      "meses": [],
+      "angulo": "como a alta ou queda do dólar chega aos preços do dia a dia"
+    },
+    {
+      "id": "acoes-e-dividendos",
+      "nome": "Ações e dividendos",
+      "palavras": [
+        "ações",
+        "dividendos",
+        "ibovespa",
+        "bolsa de valores",
+        "b3"
+      ],
+      "meses": [],
+      "angulo": "o que é ser sócio de uma empresa e os riscos da renda variável"
+    },
+    {
+      "id": "fundos-imobiliarios",
+      "nome": "Fundos imobiliários",
+      "palavras": [
+        "fundos imobiliários",
+        "fii",
+        "fiis"
+      ],
+      "meses": [],
+      "angulo": "como funcionam os FIIs e seus riscos, sem indicar fundo"
+    },
+    {
+      "id": "criptomoedas",
+      "nome": "Criptomoedas com pé no chão",
+      "palavras": [
+        "bitcoin",
+        "criptomoeda",
+        "criptomoedas",
+        "cripto"
+      ],
+      "meses": [],
+      "angulo": "riscos, volatilidade e por que não colocar a reserva nisso"
+    },
+    {
+      "id": "emprestimo-consignado",
+      "nome": "Empréstimo consignado",
+      "palavras": [
+        "consignado",
+        "empréstimo",
+        "crédito pessoal"
+      ],
+      "meses": [],
+      "angulo": "como comparar o custo efetivo total antes de pegar crédito"
+    },
+    {
+      "id": "financiamento-imovel",
+      "nome": "Comprar ou alugar imóvel",
+      "palavras": [
+        "financiamento imobiliário",
+        "comprar imóvel",
+        "aluguel",
+        "minha casa minha vida",
+        "casa própria"
+      ],
+      "meses": [],
+      "angulo": "a conta de comprar x alugar com números ilustrativos"
+    },
+    {
+      "id": "consorcio",
+      "nome": "Consórcio funciona?",
+      "palavras": [
+        "consórcio"
+      ],
+      "meses": [],
+      "angulo": "como funciona, taxa de administração e quando faz sentido"
+    },
+    {
+      "id": "apostas",
+      "nome": "Bets e apostas",
+      "palavras": [
+        "bets",
+        "bet",
+        "apostas",
+        "jogo do tigrinho",
+        "aposta esportiva"
+      ],
+      "meses": [],
+      "angulo": "por que apostas não são investimento e o impacto no orçamento"
+    },
+    {
+      "id": "renda-extra",
+      "nome": "Renda extra",
+      "palavras": [
+        "renda extra",
+        "trabalho extra",
+        "freelance",
+        "bico"
+      ],
+      "meses": [],
+      "angulo": "como usar renda extra para acelerar metas"
+    },
+    {
+      "id": "independencia-financeira",
+      "nome": "Independência financeira",
+      "palavras": [
+        "independência financeira",
+        "liberdade financeira",
+        "viver de renda"
+      ],
+      "meses": [],
+      "angulo": "a conta por trás de viver de renda, com exemplo ilustrativo"
+    },
+    {
+      "id": "compras-por-impulso",
+      "nome": "Compras por impulso",
+      "palavras": [
+        "compra por impulso",
+        "consumismo",
+        "gastos supérfluos"
+      ],
+      "meses": [
+        12
+      ],
+      "angulo": "gatilhos de consumo e a regra das 48 horas"
+    },
+    {
+      "id": "ferias-e-viagem",
+      "nome": "Planejar férias sem dívida",
+      "palavras": [
+        "férias",
+        "viagem",
+        "passagens"
+      ],
+      "meses": [
+        6,
+        7,
+        12
+      ],
+      "angulo": "como criar uma meta de viagem e evitar parcelar o lazer"
+    },
+    {
+      "id": "volta-as-aulas",
+      "nome": "Gastos de começo de ano",
+      "palavras": [
+        "material escolar",
+        "ipva",
+        "iptu",
+        "volta às aulas"
+      ],
+      "meses": [
+        1,
+        2
+      ],
+      "angulo": "como se preparar para IPVA, IPTU e material escolar"
+    },
+    {
+      "id": "educacao-financeira-filhos",
+      "nome": "Educação financeira para crianças",
+      "palavras": [
+        "mesada",
+        "educação financeira infantil",
+        "filhos e dinheiro"
+      ],
+      "meses": [
+        10
+      ],
+      "angulo": "como ensinar dinheiro para crianças de forma simples"
+    },
+    {
+      "id": "score-de-credito",
+      "nome": "Score de crédito",
+      "palavras": [
+        "score",
+        "pontuação de crédito",
+        "cadastro positivo"
+      ],
+      "meses": [],
+      "angulo": "o que pesa no score e como melhorar com hábitos"
+    },
+    {
+      "id": "custo-de-oportunidade",
+      "nome": "Custo de oportunidade",
+      "palavras": [
+        "custo de oportunidade"
+      ],
+      "meses": [],
+      "angulo": "toda escolha de gasto tem um preço escondido"
+    },
+    {
+      "id": "diversificacao",
+      "nome": "Diversificação",
+      "palavras": [
+        "diversificação",
+        "diversificar",
+        "carteira de investimentos"
+      ],
+      "meses": [],
+      "angulo": "por que não colocar todos os ovos na mesma cesta"
+    },
+    {
+      "id": "perfil-de-investidor",
+      "nome": "Perfil de investidor",
+      "palavras": [
+        "perfil de investidor",
+        "suitability",
+        "conservador",
+        "arrojado"
+      ],
+      "meses": [],
+      "angulo": "conservador, moderado e arrojado: risco, prazo e objetivo"
+    },
+    {
+      "id": "metas-financeiras",
+      "nome": "Metas financeiras",
+      "palavras": [
+        "metas financeiras",
+        "planejamento financeiro",
+        "ano novo"
+      ],
+      "meses": [
+        12,
+        1
+      ],
+      "angulo": "como transformar sonhos em metas com valor e prazo"
+    }
+  ],
+  "_buscas": "Buscas gerais no Google Notícias. Não ponha nomes de temas aqui: isso puxaria a contagem para eles."
+}

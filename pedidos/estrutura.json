@@ -1,0 +1,5 @@
+{
+  "_leia": "Editar e salvar este arquivo dispara o workflow 'Estruturar canal'. Só muda algo com confirmacao = ESTRUTURAR-CANAL. O que é aplicado está em config/estrutura-canal.json.",
+  "confirmacao": "",
+  "pedidoPor": "Patrick (2026-10-31 22:04, 'deixar bem estruturado a parte interna') — confirmação limpa para não rodar de novo no merge"
+}

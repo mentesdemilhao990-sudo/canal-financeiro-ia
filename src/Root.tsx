@@ -1,0 +1,43 @@
+import React from "react";
+import { Composition, Still, type CalculateMetadataFunction } from "remotion";
+import { EpisodeVideo } from "./Episode";
+import { Cover } from "./Cover";
+import { FPS, HEIGHT, WIDTH } from "./theme";
+import type { EpisodeProps } from "./types";
+import { dimensoes, parseEpisode } from "./lib/schema.mjs";
+import { estimateTimeline } from "./lib/estimate.mjs";
+import sample from "../episodes/guardar-nao-e-investir.json";
+import channel from "../config/channel.json";
+
+// Valores para pré-visualizar no Remotion Studio (sem narração). A renderização real recebe props do script.
+const episode = parseEpisode(sample);
+const defaultProps: EpisodeProps = {
+  episode,
+  timeline: estimateTimeline(episode),
+  channel: { name: channel.name, handle: channel.handle },
+  audio: { narration: null, ambient: null },
+};
+
+// Short: vertical 1080x1920. Vídeo longo: horizontal 1920x1080 (capa 1280x720, padrão de miniatura do YouTube).
+const calculateMetadata: CalculateMetadataFunction<EpisodeProps> = ({ props }) => {
+  const d = dimensoes(props.episode);
+  return { durationInFrames: Math.ceil(props.timeline.duration * FPS), width: d.width, height: d.height };
+};
+const coverMetadata: CalculateMetadataFunction<EpisodeProps> = ({ props }) =>
+  props.episode.formato === "longo" ? { width: 1280, height: 720 } : { width: WIDTH, height: HEIGHT };
+
+export const RemotionRoot: React.FC = () => (
+  <>
+    <Composition
+      id="Episode"
+      component={EpisodeVideo}
+      width={WIDTH}
+      height={HEIGHT}
+      fps={FPS}
+      durationInFrames={FPS * 40}
+      defaultProps={defaultProps}
+      calculateMetadata={calculateMetadata}
+    />
+    <Still id="Cover" component={Cover} width={WIDTH} height={HEIGHT} defaultProps={defaultProps} calculateMetadata={coverMetadata} />
+  </>
+);

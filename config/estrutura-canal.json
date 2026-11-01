@@ -1,0 +1,25 @@
+{
+  "_leia": "Estrutura do canal no YouTube. Aplicada pelo workflow 'Estruturar canal' quando pedidos/estrutura.json tem confirmacao = ESTRUTURAR-CANAL. Pode rodar de novo: o que já existe não é duplicado.",
+  "pais": "BR",
+  "idioma": "pt-BR",
+  "trailer": "TMz0LcQ5hQI",
+  "playlists": [
+    { "chave": "comece", "titulo": "Comece por aqui: educação financeira do zero", "descricao": "Os primeiros passos para entender como o dinheiro funciona. Se você é novo no canal, comece por esta lista." },
+    { "chave": "organizar", "titulo": "Organizar o dinheiro e o orçamento", "descricao": "Como montar um orçamento simples, controlar gastos e fazer o dinheiro sobrar no fim do mês." },
+    { "chave": "dividas", "titulo": "Sair das dívidas", "descricao": "Como sair das dívidas, negociar e fugir dos juros altos do cartão e do cheque especial." },
+    { "chave": "reserva", "titulo": "Reserva de emergência e poupar", "descricao": "Por que ter uma reserva de emergência, quanto guardar e onde deixar esse dinheiro." },
+    { "chave": "investir", "titulo": "Investimentos para iniciantes", "descricao": "Os primeiros passos para investir com segurança: renda fixa, Tesouro Direto, CDB e juros compostos. Conteúdo educativo, não é recomendação." },
+    { "chave": "mentalidade", "titulo": "Mentalidade e hábitos financeiros", "descricao": "Hábitos e decisões do dia a dia que fazem o dinheiro render." }
+  ],
+  "secoes": [
+    { "tipo": "playlist", "playlist": "comece" },
+    { "tipo": "recentUploads" },
+    { "tipo": "playlist", "playlist": "investir" },
+    { "tipo": "playlist", "playlist": "dividas" },
+    { "tipo": "playlist", "playlist": "organizar" },
+    { "tipo": "popularUploads" }
+  ],
+  "videosNasPlaylists": {
+    "guardar-nao-e-investir": ["comece", "reserva", "investir"]
+  }
+}

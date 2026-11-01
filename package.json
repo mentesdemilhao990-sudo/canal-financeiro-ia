@@ -1,0 +1,30 @@
+{
+  "name": "canal-financeiro-ia",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Fábrica de vídeos animados (1080x1920) para canal dark de educação financeira",
+  "scripts": {
+    "studio": "remotion studio src/index.ts",
+    "typecheck": "tsc --noEmit",
+    "validate": "node scripts/validate-episodes.mjs",
+    "build:episode": "node scripts/build-episode.mjs",
+    "test:unit": "node --test \"tests/unit/*.test.mjs\"",
+    "test:media": "node --test \"tests/media/*.test.mjs\""
+  },
+  "dependencies": {
+    "@remotion/bundler": "4.0.539",
+    "@remotion/cli": "4.0.539",
+    "@remotion/fonts": "4.0.539",
+    "@remotion/media-utils": "4.0.539",
+    "@remotion/renderer": "4.0.539",
+    "react": "19.1.1",
+    "react-dom": "19.1.1",
+    "remotion": "4.0.539",
+    "zod": "4.5.4"
+  },
+  "devDependencies": {
+    "@types/react": "19.1.12",
+    "typescript": "5.9.3"
+  }
+}

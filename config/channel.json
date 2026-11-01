@@ -1,0 +1,14 @@
+{
+  "name": "MENTE DE MILHÃO",
+  "handle": "@mentedemilhao",
+  "voice": {
+    "model": "pt_BR-faber-medium",
+    "lengthScale": 1.0,
+    "sentencePause": 0.22,
+    "scenePause": 0.4
+  },
+  "music": {
+    "enabled": true,
+    "volume": 0.09
+  }
+}

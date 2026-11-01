@@ -1,0 +1,7 @@
+{
+  "_leia": "Editar e salvar este arquivo dispara o workflow 'Atualizar perfil do canal'. Só muda algo com confirmacao = ATUALIZAR-PERFIL. descricao usa marca/descricao.txt; banner usa marca/banner.png. A foto de perfil NÃO pode ser trocada pela API: suba marca/foto-de-perfil.png no YouTube Studio.",
+  "descricao": true,
+  "banner": true,
+  "confirmacao": "",
+  "pedidoPor": "Aplicado em 2026-10-31 22:01 (Patrick)"
+}

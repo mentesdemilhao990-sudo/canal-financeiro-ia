@@ -1,0 +1,144 @@
+name: Publicar no YouTube
+
+# Todo dia confere os episódios com "publicacao.youtube.enviarEm" vencido e ainda
+# não enviados, renderiza e envia como PRIVADO. Sem autorização, só simula.
+#
+# Autorização de envio real (sempre privado), uma das duas:
+#   - Variable YOUTUBE_PUBLICACAO = ligada (vale para todas as execuções), ou
+#   - confirmação ENVIAR-PRIVADO na execução manual ou no arquivo pedidos/youtube.json (só aquela vez).
+on:
+  schedule:
+    - cron: "0 12 * * *" # 9h de Brasília
+  workflow_dispatch:
+    inputs:
+      episodios:
+        description: "Episódios (sem .json, separados por vírgula), 'agendados' ou 'todos'"
+        required: true
+        default: agendados
+      confirmacao:
+        description: "Digite ENVIAR-PRIVADO para enviar de verdade (sempre como privado). Vazio = simulação"
+        required: false
+      reaproveitar_execucao:
+        description: "Opcional: número de uma execução que já gerou o MP4 (pula a renderização)"
+        required: false
+  # Pedido por arquivo: editar pedidos/youtube.json dispara uma execução.
+  push:
+    paths: ["pedidos/youtube.json"]
+
+permissions:
+  contents: write
+  actions: read
+
+concurrency:
+  group: publicar-youtube
+  cancel-in-progress: false
+
+jobs:
+  selecionar:
+    name: Escolher episódios
+    runs-on: ubuntu-latest
+    outputs:
+      csv: ${{ steps.sel.outputs.csv }}
+      confirmacao: ${{ steps.pedido.outputs.confirmacao }}
+      execucao: ${{ steps.pedido.outputs.execucao }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # para conferir se o código mudou desde a execução reaproveitada
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Testes unitários
+        run: npm run test:unit
+      - name: Ler pedido
+        id: pedido
+        env:
+          EVENTO: ${{ github.event_name }}
+          IN_EPISODIOS: ${{ inputs.episodios }}
+          IN_CONFIRMACAO: ${{ inputs.confirmacao }}
+          IN_EXECUCAO: ${{ inputs.reaproveitar_execucao }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: node scripts/publicar.mjs pedido
+      - name: Selecionar
+        id: sel
+        env:
+          PEDIDO: ${{ steps.pedido.outputs.episodios }}
+          AGENDADO: ${{ github.event_name == 'schedule' }}
+          YOUTUBE_PUBLICACAO: ${{ vars.YOUTUBE_PUBLICACAO }}
+          TEM_CREDENCIAIS: ${{ secrets.YOUTUBE_REFRESH_TOKEN != '' }}
+        run: |
+          # No horário automático, sem publicação ligada, não gasta minutos renderizando.
+          if [ "$AGENDADO" = "true" ] && { [ "$YOUTUBE_PUBLICACAO" != "ligada" ] || [ "$TEM_CREDENCIAIS" != "true" ]; }; then
+            echo "Publicação desligada: nada a fazer no horário automático."
+            echo "csv=" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          node scripts/publicar.mjs selecionar "$PEDIDO"
+
+  renderizar:
+    name: Renderizar
+    needs: selecionar
+    if: needs.selecionar.outputs.csv != '' && needs.selecionar.outputs.execucao == ''
+    uses: ./.github/workflows/render.yml
+    with:
+      episodios: ${{ needs.selecionar.outputs.csv }}
+
+  enviar:
+    name: Enviar (privado) ou simular
+    needs: [selecionar, renderizar]
+    if: >-
+      always() && needs.selecionar.result == 'success' && needs.selecionar.outputs.csv != '' &&
+      (needs.renderizar.result == 'success' || (needs.renderizar.result == 'skipped' && needs.selecionar.outputs.execucao != ''))
+    runs-on: ubuntu-latest
+    env:
+      YOUTUBE_CLIENT_ID: ${{ secrets.YOUTUBE_CLIENT_ID }}
+      YOUTUBE_CLIENT_SECRET: ${{ secrets.YOUTUBE_CLIENT_SECRET }}
+      YOUTUBE_REFRESH_TOKEN: ${{ secrets.YOUTUBE_REFRESH_TOKEN }}
+      YOUTUBE_PUBLICACAO: ${{ vars.YOUTUBE_PUBLICACAO }}
+      YOUTUBE_RESPOSTAS: ${{ vars.YOUTUBE_RESPOSTAS }}
+      YOUTUBE_RESPOSTA_AUTOMATICA: ${{ vars.YOUTUBE_RESPOSTA_AUTOMATICA }}
+      CONFIRMACAO_ENVIO: ${{ needs.selecionar.outputs.confirmacao }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Baixar vídeos desta execução
+        if: needs.selecionar.outputs.execucao == ''
+        uses: actions/download-artifact@v4
+        with:
+          path: out
+      - name: Reaproveitar MP4 da execução ${{ needs.selecionar.outputs.execucao }}
+        if: needs.selecionar.outputs.execucao != ''
+        uses: actions/download-artifact@v4
+        with:
+          path: out
+          run-id: ${{ needs.selecionar.outputs.execucao }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Conferir o que foi baixado
+        run: |
+          ls -la out/*/ || true
+          for f in out/*/*.mp4; do
+            [ -f "$f" ] && command -v ffprobe >/dev/null && ffprobe -v error -show_entries format=duration,size:stream=codec_name,width,height -of default=noprint_wrappers=1 "$f" || true
+          done
+      - name: Confirmar login no YouTube
+        if: env.YOUTUBE_REFRESH_TOKEN != ''
+        run: node scripts/publicar.mjs testar-conexao
+      - name: Enviar
+        env:
+          EPISODIOS: ${{ needs.selecionar.outputs.csv }}
+        run: node scripts/publicar.mjs enviar "$EPISODIOS"
+      - name: Salvar registro e painel
+        if: always()
+        uses: ./.github/actions/salvar-estado
+      - name: Painel para download
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: painel
+          path: out/painel/
+          if-no-files-found: ignore

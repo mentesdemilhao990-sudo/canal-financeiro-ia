@@ -1,0 +1,8 @@
+{
+  "_leia": "Editar e salvar este arquivo dispara o workflow 'Mudar visibilidade no YouTube'. Só muda algo com confirmacao = MUDAR-VISIBILIDADE. visibilidade: publico, nao_listado, agendado ou privado. data só para agendado (horário de Brasília, ex.: 2026-11-05T18:00).",
+  "episodio": "guardar-nao-e-investir",
+  "visibilidade": "publico",
+  "data": "",
+  "confirmacao": "",
+  "pedidoPor": "Patrick (2026-10-31 17:08)"
+}
