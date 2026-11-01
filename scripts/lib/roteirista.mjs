@@ -23,7 +23,7 @@ export function modelosPadrao(env = process.env) {
 /** Metas de tamanho por formato (a voz fala ~19 caracteres por segundo, mais as pausas). */
 export const METAS = {
   // caracteres: meta pedida à IA; aceite: duração estimada que ainda aprovamos (a IA nem sempre acerta o tamanho).
-  short: { cenas: [5, 7], caracteres: [620, 820], duracao: [34, 56], aceite: [32, 57], cta: "Siga para mais", porCena: 380, minCena: 60 },
+  short: { cenas: [5, 7], caracteres: [620, 820], duracao: [34, 56], aceite: [32, 57], cta: "Siga para mais", porCena: 380, minCena: 110 },
   longo: { cenas: [9, 13], caracteres: [2800, 3800], duracao: [150, 300], aceite: [95, 420], cta: "Inscreva-se", porCena: 520, minCena: 240 },
 };
 
