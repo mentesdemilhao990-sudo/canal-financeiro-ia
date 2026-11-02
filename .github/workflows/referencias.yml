@@ -1,9 +1,8 @@
 name: Estudar canais de referência
 
+# Rode manualmente em Actions > "Estudar canais de referência" quando mudar a lista.
 on:
   workflow_dispatch:
-  pull_request:
-    paths: ["pedidos/referencias.json", "scripts/estudar-referencias.mjs", ".github/workflows/referencias.yml"]
 
 permissions:
   contents: write
