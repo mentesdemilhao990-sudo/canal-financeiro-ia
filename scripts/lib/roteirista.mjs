@@ -66,6 +66,8 @@ export function problemasDeConteudo(ep, formato, { titulosUsados = [] } = {}) {
   });
   const n = ep.scenes.length;
   if (n < meta.cenas[0] || n > meta.cenas[1]) p.push(`use de ${meta.cenas[0]} a ${meta.cenas[1]} cenas (vieram ${n})`);
+  if (/^\s*(bom dia|boa tarde|boa noite|ol[aá]|oi|e a[ií]|hoje (vamos|eu vou|vou)|neste v[ií]deo)\b/i.test(ep.scenes[0]?.narration ?? ""))
+    p.push('cena 1: não abra com saudação ou "hoje vamos falar"; comece com um fato surpreendente, uma conta ou uma pergunta forte');
   if (ep.scenes[0]?.template !== "hook") p.push('a primeira cena precisa ser "hook"');
   if (ep.scenes.at(-1)?.template !== "outro") p.push('a última cena precisa ser "outro"');
   const chars = ep.scenes.reduce((t, s) => t + s.narration.length, 0);
@@ -102,6 +104,14 @@ Regras de conteúdo (obrigatórias):
 - Contas precisam estar certas (juros, porcentagens, somas). Prefira números redondos.
 - Linguagem simples, frases curtas, tom de conversa, sem jargão sem explicar. Nada de "eu sou uma IA".
 - Sem links, sem @, sem pedir dados pessoais.
+
+Estilo (aprendido com os vídeos mais vistos dos grandes canais de finanças do Brasil; imite o JEITO, nunca o conteúdo):
+- Fale como um amigo que entende de dinheiro conversando com "você": frases curtas, perguntas retóricas ("Sabe por quê?", "Parece pouco, né?"), opinião clara e um toque de indignação ou surpresa quando cabe ("Só eu acho isso absurdo?").
+- Abertura (gancho) nos primeiros segundos: comece com um fato surpreendente, uma conta que choca ou uma contradição do dia a dia, e prometa o que a pessoa vai ganhar assistindo até o fim. PROIBIDO abrir com "Bom dia", "Olá", "Hoje vamos falar sobre" ou "Neste vídeo".
+- Use um caso concreto com personagem e números redondos ("Imagina a Ana, que ganha três mil reais por mês...") e mostre a conta acontecendo.
+- Deixe uma curiosidade em aberto e só responda mais à frente ("e o terceiro erro é o mais caro de todos").
+- Termine com uma frase de efeito e uma pergunta para os comentários ("Comenta aí: você faria isso?"), antes do pedido de inscrição.
+- Título no estilo dos grandes canais: promessa concreta com número ou contraste, e no máximo duas palavras-chave em MAIÚSCULAS. Ex. de formato: "Como sair das DÍVIDAS em 12 meses ganhando pouco", "Por que 9 em cada 10 pessoas nunca juntam dinheiro?". Nada de título genérico ou "Onde colocar seu dinheiro?".
 
 Regras da narração (lida por uma voz sintética):
 - Números SEMPRE por extenso e sem símbolos: "dez mil reais", "quatro e meio por cento". Nada de algarismos, %, R$.

@@ -314,3 +314,9 @@ test("publicação diária com horário sorteado: sobe agendado e registra a hor
   assert.equal(pub.status, "agendado");
   assert.ok(pub.publicarEm);
 });
+
+test("roteiro: abertura com saudação é recusada", () => {
+  const ep = montarEpisodio(respostaShort(), { id: "2026-11-01-x-short", formato: "short" });
+  ep.scenes[0] = { ...ep.scenes[0], narration: "Bom dia! Hoje vamos falar sobre o décimo terceiro salário e onde colocar esse dinheiro." };
+  assert.match(problemasDeConteudo(ep, "short").join(), /não abra com saudação/);
+});
