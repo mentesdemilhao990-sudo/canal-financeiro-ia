@@ -1,0 +1,27 @@
+{
+  "_leia": "Gerado automaticamente. Temas já usados pela pauta diária, para não repetir.",
+  "itens": [
+    {
+      "data": "2026-11-02",
+      "tema": "decimo-terceiro",
+      "nome": "13º salário",
+      "pontos": 18.3,
+      "manchetes": [
+        "Pagamento do INSS de novembro: veja calendário e datas",
+        "INSS: Veja calendário para os pagamentos de novembro",
+        "INSS paga nova rodada do 13º a aposentados e pensionistas",
+        "Décimo terceiro salário começa a ser pago este mês; veja como calcular - Valor Investe",
+        "Décimo terceiro salário 2026: veja quando cai a primeira parcela - BPMoney"
+      ],
+      "episodios": [
+        "2026-11-02-decimo-terceiro-longo",
+        "2026-11-02-decimo-terceiro-short"
+      ],
+      "titulos": [
+        "13º Salário: Onde Colocar seu Dinheiro?",
+        "Dívidas, Reserva ou Metas: Onde Colocar Seu 13º?"
+      ],
+      "modelo": "ollama:qwen2.5:7b"
+    }
+  ]
+}

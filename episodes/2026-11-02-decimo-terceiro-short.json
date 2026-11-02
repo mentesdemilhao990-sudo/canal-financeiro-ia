@@ -1,0 +1,103 @@
+{
+  "id": "2026-11-02-decimo-terceiro-short",
+  "formato": "short",
+  "title": "Dívidas, Reserva ou Metas: Onde Colocar Seu 13º?",
+  "description": "Decida onde aplicar seu 13º salário. Dívidas, reserva de emergência e metas financeiras. Qual escolha é melhor para você? #13salário #finançaspessoais",
+  "tags": [
+    "13º salário",
+    "dívidas",
+    "reserva",
+    "metas",
+    "finanças pessoais"
+  ],
+  "targetDurationSeconds": 47,
+  "disclaimer": "Conteúdo educativo. Valores ilustrativos, não é recomendação de investimento.",
+  "scenes": [
+    {
+      "id": "hook",
+      "template": "hook",
+      "narration": "Dívidas, Reserva ou Metas? Qual escolha é melhor para você?\ntrês segundos para descobrir o seu caminho. 🤔💰\ndata: {",
+      "data": {
+        "kicker": "Decida agora",
+        "title": "13º Salário",
+        "subtitle": "Dívidas, Reserva ou Metas?"
+      }
+    },
+    {
+      "id": "split",
+      "template": "split",
+      "narration": "Dívidas versus Reserva versus Metas\nQual escolha é melhor para você? 🤔💰\ndata: { , mil dívidas, cinco mil reserva, sete mil metas } data: {",
+      "data": {
+        "left": {
+          "label": "Dívidas",
+          "points": [
+            "Pagar juros caros",
+            "Aliviar pressão financeira"
+          ]
+        },
+        "right": {
+          "label": "Reserva",
+          "points": [
+            "Emergência",
+            "Segurança"
+          ]
+        }
+      }
+    },
+    {
+      "id": "counter",
+      "template": "counter",
+      "narration": "Metas setenta por cento\nAté décimo terceiro salário, você pode alcançar suas metas! 💪\ndata: { , cinco mil metas, sete mil, prefix: reais , suffix: por cento } data: {",
+      "data": {
+        "label": "Metas",
+        "from": 5000,
+        "to": 7000,
+        "prefix": "R$",
+        "suffix": "%",
+        "decimals": 0,
+        "trend": "up",
+        "caption": "Investir seu 13º pode levar você mais perto de alcançar suas metas!",
+        "badge": "Investir!"
+      }
+    },
+    {
+      "id": "bars",
+      "template": "bars",
+      "narration": "Decida agora! Dívidas, Reserva ou Metas?\nQual escolha é melhor para você? 🤔💰\ndata: { quinhentos dívidas, dois mil e quinhentos reserva, quatro mil e quinhentos metas } data: {",
+      "data": {
+        "title": "Decida agora!",
+        "valuePrefix": "R$",
+        "valueSuffix": "%",
+        "items": [
+          {
+            "label": "Dívidas",
+            "value": 500
+          },
+          {
+            "label": "Reserva",
+            "value": 2500,
+            "color": "gold"
+          },
+          {
+            "label": "Metas",
+            "value": 4500
+          }
+        ],
+        "caption": "Cada escolha tem seu lado!"
+      }
+    },
+    {
+      "id": "outro",
+      "template": "outro",
+      "narration": "Decida agora! Dívidas, Reserva ou Metas?\nQual escolha é melhor para você? 🤔💰\ndata: { , quatro mil e quinhentos metas, dois mil e quinhentos reserva, quinhentos dívidas } data: {",
+      "data": {
+        "title": "Decida agora!\nDívidas, Reserva ou Metas?",
+        "points": [
+          "Análise",
+          "Preparação"
+        ],
+        "cta": "Siga para mais!"
+      }
+    }
+  ]
+}

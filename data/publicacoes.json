@@ -30,6 +30,66 @@
       "videoId": "TMz0LcQ5hQI",
       "url": "https://youtu.be/TMz0LcQ5hQI",
       "enviadoEm": "2026-10-31T16:17:55.070Z"
+    },
+    {
+      "historico": [
+        {
+          "em": "2026-11-02T15:05:02.170Z",
+          "status": "enviando"
+        },
+        {
+          "em": "2026-11-02T15:05:04.238Z",
+          "status": "privado",
+          "nota": "enviado (public)"
+        },
+        {
+          "em": "2026-11-02T15:05:04.252Z",
+          "status": "publico",
+          "nota": "publicado (public)"
+        }
+      ],
+      "plataforma": "youtube",
+      "episodio": "2026-11-02-decimo-terceiro-longo",
+      "titulo": "13º Salário: Onde Colocar seu Dinheiro?",
+      "hashEpisodio": "6a8cacc1c0698a8e",
+      "hashVideo": "fe891481defef45f",
+      "duracao": 222.071,
+      "status": "publico",
+      "atualizadoEm": "2026-11-02T15:05:04.252Z",
+      "privacidade": "public",
+      "videoId": "2uznP3fU7Lo",
+      "url": "https://youtu.be/2uznP3fU7Lo",
+      "enviadoEm": "2026-11-02T15:05:04.238Z"
+    },
+    {
+      "historico": [
+        {
+          "em": "2026-11-02T15:05:04.272Z",
+          "status": "enviando"
+        },
+        {
+          "em": "2026-11-02T15:05:05.922Z",
+          "status": "privado",
+          "nota": "enviado (public)"
+        },
+        {
+          "em": "2026-11-02T15:05:05.922Z",
+          "status": "publico",
+          "nota": "publicado (public)"
+        }
+      ],
+      "plataforma": "youtube",
+      "episodio": "2026-11-02-decimo-terceiro-short",
+      "titulo": "Dívidas, Reserva ou Metas: Onde Colocar Seu 13º?",
+      "hashEpisodio": "4cf532f55b09e17c",
+      "hashVideo": "1b16641bb6c710cb",
+      "duracao": 50.593,
+      "status": "publico",
+      "atualizadoEm": "2026-11-02T15:05:05.922Z",
+      "privacidade": "public",
+      "videoId": "gRHy7XC_Zsw",
+      "url": "https://youtu.be/gRHy7XC_Zsw",
+      "enviadoEm": "2026-11-02T15:05:05.922Z"
     }
   ]
 }

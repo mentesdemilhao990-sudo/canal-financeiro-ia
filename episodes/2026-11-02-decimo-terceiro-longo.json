@@ -1,0 +1,218 @@
+{
+  "id": "2026-11-02-decimo-terceiro-longo",
+  "formato": "longo",
+  "title": "13º Salário: Onde Colocar seu Dinheiro?",
+  "description": "Entenda como usar o 13º salário de forma inteligente. Dívidas, reserva e metas são os caminhos para aproveitar ao máximo essa oportunidade financeira.",
+  "tags": [
+    "13º salário",
+    "finanças pessoais",
+    "reserva",
+    "dívidas",
+    "metas"
+  ],
+  "targetDurationSeconds": 211,
+  "disclaimer": "Conteúdo educativo. Valores ilustrativos, não é recomendação de investimento.",
+  "scenes": [
+    {
+      "id": "hook",
+      "template": "hook",
+      "narration": "Bom dia! Hoje vamos falar sobre o décimo terceiro salário. Vem com a gente entender onde colocar esse dinheiro de forma inteligente. Título: Como Usar Seu décimo terceiro Salário? Subtítulo: Dívidas, Reserva e Metas Kicker: Decida seu futuro agora! Data: um/onze",
+      "data": {
+        "kicker": "Decida seu futuro agora!",
+        "title": "Como Usar Seu 13º Salário?",
+        "subtitle": "Dívidas, Reserva e Metas"
+      }
+    },
+    {
+      "id": "split",
+      "template": "split",
+      "narration": "Vamos comparar três caminhos. Você pode usar o décimo terceiro para pagar dívidas ou para aumentar sua reserva. Lado esquerdo: Dívidas Icone: safe\nPontos: Pague suas contas pendentes. Lado direito: Reserva Icone: piggy\nPontos: Crie uma reserva de emergência.",
+      "data": {
+        "left": {
+          "label": "Dívidas",
+          "points": [
+            "Pague suas contas pendentes.",
+            "Libere seu orçamento."
+          ]
+        },
+        "right": {
+          "label": "Reserva",
+          "points": [
+            "Crie uma reserva de emergência.",
+            "Garanta sua segurança financeira."
+          ]
+        }
+      }
+    },
+    {
+      "id": "counter",
+      "template": "counter",
+      "narration": "Imagine você tem cinquenta mil reais em dívidas pendentes. Pagar tudo de uma vez pode aliviar seu orçamento. cem mil reais Título: Dívidas Pendentes\nPrefixo: reais Sufixo: Decimais: dois\nTendência: down\nLegenda: Saldo de dívidas a pagar\nBadge: Libere seu orçamento",
+      "data": {
+        "label": "Dívidas Pendentes",
+        "from": 100000,
+        "to": 50000,
+        "prefix": "R$",
+        "suffix": "",
+        "decimals": 2,
+        "trend": "down",
+        "caption": "Saldo de dívidas a pagar",
+        "badge": "Libere seu"
+      }
+    },
+    {
+      "id": "bars",
+      "template": "bars",
+      "narration": "Agora pense em sua reserva. Você precisa de dez mil reais para cobrir gastos imprevistos. vinte mil reais Título: Reserva Prefixo: reais Sufixo: Itens: [ { \"label\": \"Alimentação\", \"value\": cinco mil }, { \"label\": \"Medicina\", \"value\": três mil }, { \"label\": \"Viagens\", \"value\": dois mil } ]\nLegenda: Gastos imprevistos\nBadge: Garanta sua segurança",
+      "data": {
+        "title": "Reserva",
+        "valuePrefix": "R$",
+        "valueSuffix": "",
+        "items": [
+          {
+            "label": "Alimentação",
+            "value": 5000
+          },
+          {
+            "label": "Medicina",
+            "value": 3000
+          },
+          {
+            "label": "Viagens",
+            "value": 2000
+          }
+        ],
+        "caption": "Gastos imprevistos"
+      }
+    },
+    {
+      "id": "list",
+      "template": "list",
+      "narration": "E por fim, pense em suas metas. Você pode usar o décimo terceiro para investir ou pagar dívidas. Título: Metas Itens: [ \"Investir\", \"Pagar dívidas\" ]\nLegenda: Priorize seus objetivos\nBadge: Alcance seu futuro Data: um/doze, trinta/doze, quinze/um, trinta e um/um, quinze/dois, trinta/dois",
+      "data": {
+        "title": "Metas",
+        "items": [
+          "Investir",
+          "Pagar dívidas"
+        ]
+      }
+    },
+    {
+      "id": "hook-6",
+      "template": "hook",
+      "narration": "Então, qual caminho você escolhe? Pague suas dívidas, crie uma reserva ou priorize suas metas? Título: Escolha Sua Rotina Subtítulo: Dívidas, Reserva e Metas Kicker: Decida seu futuro agora! Data: um/doze, trinta/doze, quinze/um, trinta e um/um, quinze/dois, trinta/dois",
+      "data": {
+        "kicker": "Decida seu futuro agora!",
+        "title": "Escolha Sua Rotina",
+        "subtitle": "Dívidas, Reserva e Metas"
+      }
+    },
+    {
+      "id": "outro",
+      "template": "outro",
+      "narration": "Inscreva-se no canal Mente de Milhão para mais dicas sobre finanças pessoais. Obrigado por assistir! Título: Inscreva-se e Seja Notificado Pontos: [ \"Aproveite o trezeº!\", \"Faça suas contas agora\" ]\nCTA: Inscreva-se no Canal Data: um/doze, trinta/doze, quinze/um, trinta e um/um, quinze/dois, trinta/dois",
+      "data": {
+        "title": "Inscreva-se e Seja Notificado",
+        "points": [
+          "Aproveite o 13º!",
+          "Faça suas contas agora"
+        ],
+        "cta": "Inscreva-se no Canal"
+      }
+    },
+    {
+      "id": "hook-8",
+      "template": "hook",
+      "narration": "Bom dia! Hoje vamos falar sobre o décimo terceiro salário. Vem com a gente entender onde colocar esse dinheiro de forma inteligente. Título: Como Usar Seu décimo terceiro Salário? Subtítulo: Dívidas, Reserva e Metas Kicker: Decida seu futuro agora! Data: um/onze",
+      "data": {
+        "kicker": "Decida seu futuro agora!",
+        "title": "Como Usar Seu 13º Salário?",
+        "subtitle": "Dívidas, Reserva e Metas"
+      }
+    },
+    {
+      "id": "split-9",
+      "template": "split",
+      "narration": "Vamos comparar três caminhos. Você pode usar o décimo terceiro para pagar dívidas ou para aumentar sua reserva. Lado esquerdo: Dívidas Icone: safe\nPontos: Pague suas contas pendentes. Lado direito: Reserva Icone: piggy\nPontos: Crie uma reserva de emergência.",
+      "data": {
+        "left": {
+          "label": "Dívidas",
+          "points": [
+            "Pague suas contas pendentes.",
+            "Libere seu orçamento."
+          ]
+        },
+        "right": {
+          "label": "Reserva",
+          "points": [
+            "Crie uma reserva de emergência.",
+            "Garanta sua segurança financeira."
+          ]
+        }
+      }
+    },
+    {
+      "id": "counter-10",
+      "template": "counter",
+      "narration": "Imagine você tem cinquenta mil reais em dívidas pendentes. Pagar tudo de uma vez pode aliviar seu orçamento. cem mil reais Título: Dívidas Pendentes\nPrefixo: reais Sufixo: Decimais: dois\nTendência: down\nLegenda: Saldo de dívidas a pagar\nBadge: Libere seu orçamento",
+      "data": {
+        "label": "Dívidas Pendentes",
+        "from": 100000,
+        "to": 50000,
+        "prefix": "R$",
+        "suffix": "",
+        "decimals": 2,
+        "trend": "down",
+        "caption": "Saldo de dívidas a pagar",
+        "badge": "Libere seu"
+      }
+    },
+    {
+      "id": "bars-11",
+      "template": "bars",
+      "narration": "Agora pense em sua reserva. Você precisa de dez mil reais para cobrir gastos imprevistos. vinte mil reais Título: Reserva Prefixo: reais Sufixo: Itens: [ { \"label\": \"Alimentação\", \"value\": cinco mil }, { \"label\": \"Medicina\", \"value\": três mil }, { \"label\": \"Viagens\", \"value\": dois mil } ]\nLegenda: Gastos imprevistos\nBadge: Garanta sua segurança",
+      "data": {
+        "title": "Reserva",
+        "valuePrefix": "R$",
+        "valueSuffix": "",
+        "items": [
+          {
+            "label": "Alimentação",
+            "value": 5000
+          },
+          {
+            "label": "Medicina",
+            "value": 3000
+          },
+          {
+            "label": "Viagens",
+            "value": 2000
+          }
+        ],
+        "caption": "Gastos imprevistos"
+      }
+    },
+    {
+      "id": "list-12",
+      "template": "list",
+      "narration": "E por fim, pense em suas metas. Você pode usar o décimo terceiro para investir ou pagar dívidas. Título: Metas Itens: [ \"Investir\", \"Pagar dívidas\" ]\nLegenda: Priorize seus objetivos\nBadge: Alcance seu futuro Data: um/doze, trinta/doze, quinze/um, trinta e um/um, quinze/dois, trinta/dois",
+      "data": {
+        "title": "Metas",
+        "items": [
+          "Investir",
+          "Pagar dívidas"
+        ]
+      }
+    },
+    {
+      "id": "hook-13",
+      "template": "outro",
+      "narration": "Então, qual caminho você escolhe? Pague suas dívidas, crie uma reserva ou priorize suas metas? Título: Escolha Sua Rotina Subtítulo: Dívidas, Reserva e Metas Kicker: Decida seu futuro agora! Data: um/doze, trinta/doze, quinze/um, trinta e um/um, quinze/dois, trinta/dois",
+      "data": {
+        "title": "13º Salário: Onde Colocar seu Dinheiro?",
+        "points": [],
+        "cta": "Inscreva-se"
+      }
+    }
+  ]
+}
