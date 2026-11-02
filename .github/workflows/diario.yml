@@ -13,7 +13,7 @@ name: Vídeos do dia
 # com modo "ensaio", ou edite pedidos/diario.json com "modo": "ensaio".
 on:
   schedule:
-    - cron: "0 13 * * *" # 10h de Brasília
+    - cron: "0 9 * * *" # 6h de Brasília: prepara cedo; cada vídeo fica público numa hora sorteada (10h às 21h)
   workflow_dispatch:
     inputs:
       modo:
@@ -172,8 +172,8 @@ jobs:
       - name: Confirmar login no YouTube
         if: env.REAL == 'true'
         run: node scripts/publicar.mjs testar-conexao
-      - name: Publicar (vídeo longo primeiro, depois o Short)
-        run: node scripts/publicar.mjs enviar "${{ needs.pauta.outputs.csv }}" --visibilidade publico
+      - name: Publicar (cada vídeo agendado para uma hora sorteada do dia)
+        run: node scripts/publicar.mjs enviar "${{ needs.pauta.outputs.csv }}" --visibilidade publico --horario aleatorio
       - name: Guardar roteiros no repositório
         if: always() && env.REAL == 'true'
         run: git add episodes/*.json data/pautas.json
