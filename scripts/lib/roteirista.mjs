@@ -55,7 +55,14 @@ export function problemasDeConteudo(ep, formato, { titulosUsados = [] } = {}) {
   ep.scenes.forEach((s, i) => {
     if (/\d/.test(s.narration)) p.push(`cena ${i + 1}: escreva os números por extenso na narração (ex.: "dez mil reais"), sem algarismos`);
     if (/[%$€]|R\$/.test(s.narration)) p.push(`cena ${i + 1}: na narração escreva "por cento" e "reais", sem símbolos`);
+    if (CAMPOS_NA_FALA.test(s.narration) || /[{}\[\]"]/.test(s.narration) || EMOJI.test(s.narration))
+      p.push(`cena ${i + 1}: a narração é só o que a voz fala; não coloque nomes de campos (Título:, Legenda:...), chaves, aspas nem emojis`);
+    EMOJI.lastIndex = 0;
     if (s.narration.length > meta.porCena) p.push(`cena ${i + 1}: narração com ${s.narration.length} caracteres; o máximo é ${meta.porCena}`);
+  });
+  const falas = ep.scenes.map((s) => chaveFala(s.narration));
+  falas.forEach((f, i) => {
+    if (f && falas.indexOf(f) !== i) p.push(`cena ${i + 1}: repete a fala da cena ${falas.indexOf(f) + 1}; cada cena precisa de fala nova`);
   });
   const n = ep.scenes.length;
   if (n < meta.cenas[0] || n > meta.cenas[1]) p.push(`use de ${meta.cenas[0]} a ${meta.cenas[1]} cenas (vieram ${n})`);
@@ -100,6 +107,8 @@ Regras da narração (lida por uma voz sintética):
 - Números SEMPRE por extenso e sem símbolos: "dez mil reais", "quatro e meio por cento". Nada de algarismos, %, R$.
 - Cada cena tem no máximo ${m.porCena} caracteres de narração. A narração somada de todas as cenas fica entre ${m.caracteres[0]} e ${m.caracteres[1]} caracteres.
 - Nos campos visuais ("data") use algarismos e símbolos normalmente: "R$ 10.000", "4,5%".
+- "narration" é SÓ o texto que a voz fala, como um apresentador conversando. NUNCA coloque nela nomes de campos (Título:, Legenda:, Prefixo:, Itens:, Data:), chaves, colchetes, aspas ou emojis. O que vai na tela fica só em "data".
+- Cada cena traz uma informação nova. Nunca repita a fala de outra cena.
 
 Estrutura:
 - De ${m.cenas[0]} a ${m.cenas[1]} cenas. A primeira é "hook" e a última é "outro" com "cta": "${m.cta}".
@@ -269,9 +278,58 @@ async function chamarIA(f, token, modelo, messages, formato) {
   throw Object.assign(new Error(`${modelo}: ${erros.join(" | ")}${semPermissao ? ' (o workflow precisa de "models: read")' : ""}`), { fatal: semPermissao });
 }
 
+// Nomes de campos visuais que a IA às vezes copia para dentro da fala
+// ("Título: ...", "Prefixo: reais", "data: {"). A voz leria isso em voz alta.
+const CAMPOS_NA_FALA =
+  /(^|[\s.!?,;/])(t[ií]tulo|subt[ií]tulo|kicker|prefixo|sufixo|prefix|suffix|legenda|caption|badge|itens|items|pontos|points|[ií]cone|icon|tend[eê]ncia|trend|decimais|decimals|cta|data|label|value|values|series|lado (esquerdo|direito)|xlabels|valueprefix|valuesuffix)\s*:/i;
+const EMOJI = /[\p{Extended_Pictographic}\u{FE0F}\u{200D}]/gu;
+
+/** Limpa a fala: corta tudo a partir do primeiro nome de campo, tira emojis, chaves e aspas. */
+export function limparNarracao(texto) {
+  let t = String(texto ?? "");
+  const m = t.match(CAMPOS_NA_FALA);
+  if (m) t = t.slice(0, m.index + m[1].length);
+  t = t
+    .replace(EMOJI, "")
+    .replace(/[{}\[\]"<>|*_#`]/g, " ")
+    .replace(/\s*\n+\s*/g, " ")
+    .replace(/\s+([.,!?;:])/g, "$1")
+    .replace(/([.!?])(?:\s*[.!?,;:])+/g, "$1")
+    .replace(/\s{2,}/g, " ")
+    .trim()
+    .replace(/[,;:/\s-]+$/, "");
+  // Frases repetidas dentro da mesma fala saem.
+  const vistas = new Set();
+  t = (t.match(/[^.!?…]+[.!?…]*/g) ?? [])
+    .filter((f) => {
+      const k = semAcento(f).toLowerCase().replace(/[^a-z ]/g, "").trim();
+      if (!k) return false;
+      if (vistas.has(k)) return false;
+      vistas.add(k);
+      return true;
+    })
+    .map((f) => f.trim())
+    .join(" ");
+  if (t && !/[.!?…]$/.test(t)) t += ".";
+  return t;
+}
+
+/** Chave para achar falas repetidas (ignora acento, pontuação e maiúsculas). */
+const chaveFala = (t) => semAcento(String(t ?? "")).toLowerCase().replace(/[^a-z ]/g, " ").replace(/\s+/g, " ").trim();
+
 /** Monta o episódio final a partir da resposta da IA (id, formato, aviso e meta de duração são nossos). */
 export function montarEpisodio(bruto, { id, formato }) {
-  const scenes = Array.isArray(bruto?.scenes) ? bruto.scenes : [];
+  // Cenas repetidas (mesma fala) saem: a IA local às vezes repete o roteiro inteiro para encher.
+  const falas = new Set();
+  const scenes = (Array.isArray(bruto?.scenes) ? bruto.scenes : [])
+    .map((s) => (typeof s?.narration === "string" ? { ...s, narration: limparNarracao(s.narration) } : s))
+    .filter((s) => {
+      if (typeof s?.narration !== "string") return true;
+      const k = chaveFala(s.narration);
+      if (!k || falas.has(k)) return false;
+      falas.add(k);
+      return true;
+    });
   const vistos = new Set();
   const cenas = scenes.map((s, i) => {
     let sid = String(s?.id ?? `cena-${i + 1}`).toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "").replace(/[^a-z0-9-]+/g, "-").replace(/^-+|-+$/g, "") || `cena-${i + 1}`;
