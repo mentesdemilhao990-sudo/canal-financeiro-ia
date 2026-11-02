@@ -280,4 +280,35 @@ test("roteiro: cena com fala repetida sai e o problema é apontado", () => {
   assert.match(problemasDeConteudo(bruto, "short").join(), /repete a fala/);
   const lixo = { ...ep, scenes: ep.scenes.map((s, i) => (i === 1 ? { ...s, narration: s.narration + " Título: Metas" } : s)) };
   assert.match(problemasDeConteudo(lixo, "short").join(), /nomes de campos/);
+test("horários sorteados: dentro da janela, com intervalo, mudam por dia e respeitam a hora atual", async () => {
+  const { horariosAleatorios, horaBrasilia } = await import("../../scripts/lib/horarios.mjs");
+  const ids = ["2026-11-02-x-longo", "2026-11-02-x-short"];
+  const cedo = new Date("2026-11-02T09:00:00Z"); // 6h em Brasília
+  const h = horariosAleatorios(ids, { dia: "2026-11-02", agora: cedo });
+  const [a, b] = ids.map((i) => h[i]);
+  for (const d of [a, b]) assert.ok(horaBrasilia(d) >= "10:00" && horaBrasilia(d) <= "21:00", horaBrasilia(d));
+  assert.ok(b - a >= 120 * 60e3, "pelo menos 2 h entre os dois");
+  assert.deepEqual(horariosAleatorios(ids, { dia: "2026-11-02", agora: cedo }), h, "mesmo dia, mesmo sorteio");
+  const outros = new Set(["03", "04", "05", "06", "07"].map((d) => horaBrasilia(horariosAleatorios([`2026-11-${d}-x-longo`], { dia: `2026-11-${d}`, agora: new Date(`2026-11-${d}T09:00:00Z`) })[`2026-11-${d}-x-longo`])));
+  assert.ok(outros.size >= 4, `horários variam: ${[...outros]}`);
+  const tarde = horariosAleatorios(ids, { dia: "2026-11-02", agora: new Date("2026-11-02T21:30:00Z") }); // 18h30
+  assert.ok(tarde[ids[0]] >= new Date("2026-11-02T21:50:00Z"), "nunca no passado");
+  assert.ok(tarde[ids[1]] - tarde[ids[0]] >= 120 * 60e3);
+  const noite = horariosAleatorios(ids, { dia: "2026-11-02", agora: new Date("2026-11-03T00:30:00Z") }); // 21h30
+  assert.deepEqual(Object.values(noite), [null, null], "janela passou: publica na hora");
+});
+
+test("publicação diária com horário sorteado: sobe agendado e registra a hora", () => {
+  const EP = "guardar-nao-e-investir";
+  const dir = ambientePublicar([EP]);
+  const r = rodarPublicar(dir, ["enviar", EP, "--visibilidade", "publico", "--horario", "aleatorio"], { CONFIRMACAO_ENVIO: "PUBLICACAO-DIARIA", AGORA_TESTE: "2000-01-01T09:00:00Z" });
+  assert.equal(r.status, 0, r.stdout + r.stderr);
+  assert.match(r.stdout, /agendado: fica \*\*público às \d\d:\d\d/);
+  const ch = readFileSync(path.join(dir, "chamadas.jsonl"), "utf8").trim().split("\n").map((l) => JSON.parse(l));
+  const ini = ch.find((c) => c.url.endsWith("/upload/youtube/v3/videos"));
+  assert.equal(ini.corpo.status.privacyStatus, "private");
+  assert.ok(ini.corpo.status.publishAt);
+  const pub = JSON.parse(readFileSync(path.join(dir, "data", "publicacoes.json"), "utf8")).itens[0];
+  assert.equal(pub.status, "agendado");
+  assert.ok(pub.publicarEm);
 });

@@ -124,9 +124,9 @@ export class YouTube {
 
   /**
    * Envia o vídeo (upload retomável, em uma parte). Por padrão PRIVADO; só a
-   * pauta diária pede "public" (autorizada pelo Patrick).
+   * pauta diária pede "public" ou um horário (publicarEm), autorizada pelo Patrick.
    */
-  async enviarVideo(arquivo, meta, { privacidade = "private", notificar = false } = {}) {
+  async enviarVideo(arquivo, meta, { privacidade = "private", notificar = false, publicarEm = null } = {}) {
     if (!this.token) await this.autenticar();
     const tamanho = statSync(arquivo).size;
     const corpo = {
@@ -139,7 +139,9 @@ export class YouTube {
         defaultAudioLanguage: meta.defaultLanguage,
       },
       status: {
-        privacyStatus: privacidade,
+        // Agendado: sobe privado e o próprio YouTube torna público na hora marcada.
+        privacyStatus: publicarEm ? "private" : privacidade,
+        ...(publicarEm ? { publishAt: new Date(publicarEm).toISOString() } : {}),
         selfDeclaredMadeForKids: meta.madeForKids,
         containsSyntheticMedia: meta.containsSyntheticMedia,
         embeddable: true,
