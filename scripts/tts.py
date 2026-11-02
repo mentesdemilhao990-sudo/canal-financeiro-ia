@@ -109,6 +109,84 @@ class PiperEngine:
         return trimmed, proportional_words(words, 0.0, dur), False
 
 
+class EdgeEngine:
+    """Voz neural gratuita (Microsoft Edge "Ler em voz alta"), bem mais natural que o Piper.
+
+    Precisa de internet. Devolve o tempo de cada palavra direto do serviço.
+    """
+
+    rate = 24000
+
+    def __init__(self, voice: str, rate: str = "+0%", pitch: str = "+0Hz"):
+        import edge_tts  # noqa: F401
+
+        self.voice, self.speed, self.pitch = voice, rate, pitch
+
+    async def _synth(self, text: str):
+        import edge_tts
+
+        com = edge_tts.Communicate(text, self.voice, rate=self.speed, pitch=self.pitch, boundary="WordBoundary")
+        mp3, marks = bytearray(), []
+        async for c in com.stream():
+            if c["type"] == "audio":
+                mp3.extend(c["data"])
+            elif c["type"] == "WordBoundary":
+                # offset/duração vêm em unidades de 100 ns
+                marks.append({"text": c["text"], "start": c["offset"] / 1e7, "end": (c["offset"] + c["duration"]) / 1e7})
+        return bytes(mp3), marks
+
+    def sentence(self, text: str) -> tuple[np.ndarray, list[dict], bool]:
+        import asyncio
+
+        last = None
+        for tentativa in range(4):
+            try:
+                mp3, marks = asyncio.run(self._synth(text))
+                if mp3:
+                    break
+            except Exception as e:  # rede instável: tenta de novo
+                last = e
+            import time
+
+            time.sleep(2 * (tentativa + 1))
+        else:
+            raise RuntimeError(f"voz Edge falhou: {last}")
+        pcm = subprocess.run(
+            ["ffmpeg", "-hide_banner", "-loglevel", "error", "-i", "pipe:0", "-f", "f32le", "-ac", "1", "-ar", str(self.rate), "pipe:1"],
+            input=mp3, capture_output=True, check=True,
+        ).stdout
+        audio = np.frombuffer(pcm, dtype=np.float32).copy()
+        trimmed, cut = trim_silence(audio, self.rate)
+        dur = len(trimmed) / self.rate
+        off = cut / self.rate
+        words = split_words(text)
+        if marks and len(marks) == len(words):
+            timed = []
+            for w, m in zip(words, marks):
+                a = max(0.0, m["start"] - off)
+                b = min(dur, m["end"] - off)
+                timed.append({"text": w, "start": round(a, 3), "end": round(max(b, a + 0.05), 3)})
+            return trimmed, timed, True
+        return trimmed, proportional_words(words, 0.0, dur), False
+
+
+def load_pronuncia(path: Path) -> list[tuple[re.Pattern, str]]:
+    """Correções de pronúncia: palavra escrita -> como a voz deve falar (só no áudio)."""
+    if not path.exists():
+        return []
+    data = json.loads(path.read_text(encoding="utf-8"))
+    regras = []
+    for escrito, falado in data.get("substituicoes", {}).items():
+        regras.append((re.compile(rf"(?<!\w){re.escape(escrito)}(?!\w)", re.IGNORECASE), falado))
+    return regras
+
+
+def aplicar_pronuncia(texto: str, regras) -> str:
+    for r, falado in regras:
+        texto = r.sub(falado, texto)
+    return texto
+
+
 class MockEngine:
     """Gera um 'murmúrio' sintético com a duração aproximada da fala. Só para pré-visualizar."""
 
@@ -165,6 +243,16 @@ def make_ambient(path: Path, duration: float) -> None:
     )
 
 
+def edge_ok(voice: str, cfg: dict) -> bool:
+    """Testa a voz Edge com uma frase curta; se não der, usa o Piper."""
+    try:
+        EdgeEngine(voice, cfg.get("edgeRate", "+0%"), cfg.get("edgePitch", "+0Hz")).sentence("Olá.")
+        return True
+    except Exception as e:
+        print(f"AVISO: voz Edge indisponível ({e}); usando Piper.", file=sys.stderr)
+        return False
+
+
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--episode", required=True)
@@ -186,15 +274,23 @@ def main() -> int:
     out = Path(args.out)
     out.mkdir(parents=True, exist_ok=True)
 
+    engine_name = "mock"
+    edge_voice = voice_cfg.get("edge")
     if args.mock:
         engine = MockEngine()
         print("AVISO: modo --mock, a narração é sintética (sem voz).", file=sys.stderr)
+    elif edge_voice and voice_cfg.get("motor", "edge") == "edge" and edge_ok(edge_voice, voice_cfg):
+        engine = EdgeEngine(edge_voice, voice_cfg.get("edgeRate", "+0%"), voice_cfg.get("edgePitch", "+0Hz"))
+        engine_name = f"edge:{edge_voice}"
     else:
         model_path = Path(args.voice_dir) / f"{model}.onnx"
         if not model_path.exists():
             print(f"Voz não encontrada: {model_path}. Rode: python -m piper.download_voices {model} --data-dir {args.voice_dir}", file=sys.stderr)
             return 2
         engine = PiperEngine(model_path, length_scale)
+        engine_name = f"piper:{model}"
+    print(f"Voz: {engine_name}")
+    regras = load_pronuncia(ROOT / "config" / "pronuncia.json")
 
     pieces: list[np.ndarray] = [np.zeros(int(lead_in * OUT_RATE), np.float32)]
     t = lead_in
@@ -206,7 +302,14 @@ def main() -> int:
         words_out = []
         sentences = split_sentences(scene["narration"])
         for k, sent in enumerate(sentences):
-            audio, words, aligned = engine.sentence(sent)
+            falado = aplicar_pronuncia(sent, regras)
+            audio, words, aligned = engine.sentence(falado)
+            # As legendas mostram o texto escrito, não o "como se fala".
+            orig = split_words(sent)
+            if len(orig) == len(words):
+                words = [{**w, "text": o} for w, o in zip(words, orig)]
+            else:
+                words = proportional_words(orig, 0.0, len(audio) / engine.rate)
             total_sentences += 1
             aligned_sentences += int(aligned)
             audio = resample(audio, engine.rate, OUT_RATE)
@@ -238,7 +341,7 @@ def main() -> int:
 
     timeline = {
         "duration": round(duration, 3),
-        "engine": "mock" if args.mock else f"piper:{model}",
+        "engine": engine_name,
         "alignment": f"{aligned_sentences}/{total_sentences}",
         "music": {"enabled": has_music, "volume": float(music.get("volume", 0.09))},
         "scenes": scenes_out,

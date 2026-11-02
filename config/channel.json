@@ -2,6 +2,10 @@
   "name": "MENTE DE MILHÃO",
   "handle": "@mentedemilhao",
   "voice": {
+    "motor": "edge",
+    "edge": "pt-BR-AntonioNeural",
+    "edgeRate": "+4%",
+    "edgePitch": "+0Hz",
     "model": "pt_BR-faber-medium",
     "lengthScale": 1.0,
     "sentencePause": 0.22,
