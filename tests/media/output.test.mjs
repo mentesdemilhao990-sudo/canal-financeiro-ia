@@ -26,7 +26,7 @@ test("arquivos gerados existem e não estão vazios", () => {
   }
 });
 
-test("narração veio do Piper (não do modo de teste)", { skip: allowMock }, () => {
+test("narração veio da voz real (Edge ou Piper, não do modo de teste)", { skip: allowMock }, () => {
   assert.match(info.engine ?? "", /^(edge:pt-BR-\w+Neural|piper:pt_BR-faber-medium)$/);
 });
 

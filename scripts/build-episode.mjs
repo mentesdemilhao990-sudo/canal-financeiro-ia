@@ -42,7 +42,7 @@ const step = (msg) => console.log(`\n▶ ${msg}`);
 const t0 = Date.now();
 
 // 1) Narração + linha do tempo
-step(`Narração (${mock ? "mock" : "Piper " + (channel.voice?.model ?? "pt_BR-faber-medium")})`);
+step(`Narração (${mock ? "mock" : channel.voice?.edge ? "voz Edge " + channel.voice.edge + ", Piper de reserva" : "Piper " + (channel.voice?.model ?? "pt_BR-faber-medium")})`);
 const tts = spawnSync(
   python,
   ["scripts/tts.py", "--episode", episodeFile, "--out", buildDir, ...(mock ? ["--mock"] : []), "--voice-dir", process.env.VOICE_DIR ?? "voices"],
