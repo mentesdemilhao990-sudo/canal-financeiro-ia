@@ -280,6 +280,8 @@ test("roteiro: cena com fala repetida sai e o problema é apontado", () => {
   assert.match(problemasDeConteudo(bruto, "short").join(), /repete a fala/);
   const lixo = { ...ep, scenes: ep.scenes.map((s, i) => (i === 1 ? { ...s, narration: s.narration + " Título: Metas" } : s)) };
   assert.match(problemasDeConteudo(lixo, "short").join(), /nomes de campos/);
+});
+
 test("horários sorteados: dentro da janela, com intervalo, mudam por dia e respeitam a hora atual", async () => {
   const { horariosAleatorios, horaBrasilia } = await import("../../scripts/lib/horarios.mjs");
   const ids = ["2026-11-02-x-longo", "2026-11-02-x-short"];
