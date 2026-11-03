@@ -1,6 +1,6 @@
 # 📊 Painel · Mente de Milhão
 
-_Atualizado em 02/11/2026, 22:26 (Brasília). Este arquivo é gerado sozinho: não edite à mão._
+_Atualizado em 03/11/2026, 01:11 (Brasília). Este arquivo é gerado sozinho: não edite à mão._
 
 ## Chaves de segurança
 
@@ -15,7 +15,7 @@ Com tudo desligado, os workflows só **simulam**: nada é enviado nem respondido
 
 ## Cota do YouTube hoje
 
-29 de 9000 unidades · 2 de 10 envios de vídeo (zera à meia-noite do Pacífico, 4h ou 5h em Brasília).
+34 de 9000 unidades · 2 de 10 envios de vídeo (zera à meia-noite do Pacífico, 4h ou 5h em Brasília).
 
 ## Vídeos
 
@@ -31,7 +31,7 @@ Todos os episódios já foram enviados.
 
 ## Comentários
 
-Última leitura: 02/11/2026, 22:26
+Última leitura: 03/11/2026, 01:11
 
 | Aguardando você | 💰 Financeiras (revisão obrigatória) | Aprovadas, não enviadas | Respondidas | Automáticas | Ignoradas |
 | ---: | ---: | ---: | ---: | ---: | ---: |
