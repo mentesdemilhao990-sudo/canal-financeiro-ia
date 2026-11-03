@@ -1,0 +1,90 @@
+[
+  {
+    "arquivo": "02-en-US-AvaMultilingualNeural.mp3",
+    "voz": "en-US-AvaMultilingualNeural",
+    "genero": "Female",
+    "idioma": "en-US",
+    "rate": "+0%",
+    "pitch": "+0Hz"
+  },
+  {
+    "arquivo": "03-en-US-BrianMultilingualNeural.mp3",
+    "voz": "en-US-BrianMultilingualNeural",
+    "genero": "Male",
+    "idioma": "en-US",
+    "rate": "+0%",
+    "pitch": "+0Hz"
+  },
+  {
+    "arquivo": "04-en-US-EmmaMultilingualNeural.mp3",
+    "voz": "en-US-EmmaMultilingualNeural",
+    "genero": "Female",
+    "idioma": "en-US",
+    "rate": "+0%",
+    "pitch": "+0Hz"
+  },
+  {
+    "arquivo": "05-fr-FR-VivienneMultilingualNeural.mp3",
+    "voz": "fr-FR-VivienneMultilingualNeural",
+    "genero": "Female",
+    "idioma": "fr-FR",
+    "rate": "+0%",
+    "pitch": "+0Hz"
+  },
+  {
+    "arquivo": "06-fr-FR-RemyMultilingualNeural.mp3",
+    "voz": "fr-FR-RemyMultilingualNeural",
+    "genero": "Male",
+    "idioma": "fr-FR",
+    "rate": "+0%",
+    "pitch": "+0Hz"
+  },
+  {
+    "arquivo": "07-de-DE-SeraphinaMultilingualNeural.mp3",
+    "voz": "de-DE-SeraphinaMultilingualNeural",
+    "genero": "Female",
+    "idioma": "de-DE",
+    "rate": "+0%",
+    "pitch": "+0Hz"
+  },
+  {
+    "arquivo": "08-de-DE-FlorianMultilingualNeural.mp3",
+    "voz": "de-DE-FlorianMultilingualNeural",
+    "genero": "Male",
+    "idioma": "de-DE",
+    "rate": "+0%",
+    "pitch": "+0Hz"
+  },
+  {
+    "arquivo": "09-pt-BR-ThalitaMultilingualNeural.mp3",
+    "voz": "pt-BR-ThalitaMultilingualNeural",
+    "genero": "Female",
+    "idioma": "pt-BR",
+    "rate": "+0%",
+    "pitch": "+0Hz"
+  },
+  {
+    "arquivo": "10-pt-BR-AntonioNeural.mp3",
+    "voz": "pt-BR-AntonioNeural",
+    "genero": "Male",
+    "idioma": "pt-BR",
+    "rate": "+0%",
+    "pitch": "+0Hz"
+  },
+  {
+    "arquivo": "11-pt-BR-AntonioNeural-ritmo-rapido.mp3",
+    "voz": "pt-BR-AntonioNeural",
+    "genero": "Male",
+    "idioma": "pt-BR",
+    "rate": "+8%",
+    "pitch": "-4Hz"
+  },
+  {
+    "arquivo": "12-pt-BR-FranciscaNeural.mp3",
+    "voz": "pt-BR-FranciscaNeural",
+    "genero": "Female",
+    "idioma": "pt-BR",
+    "rate": "+0%",
+    "pitch": "+0Hz"
+  }
+]
