@@ -54,7 +54,7 @@ jobs:
       - name: Montar lista de episódios
         id: lista
         env:
-          PEDIDO: ${{ inputs.episodios || 'guardar-nao-e-investir,exemplo-estilo-novo-13-salario' }}
+          PEDIDO: ${{ inputs.episodios || 'exemplo-estilo-novo-13-salario' }}
         run: |
           node -e '
             const fs = require("fs");
