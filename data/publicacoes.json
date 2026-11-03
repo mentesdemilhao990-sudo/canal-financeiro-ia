@@ -90,6 +90,68 @@
       "videoId": "gRHy7XC_Zsw",
       "url": "https://youtu.be/gRHy7XC_Zsw",
       "enviadoEm": "2026-11-02T15:05:05.922Z"
+    },
+    {
+      "historico": [
+        {
+          "em": "2026-11-03T10:41:43.534Z",
+          "status": "enviando"
+        },
+        {
+          "em": "2026-11-03T10:41:45.362Z",
+          "status": "privado",
+          "nota": "enviado (agendando)"
+        },
+        {
+          "em": "2026-11-03T10:41:45.362Z",
+          "status": "agendado",
+          "nota": "fica público às 14:17 (Brasília)"
+        }
+      ],
+      "plataforma": "youtube",
+      "episodio": "2026-11-03-selic-longo",
+      "titulo": "Selic: Entenda o que é e como ela afeta seu bolso",
+      "hashEpisodio": "35902ffe43c4b665",
+      "hashVideo": "25b502138585d5b9",
+      "duracao": 154.994,
+      "status": "agendado",
+      "atualizadoEm": "2026-11-03T10:41:45.362Z",
+      "privacidade": "private",
+      "videoId": "oYt9QTXrbRQ",
+      "url": "https://youtu.be/oYt9QTXrbRQ",
+      "enviadoEm": "2026-11-03T10:41:45.362Z",
+      "publicarEm": "2026-11-03T17:17:00.000Z"
+    },
+    {
+      "historico": [
+        {
+          "em": "2026-11-03T10:41:45.370Z",
+          "status": "enviando"
+        },
+        {
+          "em": "2026-11-03T10:41:47.030Z",
+          "status": "privado",
+          "nota": "enviado (agendando)"
+        },
+        {
+          "em": "2026-11-03T10:41:47.031Z",
+          "status": "agendado",
+          "nota": "fica público às 18:13 (Brasília)"
+        }
+      ],
+      "plataforma": "youtube",
+      "episodio": "2026-11-03-selic-short",
+      "titulo": "Selic: Entenda o que é e como ela mexe no seu bolso",
+      "hashEpisodio": "e4caa7509f63fdc2",
+      "hashVideo": "46dfe937bf765cf8",
+      "duracao": 47.891,
+      "status": "agendado",
+      "atualizadoEm": "2026-11-03T10:41:47.031Z",
+      "privacidade": "private",
+      "videoId": "CZd3qoZKzO0",
+      "url": "https://youtu.be/CZd3qoZKzO0",
+      "enviadoEm": "2026-11-03T10:41:47.030Z",
+      "publicarEm": "2026-11-03T21:13:00.000Z"
     }
   ]
 }

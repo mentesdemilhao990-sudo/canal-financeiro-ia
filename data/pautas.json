@@ -22,6 +22,28 @@
         "Dívidas, Reserva ou Metas: Onde Colocar Seu 13º?"
       ],
       "modelo": "ollama:qwen2.5:7b"
+    },
+    {
+      "data": "2026-11-03",
+      "tema": "selic",
+      "nome": "Taxa Selic",
+      "pontos": 15.1,
+      "manchetes": [
+        "Dólar iria a 6, 7 reais com redução artificial da Selic, diz ex-ministro da Fazenda - VEJA",
+        "Análise: às vésperas do Copom, PT expõe divisão na economia - SBT News",
+        "Copom: mercado espera fim do corte de juros na quarta - Acia Araçatuba",
+        "Deputado Lindbergh Farias critica projeção do mercado financeiro para a Taxa Selic - Tribuna do Sertão",
+        "Taxa Selic: o que é e como impacta a economia? - Revista Fórum"
+      ],
+      "episodios": [
+        "2026-11-03-selic-longo",
+        "2026-11-03-selic-short"
+      ],
+      "titulos": [
+        "Selic: Entenda o que é e como ela afeta seu bolso",
+        "Selic: Entenda o que é e como ela mexe no seu bolso"
+      ],
+      "modelo": "ollama:qwen2.5:7b"
     }
   ]
 }

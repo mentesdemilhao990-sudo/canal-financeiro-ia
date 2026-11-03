@@ -1,0 +1,101 @@
+{
+  "id": "2026-11-03-selic-short",
+  "formato": "short",
+  "title": "Selic: Entenda o que é e como ela mexe no seu bolso",
+  "description": "A Selic pode parecer um conceito complexo, mas entenda rapidamente o que é a taxa Selic e como ela afeta sua economia diária. Descomplicamos tudo para você!",
+  "tags": [
+    "selic",
+    "taxa de juros",
+    "economia",
+    "investimentos",
+    "crédito",
+    "renda fixa"
+  ],
+  "targetDurationSeconds": 46,
+  "disclaimer": "Conteúdo educativo. Valores ilustrativos, não é recomendação de investimento.",
+  "scenes": [
+    {
+      "id": "hook",
+      "template": "hook",
+      "narration": "Selic: o que é e como ela mexe no seu bolso\nA Selic, explicada em trinta e quatro segundos\nSiga para mais\ncta: 'Entenda agora'",
+      "data": {
+        "kicker": "Selic",
+        "title": "Selic: o que é e como ela mexe no seu bolso",
+        "subtitle": "A Selic, explicada em 34 segundos"
+      }
+    },
+    {
+      "id": "split",
+      "template": "split",
+      "narration": "Crédito x Poupança\nSelic = doze por cento\nPoupança = sete vírgula cinco por cento\nLado a lado, você vê a diferença\ncta: 'Cuide do seu dinheiro!' [safe]",
+      "data": {
+        "left": {
+          "label": "Crédito",
+          "points": [
+            "Juros mais altos"
+          ]
+        },
+        "right": {
+          "label": "Poupança",
+          "points": [
+            "Menos juros"
+          ]
+        }
+      }
+    },
+    {
+      "id": "counter",
+      "template": "counter",
+      "narration": "Selic subiu três pontos\nDe nove vírgula vinte e cinco por cento para doze vírgula vinte e cinco por cento\nTrend: 'up'\ncaption: 'Última alta em março de dois mil e vinte e três'\ncta: 'Siga para mais'",
+      "data": {
+        "label": "Selic",
+        "from": 9.25,
+        "to": 12.25,
+        "prefix": "R$ ",
+        "suffix": "%",
+        "decimals": 2,
+        "trend": "up",
+        "caption": "Última alta em março de 2023",
+        "badge": "última"
+      }
+    },
+    {
+      "id": "bars",
+      "template": "bars",
+      "narration": "Impacto na renda fixa\ndez por cento = mil reais\ncinco por cento = quinhentos reais\ndois vírgula cinco por cento = duzentos e cinquenta reais\ncaption: 'Quanto menos juros, menor o retorno'\ncta: 'Entenda mais'",
+      "data": {
+        "title": "Impacto na renda fixa",
+        "valuePrefix": "R$",
+        "valueSuffix": "",
+        "items": [
+          {
+            "label": "10%",
+            "value": 1000
+          },
+          {
+            "label": "5%",
+            "value": 500
+          },
+          {
+            "label": "2,5%",
+            "value": 250
+          }
+        ],
+        "caption": "Quanto menos juros, menor o retorno"
+      }
+    },
+    {
+      "id": "outro",
+      "template": "outro",
+      "narration": "Entendendo a Selic é fundamental para seu bolso\nCuide do seu dinheiro e invista com sabedoria\nSiga para mais [cta]",
+      "data": {
+        "title": "Entendendo a Selic é fundamental para seu bolso\nCuide do seu dinheiro e invista",
+        "points": [
+          "Selic impacta juros",
+          "Aprenda a investir"
+        ],
+        "cta": "Entenda agora"
+      }
+    }
+  ]
+}
