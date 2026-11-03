@@ -1,0 +1,180 @@
+{
+  "id": "2026-11-03-selic-longo",
+  "formato": "longo",
+  "title": "Selic: Entenda o que é e como ela afeta seu bolso",
+  "description": "A Selic influencia diretamente no crédito, renda fixa e poupança. Neste vídeo, vamos explicar o que é a taxa Selic e como ela impacta sua economia diária. Saiba mais sobre esta chave econômica fundamental para o Brasil.",
+  "tags": [
+    "Selic",
+    "economia",
+    "juros",
+    "investimentos",
+    "poupança",
+    "crédito",
+    "renda fixa"
+  ],
+  "targetDurationSeconds": 155,
+  "disclaimer": "Conteúdo educativo. Valores ilustrativos, não é recomendação de investimento.",
+  "scenes": [
+    {
+      "id": "hook",
+      "template": "hook",
+      "narration": "Olá! Hoje vamos falar sobre uma coisa que afeta seu bolso diretamente: a Selic. Entenda o que é e como ela impacta suas finanças. Inscreva-se para mais dicas de educação financeira no Mente de Milhão. #Selic #EducaçãoFinanceira #Investimentos",
+      "data": {
+        "kicker": "Entenda",
+        "title": "Selic",
+        "subtitle": "Ela afeta seu bolso"
+      }
+    },
+    {
+      "id": "split",
+      "template": "split",
+      "narration": "A Selic é a taxa básica de juros do Brasil. Compare com o juro da poupança: Poupança tem zero vírgula cinco por cento ao mês (seis por cento ao ano), enquanto a Selic atualmente está em doze vírgula setenta e cinco por cento. Isso significa que ela influencia diretamente no crédito e investimentos. #Selic #Juros",
+      "data": {
+        "left": {
+          "label": "Poupança",
+          "points": [
+            "0,5% ao mês",
+            "6% ao ano"
+          ]
+        },
+        "right": {
+          "label": "Selic",
+          "points": [
+            "12,75%",
+            "Influencia no crédito e investimentos"
+          ]
+        }
+      }
+    },
+    {
+      "id": "counter",
+      "template": "counter",
+      "narration": "A Selic é a taxa básica de juros do Brasil. Ela influencia diretamente o seu bolso: quanto mais alta, maior o custo do crédito e menor o retorno da poupança. Vamos ver como ela impacta suas finanças. #Selic #JurosBasicoDeJurosDoBrasil #InfluenciaNoBolso",
+      "data": {
+        "label": "Selic atualmente",
+        "from": 10,
+        "to": 12,
+        "prefix": "12%",
+        "suffix": "% ao m",
+        "decimals": 0,
+        "trend": "up",
+        "caption": "Aumento recente na Selic",
+        "badge": "Atenção"
+      }
+    },
+    {
+      "id": "linechart",
+      "template": "lineChart",
+      "narration": "Vamos ver como a Selic influencia diferentes investimentos. Aqui temos o gráfico: dois mil e dezenove - Selic seis vírgula cinco por cento (três vírgula cinco por cento ao m); dois mil e vinte e dois - Selic catorze vírgula vinte e cinco por cento (sete vírgula um dois cinco por cento ao m). Quanto mais alta a taxa, menor o retorno da poupança e maior o custo do crédito. #Selic #Investimentos",
+      "data": {
+        "title": "Evolution of Selic",
+        "xLabels": [
+          "sólido 201",
+          "junho 2022"
+        ],
+        "valuePrefix": "14,25%",
+        "valueSuffix": "% ao m",
+        "series": [
+          {
+            "label": "Selic",
+            "values": [
+              6.5,
+              14.25
+            ]
+          }
+        ],
+        "caption": "Crescimento recente da Selic"
+      }
+    },
+    {
+      "id": "bars",
+      "template": "bars",
+      "narration": "Agora vamos comparar o impacto na poupança e no crédito: Poupança seis por cento ao ano (juros mais baixos), enquanto a taxa de juros do cartão de crédito é vinte e cinco vírgula nove por cento. Isso significa que quanto mais alta a Selic, maior o custo do crédito. #Selic #JurosBasicoDeJurosDoBrasil #InfluenciaNoBolso",
+      "data": {
+        "title": "Impacto na Poupança e Crédito",
+        "valuePrefix": "6%",
+        "valueSuffix": "% ao a",
+        "items": [
+          {
+            "label": "Poupança",
+            "value": 6,
+            "color": "gold"
+          },
+          {
+            "label": "Cartão de Crédito",
+            "value": 25.9,
+            "color": "red"
+          }
+        ],
+        "caption": "Crescimento recente da Selic"
+      }
+    },
+    {
+      "id": "list",
+      "template": "list",
+      "narration": "Resumindo: A Selic afeta sua economia de várias maneiras. Ela influencia o crédito, renda fixa e poupança. Entenda como ela funciona para tomar decisões financeiras mais informadas. #Selic #EducaçãoFinanceira #Investimentos #FinançasPessoais",
+      "data": {
+        "title": "Como a Selic afeta seu bolso",
+        "items": [
+          "Influi no custo do crédito",
+          "Impacta o retorno da poupança e outras rendas fixa",
+          "Ajusta as taxas de juros dos empréstimos"
+        ]
+      }
+    },
+    {
+      "id": "outro",
+      "template": "outro",
+      "narration": "Então, agora você sabe como a Selic afeta seu bolso. Se inscreva para mais dicas de educação financeira no Mente de Milhão! #Selic #EducaçãoFinanceira #Investimentos #FinançasPessoais\nFique ligado nas próximas vídeos sobre finanças e economia.",
+      "data": {
+        "title": "Inscreva-se!",
+        "points": [
+          "Entenda a Selic",
+          "Tomar decisões financeiras mais informadas"
+        ],
+        "cta": "Mente de Milhão"
+      }
+    },
+    {
+      "id": "hook-8",
+      "template": "hook",
+      "narration": "Olá! Hoje vamos falar sobre uma coisa que afeta seu bolso diretamente: a Selic. Entenda o que é e como ela impacta suas finanças. Inscreva-se para mais dicas de educação financeira no Mente de Milhão. #Selic #EducaçãoFinanceira #Investimentos",
+      "data": {
+        "kicker": "Entenda",
+        "title": "Selic",
+        "subtitle": "Ela afeta seu bolso"
+      }
+    },
+    {
+      "id": "split-9",
+      "template": "split",
+      "narration": "A Selic é a taxa básica de juros do Brasil. Compare com o juro da poupança: Poupança tem zero vírgula cinco por cento ao mês (seis por cento ao ano), enquanto a Selic atualmente está em doze vírgula setenta e cinco por cento. Isso significa que ela influencia diretamente no crédito e investimentos. #Selic #Juros",
+      "data": {
+        "left": {
+          "label": "Poupança",
+          "points": [
+            "0,5% ao mês",
+            "6% ao ano"
+          ]
+        },
+        "right": {
+          "label": "Selic",
+          "points": [
+            "12,75%",
+            "Influencia no crédito e investimentos"
+          ]
+        }
+      }
+    },
+    {
+      "id": "fechamento",
+      "template": "outro",
+      "data": {
+        "title": "Selic: Entenda o que é e como ela afeta seu bolso",
+        "points": [],
+        "cta": "Inscreva-se"
+      },
+      "narration": "Se esse vídeo te ajudou, inscreva-se no canal e mande para alguém que também quer organizar as finanças. Até o próximo vídeo!"
+    }
+  ]
+}
