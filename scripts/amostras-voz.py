@@ -3,7 +3,7 @@
 
 Resultado em amostras-voz/<n>-<voz>.mp3 e amostras-voz/lista.json.
 """
-import asyncio, json
+import asyncio, json, os
 from pathlib import Path
 
 import edge_tts
@@ -40,4 +40,37 @@ async def main():
     (OUT / "lista.json").write_text(json.dumps(lista, ensure_ascii=False, indent=2), encoding="utf-8")
 
 
-asyncio.run(main())
+def gemini():
+    """Amostra da voz do Gemini, se houver chave."""
+    import os, subprocess, sys, wave
+
+    chave = os.environ.get("GEMINI_API_KEY", "").strip()
+    if not chave:
+        print("sem GEMINI_API_KEY")
+        return
+    sys.path.insert(0, "scripts")
+    from voz_gemini import pedir_audio
+
+    cfg = json.loads(Path("config/channel.json").read_text(encoding="utf-8"))["voice"]["gemini"]
+    import numpy as np
+
+    for voz in [cfg["voz"]] + [v for v in os.environ.get("GEMINI_VOZES_EXTRA", "").split(",") if v]:
+        try:
+            audio = pedir_audio(TEXTO, {**cfg, "voz": voz}, chave)
+        except Exception as e:
+            print("falhou", voz, e)
+            continue
+        wav = OUT / f"gemini-{voz}.wav"
+        with wave.open(str(wav), "wb") as w:
+            w.setnchannels(1); w.setsampwidth(2); w.setframerate(24000)
+            w.writeframes((np.clip(audio, -1, 1) * 32767).astype(np.int16).tobytes())
+        subprocess.run(["ffmpeg", "-loglevel", "error", "-y", "-i", str(wav), "-b:a", "128k", str(OUT / f"gemini-{voz}.mp3")], check=True)
+        wav.unlink()
+        print("ok gemini", voz)
+
+
+if os.environ.get("SO_GEMINI"):
+    gemini()
+else:
+    asyncio.run(main())
+    gemini()
