@@ -111,7 +111,7 @@ async function enviar(ids) {
       if (problemas.length) throw new Error(`metadados inválidos: ${problemas.join("; ")}`);
       writeFileSync(path.join(dir, `${id}-youtube.json`), JSON.stringify(meta, null, 2));
 
-      if (real && /^(piper|edge):/.test(info.engine ?? "") === false) throw new Error("o vídeo foi gerado com narração de teste (--mock); não envio isso ao canal");
+      if (real && /^(piper|edge|gemini):/.test(info.engine ?? "") === false) throw new Error("o vídeo foi gerado com narração de teste (--mock); não envio isso ao canal");
       const hashVideo = sha256(readFileSync(mp4)).slice(0, 16);
       const dup = checarDuplicado(pubs, { plataforma: "youtube", episodio: id, hashVideo });
       if (dup) {

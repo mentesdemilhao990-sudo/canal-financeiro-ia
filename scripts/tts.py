@@ -15,6 +15,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 import re
 import subprocess
 import sys
@@ -276,10 +277,30 @@ def main() -> int:
 
     engine_name = "mock"
     edge_voice = voice_cfg.get("edge")
-    if args.mock:
+    regras = load_pronuncia(ROOT / "config" / "pronuncia.json")
+    gemini_cenas = None
+    gcfg = voice_cfg.get("gemini") or {}
+    if not args.mock and voice_cfg.get("motor") == "gemini" and gcfg:
+        chave = os.environ.get("GEMINI_API_KEY", "").strip()
+        if not chave:
+            print("AVISO: sem GEMINI_API_KEY; usando a voz reserva.", file=sys.stderr)
+        else:
+            try:
+                sys.path.insert(0, str(ROOT / "scripts"))
+                from voz_gemini import RATE as GRATE, narrar_cenas
+
+                textos = [aplicar_pronuncia(" ".join(split_sentences(sc["narration"])), regras) for sc in episode["scenes"]]
+                gemini_cenas = narrar_cenas(textos, gcfg, chave, split_words)
+                engine_name = f"gemini:{gcfg.get('voz', 'Sadaltager')}"
+            except Exception as e:
+                print(f"AVISO: voz do Gemini falhou ({e}); usando a voz reserva.", file=sys.stderr)
+                gemini_cenas = None
+    if gemini_cenas is not None:
+        engine = None
+    elif args.mock:
         engine = MockEngine()
         print("AVISO: modo --mock, a narração é sintética (sem voz).", file=sys.stderr)
-    elif edge_voice and voice_cfg.get("motor", "edge") == "edge" and edge_ok(edge_voice, voice_cfg):
+    elif edge_voice and voice_cfg.get("motor", "edge") in ("edge", "gemini") and edge_ok(edge_voice, voice_cfg):
         engine = EdgeEngine(edge_voice, voice_cfg.get("edgeRate", "+0%"), voice_cfg.get("edgePitch", "+0Hz"))
         engine_name = f"edge:{edge_voice}"
     else:
@@ -290,7 +311,6 @@ def main() -> int:
         engine = PiperEngine(model_path, length_scale)
         engine_name = f"piper:{model}"
     print(f"Voz: {engine_name}")
-    regras = load_pronuncia(ROOT / "config" / "pronuncia.json")
 
     pieces: list[np.ndarray] = [np.zeros(int(lead_in * OUT_RATE), np.float32)]
     t = lead_in
@@ -301,6 +321,20 @@ def main() -> int:
         scene_start = t if si > 0 else 0.0
         words_out = []
         sentences = split_sentences(scene["narration"])
+        if gemini_cenas is not None:
+            seg, words = gemini_cenas[si]
+            seg, cut = trim_silence(seg, GRATE)
+            orig = split_words(scene["narration"])
+            if len(orig) == len(words):
+                words = [{**w, "text": o} for w, o in zip(words, orig)]
+            total_sentences += len(sentences)
+            aligned_sentences += len(sentences)
+            off = cut / GRATE
+            for w in words:
+                words_out.append({"text": w["text"], "start": round(t + max(0.0, w["start"] - off), 3), "end": round(t + max(0.05, w["end"] - off), 3)})
+            pieces.append(resample(seg, GRATE, OUT_RATE))
+            t += len(pieces[-1]) / OUT_RATE
+            sentences = []
         for k, sent in enumerate(sentences):
             falado = aplicar_pronuncia(sent, regras)
             audio, words, aligned = engine.sentence(falado)
