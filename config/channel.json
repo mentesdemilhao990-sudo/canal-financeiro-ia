@@ -4,7 +4,7 @@
   "voice": {
     "motor": "gemini",
     "gemini": {
-      "voz": "Sadaltager",
+      "voz": "Orus",
       "modelo": "gemini-2.5-flash-preview-tts",
       "caracteresPorPedido": 2600,
       "estilo": "Leia o texto a seguir em português do Brasil, como um youtuber brasileiro de finanças conversando com um amigo: animado, natural, com ritmo dinâmico, ênfase nas palavras importantes e pausas curtas entre as ideias. Leia exatamente o texto, sem acrescentar nada:"
