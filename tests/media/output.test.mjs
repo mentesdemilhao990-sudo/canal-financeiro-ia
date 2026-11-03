@@ -26,8 +26,8 @@ test("arquivos gerados existem e não estão vazios", () => {
   }
 });
 
-test("narração veio do Piper (não do modo de teste)", { skip: allowMock }, () => {
-  assert.match(info.engine ?? "", /^piper:pt_BR-faber-medium$/);
+test("narração veio da voz real (Edge ou Piper, não do modo de teste)", { skip: allowMock }, () => {
+  assert.match(info.engine ?? "", /^(gemini:\w+|edge:pt-BR-\w+Neural|piper:pt_BR-faber-medium)$/);
 });
 
 test(`vídeo (${formato}): H.264 ${F.width}x${F.height}, 30 fps, entre ${F.minDuracao} e ${F.maxDuracao} s`, () => {

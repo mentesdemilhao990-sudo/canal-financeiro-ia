@@ -1,0 +1,52 @@
+{
+  "id": "exemplo-estilo-novo-13-salario",
+  "formato": "short",
+  "title": "Investir o 13º pode ser o PIOR negócio do seu ano",
+  "description": "Recebeu o 13º e está pensando em investir? Antes, faça esta conta. Um exemplo simples mostra por que quitar a dívida cara vem primeiro.",
+  "tags": ["13º salário", "décimo terceiro", "dívidas", "cartão de crédito", "educação financeira", "finanças pessoais"],
+  "targetDurationSeconds": 50,
+  "disclaimer": "Conteúdo educativo. Valores ilustrativos, não é recomendação de investimento.",
+  "scenes": [
+    {
+      "id": "gancho",
+      "template": "hook",
+      "narration": "Pegar o seu décimo terceiro e investir pode ser o pior negócio do seu ano. Parece loucura, né? Fica até o final que eu te mostro a conta.",
+      "data": { "kicker": "13º salário", "title": "Investir o 13º?", "subtitle": "Pode ser o pior negócio do seu ano" }
+    },
+    {
+      "id": "caso",
+      "template": "split",
+      "narration": "Imagina a Ana. Ela recebeu três mil reais de décimo terceiro, mas também deve três mil no cartão de crédito. E agora: investe ou paga a dívida?",
+      "data": {
+        "left": { "label": "Investir", "icon": "growth", "points": ["R$ 3.000 aplicados", "Rende cerca de 1% ao mês"] },
+        "right": { "label": "Pagar a dívida", "icon": "warning", "points": ["R$ 3.000 no cartão", "Juros de 10% ao mês"] }
+      }
+    },
+    {
+      "id": "conta",
+      "template": "counter",
+      "narration": "Se a dívida ficar rolando a dez por cento ao mês, em um ano os três mil viram mais de nove mil e quatrocentos reais. E o investimento, no mesmo período? Rende uns trezentos e oitenta.",
+      "data": { "label": "Dívida de R$ 3.000 em 12 meses", "from": 3000, "to": 9415, "prefix": "R$ ", "decimals": 0, "trend": "up", "caption": "Exemplo com juros de 10% ao mês", "badge": "+214%" }
+    },
+    {
+      "id": "comparacao",
+      "template": "bars",
+      "narration": "Olha a diferença. De um lado, trezentos e oitenta reais de ganho. Do outro, mais de seis mil reais de juros. Não existe investimento comum que compense isso.",
+      "data": {
+        "title": "O que acontece em 1 ano",
+        "valuePrefix": "R$ ",
+        "items": [
+          { "label": "Ganho investindo", "value": 380, "color": "green" },
+          { "label": "Juros da dívida", "value": 6415, "color": "red" }
+        ],
+        "caption": "Valores ilustrativos"
+      }
+    },
+    {
+      "id": "fechamento",
+      "template": "outro",
+      "narration": "Então a ordem é simples: primeiro quita a dívida cara, depois monta a reserva, e só então investe. Comenta aí: o que você vai fazer com o seu décimo terceiro? Segue o canal para mais contas assim.",
+      "data": { "title": "Dívida cara primeiro.\nDepois, reserva e investimento.", "points": ["1. Quite a dívida cara", "2. Monte a reserva", "3. Invista o que sobrar"], "cta": "Siga para mais" }
+    }
+  ]
+}

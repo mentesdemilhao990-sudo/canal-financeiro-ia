@@ -1,0 +1,37 @@
+name: Estudar canais de referência
+
+# Rode manualmente em Actions > "Estudar canais de referência" quando mudar a lista.
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: referencias-${{ github.head_ref || github.ref }}
+
+jobs:
+  estudar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      YOUTUBE_CLIENT_ID: ${{ secrets.YOUTUBE_CLIENT_ID }}
+      YOUTUBE_CLIENT_SECRET: ${{ secrets.YOUTUBE_CLIENT_SECRET }}
+      YOUTUBE_REFRESH_TOKEN: ${{ secrets.YOUTUBE_REFRESH_TOKEN }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref || github.ref }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Buscar os vídeos mais vistos (API oficial do YouTube)
+        run: node scripts/estudar-referencias.mjs
+      - name: Salvar resultado no branch
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898299+github-actions[bot]@users.noreply.github.com"
+          git add referencias
+          git commit -m "Estudo dos canais de referência [skip ci]" || exit 0
+          git pull --rebase -q
+          git push

@@ -1,0 +1,35 @@
+name: Amostras de voz
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  amostras:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref || github.ref }}
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install edge-tts==7.3.1 numpy
+      - run: sudo apt-get install -y -qq ffmpeg >/dev/null
+      - name: Gerar amostras
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          SO_GEMINI: "1"
+          GEMINI_VOZES_EXTRA: Charon,Orus,Puck
+        run: python scripts/amostras-voz.py
+      - name: Salvar no branch
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898299+github-actions[bot]@users.noreply.github.com"
+          git add amostras-voz
+          git commit -m "Amostras de voz [skip ci]" || exit 0
+          git pull --rebase -q
+          git push

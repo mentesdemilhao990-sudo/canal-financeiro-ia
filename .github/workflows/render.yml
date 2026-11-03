@@ -54,7 +54,7 @@ jobs:
       - name: Montar lista de episódios
         id: lista
         env:
-          PEDIDO: ${{ inputs.episodios || 'guardar-nao-e-investir' }}
+          PEDIDO: ${{ inputs.episodios || 'exemplo-estilo-novo-13-salario' }}
         run: |
           node -e '
             const fs = require("fs");
@@ -127,7 +127,15 @@ jobs:
       - name: Preparar navegador headless
         run: npx remotion browser ensure
 
+      - name: Cache do Whisper (acha o tempo de cada palavra da voz do Gemini)
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/huggingface
+          key: whisper-small-v1
+
       - name: Gerar episódio (narração + vídeo + capa + SRT + roteiro)
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
         run: node scripts/build-episode.mjs "episodes/${{ matrix.episodio }}.json"
 
       - name: Testes de áudio e vídeo

@@ -261,6 +261,27 @@ test("roteiro: fechamento esquecido é colocado e alerta negado não conta como 
   assert.match(problemasDeConteudo(alerta, "short").join(), /prometa/);
 });
 
+test("roteiro: nomes de campos, chaves e emojis saem da fala", async () => {
+  const { limparNarracao } = await import("../../scripts/lib/roteirista.mjs");
+  assert.equal(
+    limparNarracao("Pagar tudo pode aliviar seu orçamento. Título: Dívidas / Prefixo: reais Legenda: x"),
+    "Pagar tudo pode aliviar seu orçamento.",
+  );
+  assert.equal(limparNarracao("Qual escolha é melhor? 🤔💰\ndata: { , mil dívidas }"), "Qual escolha é melhor?");
+  assert.equal(limparNarracao("Decida agora! Decida agora! Vamos lá"), "Decida agora! Vamos lá.");
+});
+
+test("roteiro: cena com fala repetida sai e o problema é apontado", () => {
+  const r = respostaShort();
+  const dup = { ...r, scenes: [...r.scenes.slice(0, -1), { ...r.scenes[1], id: "copia" }, r.scenes.at(-1)] };
+  const ep = montarEpisodio(dup, { id: "2026-11-01-x-short", formato: "short" });
+  assert.equal(ep.scenes.length, r.scenes.length);
+  const bruto = { ...ep, scenes: [...ep.scenes.slice(0, 2), ep.scenes[1], ...ep.scenes.slice(2)] };
+  assert.match(problemasDeConteudo(bruto, "short").join(), /repete a fala/);
+  const lixo = { ...ep, scenes: ep.scenes.map((s, i) => (i === 1 ? { ...s, narration: s.narration + " Título: Metas" } : s)) };
+  assert.match(problemasDeConteudo(lixo, "short").join(), /nomes de campos/);
+});
+
 test("horários sorteados: dentro da janela, com intervalo, mudam por dia e respeitam a hora atual", async () => {
   const { horariosAleatorios, horaBrasilia } = await import("../../scripts/lib/horarios.mjs");
   const ids = ["2026-11-02-x-longo", "2026-11-02-x-short"];
@@ -292,4 +313,10 @@ test("publicação diária com horário sorteado: sobe agendado e registra a hor
   const pub = JSON.parse(readFileSync(path.join(dir, "data", "publicacoes.json"), "utf8")).itens[0];
   assert.equal(pub.status, "agendado");
   assert.ok(pub.publicarEm);
+});
+
+test("roteiro: abertura com saudação é recusada", () => {
+  const ep = montarEpisodio(respostaShort(), { id: "2026-11-01-x-short", formato: "short" });
+  ep.scenes[0] = { ...ep.scenes[0], narration: "Bom dia! Hoje vamos falar sobre o décimo terceiro salário e onde colocar esse dinheiro." };
+  assert.match(problemasDeConteudo(ep, "short").join(), /não abra com saudação/);
 });

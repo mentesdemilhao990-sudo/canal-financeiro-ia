@@ -1,0 +1,14 @@
+{
+  "_explicacao": "Palavras que a voz fala errado: escrito -> como deve soar. Só muda o áudio; a legenda continua com o texto escrito.",
+  "substituicoes": {
+    "13º": "décimo terceiro",
+    "CDB": "cê dê bê",
+    "CDI": "cê dê í",
+    "FGTS": "éfe gê tê ésse",
+    "IPCA": "í pê cê á",
+    "INSS": "í ene ésse ésse",
+    "LCI": "éle cê í",
+    "LCA": "éle cê á",
+    "Selic": "Sélic"
+  }
+}

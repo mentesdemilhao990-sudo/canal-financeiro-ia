@@ -137,6 +137,7 @@ jobs:
     with:
       episodios: ${{ needs.pauta.outputs.csv }}
       artefato_episodios: pauta-diaria
+    secrets: inherit
 
   publicar:
     # No ensaio roda sem as credenciais: só simula e mostra título, descrição e tags.

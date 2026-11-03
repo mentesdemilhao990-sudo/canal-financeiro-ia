@@ -2,6 +2,16 @@
   "name": "MENTE DE MILHÃO",
   "handle": "@mentedemilhao",
   "voice": {
+    "motor": "gemini",
+    "gemini": {
+      "voz": "Orus",
+      "modelo": "gemini-2.5-flash-preview-tts",
+      "caracteresPorPedido": 2600,
+      "estilo": "Leia o texto a seguir em português do Brasil, como um youtuber brasileiro de finanças conversando com um amigo: animado, natural, com ritmo dinâmico, ênfase nas palavras importantes e pausas curtas entre as ideias. Leia exatamente o texto, sem acrescentar nada:"
+    },
+    "edge": "pt-BR-AntonioNeural",
+    "edgeRate": "+4%",
+    "edgePitch": "+0Hz",
     "model": "pt_BR-faber-medium",
     "lengthScale": 1.0,
     "sentencePause": 0.22,
