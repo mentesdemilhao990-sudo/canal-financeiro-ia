@@ -17,14 +17,16 @@ const OLLAMA = process.env.OLLAMA_HOST ?? "http://127.0.0.1:11434";
 
 /** Modelos na ordem de tentativa. Com OLLAMA_MODELO definido, usa só o modelo local. */
 export function modelosPadrao(env = process.env) {
-  return env.OLLAMA_MODELO ? [`ollama:${env.OLLAMA_MODELO}`] : ["openai/gpt-4.1", "openai/gpt-4o-mini"];
+  const locais = env.OLLAMA_MODELO ? [`ollama:${env.OLLAMA_MODELO}`] : ["openai/gpt-4.1", "openai/gpt-4o-mini"];
+  // Com a chave grátis do Gemini, ele escreve primeiro (bem melhor e mais rápido); a IA local fica de reserva.
+  return env.GEMINI_API_KEY?.trim() ? [`gemini:${env.GEMINI_MODELO_TEXTO || "gemini-2.5-flash"}`, ...locais] : locais;
 }
 
 /** Metas de tamanho por formato (a voz fala ~19 caracteres por segundo, mais as pausas). */
 export const METAS = {
   // caracteres: meta pedida à IA; aceite: duração estimada que ainda aprovamos (a IA nem sempre acerta o tamanho).
   short: { cenas: [5, 7], caracteres: [620, 820], duracao: [34, 56], aceite: [32, 57], cta: "Siga para mais", porCena: 380, minCena: 110 },
-  longo: { cenas: [9, 13], caracteres: [2800, 3800], duracao: [150, 300], aceite: [95, 420], cta: "Inscreva-se", porCena: 520, minCena: 240 },
+  longo: { cenas: [7, 13], caracteres: [2800, 3800], duracao: [150, 300], aceite: [95, 420], cta: "Inscreva-se", porCena: 520, minCena: 240 },
 };
 
 export const AVISO = "Conteúdo educativo. Valores ilustrativos, não é recomendação de investimento.";
@@ -246,8 +248,31 @@ function postarSemLimite(url, corpo) {
 }
 
 /** Pede uma resposta ao modelo. */
+/** Gemini pela interface compatível com OpenAI (plano grátis do Google AI Studio). */
+async function chamarGemini(f, modelo, messages) {
+  const chave = process.env.GEMINI_API_KEY?.trim();
+  const r = await f("https://generativelanguage.googleapis.com/v1beta/openai/chat/completions", {
+    method: "POST",
+    headers: { authorization: `Bearer ${chave}`, "content-type": "application/json" },
+    body: JSON.stringify({ model: modelo.replace(/^gemini:/, ""), temperature: 0.8, response_format: { type: "json_object" }, messages }),
+  });
+  const bruto = await r.text();
+  let j = {};
+  try {
+    j = JSON.parse(bruto);
+  } catch {}
+  const msg = (Array.isArray(j) ? j[0] : j)?.error?.message ?? bruto.slice(0, 300);
+  if (r.status === 429) throw Object.assign(new Error(`${modelo}: limite gratuito atingido (HTTP 429)`), { limite: true });
+  if (r.status === 401 || r.status === 403) throw Object.assign(new Error(`${modelo}: chave sem permissão (HTTP ${r.status}) ${msg}`), { limite: true });
+  if (!r.ok) throw new Error(`${modelo}: HTTP ${r.status} ${msg}`);
+  const texto = j.choices?.[0]?.message?.content ?? "";
+  if (!texto.trim()) throw new Error(`${modelo}: resposta vazia`);
+  return texto;
+}
+
 async function chamarIA(f, token, modelo, messages, formato) {
   if (modelo.startsWith("ollama:")) return chamarOllama(f, modelo, messages, formato);
+  if (modelo.startsWith("gemini:")) return chamarGemini(f, modelo, messages);
   const erros = [];
   for (const e of enderecoQueFunciona ? [enderecoQueFunciona] : ENDERECOS) {
     const host = new URL(e.url).host;
@@ -388,7 +413,7 @@ export async function escreverEpisodio(
   { tema, manchetes = [], formato, id, tituloIrmao, titulosUsados = [] },
   { token = process.env.GITHUB_TOKEN, modelos = modelosPadrao(), tentativas = 3, fetch: f = globalThis.fetch, log = console.log } = {},
 ) {
-  if (!token && !modelos.every((m) => m.startsWith("ollama:"))) throw new Error("sem GITHUB_TOKEN para usar a IA gratuita do GitHub Models");
+  if (!token && !modelos.every((m) => /^(ollama|gemini):/.test(m))) throw new Error("sem GITHUB_TOKEN para usar a IA gratuita do GitHub Models");
   let ultimo = "nenhuma resposta";
   for (const modelo of modelos) {
     const inicio = [
