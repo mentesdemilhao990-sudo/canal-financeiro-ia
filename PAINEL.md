@@ -1,6 +1,6 @@
 # 📊 Painel · Mente de Milhão
 
-_Atualizado em 04/11/2026, 07:24 (Brasília). Este arquivo é gerado sozinho: não edite à mão._
+_Atualizado em 04/11/2026, 10:28 (Brasília). Este arquivo é gerado sozinho: não edite à mão._
 
 ## Chaves de segurança
 
@@ -15,15 +15,15 @@ Com tudo desligado, os workflows só **simulam**: nada é enviado nem respondido
 
 ## Cota do YouTube hoje
 
-7 de 9000 unidades · 0 de 10 envios de vídeo (zera à meia-noite do Pacífico, 4h ou 5h em Brasília).
+14 de 9000 unidades · 0 de 10 envios de vídeo (zera à meia-noite do Pacífico, 4h ou 5h em Brasília).
 
 ## Vídeos
 
 | Episódio | Título | Status | Link | Views | 👍 | 💬 | Atualizado |
 | --- | --- | --- | --- | ---: | ---: | ---: | --- |
 | `2026-11-03-selic-short` | Selic: Entenda o que é e como ela mexe no seu bolso | 🟢 público | [abrir](https://youtu.be/CZd3qoZKzO0) | 1 | 0 | 0 | 03/11/2026, 07:41 |
-| `2026-11-03-selic-longo` | Selic: Entenda o que é e como ela afeta seu bolso | 🟢 público | [abrir](https://youtu.be/oYt9QTXrbRQ) | 5 | 0 | 0 | 03/11/2026, 07:41 |
-| `2026-11-02-decimo-terceiro-short` | Dívidas, Reserva ou Metas: Onde Colocar Seu 13º? | 🟢 público | [abrir](https://youtu.be/gRHy7XC_Zsw) | 77 | 0 | 0 | 02/11/2026, 12:05 |
+| `2026-11-03-selic-longo` | Selic: Entenda o que é e como ela afeta seu bolso | 🟢 público | [abrir](https://youtu.be/oYt9QTXrbRQ) | 5 | 1 | 0 | 03/11/2026, 07:41 |
+| `2026-11-02-decimo-terceiro-short` | Dívidas, Reserva ou Metas: Onde Colocar Seu 13º? | 🟢 público | [abrir](https://youtu.be/gRHy7XC_Zsw) | 78 | 0 | 0 | 02/11/2026, 12:05 |
 | `2026-11-02-decimo-terceiro-longo` | 13º Salário: Onde Colocar seu Dinheiro? | 🟢 público | [abrir](https://youtu.be/2uznP3fU7Lo) | 4 | 1 | 0 | 02/11/2026, 12:05 |
 | `guardar-nao-e-investir` | Por que guardar dinheiro não é o mesmo que investir? | 🟢 público | [abrir](https://youtu.be/TMz0LcQ5hQI) | 74 | 0 | 0 | 31/10/2026, 14:09 |
 
@@ -35,7 +35,7 @@ Com tudo desligado, os workflows só **simulam**: nada é enviado nem respondido
 
 ## Comentários
 
-Última leitura: 04/11/2026, 07:24
+Última leitura: 04/11/2026, 10:28
 
 | Aguardando você | 💰 Financeiras (revisão obrigatória) | Aprovadas, não enviadas | Respondidas | Automáticas | Ignoradas |
 | ---: | ---: | ---: | ---: | ---: | ---: |
