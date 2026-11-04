@@ -251,13 +251,19 @@ function postarSemLimite(url, corpo) {
 
 /** Pede uma resposta ao modelo. */
 /** Gemini pela interface compatível com OpenAI (plano grátis do Google AI Studio). */
-async function chamarGemini(f, modelo, messages) {
+async function chamarGemini(f, modelo, messages, espera = Number(process.env.GEMINI_ESPERA_503_MS ?? 30000)) {
   const chave = process.env.GEMINI_API_KEY?.trim();
-  const r = await f("https://generativelanguage.googleapis.com/v1beta/openai/chat/completions", {
-    method: "POST",
-    headers: { authorization: `Bearer ${chave}`, "content-type": "application/json" },
-    body: JSON.stringify({ model: modelo.replace(/^gemini:/, ""), temperature: 0.8, response_format: { type: "json_object" }, messages }),
-  });
+  let r;
+  // 503 = servidor do Google lotado (passa em minutos): espera e tenta de novo antes de desistir.
+  for (let i = 0; i < 4; i++) {
+    r = await f("https://generativelanguage.googleapis.com/v1beta/openai/chat/completions", {
+      method: "POST",
+      headers: { authorization: `Bearer ${chave}`, "content-type": "application/json" },
+      body: JSON.stringify({ model: modelo.replace(/^gemini:/, ""), temperature: 0.8, response_format: { type: "json_object" }, messages }),
+    });
+    if (r.status !== 503 || i === 3) break;
+    await new Promise((ok) => setTimeout(ok, espera * (i + 1)));
+  }
   const bruto = await r.text();
   let j = {};
   try {
