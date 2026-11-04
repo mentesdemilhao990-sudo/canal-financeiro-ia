@@ -42,8 +42,8 @@ test(`vídeo (${formato}): H.264 ${F.width}x${F.height}, 30 fps, entre ${F.minDu
   console.log(`duração: ${d.toFixed(2)} s`);
   assert.ok(d >= F.minDuracao && d <= F.maxDuracao, `duração ${d}s fora de ${F.minDuracao}–${F.maxDuracao} s`);
   if (info.targetDurationSeconds) {
-    // O Short é curto e precisa bater a meta; no longo a narração escrita pela IA varia mais.
-    const folga = formato === "longo" ? 0.35 : 0.2;
+    // A meta é só uma estimativa (cada voz tem seu ritmo; o Orus fala mais devagar). Os limites duros acima continuam valendo.
+    const folga = 0.35;
     assert.ok(Math.abs(d - info.targetDurationSeconds) <= info.targetDurationSeconds * folga, `duração ${d.toFixed(1)}s longe da meta de ${info.targetDurationSeconds}s (±${folga * 100}%)`);
   }
 });

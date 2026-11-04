@@ -144,7 +144,8 @@ jobs:
     # No ensaio roda sem as credenciais: só simula e mostra título, descrição e tags.
     name: ${{ needs.pauta.outputs.modo == 'publicar' && 'Publicar no YouTube (público)' || 'Simular publicação (ensaio)' }}
     needs: [pauta, renderizar]
-    if: needs.pauta.outputs.csv != '' && needs.renderizar.result == 'success'
+    # Roda mesmo se um dos vídeos foi reprovado: publica só os que passaram nos testes.
+    if: always() && needs.pauta.outputs.csv != '' && (needs.renderizar.result == 'success' || needs.renderizar.result == 'failure')
     runs-on: ubuntu-latest
     env:
       REAL: ${{ needs.pauta.outputs.modo == 'publicar' }}
@@ -163,19 +164,28 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           path: baixados
-      - name: Organizar arquivos
+      - name: Organizar arquivos (só vídeos aprovados nos testes)
+        id: org
         run: |
           cp baixados/pauta-diaria/episodes/*.json episodes/
           mkdir -p data out && cp baixados/pauta-diaria/data/pautas.json data/
+          aprovados=""
           for ep in $(echo "${{ needs.pauta.outputs.csv }}" | tr ',' ' '); do
-            mv "baixados/$ep" "out/$ep"
-            ls -la "out/$ep/" # o vídeo já passou pelos testes de áudio e vídeo na etapa anterior
+            if [ -f "baixados/$ep/aprovado.txt" ] && [ -f "baixados/$ep/$ep.mp4" ]; then
+              mv "baixados/$ep" "out/$ep"
+              ls -la "out/$ep/"
+              aprovados="${aprovados:+$aprovados,}$ep"
+            else
+              echo "::warning::$ep foi reprovado nos testes de áudio e vídeo e não será publicado."
+            fi
           done
+          if [ -z "$aprovados" ]; then echo "::error::Nenhum vídeo passou nos testes."; exit 1; fi
+          echo "aprovados=$aprovados" >> "$GITHUB_OUTPUT"
       - name: Confirmar login no YouTube
         if: env.REAL == 'true'
         run: node scripts/publicar.mjs testar-conexao
       - name: Publicar (cada vídeo agendado para uma hora sorteada do dia)
-        run: node scripts/publicar.mjs enviar "${{ needs.pauta.outputs.csv }}" --visibilidade publico --horario aleatorio
+        run: node scripts/publicar.mjs enviar "${{ steps.org.outputs.aprovados }}" --visibilidade publico --horario aleatorio
       - name: Guardar roteiros no repositório
         if: always() && env.REAL == 'true'
         run: git add episodes/*.json data/pautas.json

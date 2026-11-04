@@ -143,6 +143,10 @@ jobs:
           EPISODE: ${{ matrix.episodio }}
         run: npm run test:media
 
+      - name: Marcar como aprovado nos testes
+        # A publicação diária só envia vídeos com esta marca: um vídeo reprovado não segura o outro.
+        run: echo "aprovado nos testes de áudio e vídeo" > "out/${{ matrix.episodio }}/aprovado.txt"
+
       - name: Relatório (ffprobe)
         if: always()
         env:

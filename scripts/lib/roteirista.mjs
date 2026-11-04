@@ -19,7 +19,9 @@ const OLLAMA = process.env.OLLAMA_HOST ?? "http://127.0.0.1:11434";
 export function modelosPadrao(env = process.env) {
   const locais = env.OLLAMA_MODELO ? [`ollama:${env.OLLAMA_MODELO}`] : ["openai/gpt-4.1", "openai/gpt-4o-mini"];
   // Com a chave grátis do Gemini, ele escreve primeiro (bem melhor e mais rápido); a IA local fica de reserva.
-  return env.GEMINI_API_KEY?.trim() ? [`gemini:${env.GEMINI_MODELO_TEXTO || "gemini-2.5-flash"}`, ...locais] : locais;
+  // O Google aposenta modelos sem aviso (o 2.5 Flash saiu em 2026-11): tenta o atual e depois o apelido "latest".
+  const gemini = env.GEMINI_MODELO_TEXTO ? [env.GEMINI_MODELO_TEXTO] : ["gemini-3.8-flash", "gemini-flash-latest"];
+  return env.GEMINI_API_KEY?.trim() ? [...gemini.map((m) => `gemini:${m}`), ...locais] : locais;
 }
 
 /** Metas de tamanho por formato (a voz fala ~19 caracteres por segundo, mais as pausas). */
@@ -264,6 +266,8 @@ async function chamarGemini(f, modelo, messages) {
   const msg = (Array.isArray(j) ? j[0] : j)?.error?.message ?? bruto.slice(0, 300);
   if (r.status === 429) throw Object.assign(new Error(`${modelo}: limite gratuito atingido (HTTP 429)`), { limite: true });
   if (r.status === 401 || r.status === 403) throw Object.assign(new Error(`${modelo}: chave sem permissão (HTTP ${r.status}) ${msg}`), { limite: true });
+  // 404 = modelo aposentado ou inexistente: não adianta repetir, passa para o próximo.
+  if (r.status === 404) throw Object.assign(new Error(`${modelo}: modelo indisponível (HTTP 404) ${msg}`), { limite: true });
   if (!r.ok) throw new Error(`${modelo}: HTTP ${r.status} ${msg}`);
   const texto = j.choices?.[0]?.message?.content ?? "";
   if (!texto.trim()) throw new Error(`${modelo}: resposta vazia`);

@@ -323,7 +323,7 @@ test("roteiro: abertura com saudação é recusada", () => {
 
 test("roteiro: com GEMINI_API_KEY o Gemini escreve primeiro e o limite passa para a reserva", async () => {
   const { modelosPadrao } = await import("../../scripts/lib/roteirista.mjs");
-  assert.deepEqual(modelosPadrao({ GEMINI_API_KEY: "k", OLLAMA_MODELO: "qwen2.5:7b" }), ["gemini:gemini-2.5-flash", "ollama:qwen2.5:7b"]);
+  assert.deepEqual(modelosPadrao({ GEMINI_API_KEY: "k", OLLAMA_MODELO: "qwen2.5:7b" }), ["gemini:gemini-3.8-flash", "gemini:gemini-flash-latest", "ollama:qwen2.5:7b"]);
   assert.deepEqual(modelosPadrao({ OLLAMA_MODELO: "qwen2.5:7b" }), ["ollama:qwen2.5:7b"]);
   const antes = process.env.GEMINI_API_KEY;
   process.env.GEMINI_API_KEY = "chave-teste";
@@ -346,6 +346,21 @@ test("roteiro: com GEMINI_API_KEY o Gemini escreve primeiro e o limite passa par
         : new Response(JSON.stringify({ message: { content: JSON.stringify(respostaShort()) } }), { status: 200 });
     const r2 = await escreverEpisodio({ tema: temas.temas[0], formato: "short", id: "g2-short" }, { token: "", modelos: ["gemini:gemini-2.5-flash", "ollama:qwen2.5:7b"], fetch: f429, log: () => {} });
     assert.equal(r2.modelo, "ollama:qwen2.5:7b");
+    // Modelo aposentado (404) passa direto para o próximo, sem repetir 3 vezes.
+    let chamadas404 = 0;
+    const f404 = async (url, init) => {
+      if (/generativelanguage/.test(String(url))) {
+        if (JSON.parse(init.body).model === "velho") {
+          chamadas404++;
+          return new Response(JSON.stringify([{ error: { message: "no longer available" } }]), { status: 404 });
+        }
+        return new Response(JSON.stringify({ choices: [{ message: { content: JSON.stringify(respostaShort()) } }] }), { status: 200 });
+      }
+      throw new Error("não devia chamar a IA local");
+    };
+    const r3 = await escreverEpisodio({ tema: temas.temas[0], formato: "short", id: "g3-short" }, { token: "", modelos: ["gemini:velho", "gemini:novo", "ollama:qwen2.5:7b"], fetch: f404, log: () => {} });
+    assert.equal(r3.modelo, "gemini:novo");
+    assert.equal(chamadas404, 1);
   } finally {
     if (antes === undefined) delete process.env.GEMINI_API_KEY;
     else process.env.GEMINI_API_KEY = antes;
