@@ -43,13 +43,13 @@ const CoverHorizontal: React.FC<EpisodeProps> = ({ episode, channel }) => {
             backgroundImage: GOLD_GRADIENT,
             WebkitBackgroundClip: "text",
             color: "transparent",
-            filter: "drop-shadow(0 10px 30px rgba(242,193,78,0.35))",
+            filter: "drop-shadow(0 10px 30px rgba(232,163,23,0.35))",
           }}
         >
           {big}
         </div>
         <div style={{ width: 360, height: 7, borderRadius: 4, background: GOLD_GRADIENT, margin: "26px 0" }} />
-        <div style={{ fontFamily: BODY, fontWeight: 800, fontSize: 44, lineHeight: 1.2, color: C.white, maxWidth: 820, textShadow: "0 6px 24px rgba(0,0,0,0.8)" }}>
+        <div style={{ fontFamily: BODY, fontWeight: 800, fontSize: 44, lineHeight: 1.2, color: C.ink, maxWidth: 820, textShadow: "none" }}>
           {episode.title}
         </div>
       </div>
@@ -86,13 +86,13 @@ const CoverVertical: React.FC<EpisodeProps> = ({ episode, channel }) => {
             backgroundImage: GOLD_GRADIENT,
             WebkitBackgroundClip: "text",
             color: "transparent",
-            filter: "drop-shadow(0 12px 40px rgba(242,193,78,0.35))",
+            filter: "drop-shadow(0 12px 40px rgba(232,163,23,0.35))",
           }}
         >
           {big}
         </div>
         <div style={{ width: 600, height: 8, borderRadius: 4, background: GOLD_GRADIENT, margin: "40px 0" }} />
-        <div style={{ fontFamily: BODY, fontWeight: 800, fontSize: 64, lineHeight: 1.2, color: C.white, textAlign: "center", textShadow: "0 6px 24px rgba(0,0,0,0.8)" }}>
+        <div style={{ fontFamily: BODY, fontWeight: 800, fontSize: 64, lineHeight: 1.2, color: C.ink, textAlign: "center", textShadow: "none" }}>
           {episode.title}
         </div>
       </div>

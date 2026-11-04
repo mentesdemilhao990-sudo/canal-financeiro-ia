@@ -26,7 +26,7 @@ const Card: React.FC<{
           return (
             <div key={i} style={{ display: "flex", gap: 16, alignItems: "flex-start", opacity: q, transform: `translateY(${(1 - q) * 16}px)` }}>
               <div style={{ width: 14, height: 14, borderRadius: 7, background: color, marginTop: 13, flexShrink: 0 }} />
-              <span style={{ fontFamily: BODY, fontWeight: 700, fontSize: 36, color: C.white, lineHeight: 1.25 }}>{pt}</span>
+              <span style={{ fontFamily: BODY, fontWeight: 700, fontSize: 36, color: C.ink, lineHeight: 1.25 }}>{pt}</span>
             </div>
           );
         })}
@@ -54,7 +54,7 @@ export const Split: React.FC<SceneProps<"split">> = ({ scene, duration }) => {
             marginLeft: -52,
             marginTop: -52,
             borderRadius: 52,
-            background: C.bg,
+            background: C.card,
             border: `3px solid ${C.gold}`,
             display: "flex",
             alignItems: "center",
@@ -63,7 +63,7 @@ export const Split: React.FC<SceneProps<"split">> = ({ scene, duration }) => {
             fontSize: 56,
             color: C.gold,
             transform: `scale(${vs})`,
-            boxShadow: "0 0 40px rgba(242,193,78,0.35)",
+            boxShadow: "0 0 40px rgba(232,163,23,0.35)",
           }}
         >
           VS

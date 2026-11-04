@@ -26,8 +26,8 @@ test("formatos: Short vertical por padrão, longo horizontal", () => {
 
 test("formatos: limites de duração e cenas valem para cada um", () => {
   assert.throws(() => parseEpisode({ ...short(), targetDurationSeconds: 120 }), /Short a duração vai de 30 a 60/);
-  assert.throws(() => parseEpisode({ ...longo(), targetDurationSeconds: 50 }), /longo a duração vai de 90 a 480/);
-  assert.throws(() => parseEpisode({ ...longo(), scenes: longo().scenes.slice(0, 4) }), /de 6 a 20 cenas/);
+  assert.throws(() => parseEpisode({ ...longo(), targetDurationSeconds: 50 }), /longo a duração vai de 90 a 900/);
+  assert.throws(() => parseEpisode({ ...longo(), scenes: longo().scenes.slice(0, 4) }), /de 6 a 32 cenas/);
   const s = short();
   s.scenes[0].narration = "a ".repeat(250);
   assert.throws(() => parseEpisode(s), /mais de 400 caracteres/);
@@ -116,9 +116,9 @@ test("roteiro: montar, validar duração e regras de conteúdo", () => {
   assert.match(problemasDeConteudo(ep, "short", { titulosUsados: ["guardar dinheiro parado faz voce perder?"] }).join(), /já foi usado/);
 });
 
-test("roteiro: duração estimada bate com a voz real do episódio de exemplo (39 s)", () => {
+test("roteiro: duração estimada considera a voz calma (39 s na voz antiga, ~10% mais lenta agora)", () => {
   const d = estimarDuracao(short().scenes);
-  assert.ok(Math.abs(d - 39.2) < 3, `estimativa ${d.toFixed(1)} s`);
+  assert.ok(d > 40 && d < 48, `estimativa ${d.toFixed(1)} s`);
 });
 
 test("roteiro: IA errou na primeira, recebe os problemas e corrige", async () => {
@@ -323,7 +323,7 @@ test("roteiro: abertura com saudação é recusada", () => {
 
 test("roteiro: com GEMINI_API_KEY o Gemini escreve primeiro e o limite passa para a reserva", async () => {
   const { modelosPadrao } = await import("../../scripts/lib/roteirista.mjs");
-  assert.deepEqual(modelosPadrao({ GEMINI_API_KEY: "k", OLLAMA_MODELO: "qwen2.5:7b" }), ["gemini:gemini-2.5-flash", "ollama:qwen2.5:7b"]);
+  assert.deepEqual(modelosPadrao({ GEMINI_API_KEY: "k", OLLAMA_MODELO: "qwen2.5:7b" }), ["gemini:gemini-3.8-flash", "gemini:gemini-flash-latest", "ollama:qwen2.5:7b"]);
   assert.deepEqual(modelosPadrao({ OLLAMA_MODELO: "qwen2.5:7b" }), ["ollama:qwen2.5:7b"]);
   const antes = process.env.GEMINI_API_KEY;
   process.env.GEMINI_API_KEY = "chave-teste";
@@ -346,8 +346,75 @@ test("roteiro: com GEMINI_API_KEY o Gemini escreve primeiro e o limite passa par
         : new Response(JSON.stringify({ message: { content: JSON.stringify(respostaShort()) } }), { status: 200 });
     const r2 = await escreverEpisodio({ tema: temas.temas[0], formato: "short", id: "g2-short" }, { token: "", modelos: ["gemini:gemini-2.5-flash", "ollama:qwen2.5:7b"], fetch: f429, log: () => {} });
     assert.equal(r2.modelo, "ollama:qwen2.5:7b");
+    // Modelo aposentado (404) passa direto para o próximo, sem repetir 3 vezes.
+    let chamadas404 = 0;
+    const f404 = async (url, init) => {
+      if (/generativelanguage/.test(String(url))) {
+        if (JSON.parse(init.body).model === "velho") {
+          chamadas404++;
+          return new Response(JSON.stringify([{ error: { message: "no longer available" } }]), { status: 404 });
+        }
+        return new Response(JSON.stringify({ choices: [{ message: { content: JSON.stringify(respostaShort()) } }] }), { status: 200 });
+      }
+      throw new Error("não devia chamar a IA local");
+    };
+    const r3 = await escreverEpisodio({ tema: temas.temas[0], formato: "short", id: "g3-short" }, { token: "", modelos: ["gemini:velho", "gemini:novo", "ollama:qwen2.5:7b"], fetch: f404, log: () => {} });
+    assert.equal(r3.modelo, "gemini:novo");
+    assert.equal(chamadas404, 1);
   } finally {
     if (antes === undefined) delete process.env.GEMINI_API_KEY;
     else process.env.GEMINI_API_KEY = antes;
   }
+});
+
+// Parte fictícia do vídeo longo: 8 cenas de ~400 caracteres, falas únicas, sem algarismos.
+const PALAVRAS = ["mercado", "salario", "boleto", "reserva", "juros", "feira", "aluguel", "cartao", "poupanca", "mesada", "viagem", "carro", "padaria", "conta", "luz", "gasolina"];
+function parteLonga(i, n) {
+  const fala = (k) => {
+    const w = (j) => PALAVRAS[(i * 8 + k + j * 3) % PALAVRAS.length];
+    return `Agora repara numa coisa, parte ${["um", "dois", "tres"][i]} cena ${["a", "b", "c", "d", "e", "f", "g", "h"][k]}: o ${w(0)} pesa no orcamento, e o ${w(1)} tambem, sabe por que? Pensa comigo, quando o ${w(2)} sobe, o ${w(3)} acompanha. Pra quem ganha pouco, cada real conta, ne? Entao a ideia aqui e simples: anotar, comparar e decidir com calma antes de gastar com ${w(4)} ou ${w(5)}. Parece bobo, mas faz diferenca no fim do mes.`;
+  };
+  const scenes = Array.from({ length: 8 }, (_, k) => ({ id: `p${i}-c${k}`, template: "list", narration: fala(k), data: { title: `Ponto ${i + 1}.${k + 1}`, items: ["Anotar", "Comparar"] } }));
+  if (i === 0) scenes[0] = { ...scenes[0], template: "hook", data: { title: "Dólar alto" } };
+  if (i === n - 1) scenes[7] = { ...scenes[7], template: "outro", narration: `${scenes[7].narration} Se isso te ajudou, se inscreve ai que toda semana tem mais.`, data: { title: "Resumo do dia", points: [], cta: "Inscreva-se" } };
+  return { title: "Por que o DÓLAR mexe no preço do seu mercado", description: "Aula sobre dólar e orçamento.", tags: ["dolar"], scenes };
+}
+
+test("roteiro longo: escrito em 3 partes que viram um vídeo de 8 minutos ou mais", async () => {
+  const pedidos = [];
+  const f = async (url, init) => {
+    const corpo = JSON.parse(init.body);
+    pedidos.push(corpo);
+    const k = pedidos.length - 1;
+    return new Response(JSON.stringify({ choices: [{ message: { content: JSON.stringify(parteLonga(k, 3)) } }] }), { status: 200 });
+  };
+  const antes = process.env.GEMINI_API_KEY;
+  process.env.GEMINI_API_KEY = "k";
+  try {
+    const r = await escreverEpisodio({ tema: temas.temas[0], formato: "longo", id: "2026-11-05-dolar-longo" }, { token: "", modelos: ["gemini:x"], fetch: f, log: () => {} });
+    assert.equal(pedidos.length, 3);
+    assert.match(pedidos[0].messages[0].content, /PARTE 1 de 3/);
+    assert.match(pedidos[2].messages[0].content, /PARTE 3 de 3/);
+    assert.match(pedidos[1].messages[1].content, /já foi dito/);
+    const ep = r.episodio;
+    assert.equal(ep.scenes.length, 24);
+    assert.equal(ep.scenes[0].template, "hook");
+    assert.equal(ep.scenes.at(-1).template, "outro");
+    assert.ok(ep.targetDurationSeconds >= 480, `duração estimada ${ep.targetDurationSeconds} s`);
+    assert.equal(new Set(ep.scenes.map((s) => s.id)).size, 24);
+  } finally {
+    if (antes === undefined) delete process.env.GEMINI_API_KEY;
+    else process.env.GEMINI_API_KEY = antes;
+  }
+});
+
+test("roteiro: pedido de inscrição só uma vez, no fechamento", () => {
+  const ep = montarEpisodio(respostaShort(), { id: "x-short", formato: "short" });
+  assert.deepEqual(problemasDeConteudo(ep, "short"), []);
+  const meio = structuredClone(ep);
+  meio.scenes[1].narration += " Inscreva-se no canal.";
+  assert.match(problemasDeConteudo(meio, "short").join(), /cena 2: não peça inscrição/);
+  const titulo = structuredClone(ep);
+  titulo.scenes.at(-1).data.title = "Inscreva-se agora!";
+  assert.match(problemasDeConteudo(titulo, "short").join(), /não escreva "inscreva-se"/);
 });

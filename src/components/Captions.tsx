@@ -38,9 +38,9 @@ export const Captions: React.FC<{ words: Word[]; top?: number }> = ({ words, top
           maxWidth: horizontal ? 1500 : 900,
           padding: horizontal ? "14px 30px" : "20px 34px",
           borderRadius: 26,
-          background: "rgba(4, 6, 8, 0.72)",
-          border: "1px solid rgba(242,193,78,0.25)",
-          boxShadow: "0 18px 50px rgba(0,0,0,0.5)",
+          background: "rgba(255, 255, 255, 0.96)",
+          border: `2px solid ${C.gold}55`,
+          boxShadow: `0 16px 40px ${C.shadow}`,
         }}
       >
         {cue.words.map((w, i) => {
@@ -54,11 +54,13 @@ export const Captions: React.FC<{ words: Word[]; top?: number }> = ({ words, top
                 fontWeight: 800,
                 fontSize: horizontal ? 50 : 62,
                 lineHeight: 1.15,
-                color: active ? C.gold : spoken ? C.white : "rgba(244,246,247,0.55)",
-                textShadow: active ? `0 0 24px rgba(242,193,78,0.55)` : "0 3px 10px rgba(0,0,0,0.8)",
+                color: active ? C.onAccent : spoken ? C.ink : "rgba(22, 38, 59, 0.45)",
+                background: active ? C.green : "transparent",
+                borderRadius: 12,
+                padding: "0 8px",
                 transform: active ? "scale(1.08)" : "scale(1)",
                 display: "inline-block",
-                margin: "0 9px",
+                margin: "0 7px",
               }}
             >
               {w.text}

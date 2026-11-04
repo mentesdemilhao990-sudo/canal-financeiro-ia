@@ -2,35 +2,49 @@ import React from "react";
 import { AbsoluteFill, interpolate, spring, useCurrentFrame, useVideoConfig } from "remotion";
 import { C } from "../theme";
 
-/** Entrada e saída suaves de cada cena, com um traço dourado de transição. */
-export const SceneShell: React.FC<{ duration: number; children: React.ReactNode }> = ({ duration, children }) => {
+/** Jeitos de a cena entrar; cada cena usa um diferente para o vídeo não ficar repetitivo. */
+const ENTRADAS = ["subir", "direita", "zoom", "esquerda"] as const;
+
+/**
+ * Entrada e saída de cada cena (variando por cena), uma faixa colorida de transição
+ * e um movimento de câmera lento e contínuo para a tela nunca ficar parada.
+ */
+export const SceneShell: React.FC<{ duration: number; index?: number; children: React.ReactNode }> = ({ duration, index = 0, children }) => {
   const frame = useCurrentFrame();
   const { fps, width } = useVideoConfig();
   const enter = spring({ frame, fps, config: { damping: 20, stiffness: 110 } });
   const exit = interpolate(frame, [duration - 10, duration], [1, 0], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
-  const sweep = interpolate(frame, [0, 16], [-0.2, 1.2], { extrapolateRight: "clamp" });
+  const sweep = interpolate(frame, [0, 18], [-0.2, 1.2], { extrapolateRight: "clamp" });
+  const tipo = ENTRADAS[index % ENTRADAS.length];
+  const a = 1 - enter;
+  const entrada =
+    tipo === "direita" ? `translateX(${a * 160}px)` : tipo === "esquerda" ? `translateX(${a * -160}px)` : tipo === "zoom" ? `scale(${1 + a * 0.18})` : `translateY(${a * 70}px)`;
+  // câmera: aproxima devagar ao longo da cena e balança de leve
+  const zoom = interpolate(frame, [0, Math.max(1, duration)], [1, 1.035], { extrapolateRight: "clamp" });
+  const balanco = `translate(${Math.sin(frame / 70) * 6}px, ${Math.cos(frame / 85) * 5}px)`;
+  const cor = index % 2 ? C.green : C.gold;
   return (
     <AbsoluteFill>
       <AbsoluteFill
         style={{
           opacity: Math.min(enter, exit),
-          transform: `translateY(${(1 - enter) * 60 + (1 - exit) * -40}px) scale(${0.96 + enter * 0.04})`,
-          filter: `blur(${(1 - Math.min(enter, exit)) * 10}px)`,
+          transform: `${entrada} ${balanco} scale(${zoom * (0.97 + enter * 0.03)}) translateY(${(1 - exit) * -40}px)`,
+          filter: `blur(${(1 - Math.min(enter, exit)) * 8}px)`,
         }}
       >
         {children}
       </AbsoluteFill>
-      {frame < 18 && (
+      {frame < 20 && (
         <div
           style={{
             position: "absolute",
             top: 0,
             bottom: 0,
-            width: 6,
+            width: 90,
             left: sweep * width,
-            background: `linear-gradient(180deg, transparent, ${C.gold}, transparent)`,
-            boxShadow: `0 0 40px 10px rgba(242,193,78,0.35)`,
-            opacity: 0.8,
+            transform: "skewX(-12deg)",
+            background: `linear-gradient(90deg, transparent, ${cor}55, transparent)`,
+            opacity: 0.9,
           }}
         />
       )}

@@ -71,7 +71,7 @@ jobs:
     name: Renderizar ${{ matrix.episodio }}
     needs: preparar
     runs-on: ubuntu-latest
-    timeout-minutes: 90 # o vídeo longo (~4 min) leva bem mais que o Short
+    timeout-minutes: 180 # o vídeo longo (8 a 11 min) leva bem mais que o Short
     strategy:
       fail-fast: false
       max-parallel: 3
@@ -142,6 +142,10 @@ jobs:
         env:
           EPISODE: ${{ matrix.episodio }}
         run: npm run test:media
+
+      - name: Marcar como aprovado nos testes
+        # A publicação diária só envia vídeos com esta marca: um vídeo reprovado não segura o outro.
+        run: echo "aprovado nos testes de áudio e vídeo" > "out/${{ matrix.episodio }}/aprovado.txt"
 
       - name: Relatório (ffprobe)
         if: always()

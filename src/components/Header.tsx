@@ -11,7 +11,7 @@ export const Header: React.FC<{ name: string }> = ({ name }) => {
   const intro = interpolate(frame, [0, 18], [0, 1], { extrapolateRight: "clamp" });
   return (
     <>
-      <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: 8, background: "rgba(255,255,255,0.06)" }}>
+      <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: 8, background: C.track }}>
         <div
           style={{
             width: `${progress * 100}%`,
@@ -36,7 +36,7 @@ export const Header: React.FC<{ name: string }> = ({ name }) => {
           fontWeight: 800,
           fontSize: horizontal ? 24 : 30,
           letterSpacing: 8,
-          color: C.white,
+          color: C.ink,
         }}
       >
         <div style={{ width: 14, height: 14, borderRadius: 7, background: C.gold, boxShadow: `0 0 16px ${C.gold}` }} />

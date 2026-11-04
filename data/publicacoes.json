@@ -152,6 +152,68 @@
       "url": "https://youtu.be/CZd3qoZKzO0",
       "enviadoEm": "2026-11-03T10:41:47.030Z",
       "publicarEm": "2026-11-03T21:13:00.000Z"
+    },
+    {
+      "historico": [
+        {
+          "em": "2026-11-04T17:08:10.083Z",
+          "status": "enviando"
+        },
+        {
+          "em": "2026-11-04T17:08:12.949Z",
+          "status": "privado",
+          "nota": "enviado (agendando)"
+        },
+        {
+          "em": "2026-11-04T17:08:12.950Z",
+          "status": "agendado",
+          "nota": "fica público às 17:19 (Brasília)"
+        }
+      ],
+      "plataforma": "youtube",
+      "episodio": "2026-11-04-dolar-longo",
+      "titulo": "Por que o Dólar está tão alto? E seus preços vão subir?",
+      "hashEpisodio": "0a07c29540cff8c5",
+      "hashVideo": "3e3739e57639ea6d",
+      "duracao": 112.934,
+      "status": "agendado",
+      "atualizadoEm": "2026-11-04T17:08:12.950Z",
+      "privacidade": "private",
+      "videoId": "xy6FvVyBCD4",
+      "url": "https://youtu.be/xy6FvVyBCD4",
+      "enviadoEm": "2026-11-04T17:08:12.949Z",
+      "publicarEm": "2026-11-04T20:19:00.000Z"
+    },
+    {
+      "historico": [
+        {
+          "em": "2026-11-04T17:08:12.959Z",
+          "status": "enviando"
+        },
+        {
+          "em": "2026-11-04T17:08:14.961Z",
+          "status": "privado",
+          "nota": "enviado (agendando)"
+        },
+        {
+          "em": "2026-11-04T17:08:14.961Z",
+          "status": "agendado",
+          "nota": "fica público às 20:07 (Brasília)"
+        }
+      ],
+      "plataforma": "youtube",
+      "episodio": "2026-11-04-dolar-short",
+      "titulo": "Dólar alto, preços caros? Sim, mas você pode se proteger!",
+      "hashEpisodio": "95a23fe2f2ed20fd",
+      "hashVideo": "dcb6c2ac1a190a93",
+      "duracao": 52.632,
+      "status": "agendado",
+      "atualizadoEm": "2026-11-04T17:08:14.961Z",
+      "privacidade": "private",
+      "videoId": "0jf-q8YoF6k",
+      "url": "https://youtu.be/0jf-q8YoF6k",
+      "enviadoEm": "2026-11-04T17:08:14.961Z",
+      "publicarEm": "2026-11-04T23:07:00.000Z"
     }
   ]
 }

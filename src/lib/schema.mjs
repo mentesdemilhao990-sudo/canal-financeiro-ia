@@ -101,11 +101,11 @@ export const TEMPLATES = ["hook", "split", "counter", "lineChart", "bars", "list
 /**
  * Formatos de vídeo:
  *  - short: vertical 1080x1920, 30 a 60 s (YouTube Shorts)
- *  - longo: horizontal 1920x1080, 1,5 a 8 min (vídeo normal)
+ *  - longo: horizontal 1920x1080, 1,5 a 15 min (vídeo normal; os diários têm 8 min ou mais)
  */
 export const FORMATOS = {
   short: { width: 1080, height: 1920, minDuracao: 30, maxDuracao: 60, minCenas: 3, maxCenas: 8, maxNarracao: 400 },
-  longo: { width: 1920, height: 1080, minDuracao: 90, maxDuracao: 480, minCenas: 6, maxCenas: 20, maxNarracao: 600 },
+  longo: { width: 1920, height: 1080, minDuracao: 90, maxDuracao: 900, minCenas: 6, maxCenas: 32, maxNarracao: 700 },
 };
 
 export const episodeSchema = z
@@ -115,11 +115,11 @@ export const episodeSchema = z
     description: z.string().max(500).default(""),
     tags: z.array(z.string()).max(15).default([]),
     formato: z.enum(["short", "longo"]).default("short"),
-    targetDurationSeconds: z.number().min(30).max(480).default(45),
+    targetDurationSeconds: z.number().min(30).max(900).default(45),
     disclaimer: z.string().max(120).optional(),
     voice: z.object({ lengthScale: z.number().min(0.7).max(1.4).optional() }).optional(),
     music: z.object({ enabled: z.boolean().optional(), volume: z.number().min(0).max(0.4).optional() }).optional(),
-    scenes: z.array(sceneSchema).min(3).max(20),
+    scenes: z.array(sceneSchema).min(3).max(32),
     // Opcional: quando e como publicar (veja docs/publicacao.md).
     publicacao: z
       .object({

@@ -2,6 +2,7 @@ import React from "react";
 import { AbsoluteFill, Html5Audio, Sequence, staticFile, useVideoConfig } from "remotion";
 import type { EpisodeProps, Scene, SceneProps } from "./types";
 import { ensureFonts } from "./fonts";
+import { C } from "./theme";
 import { Background } from "./components/Background";
 import { Header } from "./components/Header";
 import { Captions } from "./components/Captions";
@@ -33,7 +34,7 @@ export const EpisodeVideo: React.FC<EpisodeProps> = ({ episode, timeline, channe
   const horizontal = width > height;
   const words = timeline.scenes.flatMap((s) => s.words);
   return (
-    <AbsoluteFill style={{ backgroundColor: "#06080B" }}>
+    <AbsoluteFill style={{ backgroundColor: C.bg }}>
       <Background />
       {episode.scenes.map((scene, i) => {
         const t = timeline.scenes[i];
@@ -43,14 +44,14 @@ export const EpisodeVideo: React.FC<EpisodeProps> = ({ episode, timeline, channe
         return (
           <Sequence key={scene.id} from={from} durationInFrames={Math.max(1, to - from)} name={`${i + 1}. ${scene.template}`}>
             {horizontal ? (
-              <SceneShell duration={to - from}>
+              <SceneShell duration={to - from} index={i}>
                 <PainelLateral episode={episode} index={i} />
                 <PalcoHorizontal duration={to - from}>
                   <Comp scene={scene} duration={to - from} channel={channel} episode={episode} />
                 </PalcoHorizontal>
               </SceneShell>
             ) : (
-              <SceneShell duration={to - from}>
+              <SceneShell duration={to - from} index={i}>
                 <Comp scene={scene} duration={to - from} channel={channel} episode={episode} />
               </SceneShell>
             )}

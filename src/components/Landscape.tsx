@@ -77,15 +77,15 @@ export const PainelLateral: React.FC<{ episode: Episode; index: number }> = ({ e
                 color: "transparent",
                 opacity: q,
                 transform: `translateX(${(1 - q) * -30}px)`,
-                filter: "drop-shadow(0 10px 30px rgba(242,193,78,0.25))",
+                filter: "drop-shadow(0 10px 30px rgba(232,163,23,0.25))",
               }}
             >
               {t}
             </div>
           ) : (
             <div key={i} style={{ display: "flex", alignItems: "center", gap: 14, opacity: p * (i < index ? 0.45 : 0.7) }}>
-              <div style={{ width: 10, height: 10, borderRadius: 5, flexShrink: 0, background: i < index ? C.green : "rgba(255,255,255,0.35)" }} />
-              <span style={{ fontFamily: BODY, fontWeight: 700, fontSize: 26, color: C.white, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>{t}</span>
+              <div style={{ width: 10, height: 10, borderRadius: 5, flexShrink: 0, background: i < index ? C.green : C.track }} />
+              <span style={{ fontFamily: BODY, fontWeight: 700, fontSize: 26, color: C.ink, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>{t}</span>
             </div>
           ),
         )}
@@ -98,7 +98,7 @@ export const PainelLateral: React.FC<{ episode: Episode; index: number }> = ({ e
               flex: 1,
               height: 8,
               borderRadius: 4,
-              background: i < index ? C.green : i === index ? C.gold : "rgba(255,255,255,0.12)",
+              background: i < index ? C.green : i === index ? C.gold : C.track,
               boxShadow: i === index ? `0 0 14px ${C.gold}` : undefined,
             }}
           />

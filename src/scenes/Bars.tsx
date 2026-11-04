@@ -36,7 +36,7 @@ export const Bars: React.FC<SceneProps<"bars">> = ({ scene, duration }) => {
                     boxShadow: `0 0 30px ${col}44`,
                   }}
                 />
-                <div style={{ fontFamily: BODY, fontWeight: 700, fontSize: 30, color: C.white, marginTop: 18, textAlign: "center" }}>{it.label}</div>
+                <div style={{ fontFamily: BODY, fontWeight: 700, fontSize: 30, color: C.ink, marginTop: 18, textAlign: "center" }}>{it.label}</div>
               </div>
             );
           })}

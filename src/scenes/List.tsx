@@ -19,7 +19,7 @@ export const List: React.FC<SceneProps<"list">> = ({ scene, duration }) => {
               <div style={{ fontFamily: DISPLAY, fontSize: 90, lineHeight: 1, backgroundImage: GOLD_GRADIENT, WebkitBackgroundClip: "text", color: "transparent", minWidth: 70 }}>
                 {i + 1}
               </div>
-              <div style={{ fontFamily: BODY, fontWeight: 700, fontSize: 40, color: C.white, lineHeight: 1.25 }}>{it}</div>
+              <div style={{ fontFamily: BODY, fontWeight: 700, fontSize: 40, color: C.ink, lineHeight: 1.25 }}>{it}</div>
             </Panel>
           );
         })}
