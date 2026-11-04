@@ -56,12 +56,21 @@ const titulosUsados = [...pubs.itens.map((i) => i.titulo), ...pautas.itens.flatM
 const base = `${hoje}-${escolhido.tema.id}`;
 const ids = { longo: `${base}-longo`, short: `${base}-short` };
 
-console.log("\n▶ Roteiro do vídeo longo");
-const longo = await escreverEpisodio({ tema: escolhido.tema, manchetes: escolhido.manchetes, formato: "longo", id: ids.longo, titulosUsados });
-console.log("\n▶ Roteiro do Short");
-const short = await escreverEpisodio({ tema: escolhido.tema, manchetes: escolhido.manchetes, formato: "short", id: ids.short, tituloIrmao: longo.episodio.title, titulosUsados });
+// Se um dos dois roteiros falhar, o outro sai mesmo assim.
+const feitos = [];
+for (const formato of ["longo", "short"]) {
+  console.log(`\n▶ Roteiro do ${formato === "longo" ? "vídeo longo" : "Short"}`);
+  try {
+    const irmao = feitos[0]?.episodio.title;
+    feitos.push(await escreverEpisodio({ tema: escolhido.tema, manchetes: escolhido.manchetes, formato, id: ids[formato], tituloIrmao: irmao, titulosUsados }));
+  } catch (e) {
+    console.log(`  ✖ ${formato}: ${e.message}`);
+    resumo(`- ⚠️ ${formato}: a IA não entregou um roteiro válido (${e.message.slice(0, 200)})`);
+  }
+}
+if (!feitos.length) throw new Error("nenhum roteiro válido hoje");
 
-for (const r of [longo, short]) writeFileSync(`episodes/${r.bruto.id}.json`, `${JSON.stringify(r.bruto, null, 2)}\n`);
+for (const r of feitos) writeFileSync(`episodes/${r.bruto.id}.json`, `${JSON.stringify(r.bruto, null, 2)}\n`);
 
 pautas.itens.push({
   data: hoje,
@@ -69,15 +78,15 @@ pautas.itens.push({
   nome: escolhido.tema.nome,
   pontos: escolhido.pontos,
   manchetes: escolhido.manchetes.slice(0, 5),
-  episodios: [ids.longo, ids.short],
-  titulos: [longo.episodio.title, short.episodio.title],
-  modelo: longo.modelo,
+  episodios: feitos.map((r) => r.bruto.id),
+  titulos: feitos.map((r) => r.episodio.title),
+  modelo: feitos[0].modelo,
 });
 pautas.itens = pautas.itens.slice(-400);
 gravarJson(PAUTAS, pautas);
 
 resumo("");
-resumo(`- 🎬 Vídeo longo: **${longo.episodio.title}** · ${longo.episodio.scenes.length} cenas · ~${longo.episodio.targetDurationSeconds} s · ${longo.modelo} (tentativa ${longo.tentativas})`);
-resumo(`- 📱 Short: **${short.episodio.title}** · ${short.episodio.scenes.length} cenas · ~${short.episodio.targetDurationSeconds} s · ${short.modelo} (tentativa ${short.tentativas})`);
-saida("csv", `${ids.longo},${ids.short}`);
+for (const r of feitos)
+  resumo(`- ${r.bruto.formato === "longo" ? "🎬 Vídeo longo" : "📱 Short"}: **${r.episodio.title}** · ${r.episodio.scenes.length} cenas · ~${r.episodio.targetDurationSeconds} s · ${r.modelo} (tentativa ${r.tentativas})`);
+saida("csv", feitos.map((r) => r.bruto.id).join(","));
 saida("tema", escolhido.tema.nome.replace(/[\r\n]/g, " "));

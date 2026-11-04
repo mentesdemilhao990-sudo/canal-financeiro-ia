@@ -320,3 +320,34 @@ test("roteiro: abertura com saudação é recusada", () => {
   ep.scenes[0] = { ...ep.scenes[0], narration: "Bom dia! Hoje vamos falar sobre o décimo terceiro salário e onde colocar esse dinheiro." };
   assert.match(problemasDeConteudo(ep, "short").join(), /não abra com saudação/);
 });
+
+test("roteiro: com GEMINI_API_KEY o Gemini escreve primeiro e o limite passa para a reserva", async () => {
+  const { modelosPadrao } = await import("../../scripts/lib/roteirista.mjs");
+  assert.deepEqual(modelosPadrao({ GEMINI_API_KEY: "k", OLLAMA_MODELO: "qwen2.5:7b" }), ["gemini:gemini-2.5-flash", "ollama:qwen2.5:7b"]);
+  assert.deepEqual(modelosPadrao({ OLLAMA_MODELO: "qwen2.5:7b" }), ["ollama:qwen2.5:7b"]);
+  const antes = process.env.GEMINI_API_KEY;
+  process.env.GEMINI_API_KEY = "chave-teste";
+  try {
+    const urls = [];
+    const f = async (url, init) => {
+      urls.push(String(url));
+      if (/generativelanguage/.test(String(url))) {
+        assert.equal(init.headers.authorization, "Bearer chave-teste");
+        assert.equal(JSON.parse(init.body).model, "gemini-2.5-flash");
+        return new Response(JSON.stringify({ choices: [{ message: { content: JSON.stringify(respostaShort()) } }] }), { status: 200 });
+      }
+      throw new Error("não devia chamar outro modelo");
+    };
+    const r = await escreverEpisodio({ tema: temas.temas[0], formato: "short", id: "g-short" }, { token: "", modelos: ["gemini:gemini-2.5-flash", "ollama:qwen2.5:7b"], fetch: f, log: () => {} });
+    assert.equal(r.modelo, "gemini:gemini-2.5-flash");
+    const f429 = async (url) =>
+      /generativelanguage/.test(String(url))
+        ? new Response(JSON.stringify([{ error: { message: "quota" } }]), { status: 429 })
+        : new Response(JSON.stringify({ message: { content: JSON.stringify(respostaShort()) } }), { status: 200 });
+    const r2 = await escreverEpisodio({ tema: temas.temas[0], formato: "short", id: "g2-short" }, { token: "", modelos: ["gemini:gemini-2.5-flash", "ollama:qwen2.5:7b"], fetch: f429, log: () => {} });
+    assert.equal(r2.modelo, "ollama:qwen2.5:7b");
+  } finally {
+    if (antes === undefined) delete process.env.GEMINI_API_KEY;
+    else process.env.GEMINI_API_KEY = antes;
+  }
+});
