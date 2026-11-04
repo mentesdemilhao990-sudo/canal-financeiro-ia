@@ -7,10 +7,11 @@
       "voz": "Orus",
       "modelo": "gemini-2.5-flash-preview-tts",
       "caracteresPorPedido": 2600,
-      "estilo": "Leia o texto a seguir em português do Brasil, como um youtuber brasileiro de finanças conversando com um amigo: animado, natural, com ritmo dinâmico, ênfase nas palavras importantes e pausas curtas entre as ideias. Leia exatamente o texto, sem acrescentar nada:"
+      "estilo": "Leia o texto a seguir em português do Brasil como uma pessoa de verdade contando uma história para um amigo, sem pressa: ritmo calmo e tranquilo, voz quente e sorridente, respirando entre as frases, pequenas pausas depois das vírgulas e pausas maiores entre as ideias. Varie a entonação como numa conversa, sem tom de locutor nem de anúncio. Leia exatamente o texto, sem acrescentar nada:",
+      "velocidade": 0.9
     },
     "edge": "pt-BR-AntonioNeural",
-    "edgeRate": "+4%",
+    "edgeRate": "-6%",
     "edgePitch": "+0Hz",
     "model": "pt_BR-faber-medium",
     "lengthScale": 1.0,

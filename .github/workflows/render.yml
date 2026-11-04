@@ -71,7 +71,7 @@ jobs:
     name: Renderizar ${{ matrix.episodio }}
     needs: preparar
     runs-on: ubuntu-latest
-    timeout-minutes: 90 # o vídeo longo (~4 min) leva bem mais que o Short
+    timeout-minutes: 180 # o vídeo longo (8 a 11 min) leva bem mais que o Short
     strategy:
       fail-fast: false
       max-parallel: 3

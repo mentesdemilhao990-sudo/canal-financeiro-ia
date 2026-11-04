@@ -11,6 +11,7 @@ from __future__ import annotations
 import base64
 import difflib
 import json
+import subprocess
 import os
 import re
 import time
@@ -73,6 +74,19 @@ def pedir_audio(texto: str, cfg: dict, chave: str) -> np.ndarray:
     raise RuntimeError(f"Gemini não gerou o áudio ({ultimo})")
 
 
+def esticar(audio: np.ndarray, fator: float) -> np.ndarray:
+    """Deixa a fala mais lenta (fator < 1) sem mudar o tom da voz (filtro atempo do ffmpeg)."""
+    if not fator or abs(fator - 1.0) < 0.01:
+        return audio
+    r = subprocess.run(
+        ["ffmpeg", "-v", "error", "-f", "f32le", "-ar", str(RATE), "-ac", "1", "-i", "pipe:0", "-filter:a", f"atempo={fator:.3f}", "-f", "f32le", "-ar", str(RATE), "-ac", "1", "pipe:1"],
+        input=audio.astype(np.float32).tobytes(),
+        capture_output=True,
+        check=True,
+    )
+    return np.frombuffer(r.stdout, dtype=np.float32).copy()
+
+
 _whisper = None
 
 
@@ -124,7 +138,7 @@ def narrar_cenas(textos: list[str], cfg: dict, chave: str, split_words, log=prin
         if gi:
             time.sleep(21)  # respeita o limite por minuto do plano grátis
         texto = "\n\n".join(textos[i] for i in grupo)
-        audio = pedir_audio(texto, cfg, chave)
+        audio = esticar(pedir_audio(texto, cfg, chave), float(cfg.get("velocidade", 1.0)))
         dur = len(audio) / RATE
         esperado = len(texto) / 17.0
         if dur < esperado * 0.55:

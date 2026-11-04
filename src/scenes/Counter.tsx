@@ -25,7 +25,7 @@ export const Counter: React.FC<SceneProps<"counter">> = ({ scene, duration }) =>
           <svg width={90} height={90} viewBox="0 0 100 100" style={{ transform: d.trend === "down" ? "rotate(180deg)" : undefined }}>
             <path d="M50 12 L88 60 H62 V90 H38 V60 H12 Z" fill={color} />
           </svg>
-          <div style={{ fontFamily: DISPLAY, fontSize: 210, lineHeight: 1, color: C.white, textShadow: `0 0 40px ${color}55`, fontVariantNumeric: "tabular-nums" }}>
+          <div style={{ fontFamily: DISPLAY, fontSize: 210, lineHeight: 1, color: C.ink, textShadow: `0 0 40px ${color}55`, fontVariantNumeric: "tabular-nums" }}>
             {d.prefix}
             {fmtNumber(value, d.decimals)}
             {d.suffix}
@@ -36,7 +36,7 @@ export const Counter: React.FC<SceneProps<"counter">> = ({ scene, duration }) =>
             <span>Poder de compra</span>
             <span style={{ color }}>{Math.round(bar * 100)}%</span>
           </div>
-          <div style={{ height: 40, borderRadius: 20, background: "rgba(255,255,255,0.07)", overflow: "hidden" }}>
+          <div style={{ height: 40, borderRadius: 20, background: C.track, overflow: "hidden" }}>
             <div style={{ width: `${bar * 100}%`, height: "100%", borderRadius: 20, background: `linear-gradient(90deg, ${C.gold}, ${color})` }} />
           </div>
         </div>

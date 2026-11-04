@@ -75,7 +75,7 @@ export const LineChart: React.FC<SceneProps<"lineChart">> = ({ scene, duration }
             const lx = right ? p.px + 26 : p.px - 26;
             return (
               <g key={si}>
-                <circle cx={p.px} cy={p.py} r={16} fill={C.bg} stroke={col} strokeWidth={7} />
+                <circle cx={p.px} cy={p.py} r={16} fill={C.card} stroke={col} strokeWidth={7} />
                 <text x={lx} y={p.py + (above ? -34 : 62)} fill={col} fontFamily={DISPLAY} fontSize={64} textAnchor={right ? "start" : "end"}>
                   {d.valuePrefix}
                   {fmtNumber(p.v)}
@@ -88,7 +88,7 @@ export const LineChart: React.FC<SceneProps<"lineChart">> = ({ scene, duration }
       </Panel>
       <div style={{ display: "flex", gap: 40, marginTop: 30 }}>
         {d.series.map((s, si) => (
-          <div key={si} style={{ display: "flex", alignItems: "center", gap: 14, fontFamily: BODY, fontWeight: 700, fontSize: 32, color: C.white }}>
+          <div key={si} style={{ display: "flex", alignItems: "center", gap: 14, fontFamily: BODY, fontWeight: 700, fontSize: 32, color: C.ink }}>
             <div style={{ width: 34, height: 10, borderRadius: 5, background: seriesColor(s.color) }} />
             {s.label}
           </div>

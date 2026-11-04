@@ -1,7 +1,7 @@
 import React from "react";
 import { interpolate, useCurrentFrame } from "remotion";
 import type { SceneProps } from "../types";
-import { C, GOLD_GRADIENT } from "../theme";
+import { C, GOLD_GRADIENT, GREEN_GRADIENT } from "../theme";
 import { BODY, DISPLAY } from "../fonts";
 import { Stage } from "../components/SceneShell";
 import { Kicker, useIn } from "./common";
@@ -42,7 +42,7 @@ export const Hook: React.FC<SceneProps<"hook">> = ({ scene }) => {
                 fontSize: special ? 150 : 200,
                 lineHeight: 1.05,
                 padding: 0,
-                backgroundImage: special ? `linear-gradient(180deg, #9CF7C4, ${C.green})` : GOLD_GRADIENT,
+                backgroundImage: special ? GREEN_GRADIENT : GOLD_GRADIENT,
                 WebkitBackgroundClip: "text",
                 backgroundClip: "text",
                 color: "transparent",
@@ -50,7 +50,7 @@ export const Hook: React.FC<SceneProps<"hook">> = ({ scene }) => {
                 transform: `translateY(${(1 - p) * 60}px) scale(${0.8 + p * 0.2})`,
                 display: "inline-block",
                 whiteSpace: "pre",
-                filter: "drop-shadow(0 10px 30px rgba(242,193,78,0.25))",
+                filter: "drop-shadow(0 10px 30px rgba(232,163,23,0.25))",
               }}
             >
               {ch}
@@ -67,7 +67,7 @@ export const Hook: React.FC<SceneProps<"hook">> = ({ scene }) => {
             fontFamily: BODY,
             fontWeight: 700,
             fontSize: 46,
-            color: C.white,
+            color: C.ink,
             textAlign: "center",
             marginTop: 44,
             opacity: sub,

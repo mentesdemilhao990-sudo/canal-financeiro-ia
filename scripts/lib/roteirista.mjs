@@ -24,12 +24,22 @@ export function modelosPadrao(env = process.env) {
   return env.GEMINI_API_KEY?.trim() ? [...gemini.map((m) => `gemini:${m}`), ...locais] : locais;
 }
 
-/** Metas de tamanho por formato (a voz fala ~19 caracteres por segundo, mais as pausas). */
+/** Metas de tamanho por formato (a voz calma fala ~17 caracteres por segundo, mais as pausas). */
 export const METAS = {
   // caracteres: meta pedida à IA; aceite: duração estimada que ainda aprovamos (a IA nem sempre acerta o tamanho).
-  short: { cenas: [5, 7], caracteres: [620, 820], duracao: [34, 56], aceite: [32, 57], cta: "Siga para mais", porCena: 380, minCena: 110 },
-  longo: { cenas: [7, 13], caracteres: [2800, 3800], duracao: [150, 300], aceite: [95, 420], cta: "Inscreva-se", porCena: 520, minCena: 240 },
+  short: { cenas: [5, 7], caracteres: [620, 820], duracao: [36, 58], aceite: [32, 59], cta: "Siga para mais", porCena: 380, minCena: 110 },
+  // O longo tem no mínimo 8 minutos (pedido do Patrick) e é escrito em 3 partes de ~3 minutos.
+  longo: { cenas: [18, 30], caracteres: [8400, 11000], duracao: [480, 660], aceite: [480, 900], cta: "Inscreva-se", porCena: 650, minCena: 260, partes: 3 },
+  // Cada parte do longo (só usado na escrita; o vídeo final é validado como "longo").
+  longoParte: { cenas: [6, 10], caracteres: [2900, 3700], cta: "Inscreva-se", porCena: 650, minCena: 260 },
 };
+
+/** O que cada parte do vídeo longo cobre (a IA recebe o plano inteiro para não repetir assunto). */
+const PLANO_DO_LONGO = [
+  "PARTE 1 (começo): gancho forte, por que isso importa agora, o problema explicado com um caso concreto (personagem com nome e números redondos) e uma curiosidade em aberto para segurar a pessoa até o fim.",
+  "PARTE 2 (meio): a explicação passo a passo, com contas acontecendo na tela (gráfico, barras ou número animado), comparações e exemplos do dia a dia. Responda a curiosidade da parte 1 só no fim desta parte.",
+  "PARTE 3 (final): os erros mais comuns, um plano prático em passos simples, um resumo rápido do vídeo, uma pergunta para os comentários e o fechamento.",
+];
 
 export const AVISO = "Conteúdo educativo. Valores ilustrativos, não é recomendação de investimento.";
 
@@ -37,7 +47,7 @@ export const AVISO = "Conteúdo educativo. Valores ilustrativos, não é recomen
 export function estimarDuracao(scenes) {
   const chars = scenes.reduce((n, s) => n + s.narration.length, 0);
   const frases = scenes.reduce((n, s) => n + (s.narration.match(/[^.!?…]+[.!?…]*/g) ?? []).filter((f) => f.trim()).length, 0);
-  return chars / 19 + frases * 0.22 + scenes.length * 0.4 + 0.8;
+  return chars / 17 + frases * 0.22 + scenes.length * 0.4 + 0.8;
 }
 
 const MARCAS = [
@@ -47,9 +57,11 @@ const MARCAS = [
 const PROMESSAS = [/\bgarantid[oa]s?\b/, /\blucro certo\b/, /\bsem risco\b/, /\bfique rico\b/, /\brenda garantida\b/, /\bcompre (agora|j[aá])\b/, /\binvista (agora|j[aá])\b/];
 
 /** Regras extras além do formato: segurança do conteúdo e leitura pela voz. */
-export function problemasDeConteudo(ep, formato, { titulosUsados = [] } = {}) {
+export function problemasDeConteudo(ep, formato, { titulosUsados = [], parte } = {}) {
   const p = [];
-  const meta = METAS[formato];
+  const meta = METAS[parte ? "longoParte" : formato];
+  const primeira = !parte || parte.i === 0;
+  const ultima = !parte || parte.i === parte.n - 1;
   const todo = semAcento([ep.title, ep.description, ...ep.scenes.map((s) => `${s.narration} ${JSON.stringify(s.data)}`)].join(" ").toLowerCase());
   for (const m of MARCAS) if (new RegExp(`(^|[^a-z])${semAcento(m)}([^a-z]|$)`).test(todo)) p.push(`não cite marcas, bancos ou corretoras (apareceu "${m}")`);
   // "Não existe retorno garantido" é um alerta, não uma promessa: frases negadas não contam.
@@ -63,24 +75,37 @@ export function problemasDeConteudo(ep, formato, { titulosUsados = [] } = {}) {
       p.push(`cena ${i + 1}: a narração é só o que a voz fala; não coloque nomes de campos (Título:, Legenda:...), chaves, aspas nem emojis`);
     EMOJI.lastIndex = 0;
     if (s.narration.length > meta.porCena) p.push(`cena ${i + 1}: narração com ${s.narration.length} caracteres; o máximo é ${meta.porCena}`);
+    // Pedido de inscrição só uma vez, no fechamento, e de forma natural (o Patrick achou que tinha "inscreva-se" demais).
+    const fechamento = ultima && i === ep.scenes.length - 1;
+    if (!fechamento && /inscrev/i.test(s.narration)) p.push(`cena ${i + 1}: não peça inscrição aqui; o convite para se inscrever aparece uma vez só, na última cena`);
+    if (s.template === "outro" && /inscrev/i.test(`${s.data?.title ?? ""} ${(s.data?.points ?? []).join(" ")}`))
+      p.push(`cena ${i + 1}: o título e os pontos do fechamento resumem o vídeo; não escreva "inscreva-se" neles (o botão já mostra)`);
   });
+  if (ultima && ep.scenes.length) {
+    const vezes = (ep.scenes.at(-1).narration.match(/inscrev/gi) ?? []).length;
+    if (vezes > 1) p.push("na última cena, convide para se inscrever uma vez só, de um jeito natural");
+  }
   const falas = ep.scenes.map((s) => chaveFala(s.narration));
   falas.forEach((f, i) => {
     if (f && falas.indexOf(f) !== i) p.push(`cena ${i + 1}: repete a fala da cena ${falas.indexOf(f) + 1}; cada cena precisa de fala nova`);
   });
   const n = ep.scenes.length;
   if (n < meta.cenas[0] || n > meta.cenas[1]) p.push(`use de ${meta.cenas[0]} a ${meta.cenas[1]} cenas (vieram ${n})`);
-  if (/^\s*(bom dia|boa tarde|boa noite|ol[aá]|oi|e a[ií]|hoje (vamos|eu vou|vou)|neste v[ií]deo)\b/i.test(ep.scenes[0]?.narration ?? ""))
+  if (primeira && /^\s*(bom dia|boa tarde|boa noite|ol[aá]|oi|e a[ií]|hoje (vamos|eu vou|vou)|neste v[ií]deo)\b/i.test(ep.scenes[0]?.narration ?? ""))
     p.push('cena 1: não abra com saudação ou "hoje vamos falar"; comece com um fato surpreendente, uma conta ou uma pergunta forte');
-  if (ep.scenes[0]?.template !== "hook") p.push('a primeira cena precisa ser "hook"');
-  if (ep.scenes.at(-1)?.template !== "outro") p.push('a última cena precisa ser "outro"');
+  if (primeira && ep.scenes[0]?.template !== "hook") p.push('a primeira cena precisa ser "hook"');
+  if (!primeira && ep.scenes.some((s) => s.template === "hook")) p.push('só a parte 1 tem cena "hook"; continue o vídeo com os outros modelos de cena');
+  if (ultima && ep.scenes.at(-1)?.template !== "outro") p.push('a última cena precisa ser "outro"');
+  if (!ultima && ep.scenes.some((s) => s.template === "outro")) p.push('não use "outro" nesta parte: o vídeo continua na próxima');
   const chars = ep.scenes.reduce((t, s) => t + s.narration.length, 0);
   const fora = chars < meta.caracteres[0] ? "curta" : chars > meta.caracteres[1] ? "longa" : null;
   const d = estimarDuracao(ep.scenes);
-  if (d < meta.aceite[0] || d > meta.aceite[1])
+  // A parte é medida em caracteres (com folga); o vídeo inteiro, pela duração estimada.
+  const tamanhoRuim = meta.aceite ? d < meta.aceite[0] || d > meta.aceite[1] : chars < meta.caracteres[0] * 0.97 || chars > meta.caracteres[1] * 1.15;
+  if (tamanhoRuim)
     p.push(`a narração somada tem ${chars} caracteres (${fora ?? "fora do tamanho"}): precisa ficar entre ${meta.caracteres[0]} e ${meta.caracteres[1]}`);
   const t = semAcento(ep.title).toLowerCase().trim();
-  if (titulosUsados.some((u) => semAcento(u).toLowerCase().trim() === t)) p.push("esse título já foi usado no canal; crie outro");
+  if (primeira && titulosUsados.some((u) => semAcento(u).toLowerCase().trim() === t)) p.push("esse título já foi usado no canal; crie outro");
   return p;
 }
 
@@ -93,12 +118,18 @@ const MODELOS_DE_CENA = `Modelos de cena ("template") e o objeto "data" de cada 
 - "list": lista numerada. data: { "title": até 50, "items": 2 a 5 textos de até 50 }
 - "outro": fechamento. data: { "title": até 80 (pode usar \\n para quebrar em 2 linhas), "points": 0 a 3 textos de até 45, "cta": até 30 }`;
 
-function sistema(formato) {
-  const m = METAS[formato];
+function sistema(formato, parte) {
+  const m = METAS[parte ? "longoParte" : formato];
+  const L = METAS.longo;
   const tipo =
     formato === "short"
       ? `um YouTube Short vertical de ${m.duracao[0]} a ${m.duracao[1]} segundos: direto ao ponto, gancho forte nos 3 primeiros segundos, uma ideia central`
-      : `um vídeo normal do YouTube (horizontal) de cerca de ${Math.round((m.duracao[0] + m.duracao[1]) / 120)} minutos: uma mini-aula completa, com contexto, explicação passo a passo, exemplo numérico, erros comuns e resumo final`;
+      : `a PARTE ${parte.i + 1} de ${parte.n} de um vídeo normal do YouTube (horizontal) de ${Math.round(L.duracao[0] / 60)} a ${Math.round(L.duracao[1] / 60)} minutos: uma aula completa e envolvente, com contexto, explicação passo a passo, exemplos com contas, erros comuns e resumo final.
+Plano do vídeo inteiro (escreva SÓ a sua parte, continuando de onde a anterior parou, sem repetir o que já foi dito):
+${PLANO_DO_LONGO.map((x, k) => `${k === parte.i ? "→ " : "  "}${x}`).join("\n")}`;
+  const estrutura = !parte
+    ? `- De ${m.cenas[0]} a ${m.cenas[1]} cenas. A primeira é "hook" e a última é "outro" com "cta": "${m.cta}".`
+    : `- De ${m.cenas[0]} a ${m.cenas[1]} cenas nesta parte.${parte.i === 0 ? ' A primeira cena é "hook".' : ' NÃO use "hook" (o vídeo já começou).'}${parte.i === parte.n - 1 ? ` A última cena é "outro" com "cta": "${m.cta}".` : ' NÃO use "outro" (o vídeo continua na próxima parte).'}`;
   return `Você é roteirista do canal "Mente de Milhão", de educação financeira para brasileiros comuns, em português do Brasil.
 Escreva ${tipo}.
 
@@ -106,15 +137,18 @@ Regras de conteúdo (obrigatórias):
 - Educativo e responsável. NUNCA recomende produto, banco, corretora, fundo, ação ou cripto específicos. NUNCA prometa rentabilidade ou enriquecimento.
 - Use números como exemplos ilustrativos e deixe claro que são exemplos. Não afirme valores atuais de Selic, IPCA, dólar, salário mínimo ou outras taxas, a não ser que o número esteja nas manchetes fornecidas; nesse caso diga "segundo as notícias desta semana".
 - Contas precisam estar certas (juros, porcentagens, somas). Prefira números redondos.
-- Linguagem simples, frases curtas, tom de conversa, sem jargão sem explicar. Nada de "eu sou uma IA".
+- Linguagem simples, tom de conversa, sem jargão sem explicar. Nada de "eu sou uma IA".
 - Sem links, sem @, sem pedir dados pessoais.
 
 Estilo (aprendido com os vídeos mais vistos dos grandes canais de finanças do Brasil; imite o JEITO, nunca o conteúdo):
-- Fale como um amigo que entende de dinheiro conversando com "você": frases curtas, perguntas retóricas ("Sabe por quê?", "Parece pouco, né?"), opinião clara e um toque de indignação ou surpresa quando cabe ("Só eu acho isso absurdo?").
+- Fale como uma pessoa de verdade, um amigo que entende de dinheiro conversando com "você", NUNCA como locutor ou robô: use o jeito falado do brasileiro ("pra", "tá", "né", "olha só", "sabe aquele...?", "pensa comigo"), misture frases curtas e médias, faça perguntas retóricas ("Sabe por quê?", "Parece pouco, né?"), dê opinião clara e mostre surpresa ou indignação quando cabe ("Só eu acho isso absurdo?").
+- Ligue uma cena à outra como numa conversa ("e aí vem a parte que ninguém te conta", "agora repara numa coisa"), em vez de começar cada cena do zero.
+- Evite frases de efeito repetidas, listas recitadas e palavras de anúncio ("incrível", "imperdível", "não perca").
 - Abertura (gancho) nos primeiros segundos: comece com um fato surpreendente, uma conta que choca ou uma contradição do dia a dia, e prometa o que a pessoa vai ganhar assistindo até o fim. PROIBIDO abrir com "Bom dia", "Olá", "Hoje vamos falar sobre" ou "Neste vídeo".
 - Use um caso concreto com personagem e números redondos ("Imagina a Ana, que ganha três mil reais por mês...") e mostre a conta acontecendo.
 - Deixe uma curiosidade em aberto e só responda mais à frente ("e o terceiro erro é o mais caro de todos").
-- Termine com uma frase de efeito e uma pergunta para os comentários ("Comenta aí: você faria isso?"), antes do pedido de inscrição.
+- Termine com uma frase de efeito e uma pergunta para os comentários ("Comenta aí: você faria isso?").
+- Convite para se inscrever: UMA vez só, na última cena, curto e natural, como um amigo falaria ("se isso te ajudou, se inscreve aí que toda semana tem mais"). Nunca peça inscrição no meio do vídeo, nem no título ou nos pontos do fechamento.
 - Título no estilo dos grandes canais: promessa concreta com número ou contraste, e no máximo duas palavras-chave em MAIÚSCULAS. Ex. de formato: "Como sair das DÍVIDAS em 12 meses ganhando pouco", "Por que 9 em cada 10 pessoas nunca juntam dinheiro?". Nada de título genérico ou "Onde colocar seu dinheiro?".
 
 Regras da narração (lida por uma voz sintética):
@@ -125,7 +159,7 @@ Regras da narração (lida por uma voz sintética):
 - Cada cena traz uma informação nova. Nunca repita a fala de outra cena.
 
 Estrutura:
-- De ${m.cenas[0]} a ${m.cenas[1]} cenas. A primeira é "hook" e a última é "outro" com "cta": "${m.cta}".
+${estrutura}
 - Varie os modelos de cena e use pelo menos um gráfico ou número animado ("counter", "lineChart" ou "bars") com valores coerentes com a narração.
 - Cada cena tem "id" único (letras minúsculas, números e hífen), "template", "narration" e "data".
 
@@ -135,13 +169,17 @@ Responda SÓ com um objeto JSON neste formato:
 { "title": "título chamativo e honesto, até 90 caracteres", "description": "2 a 3 frases para a descrição do YouTube, até 450 caracteres", "tags": ["5 a 10 tags curtas em português"], "scenes": [ ... ] }`;
 }
 
-function pedido({ tema, manchetes, formato, tituloIrmao, titulosUsados }) {
+function pedido({ tema, manchetes, formato, tituloIrmao, titulosUsados, anteriores = [] }) {
+  const ja = anteriores.flatMap((a) => a.scenes);
   const linhas = [
     `Tema do dia: ${tema.nome}.`,
     `Abordagem sugerida: ${tema.angulo}.`,
     manchetes?.length ? `Manchetes recentes sobre o assunto (use só como contexto do que está em alta; não invente detalhes além delas):\n${manchetes.map((m) => `- ${m}`).join("\n")}` : "Sem manchetes hoje: faça um conteúdo atemporal sobre o tema.",
     tituloIrmao ? `Hoje também sai ${formato === "short" ? "um vídeo longo" : "um Short"} sobre o mesmo tema com o título "${tituloIrmao}". Use outro título e outro gancho.` : "",
     titulosUsados?.length ? `Títulos já usados no canal (não repita):\n${titulosUsados.slice(-30).map((t) => `- ${t}`).join("\n")}` : "",
+    ja.length
+      ? `O vídeo se chama "${anteriores[0].title}". O que já foi dito nas partes anteriores (NÃO repita; continue a conversa):\n${ja.map((s) => `- ${s.narration.slice(0, 140)}${s.narration.length > 140 ? "..." : ""}`).join("\n")}\n\nÚltima fala, para continuar daqui: "${ja.at(-1).narration}"\n\nNesta parte, "title", "description" e "tags" podem repetir os da parte 1.`
+      : "",
   ];
   return linhas.filter(Boolean).join("\n\n");
 }
@@ -363,7 +401,7 @@ export function limparNarracao(texto) {
 const chaveFala = (t) => semAcento(String(t ?? "")).toLowerCase().replace(/[^a-z ]/g, " ").replace(/\s+/g, " ").trim();
 
 /** Monta o episódio final a partir da resposta da IA (id, formato, aviso e meta de duração são nossos). */
-export function montarEpisodio(bruto, { id, formato }) {
+export function montarEpisodio(bruto, { id, formato, semFechamento = false }) {
   // Cenas repetidas (mesma fala) saem: a IA local às vezes repete o roteiro inteiro para encher.
   const falas = new Set();
   const scenes = (Array.isArray(bruto?.scenes) ? bruto.scenes : [])
@@ -384,7 +422,7 @@ export function montarEpisodio(bruto, { id, formato }) {
     return { ...s, id: sid, ...(typeof s?.narration === "string" ? { narration: narracaoPorExtenso(s.narration) } : {}) };
   });
   // A IA às vezes esquece a cena de fechamento: colocamos uma padrão (ou trocamos a última, se já tem cenas demais).
-  if (cenas.length && cenas.at(-1)?.template !== "outro") {
+  if (!semFechamento && cenas.length && cenas.at(-1)?.template !== "outro") {
     const m = METAS[formato];
     const outro = {
       template: "outro",
@@ -398,7 +436,7 @@ export function montarEpisodio(bruto, { id, formato }) {
         narration:
           formato === "short"
             ? "Gostou? Siga o canal para aprender mais sobre dinheiro sem complicação."
-            : "Se esse vídeo te ajudou, inscreva-se no canal e mande para alguém que também quer organizar as finanças. Até o próximo vídeo!",
+            : "Se esse vídeo te ajudou, se inscreve aí e manda pra alguém que também quer organizar as finanças. A gente se vê no próximo!",
       });
   }
   const F = FORMATOS[formato];
@@ -417,25 +455,57 @@ export function montarEpisodio(bruto, { id, formato }) {
 
 /**
  * Pede o roteiro à IA, valida e corrige até `tentativas` vezes por modelo.
+ * O vídeo longo é escrito em partes (cada uma validada) e depois validado inteiro.
  * Devolve { episodio, modelo, tentativas } ou lança erro com o último problema.
  */
-export async function escreverEpisodio(
-  { tema, manchetes = [], formato, id, tituloIrmao, titulosUsados = [] },
+export async function escreverEpisodio(pedidoDoDia, opcoes = {}) {
+  const { formato, id, titulosUsados = [] } = pedidoDoDia;
+  const log = opcoes.log ?? console.log;
+  if (formato !== "longo") return escreverTrecho(pedidoDoDia, opcoes);
+  const n = METAS.longo.partes;
+  const partes = [];
+  for (let i = 0; i < n; i++) {
+    log(`  parte ${i + 1}/${n}`);
+    partes.push(await escreverTrecho({ ...pedidoDoDia, parte: { i, n }, anteriores: partes.map((p) => p.bruto) }, opcoes));
+  }
+  const [p1] = partes;
+  const episodio = montarEpisodio(
+    { title: p1.bruto.title, description: p1.bruto.description, tags: p1.bruto.tags, scenes: partes.flatMap((p) => p.bruto.scenes) },
+    { id, formato },
+  );
+  const problemas = [...(() => {
+    try {
+      parseEpisode(episodio, "roteiro longo");
+      return [];
+    } catch (e) {
+      return [e.message];
+    }
+  })(), ...problemasDeConteudo(episodio, formato, { titulosUsados })];
+  if (problemas.length) throw new Error(`a IA não entregou um roteiro longo válido: ${problemas.join("; ")}`);
+  const modelos = [...new Set(partes.map((p) => p.modelo))].join(" + ");
+  return { episodio: parseEpisode(episodio), bruto: episodio, modelo: modelos, tentativas: partes.reduce((t, p) => t + p.tentativas, 0) };
+}
+
+/** Um roteiro inteiro (Short) ou uma parte do longo. */
+async function escreverTrecho(
+  { tema, manchetes = [], formato, id, tituloIrmao, titulosUsados = [], parte, anteriores = [] },
   { token = process.env.GITHUB_TOKEN, modelos = modelosPadrao(), tentativas = 3, fetch: f = globalThis.fetch, log = console.log } = {},
 ) {
   if (!token && !modelos.every((m) => /^(ollama|gemini):/.test(m))) throw new Error("sem GITHUB_TOKEN para usar a IA gratuita do GitHub Models");
+  const formatoIA = parte ? "longoParte" : formato;
+  const semFechamento = Boolean(parte && parte.i < parte.n - 1);
   let ultimo = "nenhuma resposta";
   for (const modelo of modelos) {
     const inicio = [
-      { role: "system", content: sistema(formato) },
-      { role: "user", content: pedido({ tema, manchetes, formato, tituloIrmao, titulosUsados }) },
+      { role: "system", content: sistema(formato, parte) },
+      { role: "user", content: pedido({ tema, manchetes, formato, tituloIrmao, titulosUsados, anteriores }) },
     ];
     // O plano gratuito aceita ~8 mil tokens de entrada: na correção vai só a última resposta.
     let mensagens = inicio;
     for (let n = 1; n <= tentativas; n++) {
       let texto;
       try {
-        texto = await chamarIA(f, token, modelo, mensagens, formato);
+        texto = await chamarIA(f, token, modelo, mensagens, formatoIA);
       } catch (e) {
         if (e.fatal) throw e;
         ultimo = e.message;
@@ -449,9 +519,14 @@ export async function escreverEpisodio(
       let problemas = [];
       let episodio;
       try {
-        episodio = montarEpisodio(JSON.parse(texto.replace(/^```(json)?|```$/g, "").trim()), { id, formato });
+        episodio = montarEpisodio(JSON.parse(texto.replace(/^```(json)?|```$/g, "").trim()), { id, formato, semFechamento });
+        // Fala que repete uma parte anterior sai (a IA às vezes recomeça o vídeo).
+        if (anteriores.length) {
+          const ja = new Set(anteriores.flatMap((a) => a.scenes.map((s) => chaveFala(s.narration))));
+          episodio.scenes = episodio.scenes.filter((s) => !ja.has(chaveFala(s.narration)));
+        }
         parseEpisode(episodio, `roteiro ${formato}`);
-        problemas = problemasDeConteudo(episodio, formato, { titulosUsados });
+        problemas = problemasDeConteudo(episodio, formato, { titulosUsados, parte });
       } catch (e) {
         problemas = [e.message];
       }
@@ -465,5 +540,5 @@ export async function escreverEpisodio(
       ];
     }
   }
-  throw new Error(`a IA não entregou um roteiro ${formato} válido: ${ultimo}`);
+  throw new Error(`a IA não entregou um roteiro ${parte ? `longo (parte ${parte.i + 1})` : formato} válido: ${ultimo}`);
 }

@@ -20,7 +20,7 @@ export const Kicker: React.FC<{ text: string; delay?: number; color?: string }> 
   );
 };
 
-export const Title: React.FC<{ text: string; delay?: number; size?: number; color?: string }> = ({ text, delay = 0, size = 92, color = C.white }) => {
+export const Title: React.FC<{ text: string; delay?: number; size?: number; color?: string }> = ({ text, delay = 0, size = 92, color = C.ink }) => {
   const p = useIn(delay);
   return (
     <div
@@ -58,7 +58,7 @@ export const Panel: React.FC<{ children: React.ReactNode; style?: React.CSSPrope
       background: C.panel,
       border: `1.5px solid ${glow}44`,
       borderRadius: 34,
-      boxShadow: `0 30px 80px rgba(0,0,0,0.55), inset 0 1px 0 rgba(255,255,255,0.06), 0 0 60px ${glow}14`,
+      boxShadow: `0 24px 60px ${C.shadow}, 0 0 0 1px ${C.line}`,
       ...style,
     }}
   >
