@@ -8,10 +8,11 @@ import path from "node:path";
 import { dimensoes, parseEpisode } from "../../src/lib/schema.mjs";
 import { capitulos } from "../../src/lib/capitulos.mjs";
 import { escolher, lerRss, menciona, pontuar } from "../../scripts/lib/tendencias.mjs";
-import { escreverEpisodio, estimarDuracao, montarEpisodio, problemasDeConteudo } from "../../scripts/lib/roteirista.mjs";
+import { consertarParte, escreverEpisodio, estimarDuracao, montarEpisodio, problemasDeConteudo } from "../../scripts/lib/roteirista.mjs";
 import { problemasMetadata, youtubeMetadata } from "../../scripts/lib/metadata.mjs";
 import { modos } from "../../scripts/lib/modos.mjs";
 
+process.env.GEMINI_ESPERA_429_MS = "0";
 const longo = () => JSON.parse(readFileSync("tests/fixtures/exemplo-longo.json", "utf8"));
 const short = () => JSON.parse(readFileSync("episodes/guardar-nao-e-investir.json", "utf8"));
 const temas = JSON.parse(readFileSync("config/temas.json", "utf8"));
@@ -27,7 +28,7 @@ test("formatos: Short vertical por padrão, longo horizontal", () => {
 test("formatos: limites de duração e cenas valem para cada um", () => {
   assert.throws(() => parseEpisode({ ...short(), targetDurationSeconds: 120 }), /Short a duração vai de 30 a 60/);
   assert.throws(() => parseEpisode({ ...longo(), targetDurationSeconds: 50 }), /longo a duração vai de 90 a 900/);
-  assert.throws(() => parseEpisode({ ...longo(), scenes: longo().scenes.slice(0, 4) }), /de 6 a 32 cenas/);
+  assert.throws(() => parseEpisode({ ...longo(), scenes: longo().scenes.slice(0, 4) }), /de 6 a 44 cenas/);
   const s = short();
   s.scenes[0].narration = "a ".repeat(250);
   assert.throws(() => parseEpisode(s), /mais de 400 caracteres/);
@@ -95,7 +96,6 @@ test("pontuação sem internet: ainda escolhe um tema (época do ano e menos usa
 /** Resposta de IA válida para o Short, construída a partir do episódio de exemplo. */
 function respostaShort() {
   const e = short();
-  e.scenes[2].narration += " Por isso vale entender bem essa diferença antes de decidir.";
   return { title: "Guardar dinheiro parado faz você perder?", description: e.description, tags: e.tags, scenes: e.scenes };
 }
 
@@ -116,9 +116,9 @@ test("roteiro: montar, validar duração e regras de conteúdo", () => {
   assert.match(problemasDeConteudo(ep, "short", { titulosUsados: ["guardar dinheiro parado faz voce perder?"] }).join(), /já foi usado/);
 });
 
-test("roteiro: duração estimada considera a voz calma (39 s na voz antiga, ~10% mais lenta agora)", () => {
+test("roteiro: duração estimada segue a voz calma do Gemini (Short de 858 caracteres saiu com 71 s)", () => {
   const d = estimarDuracao(short().scenes);
-  assert.ok(d > 40 && d < 48, `estimativa ${d.toFixed(1)} s`);
+  assert.ok(d > 52 && d < 60, `estimativa ${d.toFixed(1)} s`);
 });
 
 test("roteiro: IA errou na primeira, recebe os problemas e corrige", async () => {
@@ -417,4 +417,37 @@ test("roteiro: pedido de inscrição só uma vez, no fechamento", () => {
   const titulo = structuredClone(ep);
   titulo.scenes.at(-1).data.title = "Inscreva-se agora!";
   assert.match(problemasDeConteudo(titulo, "short").join(), /não escreva "inscreva-se"/);
+});
+
+test("roteiro longo: partes curtas ganham uma parte extra de meio para chegar aos 8 minutos", async () => {
+  const pedidos = [];
+  const f = async (url, init) => {
+    pedidos.push(JSON.parse(init.body));
+    const k = pedidos.length - 1;
+    const p = parteLonga(k % 3, 3);
+    // Só 6 cenas por parte (~2400 caracteres): três partes não chegam ao mínimo.
+    p.scenes = p.scenes.slice(0, 5).concat(p.scenes.slice(-1));
+    if (k < 3) p.scenes = p.scenes.filter((s) => s.template !== "outro");
+    p.scenes = p.scenes.map((s) => ({ ...s, id: `${s.id}-${k}`, narration: s.narration.replace("cena", `trecho ${["um", "dois", "tres", "quatro", "cinco"][k]} cena`) }));
+    if (k === pedidos.length - 1 && /PARTE 4 de 4|PARTE 5 de 5/.test(pedidos[k].messages[0].content) && /→ PARTE 3/.test(pedidos[k].messages[0].content))
+      p.scenes.push({ id: `fim-${k}`, template: "outro", narration: "Comenta aí o que você faria. Se isso te ajudou, se inscreve aí que toda semana tem mais.", data: { title: "Resumo", points: [], cta: "Inscreva-se" } });
+    return new Response(JSON.stringify({ choices: [{ message: { content: JSON.stringify(p) } }] }), { status: 200 });
+  };
+  const r = await escreverEpisodio({ tema: temas.temas[0], formato: "longo", id: "x-longo" }, { token: "", modelos: ["gemini:x"], fetch: f, log: () => {} });
+  assert.ok(pedidos.length >= 4, `${pedidos.length} partes`);
+  assert.match(pedidos[2].messages[0].content, /parte extra do MEIO/);
+  assert.ok(r.episodio.targetDurationSeconds >= 480);
+  assert.equal(r.episodio.scenes.filter((s) => s.template === "outro").length, 1);
+  assert.equal(r.episodio.scenes.filter((s) => s.template === "hook").length, 1);
+});
+
+test("roteiro: conserta sozinho hook, outro e inscrição fora do lugar nas partes", () => {
+  const p = parteLonga(1, 3);
+  p.scenes[0] = { ...p.scenes[0], template: "hook", data: { title: "Olha isso", subtitle: "o meio do vídeo" } };
+  p.scenes[3].narration += " Inscreva-se no canal.";
+  p.scenes.push({ id: "fim", template: "outro", narration: "Se inscreve no canal e ativa o sininho pra não perder nada.", data: { title: "Inscreva-se!", points: ["Inscreva-se"], cta: "Inscreva-se" } });
+  const ep = consertarParte({ ...p }, { i: 1, n: 3, papel: 1 });
+  assert.equal(ep.scenes[0].template, "list");
+  assert.ok(!ep.scenes.some((s) => s.template === "outro" || /inscrev/i.test(s.narration)));
+  assert.deepEqual(problemasDeConteudo(ep, "longo", { parte: { i: 1, n: 3, papel: 1 } }).filter((x) => /hook|outro|inscri/.test(x)), []);
 });
