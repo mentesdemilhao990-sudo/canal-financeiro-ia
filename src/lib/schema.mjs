@@ -86,7 +86,7 @@ const outro = z.object({
 
 const base = z.object({
   id: z.string().regex(/^[a-z0-9-]+$/, "use só letras minúsculas, números e hífen"),
-  narration: z.string().trim().min(10).max(600),
+  narration: z.string().trim().min(10).max(700),
 });
 
 /** Modelos de cena, para quem precisa do formato de cada um (ex.: a IA que escreve roteiros). */
@@ -105,7 +105,7 @@ export const TEMPLATES = ["hook", "split", "counter", "lineChart", "bars", "list
  */
 export const FORMATOS = {
   short: { width: 1080, height: 1920, minDuracao: 30, maxDuracao: 60, minCenas: 3, maxCenas: 8, maxNarracao: 400 },
-  longo: { width: 1920, height: 1080, minDuracao: 90, maxDuracao: 900, minCenas: 6, maxCenas: 32, maxNarracao: 700 },
+  longo: { width: 1920, height: 1080, minDuracao: 90, maxDuracao: 900, minCenas: 6, maxCenas: 44, maxNarracao: 700 },
 };
 
 export const episodeSchema = z
@@ -119,7 +119,7 @@ export const episodeSchema = z
     disclaimer: z.string().max(120).optional(),
     voice: z.object({ lengthScale: z.number().min(0.7).max(1.4).optional() }).optional(),
     music: z.object({ enabled: z.boolean().optional(), volume: z.number().min(0).max(0.4).optional() }).optional(),
-    scenes: z.array(sceneSchema).min(3).max(32),
+    scenes: z.array(sceneSchema).min(3).max(44),
     // Opcional: quando e como publicar (veja docs/publicacao.md).
     publicacao: z
       .object({

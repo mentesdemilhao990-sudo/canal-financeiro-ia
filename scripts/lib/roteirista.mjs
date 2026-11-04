@@ -24,14 +24,16 @@ export function modelosPadrao(env = process.env) {
   return env.GEMINI_API_KEY?.trim() ? [...gemini.map((m) => `gemini:${m}`), ...locais] : locais;
 }
 
-/** Metas de tamanho por formato (a voz calma fala ~17 caracteres por segundo, mais as pausas). */
+/** Metas de tamanho por formato (a voz calma do Gemini fala ~13 caracteres por segundo, mais as pausas). */
 export const METAS = {
   // caracteres: meta pedida à IA; aceite: duração estimada que ainda aprovamos (a IA nem sempre acerta o tamanho).
-  short: { cenas: [5, 7], caracteres: [620, 820], duracao: [36, 58], aceite: [32, 59], cta: "Siga para mais", porCena: 380, minCena: 110 },
-  // O longo tem no mínimo 8 minutos (pedido do Patrick) e é escrito em 3 partes de ~3 minutos.
-  longo: { cenas: [18, 30], caracteres: [8400, 11000], duracao: [480, 660], aceite: [480, 900], cta: "Inscreva-se", porCena: 650, minCena: 260, partes: 3 },
+  short: { cenas: [5, 7], caracteres: [480, 640], duracao: [36, 58], aceite: [32, 59], cta: "Siga para mais", porCena: 380, minCena: 110 },
+  // O longo tem no mínimo 8 minutos (pedido do Patrick) e é escrito em partes de ~3 minutos:
+  // começo, meio e fim; se as partes vierem curtas, entram mais partes de meio (até maxPartes).
+  longo: { cenas: [15, 44], caracteres: [6800, 8600], duracao: [480, 660], aceite: [480, 900], cta: "Inscreva-se", porCena: 650, minCena: 260, partes: 3, maxPartes: 5 },
   // Cada parte do longo (só usado na escrita; o vídeo final é validado como "longo").
-  longoParte: { cenas: [6, 10], caracteres: [2900, 3700], cta: "Inscreva-se", porCena: 650, minCena: 260 },
+  // A parte aceita até 60% do tamanho pedido: o que faltar vira mais uma parte de meio.
+  longoParte: { cenas: [5, 10], caracteres: [2300, 2900], minimo: 0.6, cta: "Inscreva-se", porCena: 650, minCena: 260 },
 };
 
 /** O que cada parte do vídeo longo cobre (a IA recebe o plano inteiro para não repetir assunto). */
@@ -41,13 +43,16 @@ const PLANO_DO_LONGO = [
   "PARTE 3 (final): os erros mais comuns, um plano prático em passos simples, um resumo rápido do vídeo, uma pergunta para os comentários e o fechamento.",
 ];
 
+/** Papel da parte no plano: 0 = começo, 1 = meio (pode haver mais de uma), 2 = final. */
+const papel = (parte) => parte.papel ?? (parte.i === 0 ? 0 : parte.i === parte.n - 1 ? 2 : 1);
+
 export const AVISO = "Conteúdo educativo. Valores ilustrativos, não é recomendação de investimento.";
 
-/** Duração estimada da narração, em segundos (calibrada com a voz pt_BR-faber-medium). */
+/** Duração estimada da narração, em segundos (calibrada com a voz Orus do Gemini a 0,9x: Short de 858 caracteres = 71 s). */
 export function estimarDuracao(scenes) {
   const chars = scenes.reduce((n, s) => n + s.narration.length, 0);
   const frases = scenes.reduce((n, s) => n + (s.narration.match(/[^.!?…]+[.!?…]*/g) ?? []).filter((f) => f.trim()).length, 0);
-  return chars / 17 + frases * 0.22 + scenes.length * 0.4 + 0.8;
+  return chars / 13 + frases * 0.22 + scenes.length * 0.4 + 0.8;
 }
 
 const MARCAS = [
@@ -60,8 +65,8 @@ const PROMESSAS = [/\bgarantid[oa]s?\b/, /\blucro certo\b/, /\bsem risco\b/, /\b
 export function problemasDeConteudo(ep, formato, { titulosUsados = [], parte } = {}) {
   const p = [];
   const meta = METAS[parte ? "longoParte" : formato];
-  const primeira = !parte || parte.i === 0;
-  const ultima = !parte || parte.i === parte.n - 1;
+  const primeira = !parte || papel(parte) === 0;
+  const ultima = !parte || papel(parte) === 2;
   const todo = semAcento([ep.title, ep.description, ...ep.scenes.map((s) => `${s.narration} ${JSON.stringify(s.data)}`)].join(" ").toLowerCase());
   for (const m of MARCAS) if (new RegExp(`(^|[^a-z])${semAcento(m)}([^a-z]|$)`).test(todo)) p.push(`não cite marcas, bancos ou corretoras (apareceu "${m}")`);
   // "Não existe retorno garantido" é um alerta, não uma promessa: frases negadas não contam.
@@ -101,7 +106,7 @@ export function problemasDeConteudo(ep, formato, { titulosUsados = [], parte } =
   const fora = chars < meta.caracteres[0] ? "curta" : chars > meta.caracteres[1] ? "longa" : null;
   const d = estimarDuracao(ep.scenes);
   // A parte é medida em caracteres (com folga); o vídeo inteiro, pela duração estimada.
-  const tamanhoRuim = meta.aceite ? d < meta.aceite[0] || d > meta.aceite[1] : chars < meta.caracteres[0] * 0.97 || chars > meta.caracteres[1] * 1.15;
+  const tamanhoRuim = meta.aceite ? d < meta.aceite[0] || d > meta.aceite[1] : chars < meta.caracteres[0] * (meta.minimo ?? 0.97) || chars > meta.caracteres[1] * 1.15;
   if (tamanhoRuim)
     p.push(`a narração somada tem ${chars} caracteres (${fora ?? "fora do tamanho"}): precisa ficar entre ${meta.caracteres[0]} e ${meta.caracteres[1]}`);
   const t = semAcento(ep.title).toLowerCase().trim();
@@ -126,10 +131,10 @@ function sistema(formato, parte) {
       ? `um YouTube Short vertical de ${m.duracao[0]} a ${m.duracao[1]} segundos: direto ao ponto, gancho forte nos 3 primeiros segundos, uma ideia central`
       : `a PARTE ${parte.i + 1} de ${parte.n} de um vídeo normal do YouTube (horizontal) de ${Math.round(L.duracao[0] / 60)} a ${Math.round(L.duracao[1] / 60)} minutos: uma aula completa e envolvente, com contexto, explicação passo a passo, exemplos com contas, erros comuns e resumo final.
 Plano do vídeo inteiro (escreva SÓ a sua parte, continuando de onde a anterior parou, sem repetir o que já foi dito):
-${PLANO_DO_LONGO.map((x, k) => `${k === parte.i ? "→ " : "  "}${x}`).join("\n")}`;
+${PLANO_DO_LONGO.map((x, k) => `${k === papel(parte) ? "→ " : "  "}${x}`).join("\n")}${papel(parte) === 1 && parte.i > 1 ? "\nEsta é uma parte extra do MEIO: aprofunde com um caso novo, outra conta ou outro ângulo que ainda não apareceu." : ""}`;
   const estrutura = !parte
     ? `- De ${m.cenas[0]} a ${m.cenas[1]} cenas. A primeira é "hook" e a última é "outro" com "cta": "${m.cta}".`
-    : `- De ${m.cenas[0]} a ${m.cenas[1]} cenas nesta parte.${parte.i === 0 ? ' A primeira cena é "hook".' : ' NÃO use "hook" (o vídeo já começou).'}${parte.i === parte.n - 1 ? ` A última cena é "outro" com "cta": "${m.cta}".` : ' NÃO use "outro" (o vídeo continua na próxima parte).'}`;
+    : `- De ${m.cenas[0]} a ${m.cenas[1]} cenas nesta parte.${papel(parte) === 0 ? ' A primeira cena é "hook".' : ' NÃO use "hook" (o vídeo já começou).'}${papel(parte) === 2 ? ` A última cena é "outro" com "cta": "${m.cta}".` : ' NÃO use "outro" (o vídeo continua na próxima parte).'}`;
   return `Você é roteirista do canal "Mente de Milhão", de educação financeira para brasileiros comuns, em português do Brasil.
 Escreva ${tipo}.
 
@@ -308,7 +313,7 @@ async function chamarGemini(f, modelo, messages, espera = Number(process.env.GEM
     j = JSON.parse(bruto);
   } catch {}
   const msg = (Array.isArray(j) ? j[0] : j)?.error?.message ?? bruto.slice(0, 300);
-  if (r.status === 429) throw Object.assign(new Error(`${modelo}: limite gratuito atingido (HTTP 429)`), { limite: true });
+  if (r.status === 429) throw Object.assign(new Error(`${modelo}: limite gratuito atingido (HTTP 429) ${msg.slice(0, 160)}`), { limite: true, porMinuto: !/per ?day|PerDay|diári/i.test(msg) });
   if (r.status === 401 || r.status === 403) throw Object.assign(new Error(`${modelo}: chave sem permissão (HTTP ${r.status}) ${msg}`), { limite: true });
   // 404 = modelo aposentado ou inexistente: não adianta repetir, passa para o próximo.
   if (r.status === 404) throw Object.assign(new Error(`${modelo}: modelo indisponível (HTTP 404) ${msg}`), { limite: true });
@@ -454,6 +459,37 @@ export function montarEpisodio(bruto, { id, formato, semFechamento = false }) {
 }
 
 /**
+ * Conserta sozinho o que a IA local erra muito nas partes e no Short: tira pedidos de
+ * inscrição fora da última cena, "hook" fora do começo e "outro" fora do final.
+ */
+export function consertarParte(ep, parte) {
+  const primeira = !parte || papel(parte) === 0;
+  const ultima = !parte || papel(parte) === 2;
+  const semInscricao = (t) => (t.match(/[^.!?…]+[.!?…]*/g) ?? [t]).filter((f) => !/inscrev/i.test(f)).join(" ").trim();
+  if (!ultima) ep.scenes = ep.scenes.filter((s) => s.template !== "outro");
+  ep.scenes = ep.scenes.map((s, i) => {
+    let c = s;
+    if (!primeira && c.template === "hook") {
+      const d = c.data ?? {};
+      const itens = [d.kicker, d.subtitle].filter(Boolean).map((x) => String(x).slice(0, 50));
+      while (itens.length < 2) itens.push(String(d.title ?? ep.title ?? "Resumo").slice(0, 50));
+      c = { ...c, template: "list", data: { title: String(d.title ?? "Repara nisso").slice(0, 50), items: itens } };
+    }
+    const fechamento = ultima && i === ep.scenes.length - 1;
+    if (!fechamento && /inscrev/i.test(c.narration ?? "")) c = { ...c, narration: semInscricao(c.narration) };
+    if (c.template === "outro" && c.data) {
+      const pontos = (c.data.points ?? []).filter((x) => !/inscrev/i.test(x));
+      const titulo = /inscrev/i.test(c.data.title ?? "") ? String(ep.title ?? "Até o próximo vídeo").slice(0, 80) : c.data.title;
+      c = { ...c, data: { ...c.data, title: titulo, points: pontos } };
+    }
+    return c;
+  });
+  // Cenas que ficaram vazias depois da limpeza saem.
+  ep.scenes = ep.scenes.filter((s) => typeof s.narration !== "string" || s.narration.length >= 10);
+  return ep;
+}
+
+/**
  * Pede o roteiro à IA, valida e corrige até `tentativas` vezes por modelo.
  * O vídeo longo é escrito em partes (cada uma validada) e depois validado inteiro.
  * Devolve { episodio, modelo, tentativas } ou lança erro com o último problema.
@@ -462,11 +498,16 @@ export async function escreverEpisodio(pedidoDoDia, opcoes = {}) {
   const { formato, id, titulosUsados = [] } = pedidoDoDia;
   const log = opcoes.log ?? console.log;
   if (formato !== "longo") return escreverTrecho(pedidoDoDia, opcoes);
-  const n = METAS.longo.partes;
+  const L = METAS.longo;
   const partes = [];
+  const tamanho = () => partes.reduce((t, p) => t + p.bruto.scenes.reduce((u, s) => u + s.narration.length, 0), 0);
+  let n = L.partes;
   for (let i = 0; i < n; i++) {
-    log(`  parte ${i + 1}/${n}`);
-    partes.push(await escreverTrecho({ ...pedidoDoDia, parte: { i, n }, anteriores: partes.map((p) => p.bruto) }, opcoes));
+    // Antes do final: se o que já temos mais uma parte média não chega ao mínimo, entra mais uma parte de meio.
+    if (i === n - 1 && n < L.maxPartes && tamanho() + tamanho() / i < L.caracteres[0]) n++;
+    const p = i === 0 ? 0 : i === n - 1 ? 2 : 1;
+    log(`  parte ${i + 1}/${n}${p === 1 && i > 1 ? " (extra, para chegar aos 8 minutos)" : ""}`);
+    partes.push(await escreverTrecho({ ...pedidoDoDia, parte: { i, n, papel: p }, anteriores: partes.map((x) => x.bruto) }, opcoes));
   }
   const [p1] = partes;
   const episodio = montarEpisodio(
@@ -493,8 +534,9 @@ async function escreverTrecho(
 ) {
   if (!token && !modelos.every((m) => /^(ollama|gemini):/.test(m))) throw new Error("sem GITHUB_TOKEN para usar a IA gratuita do GitHub Models");
   const formatoIA = parte ? "longoParte" : formato;
-  const semFechamento = Boolean(parte && parte.i < parte.n - 1);
+  const semFechamento = Boolean(parte && papel(parte) !== 2);
   let ultimo = "nenhuma resposta";
+  const esperouLimite = new Set();
   for (const modelo of modelos) {
     const inicio = [
       { role: "system", content: sistema(formato, parte) },
@@ -511,6 +553,13 @@ async function escreverTrecho(
         ultimo = e.message;
         if (e.limite) {
           log(`  · ${ultimo}`);
+          // Limite por minuto passa rápido: espera um minuto e tenta de novo uma vez.
+          if (e.porMinuto && !esperouLimite.has(modelo)) {
+            esperouLimite.add(modelo);
+            await new Promise((ok) => setTimeout(ok, Number(process.env.GEMINI_ESPERA_429_MS ?? 65000)));
+            n--;
+            continue;
+          }
           break; // tenta o próximo modelo
         }
         log(`  · tentativa ${n} (${modelo}): ${ultimo}`);
@@ -525,6 +574,7 @@ async function escreverTrecho(
           const ja = new Set(anteriores.flatMap((a) => a.scenes.map((s) => chaveFala(s.narration))));
           episodio.scenes = episodio.scenes.filter((s) => !ja.has(chaveFala(s.narration)));
         }
+        consertarParte(episodio, parte);
         parseEpisode(episodio, `roteiro ${formato}`);
         problemas = problemasDeConteudo(episodio, formato, { titulosUsados, parte });
       } catch (e) {

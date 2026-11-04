@@ -291,6 +291,15 @@ def main() -> int:
 
                 textos = [aplicar_pronuncia(" ".join(split_sentences(sc["narration"])), regras) for sc in episode["scenes"]]
                 gemini_cenas = narrar_cenas(textos, gcfg, chave, split_words)
+                # O Short não pode passar de 60 s: se a fala ficou longa, acelera um pouco (no máximo 25%).
+                limite = {"short": 58.0, "longo": 890.0}.get(episode.get("formato", ""), 0)
+                total = sum(len(s) for s, _ in gemini_cenas) / GRATE + lead_in + tail + scene_pause * (len(gemini_cenas) - 1)
+                if limite and total > limite:
+                    from voz_gemini import esticar
+
+                    f = min(1.25, total / (limite - 1.0))
+                    print(f"  fala com {total:.1f}s passa de {limite:.0f}s: acelerando {f:.2f}x")
+                    gemini_cenas = [(esticar(s, f), [{**w, "start": w["start"] / f, "end": w["end"] / f} for w in ws]) for s, ws in gemini_cenas]
                 engine_name = f"gemini:{gcfg.get('voz', 'Sadaltager')}"
             except Exception as e:
                 print(f"AVISO: voz do Gemini falhou ({e}); usando a voz reserva.", file=sys.stderr)
