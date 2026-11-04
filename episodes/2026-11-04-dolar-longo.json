@@ -1,0 +1,131 @@
+{
+  "id": "2026-11-04-dolar-longo",
+  "formato": "longo",
+  "title": "Por que o Dólar está tão alto? E seus preços vão subir?",
+  "description": "Descubra por que o dólar alto pode afetar os preços dos produtos que você compra todos os dias. Sabe por quê? Comenta aí: você acha que vai impactar no seu bolso?",
+  "tags": [
+    "dólar",
+    "preço",
+    "inflação",
+    "cotidiano",
+    "economia"
+  ],
+  "targetDurationSeconds": 119,
+  "disclaimer": "Conteúdo educativo. Valores ilustrativos, não é recomendação de investimento.",
+  "scenes": [
+    {
+      "id": "hook",
+      "template": "hook",
+      "narration": "Você sabia que o dólar alto pode te custar mais na compra do seu café da manhã? Sabe por quê? Aprenda agora mesmo e descubra como ele afeta seus preços. Vamos lá, vamos lá! Inscreva-se se você quiser saber mais sobre isso: Inscreva-se aqui.",
+      "data": {
+        "kicker": "Você sabia?",
+        "title": "Dólar alto",
+        "subtitle": "Aumenta os seus gastos?"
+      }
+    },
+    {
+      "id": "split",
+      "template": "split",
+      "narration": "Imagina Ana, que ganha três reais. zero por mês. No dia a dia, ela compra café, pão e leite. Agora imagine se os preços subirem devido ao dólar alto. Sabe o que pode acontecer? Vamos ver safe as comparações lado a lado. growth Sim, você também nota isso! O preço do leite subiu cinquenta por cento. E o pão? Já é um real e vinte centavos! Isso sem contar o café. Parece pouco, né?",
+      "data": {
+        "left": {
+          "label": "Café",
+          "points": [
+            "Antes: R$ 4,00",
+            "Agora: R$ 5,00"
+          ]
+        },
+        "right": {
+          "label": "Pão",
+          "points": [
+            "Antes: R$ 1,00",
+            "Agora: R$ 1,20"
+          ]
+        }
+      }
+    },
+    {
+      "id": "counter",
+      "template": "counter",
+      "narration": "E as pressões que o dólar alto traz para a inflação. Segundo as notícias desta semana, chart a inflação pode chegar ao nível de cinco vírgula vinte e dois por cento em dois mil e vinte e seis! Isso quer dizer que seus três reais. zero podem valer menos daqui a alguns anos. Só eu acho isso absurdo?",
+      "data": {
+        "label": "Inflação prevista para 2026",
+        "from": 5,
+        "to": 5.22,
+        "prefix": "R$ ",
+        "suffix": "%",
+        "decimals": 1,
+        "trend": "up",
+        "caption": "Aumento gradual de preços",
+        "badge": "alerta"
+      }
+    },
+    {
+      "id": "bars",
+      "template": "bars",
+      "narration": "E o terceiro erro é o mais caro de todos. Só que nem tudo é ruim. Alguns produtos podem ficar mais baratos! Confira piggy quais: leite, feijão e arroz. Os preços desses itens caem dez por cento com a desvalorização do dólar. Isso pode te ajudar na sua reserva de emergência!",
+      "data": {
+        "title": "Produtos que podem ficar mais baratos",
+        "valuePrefix": "R$ ",
+        "valueSuffix": "%",
+        "items": [
+          {
+            "label": "Leite",
+            "value": 10,
+            "color": "gold"
+          },
+          {
+            "label": "Feijão",
+            "value": 8,
+            "color": "gold"
+          },
+          {
+            "label": "Arroz",
+            "value": 7,
+            "color": "gold"
+          }
+        ],
+        "caption": "Economia no seu cotidiano"
+      }
+    },
+    {
+      "id": "list",
+      "template": "list",
+      "narration": "Então, o que você pode fazer? Aqui estão três dicas simples: um. Mantenha uma reserva de emergência. Invista em fundos de ações ou renda variável. Cuide da sua saúde financeira e mantenha um orçamento equilibrado. Sabe o que é mais importante? Você mesmo! Comenta aí: você faria isso?",
+      "data": {
+        "title": "Dicas para enfrentar a alta do dólar",
+        "items": [
+          "Mantenha uma reserva de emergência",
+          "Invista em fundos de ações ou renda variável",
+          "Cuide da sua saúde financeira e mantenha um orçam."
+        ]
+      }
+    },
+    {
+      "id": "outro",
+      "template": "outro",
+      "narration": "Com essa informação, você pode tomar decisões mais informadas sobre o seu dinheiro. E não se preocupe, nós continuamos aqui para te ajudar a entender melhor a economia e como ela afeta o seu dia a dia. Inscreva-se e siga-nos nas redes sociais. Vamos juntos nessa jornada! Inscreva-se aqui.",
+      "data": {
+        "title": "E vamos juntos na jornada financeira!",
+        "points": [
+          "Aprenda a gerir seu dinheiro",
+          "Entenda como a economia afeta você"
+        ],
+        "cta": "Mente de Milhão"
+      }
+    },
+    {
+      "id": "prefixo",
+      "template": "outro",
+      "narration": "Inscreva-se se quiser saber mais sobre esse assunto e outros temas importantes para sua vida financeira. Vamos juntos nessa jornada! Inscreva-se aqui Mente de Milhão, seu canal de educação financeira. Inscreva-se agora mesmo: Inscreva-se aqui.",
+      "data": {
+        "title": "\n[Inscreva-se agora!",
+        "points": [
+          "Aprenda a gerir seu dinheiro",
+          "Entenda como a economia afeta você"
+        ],
+        "cta": "Mente de Milhão"
+      }
+    }
+  ]
+}

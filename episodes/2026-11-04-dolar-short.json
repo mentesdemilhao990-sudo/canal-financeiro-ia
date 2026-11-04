@@ -1,0 +1,105 @@
+{
+  "id": "2026-11-04-dolar-short",
+  "formato": "short",
+  "title": "Dólar alto, preços caros? Sim, mas você pode se proteger!",
+  "description": "Entenda como a alta do dólar afeta seus gastos e aprenda uma estratégia simples para se manter tranquilo. #dólar #preço #economia",
+  "tags": [
+    "dólar",
+    "preços",
+    "economia",
+    "investimento",
+    "finanças"
+  ],
+  "targetDurationSeconds": 49,
+  "disclaimer": "Conteúdo educativo. Valores ilustrativos, não é recomendação de investimento.",
+  "scenes": [
+    {
+      "id": "hook",
+      "template": "hook",
+      "narration": "Sabe por quê o dólar alto faz seus preços subirem? Por exemplo, Ana ganha três mil reais. Imagine que um litro de gasolina cuesta quatro reais e cinquenta centavos agora. E se ela precisar pagar seis reais? Só eu acho isso absurdo?",
+      "data": {
+        "kicker": "Dólar alto",
+        "title": "Dólar alto, preços caros?",
+        "subtitle": "Entenda como isso afeta seu bolso e aprenda uma estratégia simples"
+      }
+    },
+    {
+      "id": "split",
+      "template": "split",
+      "narration": "Com dólar em cinco reais, um produto que custava cem reais fica duzentos reais. Mas com dólar em seis reais? Fica duzentos e quarenta reais! Isso é caro demais.",
+      "data": {
+        "left": {
+          "label": "Dólar R$ 5,00",
+          "points": [
+            "Produto R$ 100",
+            "Novo preço R$ 200"
+          ]
+        },
+        "right": {
+          "label": "Dólar R$ 6,00",
+          "points": [
+            "Produto R$ 100",
+            "Novo preço R$ 240"
+          ]
+        }
+      }
+    },
+    {
+      "id": "counter",
+      "template": "counter",
+      "narration": "E você pode se proteger. Se preparando para o pior, Ana economiza quinhentos reais por mês em reservas. Quando dólar sobe, ela compra menos importados.",
+      "data": {
+        "label": "Reserva de emergência",
+        "from": 100,
+        "to": 600,
+        "prefix": "R$ ",
+        "suffix": "",
+        "decimals": 0,
+        "trend": "up",
+        "caption": "Menos importados, mais segurança",
+        "badge": "Proteja-se"
+      }
+    },
+    {
+      "id": "bars",
+      "template": "bars",
+      "narration": "E o terceiro erro é o mais caro de todos. Não deixe suas finanças se moverem com o dólar. Mantenha seu orçamento firme.",
+      "data": {
+        "title": "Erros para evitar",
+        "valuePrefix": "",
+        "valueSuffix": "",
+        "items": [
+          {
+            "label": "Seguir o dólar",
+            "value": 100,
+            "color": "red"
+          },
+          {
+            "label": "Economizar pouco",
+            "value": 50,
+            "color": "gold"
+          },
+          {
+            "label": "Investir em renda variá",
+            "value": 20,
+            "color": "white"
+          }
+        ],
+        "caption": "Mantenha seu orçamento firme"
+      }
+    },
+    {
+      "id": "outro",
+      "template": "outro",
+      "narration": "Comenta aí: você faria isso? Siga para mais dicas e estratégias de proteção. O Dólar está alto, mas seus preços não precisam subir tanto.",
+      "data": {
+        "title": "Dólar alto, mas seus preços não precisam subir tanto",
+        "points": [
+          "Siga para mais",
+          "Entenda como se preparar"
+        ],
+        "cta": "Seguir"
+      }
+    }
+  ]
+}

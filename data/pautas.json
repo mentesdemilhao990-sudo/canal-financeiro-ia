@@ -44,6 +44,28 @@
         "Selic: Entenda o que é e como ela mexe no seu bolso"
       ],
       "modelo": "ollama:qwen2.5:7b"
+    },
+    {
+      "data": "2026-11-04",
+      "tema": "dolar",
+      "nome": "Dólar e seu bolso",
+      "pontos": 19.9,
+      "manchetes": [
+        "As pressões que tornam mais crítica a decisão do Copom sobre os juros",
+        "Gestores quase zeram otimismo, fogem do ‘Kit Brasil’ e apostam no dólar, aponta XP",
+        "Copom decide nesta quarta-feira se corta ou mantém a Taxa Selic",
+        "Gestores quase zeram otimismo, fogem do ‘Kit Brasil’ e apostam no dólar, aponta XP - InfoMoney",
+        "Mais dólar, menos Bolsa: o que 20 gestoras agora esperam da economia do País - Estadão"
+      ],
+      "episodios": [
+        "2026-11-04-dolar-longo",
+        "2026-11-04-dolar-short"
+      ],
+      "titulos": [
+        "Por que o Dólar está tão alto? E seus preços vão subir?",
+        "Dólar alto, preços caros? Sim, mas você pode se proteger!"
+      ],
+      "modelo": "ollama:qwen2.5:7b"
     }
   ]
 }
