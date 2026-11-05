@@ -1,13 +1,13 @@
 # 📊 Painel · Mente de Milhão
 
-_Atualizado em 05/11/2026, 15:59 (Brasília). Este arquivo é gerado sozinho: não edite à mão._
+_Atualizado em 05/11/2026, 16:16 (Brasília). Este arquivo é gerado sozinho: não edite à mão._
 
 ## Chaves de segurança
 
 | O quê | Situação |
 | --- | --- |
 | Credenciais do YouTube (Secrets) | ✅ configuradas |
-| envia vídeos ao YouTube (sempre como privados) | 🟢 **ligado** |
+| envia vídeos ao YouTube (sempre como privados) | ⚪ desligado (`YOUTUBE_PUBLICACAO`) |
 | envia as respostas que você aprovou | ⚪ desligado (`YOUTUBE_RESPOSTAS`) |
 | responde sozinho só comentários simples (elogios curtos) | ⚪ desligado (`YOUTUBE_RESPOSTA_AUTOMATICA`) |
 
@@ -15,16 +15,16 @@ Com tudo desligado, os workflows só **simulam**: nada é enviado nem respondido
 
 ## Cota do YouTube hoje
 
-21 de 9000 unidades · 2 de 10 envios de vídeo (zera à meia-noite do Pacífico, 4h ou 5h em Brasília).
+30 de 9000 unidades · 2 de 10 envios de vídeo (zera à meia-noite do Pacífico, 4h ou 5h em Brasília).
 
 ## Vídeos
 
 | Episódio | Título | Status | Link | Views | 👍 | 💬 | Atualizado |
 | --- | --- | --- | --- | ---: | ---: | ---: | --- |
-| `2026-11-05-apostas-short` | Bets não são investimento: O impacto na sua economia | ⏰ agendado | [abrir](https://youtu.be/M96Lm2rWqZA) | — | — | — | 05/11/2026, 15:59 |
-| `2026-11-05-apostas-longo` | Bets não são investimento: O impacto na sua economia | ⏰ agendado | [abrir](https://youtu.be/OlsAA0VeooA) | — | — | — | 05/11/2026, 15:59 |
-| `2026-11-04-dolar-short` | Dólar alto, preços caros? Sim, mas você pode se proteger! | 🟢 público | [abrir](https://youtu.be/0jf-q8YoF6k) | 248 | 4 | 0 | 04/11/2026, 14:08 |
-| `2026-11-04-dolar-longo` | Por que o Dólar está tão alto? E seus preços vão subir? | 🟢 público | [abrir](https://youtu.be/xy6FvVyBCD4) | 3 | 0 | 0 | 04/11/2026, 14:08 |
+| `2026-11-05-apostas-short` | Bets não são investimento: O impacto na sua economia | ⏰ agendado | [abrir](https://youtu.be/M96Lm2rWqZA) | 0 | 0 | 0 | 05/11/2026, 15:59 |
+| `2026-11-05-apostas-longo` | Bets não são investimento: O impacto na sua economia | ⏰ agendado | [abrir](https://youtu.be/OlsAA0VeooA) | 0 | 0 | 0 | 05/11/2026, 15:59 |
+| `2026-11-04-dolar-short` | Dólar alto, preços caros? Sim, mas você pode se proteger! | 🟢 público | [abrir](https://youtu.be/0jf-q8YoF6k) | 242 | 4 | 0 | 04/11/2026, 14:08 |
+| `2026-11-04-dolar-longo` | Por que o Dólar está tão alto? E seus preços vão subir? | 🟢 público | [abrir](https://youtu.be/xy6FvVyBCD4) | 4 | 0 | 0 | 04/11/2026, 14:08 |
 | `2026-11-03-selic-short` | Selic: Entenda o que é e como ela mexe no seu bolso | 🟢 público | [abrir](https://youtu.be/CZd3qoZKzO0) | 5 | 0 | 0 | 03/11/2026, 07:41 |
 | `2026-11-03-selic-longo` | Selic: Entenda o que é e como ela afeta seu bolso | 🟢 público | [abrir](https://youtu.be/oYt9QTXrbRQ) | 7 | 1 | 0 | 03/11/2026, 07:41 |
 | `2026-11-02-decimo-terceiro-short` | Dívidas, Reserva ou Metas: Onde Colocar Seu 13º? | 🟢 público | [abrir](https://youtu.be/gRHy7XC_Zsw) | 80 | 0 | 0 | 02/11/2026, 12:05 |
@@ -39,7 +39,7 @@ Com tudo desligado, os workflows só **simulam**: nada é enviado nem respondido
 
 ## Comentários
 
-Última leitura: 05/11/2026, 13:22
+Última leitura: 05/11/2026, 16:16
 
 | Aguardando você | 💰 Financeiras (revisão obrigatória) | Aprovadas, não enviadas | Respondidas | Automáticas | Ignoradas |
 | ---: | ---: | ---: | ---: | ---: | ---: |
