@@ -451,3 +451,19 @@ test("roteiro: conserta sozinho hook, outro e inscrição fora do lugar nas part
   assert.ok(!ep.scenes.some((s) => s.template === "outro" || /inscrev/i.test(s.narration)));
   assert.deepEqual(problemasDeConteudo(ep, "longo", { parte: { i: 1, n: 3, papel: 1 } }).filter((x) => /hook|outro|inscri/.test(x)), []);
 });
+
+test("roteiro longo: parte com 5 cenas vale, e JSON cortado recomeça a conversa do zero", async () => {
+  const pedidos = [];
+  const f = async (url, init) => {
+    const corpo = JSON.parse(init.body);
+    pedidos.push(corpo);
+    const k = pedidos.length - 1;
+    if (k === 1) return new Response(JSON.stringify({ choices: [{ message: { content: '{"title": "cortado", "scenes": [{"narration": "sem fim' } }] }), { status: 200 });
+    const p = parteLonga(Math.min(k === 0 ? 0 : k - 1, 2), 3);
+    if (k > 0 && k < 3) p.scenes = p.scenes.slice(0, 5);
+    return new Response(JSON.stringify({ choices: [{ message: { content: JSON.stringify(p) } }] }), { status: 200 });
+  };
+  const r = await escreverEpisodio({ tema: temas.temas[0], formato: "longo", id: "c-longo" }, { token: "", modelos: ["gemini:y"], fetch: f, log: () => {} });
+  assert.equal(pedidos[2].messages.length, 2, "depois do JSON cortado, pede de novo sem a resposta quebrada");
+  assert.ok(r.episodio.scenes.length >= 15);
+});
