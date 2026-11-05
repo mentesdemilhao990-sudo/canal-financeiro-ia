@@ -26,8 +26,9 @@ export function modelosPadrao(env = process.env) {
 
 /** Metas de tamanho por formato (a voz calma do Gemini fala ~13 caracteres por segundo, mais as pausas). */
 export const METAS = {
-  // caracteres: meta pedida à IA; aceite: duração estimada que ainda aprovamos (a IA nem sempre acerta o tamanho).
-  short: { cenas: [5, 7], caracteres: [480, 640], duracao: [36, 58], aceite: [32, 59], cta: "Siga para mais", porCena: 380, minCena: 110 },
+  // caracteres: meta pedida à IA; aceite: duração estimada que ainda aprovamos (a IA nem sempre acerta o tamanho;
+  // no Short a voz acelera até 1,25x se passar de 58 s).
+  short: { cenas: [5, 7], caracteres: [480, 640], duracao: [36, 58], aceite: [32, 68], cta: "Siga para mais", porCena: 380, minCena: 110 },
   // O longo tem no mínimo 8 minutos (pedido do Patrick) e é escrito em partes de ~3 minutos:
   // começo, meio e fim; se as partes vierem curtas, entram mais partes de meio (até maxPartes).
   longo: { cenas: [15, 44], caracteres: [6800, 8600], duracao: [480, 660], aceite: [480, 900], cta: "Inscreva-se", porCena: 650, minCena: 260, partes: 3, maxPartes: 5 },
@@ -183,7 +184,7 @@ function pedido({ tema, manchetes, formato, tituloIrmao, titulosUsados, anterior
     tituloIrmao ? `Hoje também sai ${formato === "short" ? "um vídeo longo" : "um Short"} sobre o mesmo tema com o título "${tituloIrmao}". Use outro título e outro gancho.` : "",
     titulosUsados?.length ? `Títulos já usados no canal (não repita):\n${titulosUsados.slice(-30).map((t) => `- ${t}`).join("\n")}` : "",
     ja.length
-      ? `O vídeo se chama "${anteriores[0].title}". O que já foi dito nas partes anteriores (NÃO repita; continue a conversa):\n${ja.map((s) => `- ${s.narration.slice(0, 140)}${s.narration.length > 140 ? "..." : ""}`).join("\n")}\n\nÚltima fala, para continuar daqui: "${ja.at(-1).narration}"\n\nNesta parte, "title", "description" e "tags" podem repetir os da parte 1.`
+      ? `O vídeo se chama "${anteriores[0].title}". O que já foi dito nas partes anteriores (NÃO repita; continue a conversa):\n${ja.map((s) => `- ${s.narration.slice(0, 90)}${s.narration.length > 90 ? "..." : ""}`).join("\n")}\n\nÚltima fala, para continuar daqui: "${ja.at(-1).narration}"\n\nNesta parte, "title", "description" e "tags" podem repetir os da parte 1.`
       : "",
   ];
   return linhas.filter(Boolean).join("\n\n");
@@ -201,6 +202,24 @@ async function postar(f, url, init, saltos = 3) {
 }
 
 let enderecoQueFunciona = null;
+/** Modelos que bateram no limite grátis nesta execução (não adianta tentar de novo hoje). */
+const esgotados = new Set();
+export const _esgotados = esgotados; // para os testes
+
+/**
+ * Valida a forma das cenas. Uma parte do longo não precisa ter o número de cenas
+ * do vídeo inteiro (isso é conferido por problemasDeConteudo com as metas da parte).
+ */
+function validarTrecho(ep, formato, parte) {
+  try {
+    parseEpisode(ep, `roteiro ${formato}`);
+  } catch (e) {
+    if (!parte) throw e;
+    const [cabeca, ...linhas] = e.message.split("\n");
+    const resto = linhas.filter((l) => !/^\s*- scenes: no vídeo longo use de \d+ a \d+ cenas/.test(l));
+    if (resto.length) throw new Error([cabeca, ...resto].join("\n"));
+  }
+}
 
 /**
  * Formato exato da resposta (JSON Schema). O Ollama usa isso para obrigar o
@@ -245,7 +264,7 @@ async function chamarOllama(f, modelo, messages, formato) {
     messages,
     format: formato ? esquemaResposta(formato) : "json",
     stream: true,
-    options: { temperature: 0.6, num_ctx: 8192, num_predict: 4000 },
+    options: { temperature: 0.6, num_ctx: 12288, num_predict: 4000 },
   });
   // No processador do Actions a resposta pode levar mais de 10 min; o fetch do
   // Node desiste em 5. Fora dos testes, usa http direto, sem limite de espera.
@@ -537,7 +556,7 @@ async function escreverTrecho(
   const semFechamento = Boolean(parte && papel(parte) !== 2);
   let ultimo = "nenhuma resposta";
   const esperouLimite = new Set();
-  for (const modelo of modelos) {
+  for (const modelo of modelos.filter((m, k) => !esgotados.has(m) || k === modelos.length - 1)) {
     const inicio = [
       { role: "system", content: sistema(formato, parte) },
       { role: "user", content: pedido({ tema, manchetes, formato, tituloIrmao, titulosUsados, anteriores }) },
@@ -560,6 +579,8 @@ async function escreverTrecho(
             n--;
             continue;
           }
+          // Esgotou de vez: as próximas partes e o Short nem tentam mais esse modelo hoje.
+          esgotados.add(modelo);
           break; // tenta o próximo modelo
         }
         log(`  · tentativa ${n} (${modelo}): ${ultimo}`);
@@ -575,12 +596,19 @@ async function escreverTrecho(
           episodio.scenes = episodio.scenes.filter((s) => !ja.has(chaveFala(s.narration)));
         }
         consertarParte(episodio, parte);
-        parseEpisode(episodio, `roteiro ${formato}`);
+        validarTrecho(episodio, formato, parte);
         problemas = problemasDeConteudo(episodio, formato, { titulosUsados, parte });
       } catch (e) {
         problemas = [e.message];
+        // Resposta cortada (JSON incompleto): pedir correção só aumenta a conversa; recomeça do zero.
+        if (e instanceof SyntaxError) {
+          ultimo = e.message;
+          log(`  · tentativa ${n} (${modelo}) com problemas: ${ultimo}`);
+          mensagens = inicio;
+          continue;
+        }
       }
-      if (!problemas.length) return { episodio: parseEpisode(episodio), bruto: episodio, modelo, tentativas: n };
+      if (!problemas.length) return { episodio: parte ? episodio : parseEpisode(episodio), bruto: episodio, modelo, tentativas: n };
       ultimo = problemas.join("; ");
       log(`  · tentativa ${n} (${modelo}) com problemas: ${ultimo.slice(0, 600)}`);
       mensagens = [
