@@ -1,6 +1,6 @@
 # 📊 Painel · Mente de Milhão
 
-_Atualizado em 04/11/2026, 19:04 (Brasília). Este arquivo é gerado sozinho: não edite à mão._
+_Atualizado em 04/11/2026, 22:29 (Brasília). Este arquivo é gerado sozinho: não edite à mão._
 
 ## Chaves de segurança
 
@@ -15,15 +15,17 @@ Com tudo desligado, os workflows só **simulam**: nada é enviado nem respondido
 
 ## Cota do YouTube hoje
 
-35 de 9000 unidades · 0 de 10 envios de vídeo (zera à meia-noite do Pacífico, 4h ou 5h em Brasília).
+46 de 9000 unidades · 2 de 10 envios de vídeo (zera à meia-noite do Pacífico, 4h ou 5h em Brasília).
 
 ## Vídeos
 
 | Episódio | Título | Status | Link | Views | 👍 | 💬 | Atualizado |
 | --- | --- | --- | --- | ---: | ---: | ---: | --- |
+| `2026-11-04-dolar-short` | Dólar alto, preços caros? Sim, mas você pode se proteger! | 🟢 público | [abrir](https://youtu.be/0jf-q8YoF6k) | 193 | 5 | 0 | 04/11/2026, 14:08 |
+| `2026-11-04-dolar-longo` | Por que o Dólar está tão alto? E seus preços vão subir? | 🟢 público | [abrir](https://youtu.be/xy6FvVyBCD4) | 2 | 0 | 0 | 04/11/2026, 14:08 |
 | `2026-11-03-selic-short` | Selic: Entenda o que é e como ela mexe no seu bolso | 🟢 público | [abrir](https://youtu.be/CZd3qoZKzO0) | 5 | 0 | 0 | 03/11/2026, 07:41 |
 | `2026-11-03-selic-longo` | Selic: Entenda o que é e como ela afeta seu bolso | 🟢 público | [abrir](https://youtu.be/oYt9QTXrbRQ) | 7 | 1 | 0 | 03/11/2026, 07:41 |
-| `2026-11-02-decimo-terceiro-short` | Dívidas, Reserva ou Metas: Onde Colocar Seu 13º? | 🟢 público | [abrir](https://youtu.be/gRHy7XC_Zsw) | 78 | 0 | 0 | 02/11/2026, 12:05 |
+| `2026-11-02-decimo-terceiro-short` | Dívidas, Reserva ou Metas: Onde Colocar Seu 13º? | 🟢 público | [abrir](https://youtu.be/gRHy7XC_Zsw) | 79 | 0 | 0 | 02/11/2026, 12:05 |
 | `2026-11-02-decimo-terceiro-longo` | 13º Salário: Onde Colocar seu Dinheiro? | 🟢 público | [abrir](https://youtu.be/2uznP3fU7Lo) | 4 | 1 | 0 | 02/11/2026, 12:05 |
 | `guardar-nao-e-investir` | Por que guardar dinheiro não é o mesmo que investir? | 🟢 público | [abrir](https://youtu.be/TMz0LcQ5hQI) | 74 | 0 | 0 | 31/10/2026, 14:09 |
 
@@ -35,7 +37,7 @@ Com tudo desligado, os workflows só **simulam**: nada é enviado nem respondido
 
 ## Comentários
 
-Última leitura: 04/11/2026, 19:04
+Última leitura: 04/11/2026, 22:29
 
 | Aguardando você | 💰 Financeiras (revisão obrigatória) | Aprovadas, não enviadas | Respondidas | Automáticas | Ignoradas |
 | ---: | ---: | ---: | ---: | ---: | ---: |
