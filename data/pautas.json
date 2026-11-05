@@ -66,6 +66,28 @@
         "Dólar alto, preços caros? Sim, mas você pode se proteger!"
       ],
       "modelo": "ollama:qwen2.5:7b"
+    },
+    {
+      "data": "2026-11-05",
+      "tema": "apostas",
+      "nome": "Bets e apostas",
+      "pontos": 11.1,
+      "manchetes": [
+        "Paranaenses perdiam R$ 3,6 bilhões por ano para bets; proibição pode devolver dinheiro à economia do estado e impulsionar comércio - G1",
+        "Polícia Civil faz operação contra lavagem de dinheiro com bets que movimentaram R$ 1 bi via fintech - Jornal de Brasília",
+        "Até loja de tarô era usada para lavar dinheiro de esquema ilegal de bets - Rádio Metrópole",
+        "Fazenda minimiza perda com bets fora do 'Imposto do Pecado' - SBT News",
+        "Operação interestadual desarticula esquema bilionário de bets e lavagem de dinheiro - R7"
+      ],
+      "episodios": [
+        "2026-11-05-apostas-longo",
+        "2026-11-05-apostas-short"
+      ],
+      "titulos": [
+        "Bets não são investimento: O impacto na sua economia",
+        "Bets não são investimento: O impacto na sua economia"
+      ],
+      "modelo": "ollama:qwen2.5:7b"
     }
   ]
 }

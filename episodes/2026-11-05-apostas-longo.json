@@ -1,0 +1,625 @@
+{
+  "id": "2026-11-05-apostas-longo",
+  "formato": "longo",
+  "title": "Bets não são investimento: O impacto na sua economia",
+  "description": "Descubra por que apostar no futuro das bets e entenda o impacto dessas apostas no seu orçamento. Vamos analisar casos reais e mostrar como você pode usar o dinheiro de forma mais inteligente.",
+  "tags": [
+    "bets",
+    "apostas",
+    "investimento",
+    "orçamento",
+    "economia",
+    "dinheiro",
+    "proteção"
+  ],
+  "targetDurationSeconds": 668,
+  "disclaimer": "Conteúdo educativo. Valores ilustrativos, não é recomendação de investimento.",
+  "scenes": [
+    {
+      "id": "hook",
+      "template": "hook",
+      "narration": "Sabe quando você vê uma pessoa apostando no celular e pensa 'que absurdo'? Pois é, essas bets podem ser perigosas. Hoje vamos entender por que apostar não é investir e o impacto disso no seu bolso. Vem com a gente nessa exploração surpreendente da realidade das bets.",
+      "data": {
+        "kicker": "Sobre as Bets",
+        "title": "Bets ou Investimento?",
+        "subtitle": "Entenda por que apostar não é o mesmo que investir"
+      }
+    },
+    {
+      "id": "split",
+      "template": "split",
+      "narration": "Vamos comparar duas pessoas: Ana, que ganha três mil reais mensais, e Bruno, um 'expert' em bets que perde um real. quinhentos por mês nisso. Ana investe duzentos reais no fundo de renda fixa. Bruno joga um real. setecentos nas bets. E aí vem a parte que ninguém te conta: Ana ganha mais do que Bruno! Sabe por quê?",
+      "data": {
+        "left": {
+          "label": "Ana",
+          "points": [
+            "Ganha R$ 250 no mês",
+            "Totaliza R$ 3 mil em um ano"
+          ]
+        },
+        "right": {
+          "label": "Bruno",
+          "points": [
+            "Paga R$ 1.700 por mês nas bets",
+            "Totaliza R$ 20.400 em um ano"
+          ]
+        }
+      }
+    },
+    {
+      "id": "counter",
+      "template": "counter",
+      "narration": "Agora, imagine o impacto disso no longo prazo: Se Ana mantiver essa estratégia por dez anos, ela terá trinta e seis reais. zero a mais do que Bruno. E se ele continuar jogando nas bets, a perda será de duzentos e quatro mil reais em uma década! Isso é só o início. Parece pouco, né? Mas vamos ver um caso real.",
+      "data": {
+        "label": "10 anos",
+        "from": 0,
+        "to": 36000,
+        "prefix": "R$",
+        "suffix": "",
+        "decimals": 0,
+        "trend": "up",
+        "caption": "Evolução de Ana em 10 anos",
+        "badge": "Investindo"
+      }
+    },
+    {
+      "id": "bars",
+      "template": "bars",
+      "narration": "Agora, vamos ver um caso concreto. Imagina a Ana, que ganha três mil reais por mês. Ela pode usar esse dinheiro de várias formas: - um real. quinhentos: Bets (perde tudo) - duzentos reais: Fundo de renda fixa (ganha mais) - quatrocentos reais: Conta de emergência (proteção) - novecentos reais: Gastos mensais (casa, comida, etc. ) E o terceiro erro é o mais caro de todos.",
+      "data": {
+        "title": "Como Ana pode usar seu dinheiro",
+        "valuePrefix": "R$",
+        "valueSuffix": "",
+        "items": [
+          {
+            "label": "Bets",
+            "value": 1500,
+            "color": "red"
+          },
+          {
+            "label": "Fundo de Renda Fixa",
+            "value": 200,
+            "color": "gold"
+          },
+          {
+            "label": "Conta de Emergência",
+            "value": 400,
+            "color": "green"
+          },
+          {
+            "label": "Gastos Mensais",
+            "value": 900,
+            "color": "white"
+          }
+        ],
+        "caption": "Economizando inteligentemente"
+      }
+    },
+    {
+      "id": "linechart",
+      "template": "lineChart",
+      "narration": "Agora veja como isso se reflete no longo prazo. Vamos comparar a situação de Ana e Bruno em dez anos: - Ana: Inicialmente três mil reais, depois de dez anos chega a setenta e cinco reais. - Bruno: Inicialmente quatro reais. oitocentos (incluindo gastos), mas após dez anos tem um déficit de duzentos e quatro mil reais.",
+      "data": {
+        "title": "Comparação entre Ana e Bruno em 10 anos",
+        "xLabels": [
+          "0",
+          "5",
+          "10"
+        ],
+        "valuePrefix": "R$",
+        "valueSuffix": "",
+        "series": [
+          {
+            "label": "Ana",
+            "values": [
+              3000,
+              6000,
+              75600
+            ],
+            "color": "gold"
+          },
+          {
+            "label": "Bruno",
+            "values": [
+              4800,
+              19200,
+              -204000
+            ],
+            "color": "red"
+          }
+        ],
+        "caption": "Evolução financeira em 10 anos"
+      }
+    },
+    {
+      "id": "list",
+      "template": "list",
+      "narration": "Agora, vamos listar os erros mais comuns na hora de usar dinheiro nas bets: - Perda no curto prazo: Você pode perder tudo rapidamente. - Dívidas: Se você perde e precisa emprestar para jogar novamente, as dívidas podem crescer. - Ignorando metas financeiras: Investimentos e economias são mais importantes.",
+      "data": {
+        "title": "Erros comuns nas bets",
+        "items": [
+          "Perda no curto prazo",
+          "Dívidas geradas",
+          "Ignorando metas financeiras"
+        ]
+      }
+    },
+    {
+      "id": "split-7",
+      "template": "split",
+      "narration": "Ana e Bruno são duas pessoas que ganham três reais. zero por mês. Ana usa sua renda para apostar, enquanto Bruno investe de forma segura. Vamos ver como cada um se sai no longo prazo. Tá curioso? Olha só o que acontece com Ana e Bruno nos próximos anos. E aí vem a parte que ninguém te conta!",
+      "data": {
+        "left": {
+          "label": "Ana",
+          "points": [
+            "Apostas frequentes",
+            "Dívidas crescentes",
+            "Metas financeiras negligenciadas"
+          ]
+        },
+        "right": {
+          "label": "Bruno",
+          "points": [
+            "Investimentos conscientes",
+            "Economias sólidas",
+            "Metas atingidas"
+          ]
+        }
+      }
+    },
+    {
+      "id": "counter-8",
+      "template": "counter",
+      "narration": "Imagine o impacto disso no longo prazo. Se Ana mantiver essa estratégia por dez anos, ela poderá perder cento e vinte reais. zero em apostas. E se Bruno investir trinta reais. zero ao ano com um retorno de cinco por cento ao ano, ele terá quatrocentos e setenta e seis reais. zero no final dos dez anos. Parece pouco, né? cento e vinte reais. zero de perdas x quatrocentos e setenta e seis reais. zero em ganhos.",
+      "data": {
+        "label": "Impacto das apostas vs investimentos ao longo de 10 anos",
+        "from": -120000,
+        "to": 476000,
+        "prefix": "R$ ",
+        "suffix": "",
+        "decimals": 0,
+        "trend": "down",
+        "caption": "Pensa comigo: Qual é a melhor opção?",
+        "badge": "ATENÇÃO!"
+      }
+    },
+    {
+      "id": "linechart-9",
+      "template": "lineChart",
+      "narration": "Agora, vamos ver como as apostas de Ana se comportam ao longo do tempo. Ela começa com trinta reais. zero e perde quinze por cento a cada ano. Vamos acompanhar sua trajetória até o décimo ano. E aí vem a parte que ninguém te conta: esses números são reais e acontecem no dia a dia de muitas pessoas.",
+      "data": {
+        "title": "Trajetória das apostas de Ana ao longo dos anos",
+        "xLabels": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6",
+          "7",
+          "8",
+          "9",
+          "10"
+        ],
+        "valuePrefix": "R$ ",
+        "valueSuffix": "",
+        "series": [
+          {
+            "label": "Apostas",
+            "values": [
+              30000,
+              25500,
+              21675,
+              18334,
+              15434,
+              12963,
+              10798,
+              8873,
+              7155,
+              5632
+            ],
+            "color": "red"
+          },
+          {
+            "label": "Investimentos de Bruno",
+            "values": [
+              33100,
+              35460,
+              37983,
+              40677,
+              43548,
+              46595,
+              49827,
+              53248,
+              56862,
+              60681
+            ],
+            "color": "gold"
+          }
+        ],
+        "caption": "Várias pessoas perdem dinheiro nas apostas e ganham com investimentos. Você pref"
+      }
+    },
+    {
+      "id": "bars-10",
+      "template": "bars",
+      "narration": "E agora, vamos listar os erros mais comuns na hora de usar dinheiro nas bets: - Perda no curto prazo: Você pode perder tudo rapidamente. - Dívidas: Se você perde e precisa emprestar para jogar novamente, as dívidas podem crescer. - Ignorando metas financeiras: Investimentos e economias são mais importantes.",
+      "data": {
+        "title": "Erros comuns nas apostas",
+        "valuePrefix": "",
+        "valueSuffix": "",
+        "items": [
+          {
+            "label": "Perda no curto prazo",
+            "value": 50,
+            "color": "red"
+          },
+          {
+            "label": "Dívidas crescentes",
+            "value": 70,
+            "color": "red"
+          },
+          {
+            "label": "Metas financeiras neglig",
+            "value": 80,
+            "color": "red"
+          }
+        ],
+        "caption": "Pensa comigo: Você faria isso?"
+      }
+    },
+    {
+      "id": "list-11",
+      "template": "list",
+      "narration": "Agora vamos aprofundar nos erros mais comuns nas apostas. Vamos ver como elas podem te afetar. - Perda no curto prazo: Você pode perder tudo rapidamente. - Dívidas: Se você perde e precisa emprestar para jogar novamente, as dívidas podem crescer. - Ignorando metas financeiras: Investimentos e economias são mais importantes.",
+      "data": {
+        "title": "Erros comuns nas apostas",
+        "items": [
+          "Perda no curto prazo: Você pode perder tudo rapid",
+          "Dívidas: Se você perde e precisa emprestar para j",
+          "Ignorando metas financeiras: Investimentos e eco"
+        ]
+      }
+    },
+    {
+      "id": "split1",
+      "template": "split",
+      "narration": "Ana e Bruno são duas pessoas que ganham três mil reais. zero por mês. Ana usa sua renda para apostar, enquanto Bruno investe em ações. Olha só como isso se reflete no longo prazo: Ana perde dinheiro, Bruno cresce financeiramente. E aí vem a parte que ninguém te conta.",
+      "data": {
+        "left": {
+          "label": "Ana",
+          "points": [
+            "Perde dinheiro",
+            "Ignora metas financeiras"
+          ]
+        },
+        "right": {
+          "label": "Bruno",
+          "points": [
+            "Cresce financeiramente",
+            "Investe sabiamente"
+          ]
+        }
+      }
+    },
+    {
+      "id": "counter1",
+      "template": "counter",
+      "narration": "Imagine o impacto disso no longo prazo. Se Ana mantiver essa estratégia por dez anos, ela terá perdido trezentos mil reais reais. Só eu acho isso absurdo? trezentos mil reais reais ao longo de dez anos. Isso é dinheiro que poderia ser usado para investimentos e economias importantes.",
+      "data": {
+        "label": "Perda de Ana em dez anos",
+        "from": 300,
+        "to": 300000,
+        "prefix": "R$ ",
+        "suffix": "",
+        "decimals": 0,
+        "trend": "down",
+        "caption": "Isso poderia ser usado para investimentos e economias importantes.",
+        "badge": "Absurdo!"
+      }
+    },
+    {
+      "id": "linechart1",
+      "template": "lineChart",
+      "narration": "Vamos comparar o crescimento de Ana e Bruno ao longo do tempo. Ana perde dinheiro rapidamente, enquanto Bruno investe em ações e cresce financeiramente. Aqui está um exemplo: Se Ana começa com dez mil reais, em dez anos ela terá apenas três reais. duzentos e sessenta e sete reais. Já Bruno, que começa com o mesmo valor, termina com oitenta e quatro reais. Parece pouco, né?",
+      "data": {
+        "title": "Crescimento de Ana e Bruno",
+        "xLabels": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6",
+          "7",
+          "8",
+          "9",
+          "10"
+        ],
+        "valuePrefix": "R$ ",
+        "valueSuffix": "",
+        "series": [
+          {
+            "label": "Ana",
+            "values": [
+              10000,
+              8000,
+              6400,
+              5120,
+              4096,
+              3277,
+              2622,
+              2098,
+              1679,
+              1343
+            ],
+            "color": "red"
+          },
+          {
+            "label": "Bruno",
+            "values": [
+              10000,
+              15000,
+              22500,
+              33750,
+              50625,
+              75938,
+              113907,
+              170861,
+              256291,
+              384437
+            ],
+            "color": "green"
+          }
+        ],
+        "caption": "A diferença é gritante."
+      }
+    },
+    {
+      "id": "list1",
+      "template": "list",
+      "narration": "E o terceiro erro é o mais caro de todos: - Ignorando metas financeiras. Investimentos e economias são mais importantes. Então, comenta aí: Você faria isso? Apostar ou investir sabiamente?",
+      "data": {
+        "title": "Erros nas apostas",
+        "items": [
+          "- Perda no curto prazo: Você pode perder tudo rapi",
+          "- Dívidas: Se você perde e precisa emprestar para",
+          "- Ignorando metas financeiras"
+        ]
+      }
+    },
+    {
+      "id": "hook2",
+      "template": "list",
+      "narration": "Bons investimentos não são sobre ganhar na loteria. São sobre crescimento constante e segurança no futuro. Neste vídeo, você vai entender por que apostar é uma má escolha financeira e como isso afeta seu bolso ao longo do tempo. Vamos comparar Ana, que usa o dinheiro nas bets, com Bruno, que investe sabiamente.",
+      "data": {
+        "title": "Bons investimentos não são sobre ganhar na loteria",
+        "items": [
+          "Neste vídeo",
+          "Entenda por que apostar é uma má escolha financeir"
+        ]
+      }
+    },
+    {
+      "id": "comparison-start",
+      "template": "list",
+      "narration": "Sabe quando você vê uma pessoa apostando no celular e pensa 'que absurdo'? Pois é, essas b. Vamos comparar duas pessoas: Ana, que ganha três mil reais mensais, e Bruno, um 'expert' nesse negócio. Olha só o que acontece com cada um ao longo do tempo. Prepare-se!",
+      "data": {
+        "title": "Ana vs. Bruno",
+        "items": [
+          "Bets x Investimento",
+          "Qual caminho leva a mais dinheiro?"
+        ]
+      }
+    },
+    {
+      "id": "anabruno-start",
+      "template": "split",
+      "narration": "Ambos ganham três mil reais por mês, mas fazem escolhas diferentes. Ana usa o dinheiro nas bets, enquanto Bruno investe sabiamente em renda fixa. Vamos ver como isso se reflete no longo prazo. Olha só, vamos comparar a situação de Ana e Bruno e ver qual caminho leva a mais dinheiro.",
+      "data": {
+        "left": {
+          "label": "Ana",
+          "points": [
+            "Usa o dinheiro nas bets",
+            "Faz apostas diariamente",
+            "Paga altos taxas de comissão"
+          ]
+        },
+        "right": {
+          "label": "Bruno",
+          "points": [
+            "Investe em renda fixa",
+            "Cria uma reserva de emergência",
+            "Ganha juros e dividendos"
+          ]
+        }
+      }
+    },
+    {
+      "id": "comparison-long-term",
+      "template": "counter",
+      "narration": "Agora veja como isso se reflete no longo prazo. Vamos comparar a situação de Ana e Bruno ao longo dos anos. Olha só, Ana começa com dez mil reais e perde dinheiro rapidamente. Já Bruno, que investe em renda fixa, ganha juros e dividendos. Vamos ver qual caminho é mais vantajoso.",
+      "data": {
+        "label": "Comparação ao longo do tempo",
+        "from": 10000,
+        "to": 35000,
+        "prefix": "R$ ",
+        "suffix": "%",
+        "decimals": 2,
+        "trend": "up",
+        "caption": "Ana perde dinheiro rapidamente, enquanto Bruno ganha juros e dividendos.",
+        "badge": "Investir é"
+      }
+    },
+    {
+      "id": "bar-chart",
+      "template": "bars",
+      "narration": "E aí vem a parte que ninguém te conta. Imagine se Ana e Bruno compararem suas situações ao longo do tempo. Olha só, em dez anos, Ana perdeu dinheiro, enquanto Bruno dobrou seu patrimônio. Vamos ver como as apostas de Ana se comportam ao longo do tempo. Ela começa com dez mil reais e perde quase tudo.",
+      "data": {
+        "title": "Comparação após 10 anos",
+        "valuePrefix": "R$ ",
+        "valueSuffix": "%",
+        "items": [
+          {
+            "label": "Ana",
+            "value": -6500,
+            "color": "red"
+          },
+          {
+            "label": "Bruno",
+            "value": 25000,
+            "color": "gold"
+          }
+        ],
+        "caption": "Investir sabiamente leva a mais dinheiro no futuro."
+      }
+    },
+    {
+      "id": "common-errors",
+      "template": "list",
+      "narration": "E o terceiro erro é o mais caro de todos: - Ignorando metas financeiras. Investimentos e apostas devem servir para alcançar objetivos, não para perder dinheiro. Vamos aprofundar nos erros mais comuns nas apostas. Eles podem te afetar muito negativamente no longo prazo.",
+      "data": {
+        "title": "Erros mais comuns nas apostas",
+        "items": [
+          "- Perda no curto prazo",
+          "- Ignorando metas financeiras",
+          "- Dependência das apostas"
+        ]
+      }
+    },
+    {
+      "id": "investing-vs-betting",
+      "template": "split",
+      "narration": "Bons investimentos não são sobre ganhar na loteria. São sobre crescimento constante e segurança no futuro. Neste vídeo, você viu que apostar é uma má escolha financeira e como isso afeta seu bolso ao longo do tempo. Vamos comparar Ana, que usa o dinheiro nas bets, com Bruno, que investe sabiamente.",
+      "data": {
+        "left": {
+          "label": "Aposta",
+          "points": [
+            "Perda no curto prazo",
+            "Dependência das apostas"
+          ]
+        },
+        "right": {
+          "label": "Investimento",
+          "points": [
+            "Crescimento constante",
+            "Segurança no futuro"
+          ]
+        }
+      }
+    },
+    {
+      "id": "introducao",
+      "template": "list",
+      "narration": "Sabe quando você vê uma pessoa apostando no celular e pensa 'que absurdo'? Pois é, essas b. E aí vem a parte que ninguém te conta. Imagine se Ana e Bruno compararem suas situações ao longo do tempo. Vamos começar com um exemplo simples: Ana ganha três mil reais por mês.",
+      "data": {
+        "title": "Bets não são investimento",
+        "items": [
+          "Sabe quando você vê uma pessoa apostando",
+          "Compare Ana, que usa o dinheiro nas bets, com Brun"
+        ]
+      }
+    },
+    {
+      "id": "exemplo-anabruno",
+      "template": "split",
+      "narration": "Ana usa seu dinheiro nas bets, enquanto Bruno investe de forma inteligente. Vamos ver como isso se reflete no longo prazo. Ana começa com dez mil reais e joga em um jogo onde a chance de ganhar é de cinquenta por cento para cada lado. Bruno, por outro lado, investe em ações com uma rentabilidade média de sete por cento ao ano.",
+      "data": {
+        "left": {
+          "label": "Ana",
+          "points": [
+            "Joga nas bets",
+            "50% chance de ganhar"
+          ]
+        },
+        "right": {
+          "label": "Bruno",
+          "points": [
+            "Investe em ações",
+            "7% rentabilidade ao ano"
+          ]
+        }
+      }
+    },
+    {
+      "id": "comparacao-longo-prazo",
+      "template": "lineChart",
+      "narration": "Agora vamos ver como isso se comporta no longo prazo. Vamos comparar os resultados de Ana e Bruno ao longo dos dez anos. No primeiro ano, Ana perde dinheiro rapidamente, enquanto Bruno ganha sete por cento ao ano em média. Isso faz uma grande diferença no final do décimo ano.",
+      "data": {
+        "title": "Crescimento de Ana e Bruno",
+        "xLabels": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6",
+          "7",
+          "8",
+          "9",
+          "10"
+        ],
+        "valuePrefix": "R$ ",
+        "valueSuffix": "%",
+        "series": [
+          {
+            "label": "Ana",
+            "values": [
+              0,
+              -1.02,
+              -2.04,
+              -3.06,
+              -4.08,
+              -5.1,
+              -6.12,
+              -7.14,
+              -8.16,
+              -9.18
+            ]
+          },
+          {
+            "label": "Bruno",
+            "values": [
+              0,
+              7,
+              14,
+              21,
+              28,
+              35,
+              42,
+              49,
+              56,
+              63
+            ]
+          }
+        ],
+        "caption": "Investimentos e ações rendem mais no longo prazo."
+      }
+    },
+    {
+      "id": "erros-comuns",
+      "template": "list",
+      "narration": "E o terceiro erro é o mais caro de todos: - Ignorando metas financeiras. Investimentos e ações precisam ser planejados para atingir objetivos futuros, como a compra da casa própria ou a aposentadoria. Esquecer isso pode custar caro no futuro. Bons investimentos não são sobre ganhar na loteria. São sobre crescimento constante e segurança no futuro.",
+      "data": {
+        "title": "Erros comuns nas apostas",
+        "items": [
+          "- Perda no curto prazo",
+          "- Ignorando metas financeiras"
+        ]
+      }
+    },
+    {
+      "id": "conclusao",
+      "template": "outro",
+      "narration": "Bons investimentos não são sobre ganhar na loteria. São sobre crescimento constante e segurança no futuro. Neste vídeo, você viu que apostar é uma má escolha financeira e como isso afeta seu bolso ao longo do tempo. Compare Ana, que usa o dinheiro nas bets, com Bruno, que investe sabiamente.",
+      "data": {
+        "title": "Bets não são investimento: O impacto na sua economia",
+        "points": [
+          "Compare Ana e Bruno",
+          "Evite apostas no futuro"
+        ],
+        "cta": "Comenta aí: você faria isso?"
+      }
+    }
+  ]
+}

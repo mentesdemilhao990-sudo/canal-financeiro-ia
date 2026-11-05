@@ -1,0 +1,101 @@
+{
+  "id": "2026-11-05-apostas-short",
+  "formato": "short",
+  "title": "Bets não são investimento: O impacto na sua economia",
+  "description": "Entenda por que apostar é diferente de investir e veja como isso afeta seu orçamento. Não perca mais dinheiro!",
+  "tags": [
+    "investimento",
+    "bets",
+    "economia",
+    "orçamento",
+    "apostas"
+  ],
+  "targetDurationSeconds": 60,
+  "disclaimer": "Conteúdo educativo. Valores ilustrativos, não é recomendação de investimento.",
+  "scenes": [
+    {
+      "id": "hook",
+      "template": "hook",
+      "narration": "Imagine você ganha dez reais. zero por mês. E aí vem a parte que ninguém te conta: apostar não é investimento. Pra entender, veja isso.",
+      "data": {
+        "kicker": "R$10.000",
+        "title": "Não são iguais!",
+        "subtitle": "Entenda por que apostas não são investimento e o impacto no seu bolso."
+      }
+    },
+    {
+      "id": "split",
+      "template": "split",
+      "narration": "Investir: você compra ações, fundos ou imóveis. Apostar: você joga dinheiro fora numa jogada rasteira. Investir: é uma estratégia planejada. Apostar: é um impulso rápido.",
+      "data": {
+        "left": {
+          "label": "Investir",
+          "points": [
+            "Você compra ações, fundos ou imóveis",
+            "É uma estratégia planejada"
+          ]
+        },
+        "right": {
+          "label": "Apostar",
+          "points": [
+            "Você joga dinheiro fora numa jogada rase",
+            "É um impulso rápido"
+          ]
+        }
+      }
+    },
+    {
+      "id": "counter",
+      "template": "counter",
+      "narration": "Imagine você perde dez reais. zero em apostas no mês. Isso é como perder vinte por cento do seu salário. dez reais. zero desaparecem em jogos.",
+      "data": {
+        "label": "Perdas mensais de apostador médio",
+        "from": 10000,
+        "to": 0,
+        "prefix": "R$ ",
+        "suffix": "",
+        "decimals": 0,
+        "trend": "down",
+        "caption": "Isso é como perder 20% do seu salário",
+        "badge": "alert"
+      }
+    },
+    {
+      "id": "linechart",
+      "template": "lineChart",
+      "narration": "Veja como essas perdas impactam sua economia ao longo do tempo. Só no Brasil, as bets movimentaram um bilhão de reais.",
+      "data": {
+        "title": "Movimentação de apostas ilegais",
+        "xLabels": [
+          "2019",
+          "2021"
+        ],
+        "valuePrefix": "R$ ",
+        "valueSuffix": "",
+        "series": [
+          {
+            "label": "Valor movimentado",
+            "values": [
+              500,
+              1000
+            ]
+          }
+        ],
+        "caption": "Isso poderia ser investido na economia formal"
+      }
+    },
+    {
+      "id": "outro",
+      "template": "outro",
+      "narration": "Então, apostar não é o mesmo que investir. Siga para mais e veja como manter seu dinheiro no caminho certo. Comenta aí: você faria isso?",
+      "data": {
+        "title": "Entenda o impacto das bets",
+        "points": [
+          "Apostar não é investimento",
+          "Perdas significativas podem afetar sua econom"
+        ],
+        "cta": "Siga para mais e entenda como"
+      }
+    }
+  ]
+}

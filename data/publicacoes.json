@@ -214,6 +214,68 @@
       "url": "https://youtu.be/0jf-q8YoF6k",
       "enviadoEm": "2026-11-04T17:08:14.961Z",
       "publicarEm": "2026-11-04T23:07:00.000Z"
+    },
+    {
+      "historico": [
+        {
+          "em": "2026-11-05T18:59:42.981Z",
+          "status": "enviando"
+        },
+        {
+          "em": "2026-11-05T18:59:48.831Z",
+          "status": "privado",
+          "nota": "enviado (agendando)"
+        },
+        {
+          "em": "2026-11-05T18:59:48.832Z",
+          "status": "agendado",
+          "nota": "fica público às 17:16 (Brasília)"
+        }
+      ],
+      "plataforma": "youtube",
+      "episodio": "2026-11-05-apostas-longo",
+      "titulo": "Bets não são investimento: O impacto na sua economia",
+      "hashEpisodio": "84d67443387308e0",
+      "hashVideo": "685ec33f5d85e1e3",
+      "duracao": 558.334,
+      "status": "agendado",
+      "atualizadoEm": "2026-11-05T18:59:48.832Z",
+      "privacidade": "private",
+      "videoId": "OlsAA0VeooA",
+      "url": "https://youtu.be/OlsAA0VeooA",
+      "enviadoEm": "2026-11-05T18:59:48.831Z",
+      "publicarEm": "2026-11-05T20:16:00.000Z"
+    },
+    {
+      "historico": [
+        {
+          "em": "2026-11-05T18:59:48.848Z",
+          "status": "enviando"
+        },
+        {
+          "em": "2026-11-05T18:59:51.572Z",
+          "status": "privado",
+          "nota": "enviado (agendando)"
+        },
+        {
+          "em": "2026-11-05T18:59:51.572Z",
+          "status": "agendado",
+          "nota": "fica público às 19:32 (Brasília)"
+        }
+      ],
+      "plataforma": "youtube",
+      "episodio": "2026-11-05-apostas-short",
+      "titulo": "Bets não são investimento: O impacto na sua economia",
+      "hashEpisodio": "a2d2903dbe38d5fd",
+      "hashVideo": "a68f6e0a9c64f319",
+      "duracao": 55.834,
+      "status": "agendado",
+      "atualizadoEm": "2026-11-05T18:59:51.572Z",
+      "privacidade": "private",
+      "videoId": "M96Lm2rWqZA",
+      "url": "https://youtu.be/M96Lm2rWqZA",
+      "enviadoEm": "2026-11-05T18:59:51.572Z",
+      "publicarEm": "2026-11-05T22:32:00.000Z"
     }
   ]
 }
