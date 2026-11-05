@@ -33,8 +33,8 @@ export const METAS = {
   // começo, meio e fim; se as partes vierem curtas, entram mais partes de meio (até maxPartes).
   longo: { cenas: [15, 44], caracteres: [6800, 8600], duracao: [480, 660], aceite: [480, 900], cta: "Inscreva-se", porCena: 650, minCena: 260, partes: 3, maxPartes: 5 },
   // Cada parte do longo (só usado na escrita; o vídeo final é validado como "longo").
-  // A parte aceita até 60% do tamanho pedido: o que faltar vira mais uma parte de meio.
-  longoParte: { cenas: [5, 10], caracteres: [2300, 2900], minimo: 0.6, cta: "Inscreva-se", porCena: 650, minCena: 260 },
+  // A parte aceita até 50% do tamanho pedido: o que faltar vira mais uma parte de meio.
+  longoParte: { cenas: [5, 10], caracteres: [2300, 2900], minimo: 0.5, cta: "Inscreva-se", porCena: 650, minCena: 260 },
 };
 
 /** O que cada parte do vídeo longo cobre (a IA recebe o plano inteiro para não repetir assunto). */
@@ -317,13 +317,14 @@ async function chamarGemini(f, modelo, messages, espera = Number(process.env.GEM
   const chave = process.env.GEMINI_API_KEY?.trim();
   let r;
   // 503 = servidor do Google lotado (passa em minutos): espera e tenta de novo antes de desistir.
-  for (let i = 0; i < 4; i++) {
+  // Cada nova tentativa também gasta a cota grátis do dia: só uma espera, depois passa adiante.
+  for (let i = 0; i < 2; i++) {
     r = await f("https://generativelanguage.googleapis.com/v1beta/openai/chat/completions", {
       method: "POST",
       headers: { authorization: `Bearer ${chave}`, "content-type": "application/json" },
       body: JSON.stringify({ model: modelo.replace(/^gemini:/, ""), temperature: 0.8, response_format: { type: "json_object" }, messages }),
     });
-    if (r.status !== 503 || i === 3) break;
+    if (r.status !== 503 || i === 1) break;
     await new Promise((ok) => setTimeout(ok, espera * (i + 1)));
   }
   const bruto = await r.text();
@@ -336,6 +337,8 @@ async function chamarGemini(f, modelo, messages, espera = Number(process.env.GEM
   if (r.status === 401 || r.status === 403) throw Object.assign(new Error(`${modelo}: chave sem permissão (HTTP ${r.status}) ${msg}`), { limite: true });
   // 404 = modelo aposentado ou inexistente: não adianta repetir, passa para o próximo.
   if (r.status === 404) throw Object.assign(new Error(`${modelo}: modelo indisponível (HTTP 404) ${msg}`), { limite: true });
+  // 503 de novo: servidor lotado agora; passa para o próximo modelo (sem marcar como esgotado).
+  if (r.status === 503) throw Object.assign(new Error(`${modelo}: servidor lotado (HTTP 503)`), { limite: true, temporario: true });
   if (!r.ok) throw new Error(`${modelo}: HTTP ${r.status} ${msg}`);
   const texto = j.choices?.[0]?.message?.content ?? "";
   if (!texto.trim()) throw new Error(`${modelo}: resposta vazia`);
@@ -506,6 +509,17 @@ export function consertarParte(ep, parte) {
     }
     const fechamento = ultima && i === ep.scenes.length - 1;
     if (!fechamento && /inscrev/i.test(c.narration ?? "")) c = { ...c, narration: semInscricao(c.narration) };
+    // Na última cena, o convite fica uma vez só (a primeira frase que fala de inscrição).
+    if (fechamento && (c.narration?.match(/inscrev/gi) ?? []).length > 1) {
+      let ja = false;
+      const frases = (c.narration.match(/[^.!?…]+[.!?…]*/g) ?? [c.narration]).filter((f) => {
+        if (!/inscrev/i.test(f)) return true;
+        if (ja) return false;
+        ja = true;
+        return (f.match(/inscrev/gi) ?? []).length === 1;
+      });
+      c = { ...c, narration: frases.join(" ").trim() };
+    }
     if (c.template === "outro" && c.data) {
       const pontos = (c.data.points ?? []).filter((x) => !/inscrev/i.test(x));
       const titulo = /inscrev/i.test(c.data.title ?? "") ? String(ep.title ?? "Até o próximo vídeo").slice(0, 80) : c.data.title;
@@ -515,6 +529,19 @@ export function consertarParte(ep, parte) {
   });
   // Cenas que ficaram vazias depois da limpeza saem.
   ep.scenes = ep.scenes.filter((s) => typeof s.narration !== "string" || s.narration.length >= 10);
+  // Short comprido demais (a IA local escreve ~900 caracteres): tira a última frase das cenas
+  // do meio mais longas até caber, sem mexer no gancho nem no fechamento.
+  if (!parte && ep.formato === "short") {
+    const limite = METAS.short.caracteres[1] * 1.1;
+    const total = () => ep.scenes.reduce((t, s) => t + (s.narration?.length ?? 0), 0);
+    for (let guarda = 0; guarda < 30 && total() > limite; guarda++) {
+      const meio = ep.scenes.slice(1, -1).map((s) => ({ s, frases: s.narration.match(/[^.!?…]+[.!?…]*/g) ?? [] })).filter((x) => x.frases.length >= 2);
+      if (!meio.length) break;
+      const alvo = meio.reduce((a, b) => (b.s.narration.length > a.s.narration.length ? b : a));
+      alvo.s.narration = alvo.frases.slice(0, -1).join("").trim();
+    }
+    ep.targetDurationSeconds = Math.round(Math.min(FORMATOS.short.maxDuracao, Math.max(FORMATOS.short.minDuracao, estimarDuracao(ep.scenes))));
+  }
   return ep;
 }
 
@@ -590,7 +617,7 @@ async function escreverTrecho(
             continue;
           }
           // Esgotou de vez: as próximas partes e o Short nem tentam mais esse modelo hoje.
-          esgotados.add(modelo);
+          if (!e.temporario) esgotados.add(modelo);
           break; // tenta o próximo modelo
         }
         log(`  · tentativa ${n} (${modelo}): ${ultimo}`);

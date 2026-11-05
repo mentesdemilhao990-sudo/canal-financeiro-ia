@@ -478,3 +478,15 @@ test("roteiro: gráfico de linhas com valores faltando ou sobrando é ajustado a
   const r = consertarParte(ep);
   assert.deepEqual(r.scenes[0].data.series.map((x) => x.values), [[1, 2, 2, 2], [1, 2, 3, 4]]);
 });
+
+test("roteiro: Short comprido é encurtado e o convite final aparece uma vez só", () => {
+  const ep = montarEpisodio(respostaShort(), { id: "y-short", formato: "short" });
+  ep.scenes[2].narration += " Mais uma frase longa só pra encher o roteiro e passar do tamanho certo do Short. E outra frase comprida que também não precisava estar aqui de jeito nenhum.";
+  ep.scenes[3].narration += " Aqui vai mais um trecho bem comprido para deixar o Short grande demais para caber em um minuto.";
+  ep.scenes.at(-1).narration = "Se inscreve no canal. E se inscreve mesmo, viu? Comenta aí o que achou.";
+  consertarParte(ep);
+  const chars = ep.scenes.reduce((t, s) => t + s.narration.length, 0);
+  assert.ok(chars <= 704, `${chars} caracteres`);
+  assert.equal((ep.scenes.at(-1).narration.match(/inscrev/gi) ?? []).length, 1);
+  assert.match(ep.scenes[0].narration, /^Guardar dinheiro/);
+});
