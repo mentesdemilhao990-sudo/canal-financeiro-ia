@@ -494,6 +494,16 @@ export function consertarParte(ep, parte) {
       while (itens.length < 2) itens.push(String(d.title ?? ep.title ?? "Resumo").slice(0, 50));
       c = { ...c, template: "list", data: { title: String(d.title ?? "Repara nisso").slice(0, 50), items: itens } };
     }
+    // Gráfico de linhas: cada série precisa de um valor por rótulo (a IA local erra muito isso).
+    if (c.template === "lineChart" && Array.isArray(c.data?.xLabels) && Array.isArray(c.data?.series)) {
+      const n = c.data.xLabels.length;
+      const series = c.data.series.map((x) => {
+        const v = (Array.isArray(x?.values) ? x.values : []).map(Number).filter(Number.isFinite).slice(0, n);
+        while (v.length && v.length < n) v.push(v.at(-1));
+        return { ...x, values: v };
+      });
+      c = { ...c, data: { ...c.data, series } };
+    }
     const fechamento = ultima && i === ep.scenes.length - 1;
     if (!fechamento && /inscrev/i.test(c.narration ?? "")) c = { ...c, narration: semInscricao(c.narration) };
     if (c.template === "outro" && c.data) {
