@@ -467,3 +467,14 @@ test("roteiro longo: parte com 5 cenas vale, e JSON cortado recomeça a conversa
   assert.equal(pedidos[2].messages.length, 2, "depois do JSON cortado, pede de novo sem a resposta quebrada");
   assert.ok(r.episodio.scenes.length >= 15);
 });
+
+test("roteiro: gráfico de linhas com valores faltando ou sobrando é ajustado aos rótulos", () => {
+  const ep = {
+    title: "t",
+    scenes: [
+      { id: "a", template: "lineChart", narration: "Olha esse gráfico aqui.", data: { title: "G", xLabels: ["1", "2", "3", "4"], series: [{ label: "A", color: "green", values: [1, 2] }, { label: "B", color: "gold", values: [1, 2, 3, 4, 5, 6] }] } },
+    ],
+  };
+  const r = consertarParte(ep);
+  assert.deepEqual(r.scenes[0].data.series.map((x) => x.values), [[1, 2, 2, 2], [1, 2, 3, 4]]);
+});
