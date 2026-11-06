@@ -1,6 +1,6 @@
 # 📊 Painel · Mente de Milhão
 
-_Atualizado em 05/11/2026, 19:02 (Brasília). Este arquivo é gerado sozinho: não edite à mão._
+_Atualizado em 05/11/2026, 22:30 (Brasília). Este arquivo é gerado sozinho: não edite à mão._
 
 ## Chaves de segurança
 
@@ -15,13 +15,13 @@ Com tudo desligado, os workflows só **simulam**: nada é enviado nem respondido
 
 ## Cota do YouTube hoje
 
-40 de 9000 unidades · 2 de 10 envios de vídeo (zera à meia-noite do Pacífico, 4h ou 5h em Brasília).
+51 de 9000 unidades · 2 de 10 envios de vídeo (zera à meia-noite do Pacífico, 4h ou 5h em Brasília).
 
 ## Vídeos
 
 | Episódio | Título | Status | Link | Views | 👍 | 💬 | Atualizado |
 | --- | --- | --- | --- | ---: | ---: | ---: | --- |
-| `2026-11-05-apostas-short` | Bets não são investimento: O impacto na sua economia | ⏰ agendado | [abrir](https://youtu.be/M96Lm2rWqZA) | 2 | 0 | 0 | 05/11/2026, 15:59 |
+| `2026-11-05-apostas-short` | Bets não são investimento: O impacto na sua economia | 🟢 público | [abrir](https://youtu.be/M96Lm2rWqZA) | 5 | 1 | 0 | 05/11/2026, 15:59 |
 | `2026-11-05-apostas-longo` | Bets não são investimento: O impacto na sua economia | 🟢 público | [abrir](https://youtu.be/OlsAA0VeooA) | 1 | 0 | 0 | 05/11/2026, 15:59 |
 | `2026-11-04-dolar-short` | Dólar alto, preços caros? Sim, mas você pode se proteger! | 🟢 público | [abrir](https://youtu.be/0jf-q8YoF6k) | 242 | 4 | 0 | 04/11/2026, 14:08 |
 | `2026-11-04-dolar-longo` | Por que o Dólar está tão alto? E seus preços vão subir? | 🟢 público | [abrir](https://youtu.be/xy6FvVyBCD4) | 5 | 0 | 0 | 04/11/2026, 14:08 |
@@ -39,7 +39,7 @@ Com tudo desligado, os workflows só **simulam**: nada é enviado nem respondido
 
 ## Comentários
 
-Última leitura: 05/11/2026, 19:02
+Última leitura: 05/11/2026, 22:30
 
 | Aguardando você | 💰 Financeiras (revisão obrigatória) | Aprovadas, não enviadas | Respondidas | Automáticas | Ignoradas |
 | ---: | ---: | ---: | ---: | ---: | ---: |
