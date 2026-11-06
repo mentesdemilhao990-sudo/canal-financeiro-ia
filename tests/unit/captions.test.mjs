@@ -38,3 +38,17 @@ test("linha do tempo estimada cobre todas as cenas em ordem", () => {
   assert.ok(tl.scenes[1].start >= tl.scenes[0].start);
   assert.ok(tl.duration > tl.scenes[1].words.at(-1).end);
 });
+
+test("toSrt: palavras com tempo zero ou fora de ordem não geram legenda inválida", () => {
+  const cues = [
+    { start: 1, end: 2, text: "um" },
+    { start: 2.5, end: 2.5, text: "dois" }, // duração zero
+    { start: 2.4, end: 3, text: "três" }, // começa antes da anterior
+    { start: 3, end: 2.9, text: "quatro" }, // fim antes do início
+  ];
+  const out = parseSrt(toSrt(cues));
+  out.forEach((c, i) => {
+    assert.ok(c.end > c.start, `legenda ${i + 1} com tempo inválido`);
+    if (i) assert.ok(c.start >= out[i - 1].end - 0.001, `legenda ${i + 1} sobrepõe a anterior`);
+  });
+});
