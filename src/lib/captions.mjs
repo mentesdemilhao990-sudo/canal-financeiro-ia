@@ -45,13 +45,21 @@ export function srtTime(sec) {
 }
 
 export function toSrt(cues) {
+  // A IA de voz às vezes devolve palavras com tempo zero ou fora de ordem
+  // (ex.: na emenda entre dois blocos de narração). Aqui cada legenda fica
+  // sempre depois da anterior e com pelo menos MIN segundos na tela.
+  const MIN = 0.2;
+  let prevEnd = 0;
   return (
     cues
       .map((c, i) => {
-        // Pequena folga para a legenda não piscar entre frases, sem sobrepor a próxima.
+        const start = Math.max(c.start, prevEnd);
         const next = cues[i + 1];
-        const end = next ? Math.min(c.end + 0.25, next.start) : c.end + 0.25;
-        return `${i + 1}\n${srtTime(c.start)} --> ${srtTime(end)}\n${c.text}\n`;
+        // Pequena folga para a legenda não piscar entre frases, sem sobrepor a próxima.
+        let end = next ? Math.min(c.end + 0.25, next.start) : c.end + 0.25;
+        if (end < start + MIN) end = start + MIN;
+        prevEnd = end;
+        return `${i + 1}\n${srtTime(start)} --> ${srtTime(end)}\n${c.text}\n`;
       })
       .join("\n") + "\n"
   );

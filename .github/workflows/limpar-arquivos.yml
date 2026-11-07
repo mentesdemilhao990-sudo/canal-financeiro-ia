@@ -1,0 +1,32 @@
+# Apaga os arquivos guardados das execuções (vídeos, capas, legendas).
+# Os vídeos publicados continuam no YouTube; isto só remove as cópias de trabalho do GitHub.
+# Roda sozinho todo dia e também pode ser disparado à mão.
+name: Limpar arquivos antigos
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 3 * * *"
+
+permissions:
+  actions: write
+
+jobs:
+  limpar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/github-script@v7
+        with:
+          script: |
+            // Mantém só o que tem menos de 1 dia (a rodada de hoje ainda pode precisar).
+            const limite = Date.now() - 24 * 3600 * 1000;
+            const artefatos = await github.paginate(github.rest.actions.listArtifactsForRepo, {
+              owner: context.repo.owner, repo: context.repo.repo, per_page: 100,
+            });
+            let apagados = 0;
+            for (const a of artefatos) {
+              if (a.expired || new Date(a.created_at).getTime() > limite) continue;
+              await github.rest.actions.deleteArtifact({ owner: context.repo.owner, repo: context.repo.repo, artifact_id: a.id });
+              apagados++;
+            }
+            core.info(`Apagados: ${apagados} de ${artefatos.length}`);
