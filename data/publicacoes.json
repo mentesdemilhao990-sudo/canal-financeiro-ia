@@ -276,6 +276,67 @@
       "url": "https://youtu.be/M96Lm2rWqZA",
       "enviadoEm": "2026-11-05T18:59:51.572Z",
       "publicarEm": "2026-11-05T22:32:00.000Z"
+    },
+    {
+      "historico": [
+        {
+          "em": "2026-11-07T23:18:18.234Z",
+          "status": "enviando"
+        },
+        {
+          "em": "2026-11-07T23:18:22.022Z",
+          "status": "privado",
+          "nota": "enviado (public)"
+        },
+        {
+          "em": "2026-11-07T23:18:22.023Z",
+          "status": "publico",
+          "nota": "publicado (public)"
+        }
+      ],
+      "plataforma": "youtube",
+      "episodio": "2026-11-07-acoes-e-dividendos-longo",
+      "titulo": "VIVER DE DIVIDENDOS: O que Ninguém te Conta Antes de Começar",
+      "hashEpisodio": "e8aa13f042756d93",
+      "hashVideo": "4b001519f71318bb",
+      "duracao": 551.68,
+      "status": "publico",
+      "atualizadoEm": "2026-11-07T23:18:22.023Z",
+      "privacidade": "public",
+      "videoId": "rufpbcGNSWg",
+      "url": "https://youtu.be/rufpbcGNSWg",
+      "enviadoEm": "2026-11-07T23:18:22.022Z"
+    },
+    {
+      "historico": [
+        {
+          "em": "2026-11-07T23:18:22.045Z",
+          "status": "enviando"
+        },
+        {
+          "em": "2026-11-07T23:18:23.789Z",
+          "status": "privado",
+          "nota": "enviado (agendando)"
+        },
+        {
+          "em": "2026-11-07T23:18:23.789Z",
+          "status": "agendado",
+          "nota": "fica público às 20:49 (Brasília)"
+        }
+      ],
+      "plataforma": "youtube",
+      "episodio": "2026-11-07-acoes-e-dividendos-short",
+      "titulo": "Comprar AÇÕES te deixa rico ou quebra? Entenda o RISCO",
+      "hashEpisodio": "65c1db768ac61b43",
+      "hashVideo": "0a66f6694ffbd3e5",
+      "duracao": 49.172,
+      "status": "agendado",
+      "atualizadoEm": "2026-11-07T23:18:23.789Z",
+      "privacidade": "private",
+      "videoId": "5IpUC2AvMr0",
+      "url": "https://youtu.be/5IpUC2AvMr0",
+      "enviadoEm": "2026-11-07T23:18:23.789Z",
+      "publicarEm": "2026-11-07T23:49:00.000Z"
     }
   ]
 }
