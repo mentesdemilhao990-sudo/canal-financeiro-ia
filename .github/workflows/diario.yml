@@ -128,7 +128,7 @@ jobs:
           path: |
             episodes/*.json
             data/pautas.json
-          retention-days: 30
+          retention-days: 1
 
   renderizar:
     name: Gerar vídeos

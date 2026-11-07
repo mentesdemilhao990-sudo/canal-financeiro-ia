@@ -173,4 +173,4 @@ jobs:
           name: ${{ matrix.episodio }}
           path: out/${{ matrix.episodio }}/
           if-no-files-found: warn
-          retention-days: 30
+          retention-days: 1
