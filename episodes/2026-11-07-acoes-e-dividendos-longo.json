@@ -1,0 +1,365 @@
+{
+  "id": "2026-11-07-acoes-e-dividendos-longo",
+  "formato": "longo",
+  "title": "VIVER DE DIVIDENDOS: O que Ninguém te Conta Antes de Começar",
+  "description": "Você quer entender como funcionam as ações e os dividendos de forma simples e realista? Descubra o que realmente significa se tornar sócio de grandes empresas e por que tanta gente perde dinheiro logo no primeiro mês por ignorar o básico da renda variável.",
+  "tags": [
+    "ações",
+    "dividendos",
+    "renda variável",
+    "educação financeira",
+    "investimentos iniciantes",
+    "bolsa de valores",
+    "mente de milhão"
+  ],
+  "targetDurationSeconds": 632,
+  "disclaimer": "Conteúdo educativo. Valores ilustrativos, não é recomendação de investimento.",
+  "scenes": [
+    {
+      "id": "cena-1-gancho",
+      "template": "hook",
+      "narration": "Se você acha que investir em ações é coisa de gente rica ou um cassino disfarçado, olha só: você provavelmente gasta dinheiro todo mês em empresas da bolsa, seja pagando a conta de luz, usando a internet ou comprando remédio na farmácia. A grande virada de chave é que você pode deixar de ser apenas o cliente que paga a conta pra se tornar um dos donos desse negócio e receber uma fatia dos lucros. Mas calma, porque antes de sonhar com dinheiro caindo na conta sem fazer nada, tem um abismo entre o que te vendem na internet e a realidade nua e crua da renda variável.",
+      "data": {
+        "kicker": "RENDA VARIÁVEL NA REALIDADE",
+        "title": "Dono ou Apenas Consumidor?",
+        "subtitle": "O que você precisa saber antes de comprar a sua primeira ação"
+      }
+    },
+    {
+      "id": "cena-2-comparacao-socio-cliente",
+      "template": "split",
+      "narration": "Olha a loucura do nosso dia a dia. Você passa o mês inteiro trabalhando duro, recebe o seu salário e distribui quase tudo pras grandes empresas: banco, energia elétrica, telefonia, supermercado. O cliente só gasta. Já o sócio, que é quem comprou ações dessa empresa, tá do outro lado da mesa. Quando a empresa fatura, paga os custos e sobra lucro limpo, uma parte desse dinheiro precisa voltar obrigatoriamente pro bolso dos acionistas em forma de dividendos. Só que tem um porém gigantesco que a maioria ignora: ser sócio significa dividir tanto os dias de festa quanto os dias de tempestade.",
+      "data": {
+        "left": {
+          "label": "O Cliente Comum",
+          "icon": "warning",
+          "points": [
+            "Paga as contas do mês",
+            "Consome produtos e serviços",
+            "Dinheiro só sai do bolso"
+          ]
+        },
+        "right": {
+          "label": "O Sócio Investidor",
+          "icon": "growth",
+          "points": [
+            "Participa do negócio",
+            "Recebe parte do lucro líquido",
+            "Assume o risco da oscilação"
+          ]
+        }
+      }
+    },
+    {
+      "id": "cena-3-caso-marcos",
+      "template": "counter",
+      "narration": "Pra você enxergar isso com clareza, pensa comigo no caso do Marcos. Ele tem trinta anos, ganha três mil reais por mês e conseguiu, depois de muito suor, juntar dez mil reais. Ele via o noticiário falando do dólar a cinco reais e cinquenta e um centavos, da bolsa subindo e de pessoas recebendo dividendos pingando todo mês. O Marcos pensou: quer saber, cansei de deixar tudo parado rendendo migalhas, vou colocar esses dez mil reais em ações agora mesmo pra viver de renda passiva o mais rápido possível.",
+      "data": {
+        "label": "Economia guardada pelo Marcos para investir",
+        "from": 0,
+        "to": 10000,
+        "prefix": "R$ ",
+        "decimals": 0,
+        "trend": "up",
+        "caption": "Reserva acumulada com salário de R$ 3.000 mensais",
+        "badge": "Exemplo"
+      }
+    },
+    {
+      "id": "cena-4-oscilacao-patrimonio",
+      "template": "lineChart",
+      "narration": "O Marcos pegou os dez mil reais dele e comprou ações de duas grandes empresas conhecidas. Na primeira semana, viu o saldo subir pra dez mil e duzentos reais. Ficou animado, achou que tinha descoberto o segredo da riqueza. Só que no mês seguinte, veio uma crise lá fora, o mercado balançou e o saldo dele despencou pra oito mil e quinhentos reais. Ele bateu em desespero. Não conseguia dormir, achando que tinha jogado fora o dinheiro que demorou dois anos pra juntar. Sabe por que isso aconteceu com o Marcos?",
+      "data": {
+        "title": "Saldo da carteira do Marcos nos primeiros meses",
+        "xLabels": [
+          "Início",
+          "Semana 1",
+          "Mês 1",
+          "Mês 2",
+          "Mês 3"
+        ],
+        "valuePrefix": "R$ ",
+        "series": [
+          {
+            "label": "Valor na Corretora",
+            "color": "gold",
+            "values": [
+              10000,
+              10200,
+              9300,
+              8500,
+              9100
+            ]
+          }
+        ],
+        "caption": "A oscilação diária que assusta quem chega despreparado"
+      }
+    },
+    {
+      "id": "cena-5-alerta-e-curiosidade",
+      "template": "list",
+      "narration": "Aconteceu porque ninguém explicou pro Marcos duas coisas fundamentais. A primeira é que o preço da ação no gráfico oscila todo santo dia por pura expectativa das pessoas, mas o valor real do negócio não muda da noite pro dia. E a segunda coisa é a maior ilusão de todas sobre dividendos: existe uma pegadinha matemática que noventa por cento dos iniciantes não percebe quando recebe um dividendo na conta, e que faz muita gente tomar decisões desastrosas com o próprio dinheiro. Mas afinal, pra onde vai o dinheiro quando a bolsa cai e como os dividendos funcionam de verdade na prática?",
+      "data": {
+        "title": "O que não contaram para o investidor iniciante",
+        "items": [
+          "Preço de tela não reflete o valor do negócio",
+          "Oscilações de curto prazo testam o emocional",
+          "A ilusão matemática sobre o valor do dividendo",
+          "O que acontece com o saldo quando o lucro pinga"
+        ]
+      }
+    },
+    {
+      "id": "socio-vs-especulador",
+      "template": "split",
+      "narration": "Pra entender pra onde vai o dinheiro, pensa numa padaria no seu bairro. Se você compra metade dela por cinquenta mil reais, você não fica na calçada todo dia gritando pra ver se alguém paga sessenta mil nela. Você quer saber se os pães estão vendendo e quanto lucro sobrou no caixa, né? Na bolsa é a mesma coisa. Ser acionista não é apostar em corrida de cavalos. É virar sócio de empresas de verdade que vendem energia, remédios ou serviços pra milhões de pessoas. O preço na tela pisca todo segundo, mas o negócio continua funcionando.",
+      "data": {
+        "left": {
+          "label": "Especulador",
+          "icon": "warning",
+          "points": [
+            "Foca na oscilação diária",
+            "Compra por boato e euforia",
+            "Vende no primeiro desespero"
+          ]
+        },
+        "right": {
+          "label": "Sócio Real",
+          "icon": "safe",
+          "points": [
+            "Foca no lucro da empresa",
+            "Entende o modelo do negócio",
+            "Recebe parte do resultado"
+          ]
+        }
+      }
+    },
+    {
+      "id": "panico-curto-prazo",
+      "template": "bars",
+      "narration": "E por que o Marcos viu o saldo dele cair de dez mil pra oito mil e quinhentos reais? Porque o mercado oscila por puro nervosismo no curto prazo. Uma notícia sobre inflação, o dólar subindo pra cinco reais e cinquenta centavos ou boatos fazem muita gente vender no desespero. Só que, se a empresa continua faturando bem e dando lucro, essa queda de preço não significa falência. Significa apenas que, naquele dia, tinha mais gente assustada querendo vender do que comprar. Quem entende que é sócio não entra em pânico com o gráfico vermelho.",
+      "data": {
+        "title": "Oscilação de Curto Prazo vs Lucro",
+        "valuePrefix": "R$ ",
+        "items": [
+          {
+            "label": "Aporte inicial",
+            "value": 10000,
+            "color": "white"
+          },
+          {
+            "label": "Queda no susto",
+            "value": 8500,
+            "color": "red"
+          },
+          {
+            "label": "Lucro mantido",
+            "value": 11000,
+            "color": "green"
+          }
+        ],
+        "caption": "O preço varia por medo, mas o valor segue a geração de caixa"
+      }
+    },
+    {
+      "id": "calculo-dos-proventos",
+      "template": "counter",
+      "narration": "Agora, de onde vem o dividendo? Vamos pro exemplo do Marcos com números redondos. Imagina uma empresa hipotética que lucrou duzentos milhões de reais no ano. A diretoria reinveste metade pra crescer e reparte os outros cem milhões entre todos os acionistas. Se a empresa tem cem milhões de ações no total, cada ação recebe um real de dividendo. Se o Marcos tinha mil ações, caem mil reais limpos na conta dele. Parece dinheiro fácil pingando sem esforço, né? Só que aqui mora a grande pegadinha que quase ninguém percebe.",
+      "data": {
+        "label": "Dividendo creditado na conta",
+        "from": 0,
+        "to": 1000,
+        "prefix": "R$ ",
+        "trend": "up",
+        "badge": "Proventos",
+        "caption": "Mil ações com pagamento de R$ 1,00 por papel"
+      }
+    },
+    {
+      "id": "pegadinha-do-desconto",
+      "template": "split",
+      "narration": "Lembra daquela curiosidade que eu deixei no ar? Pois é: dividendo não é dinheiro grátis brotando do nada. O dividendo sai do próprio caixa da empresa. Se uma ação custa vinte reais e paga dois reais de dividendo, no dia seguinte ela passa a valer dezoito reais na bolsa. Você ganha dois reais na conta, mas a ação perde dois reais de valor. Naquele momento, seu patrimônio continua sendo os mesmos vinte reais. O dividendo não multiplicou sua riqueza instantaneamente; ele apenas transferiu o dinheiro da empresa pro seu bolso.",
+      "data": {
+        "left": {
+          "label": "Antes do Provento",
+          "icon": "coin",
+          "points": [
+            "Ação cotada a R$ 20,00",
+            "Saldo em conta: R$ 0,00",
+            "Patrimônio total: R$ 20,00"
+          ]
+        },
+        "right": {
+          "label": "Após o Desconto",
+          "icon": "chart",
+          "points": [
+            "Ação cotada a R$ 18,00",
+            "Dividendo na conta: R$ 2,00",
+            "Patrimônio total: R$ 20,00"
+          ]
+        }
+      }
+    },
+    {
+      "id": "poder-do-reinvestimento",
+      "template": "lineChart",
+      "narration": "Se é assim, por que viver de dividendos é tão falado? Porque a mágica não tá em gastar o dinheiro com pizza, tá em reinvestir. Quando o Marcos pega aqueles mil reais de dividendo e compra mais ações da mesma empresa, no ano seguinte ele recebe ainda mais dividendos, sem tirar um centavo novo do salário. É a famosa bola de neve dos juros compostos trabalhando pra você. Mas muito cuidado: tem três armadilhas comuns que destroem a rentabilidade do iniciante, e eu vou te mostrar cada uma delas agora mesmo.",
+      "data": {
+        "title": "Impacto de Reinvestir os Dividendos",
+        "xLabels": [
+          "Ano 1",
+          "Ano 3",
+          "Ano 5",
+          "Ano 10"
+        ],
+        "valuePrefix": "R$ ",
+        "series": [
+          {
+            "label": "Sem Reinvestir",
+            "color": "gold",
+            "values": [
+              10000,
+              11500,
+              13000,
+              17000
+            ]
+          },
+          {
+            "label": "Reinvestindo Tudo",
+            "color": "green",
+            "values": [
+              10000,
+              13000,
+              18500,
+              32000
+            ]
+          }
+        ],
+        "caption": "Valores ilustrativos comparando o poder dos aportes constantes"
+      }
+    },
+    {
+      "id": "armadilha-yield-alto",
+      "template": "split",
+      "narration": "A primeira grande armadilha é olhar só pra porcentagem de dividendos e esquecer a saúde da empresa. Muita gente vê uma ação pagando vinte por cento num ano e corre pra comprar. Sabe o que acontece? Às vezes a empresa só vendeu um prédio e esse ganho nunca mais vai se repetir. Ou pior: o negócio tá afundando e o número é ilusão. Ser sócio de verdade significa buscar empresas que dão lucro consistente ano após ano, com contas no lugar, e não promessas milagrosas.",
+      "data": {
+        "left": {
+          "label": "Armadilha Comum",
+          "icon": "warning",
+          "points": [
+            "Buscar dividendo alto demais",
+            "Ganhos que não se repetem",
+            "Empresas com dívidas altas"
+          ]
+        },
+        "right": {
+          "label": "Visão de Sócio",
+          "icon": "safe",
+          "points": [
+            "Lucros sólidos e constantes",
+            "Negócios essenciais e perenes",
+            "Foco na saúde da empresa"
+          ]
+        }
+      }
+    },
+    {
+      "id": "panico-cotacao",
+      "template": "counter",
+      "narration": "O segundo erro é o desespero na primeira queda da bolsa. Imagina colocar dez mil reais e ver o saldo cair pra oito mil e quinhentos, igualzinho ao Marcos. Quem não entende o jogo vende tudo no susto. Mas pensa na padaria: se o movimento caiu na semana, você vai vender sua parte pela metade do preço? Claro que não. Em renda variável, oscilações de quinze ou vinte por cento acontecem direto. Paciência aqui não é opcional, é regra básica.",
+      "data": {
+        "label": "Oscilação passageira de saldo",
+        "from": 10000,
+        "to": 8500,
+        "prefix": "R$ ",
+        "trend": "down",
+        "caption": "Quedas temporárias fazem parte da bolsa e não significam prejuízo real",
+        "badge": "-15%"
+      }
+    },
+    {
+      "id": "passo-a-passo-estrategia",
+      "template": "list",
+      "narration": "Pra você não cair nessas ciladas, segue esse plano prático em três passos. Primeiro: monte sua reserva de emergência antes de ir pra bolsa. Ela fica na renda fixa pra você nunca precisar vender ações no desespero. Segundo: diversifique. Nunca coloque todo o dinheiro numa empresa só. Divida em negócios diferentes e sólidos. Terceiro: tenha foco no longo prazo e reinvista cada centavo de dividendo que pingar na conta nos primeiros anos.",
+      "data": {
+        "title": "Plano Prático em 3 Passos",
+        "items": [
+          "1. Reserva de emergência pronta na renda fixa",
+          "2. Diversificação em várias empresas sólidas",
+          "3. Reinvestimento total de cada dividendo recebido"
+        ]
+      }
+    },
+    {
+      "id": "bola-de-neve-crescimento",
+      "template": "bars",
+      "narration": "Olha só como a bola de neve funciona na prática. No primeiro ano, com aportes pequenos, o Marcos recebe uns seiscentos reais de dividendos. Parece pouco, né? Mas ele compra mais ações com isso. No terceiro ano, o valor pula pra mil e quinhentos reais. No quinto ano, passa de três mil. E em dez anos, o efeito composto começa a bancar despesas do mês. Você não precisa acertar a ação da moda, só precisa de disciplina e tempo.",
+      "data": {
+        "title": "Evolução dos Dividendos Reinvestidos",
+        "valuePrefix": "R$ ",
+        "items": [
+          {
+            "label": "Ano 1",
+            "value": 600,
+            "color": "white"
+          },
+          {
+            "label": "Ano 3",
+            "value": 1500,
+            "color": "gold"
+          },
+          {
+            "label": "Ano 5",
+            "value": 3200,
+            "color": "green"
+          },
+          {
+            "label": "Ano 10",
+            "value": 8500,
+            "color": "green"
+          }
+        ],
+        "caption": "Exemplo ilustrativo do efeito bola de neve com aportes e disciplina"
+      }
+    },
+    {
+      "id": "resumo-mental-socio",
+      "template": "split",
+      "narration": "E o que fica desse papo todo? Investir em ações não é loteria nem cassino. É virar sócio de empresas reais, que entregam energia, alimentos e serviços essenciais todo dia. De um lado, existem os riscos e as oscilações naturais do mercado. Do outro, tá a chance concreta de construir uma renda que cresce junto com a economia e trabalha por você enquanto você dorme.",
+      "data": {
+        "left": {
+          "label": "Mentalidade Comum",
+          "icon": "coin",
+          "points": [
+            "Querer enriquecer do dia pra noite",
+            "Apostar na ação do momento",
+            "Desespero nas quedas diárias"
+          ]
+        },
+        "right": {
+          "label": "Mentalidade de Sócio",
+          "icon": "growth",
+          "points": [
+            "Participação em lucros verdadeiros",
+            "Foco no longo prazo e empresas fortes",
+            "Construção de renda passiva sólida"
+          ]
+        }
+      }
+    },
+    {
+      "id": "encerramento-comentarios",
+      "template": "outro",
+      "narration": "Agora comenta aí: se pingasse dividendo na sua conta hoje, você gastaria no fim de semana ou reinvestiria pra fazer a bola de neve crescer? Quero muito saber. E se essa conversa abriu a sua cabeça sobre investimentos, se inscreve no canal, porque toda semana tem vídeo novo pra te ajudar a dominar o seu dinheiro de verdade.",
+      "data": {
+        "title": "O seu futuro financeiro\ncomeça com paciência",
+        "points": [
+          "Comece com reserva de emergência pronta",
+          "Escolha empresas lucrativas e sólidas",
+          "Deixe o tempo multiplicar o seu patrimônio"
+        ],
+        "cta": "Inscreva-se"
+      }
+    }
+  ]
+}

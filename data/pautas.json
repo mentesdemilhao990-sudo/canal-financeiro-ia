@@ -88,6 +88,28 @@
         "Bets não são investimento: O impacto na sua economia"
       ],
       "modelo": "ollama:qwen2.5:7b"
+    },
+    {
+      "data": "2026-11-07",
+      "tema": "acoes-e-dividendos",
+      "nome": "Ações e dividendos",
+      "pontos": 11.1,
+      "manchetes": [
+        "Dólar fecha em alta e chega a R$ 5,51; Ibovespa avança 1,39% - TV Guararapes",
+        "Ibovespa hoje: bolsa avança com balanços e dados dos EUA - Itamaraju Notícias",
+        "Bolsa em queda, Selic sob pressão e dividendos: o que movimentou os investidores na semana - Estadão",
+        "Tendências 09/11/2026 | das principais ações da Bolsa - XP Investimentos",
+        "De venda a compra: o que fez o BB-BI mudar de ideia sobre a Sabesp (SBSP3) e elevar o preço-alvo das ações em quase 50% - Seu Dinheiro"
+      ],
+      "episodios": [
+        "2026-11-07-acoes-e-dividendos-longo",
+        "2026-11-07-acoes-e-dividendos-short"
+      ],
+      "titulos": [
+        "VIVER DE DIVIDENDOS: O que Ninguém te Conta Antes de Começar",
+        "Comprar AÇÕES te deixa rico ou quebra? Entenda o RISCO"
+      ],
+      "modelo": "gemini:gemini-3.8-flash"
     }
   ]
 }

@@ -1,0 +1,110 @@
+{
+  "id": "2026-11-07-acoes-e-dividendos-short",
+  "formato": "short",
+  "title": "Comprar AÇÕES te deixa rico ou quebra? Entenda o RISCO",
+  "description": "Comprar ações não é aposta de cassino, mas também não tem garantia de retorno fácil. Entenda o que significa de verdade virar sócio de uma empresa na Bolsa e quais cuidados você precisa tomar antes de começar.",
+  "tags": [
+    "ações",
+    "dividendos",
+    "bolsa de valores",
+    "educação financeira",
+    "renda variável",
+    "investimentos iniciantes"
+  ],
+  "targetDurationSeconds": 51,
+  "disclaimer": "Conteúdo educativo. Valores ilustrativos, não é recomendação de investimento.",
+  "scenes": [
+    {
+      "id": "cena-1-hook",
+      "template": "hook",
+      "narration": "Muita gente acha que comprar ação é loteria. Mas olha só: você vira dono de um pedacinho de um negócio real.",
+      "data": {
+        "kicker": "Renda Variável",
+        "title": "Comprar Ação é Aposta?",
+        "subtitle": "O que realmente acontece ao investir na Bolsa"
+      }
+    },
+    {
+      "id": "cena-2-socio",
+      "template": "split",
+      "narration": "Pensa comigo. O Lucas colocou cem reais numa grande empresa. Ele não trabalha lá, mas ganha direito a uma parte do lucro: os dividendos.",
+      "data": {
+        "left": {
+          "label": "Cliente",
+          "icon": "coin",
+          "points": [
+            "Paga pelo serviço",
+            "Gera a receita da firma"
+          ]
+        },
+        "right": {
+          "label": "Acionista",
+          "icon": "growth",
+          "points": [
+            "Dono de uma fatia",
+            "Recebe parte do lucro"
+          ]
+        }
+      }
+    },
+    {
+      "id": "cena-3-dividendos",
+      "template": "counter",
+      "narration": "Se a empresa vai bem, pinga dinheiro na conta dele. Bom demais, né? Só que agora vem a parte que ninguém te conta.",
+      "data": {
+        "label": "Proventos Recebidos (Exemplo)",
+        "from": 0,
+        "to": 150,
+        "prefix": "R$ ",
+        "decimals": 0,
+        "trend": "up",
+        "caption": "Distribuição de lucros aos acionistas",
+        "badge": "Lucro"
+      }
+    },
+    {
+      "id": "cena-4-risco",
+      "template": "lineChart",
+      "narration": "Se o negócio enfrenta crise, o preço despenca. Renda variável oscila e não existe garantia nenhuma de lucro.",
+      "data": {
+        "title": "Oscilação de Preço (Exemplo)",
+        "xLabels": [
+          "Mês 1",
+          "Mês 2",
+          "Mês 3",
+          "Mês 4",
+          "Mês 5"
+        ],
+        "valuePrefix": "R$ ",
+        "series": [
+          {
+            "label": "Valor da cota",
+            "color": "gold",
+            "values": [
+              100,
+              115,
+              85,
+              95,
+              120
+            ]
+          }
+        ],
+        "caption": "O valor oscila com o mercado e os resultados"
+      }
+    },
+    {
+      "id": "cena-5-conclusao",
+      "template": "outro",
+      "narration": "Ação é parceria de longo prazo, não aposta. Você teria estômago pra isso? Comenta aí, e se inscreve no canal pra ver mais.",
+      "data": {
+        "title": "Ação é Parceria,\nNão Bilhete Premiado",
+        "points": [
+          "Você vira sócio do negócio",
+          "Lucro e risco andam juntos",
+          "Foco sempre no longo prazo"
+        ],
+        "cta": "Siga para mais"
+      }
+    }
+  ]
+}
