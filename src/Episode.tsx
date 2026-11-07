@@ -14,7 +14,7 @@ import { LineChart } from "./scenes/LineChart";
 import { Bars } from "./scenes/Bars";
 import { List } from "./scenes/List";
 import { Outro } from "./scenes/Outro";
-import { Divisoria, PainelLateral, PalcoHorizontal } from "./components/Landscape";
+import { PalcoHorizontal, SeloParte } from "./components/Landscape";
 
 ensureFonts();
 
@@ -45,10 +45,10 @@ export const EpisodeVideo: React.FC<EpisodeProps> = ({ episode, timeline, channe
           <Sequence key={scene.id} from={from} durationInFrames={Math.max(1, to - from)} name={`${i + 1}. ${scene.template}`}>
             {horizontal ? (
               <SceneShell duration={to - from} index={i}>
-                <PainelLateral episode={episode} index={i} />
                 <PalcoHorizontal duration={to - from}>
                   <Comp scene={scene} duration={to - from} channel={channel} episode={episode} />
                 </PalcoHorizontal>
+                <SeloParte episode={episode} index={i} />
               </SceneShell>
             ) : (
               <SceneShell duration={to - from} index={i}>
@@ -58,7 +58,6 @@ export const EpisodeVideo: React.FC<EpisodeProps> = ({ episode, timeline, channe
           </Sequence>
         );
       })}
-      {horizontal && <Divisoria />}
       <Header name={channel.name} />
       <Captions words={words} />
       {audio.narration && <Html5Audio src={staticFile(audio.narration)} />}

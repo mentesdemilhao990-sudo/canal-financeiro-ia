@@ -4,10 +4,12 @@ import type { SceneProps } from "../types";
 import { C, fmtNumber } from "../theme";
 import { BODY, DISPLAY } from "../fonts";
 import { Stage } from "../components/SceneShell";
+import { useHorizontal } from "../components/Landscape";
 import { Caption, Kicker, Panel, useIn } from "./common";
 
 export const Counter: React.FC<SceneProps<"counter">> = ({ scene, duration }) => {
   const frame = useCurrentFrame();
+  const horizontal = useHorizontal();
   const d = scene.data;
   const end = Math.max(40, Math.round(duration * 0.78));
   const k = interpolate(frame, [14, end], [0, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp", easing: Easing.inOut(Easing.cubic) });
@@ -20,7 +22,7 @@ export const Counter: React.FC<SceneProps<"counter">> = ({ scene, duration }) =>
   return (
     <Stage>
       <Kicker text={d.label} color={C.gold} />
-      <Panel glow={color} style={{ marginTop: 50, padding: "60px 50px", width: 940, display: "flex", flexDirection: "column", alignItems: "center" }}>
+      <Panel glow={color} style={{ marginTop: 50, padding: "60px 50px", width: horizontal ? 1300 : 940, display: "flex", flexDirection: "column", alignItems: "center" }}>
         <div style={{ display: "flex", alignItems: "center", gap: 20, transform: `translateX(${shake}px)` }}>
           <svg width={90} height={90} viewBox="0 0 100 100" style={{ transform: d.trend === "down" ? "rotate(180deg)" : undefined }}>
             <path d="M50 12 L88 60 H62 V90 H38 V60 H12 Z" fill={color} />

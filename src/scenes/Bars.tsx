@@ -4,24 +4,26 @@ import type { SceneProps } from "../types";
 import { C, fmtNumber, seriesColor } from "../theme";
 import { BODY, DISPLAY } from "../fonts";
 import { Stage } from "../components/SceneShell";
+import { useHorizontal } from "../components/Landscape";
 import { Caption, Panel, Title } from "./common";
 
 export const Bars: React.FC<SceneProps<"bars">> = ({ scene, duration }) => {
   const frame = useCurrentFrame();
   const d = scene.data;
   const max = Math.max(...d.items.map((i) => i.value));
-  const H = 620;
+  const horizontal = useHorizontal();
+  const H = horizontal ? 430 : 620;
   return (
     <Stage>
       <Title text={d.title} size={96} />
-      <Panel style={{ marginTop: 40, padding: "40px 40px 30px", width: 940 }}>
+      <Panel style={{ marginTop: 40, padding: "40px 40px 30px", width: horizontal ? 1500 : 940 }}>
         <div style={{ display: "flex", justifyContent: "space-around", alignItems: "flex-end", height: H + 150 }}>
           {d.items.map((it, i) => {
             const start = 10 + i * Math.round(duration * 0.12);
             const k = interpolate(frame, [start, start + 35], [0, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp", easing: Easing.out(Easing.cubic) });
             const col = seriesColor(it.color);
             return (
-              <div key={i} style={{ display: "flex", flexDirection: "column", alignItems: "center", width: 760 / d.items.length }}>
+              <div key={i} style={{ display: "flex", flexDirection: "column", alignItems: "center", width: (horizontal ? 1300 : 760) / d.items.length }}>
                 <div style={{ fontFamily: DISPLAY, fontSize: 58, color: col, opacity: k, marginBottom: 12 }}>
                   {d.valuePrefix}
                   {fmtNumber(it.value * k)}

@@ -3,6 +3,7 @@ import type { SceneProps } from "../types";
 import { C } from "../theme";
 import { BODY, DISPLAY } from "../fonts";
 import { Stage } from "../components/SceneShell";
+import { useHorizontal } from "../components/Landscape";
 import { Icon } from "../components/Icons";
 import { Panel, useIn } from "./common";
 
@@ -12,10 +13,11 @@ const Card: React.FC<{
   color: string;
   from: number;
 }> = ({ side, delay, color, from }) => {
+  const horizontal = useHorizontal();
   const p = useIn(delay);
   const icon = useIn(delay + 6, { damping: 30, stiffness: 60 });
   return (
-    <Panel glow={color} style={{ width: 440, padding: "50px 34px 46px", opacity: p, transform: `translateX(${(1 - p) * from}px)` }}>
+    <Panel glow={color} style={{ width: horizontal ? 760 : 440, padding: "50px 34px 46px", opacity: p, transform: `translateX(${(1 - p) * from}px)` }}>
       <div style={{ display: "flex", justifyContent: "center" }}>
         <Icon name={side.icon} size={150} color={color} progress={icon} />
       </div>
@@ -26,7 +28,7 @@ const Card: React.FC<{
           return (
             <div key={i} style={{ display: "flex", gap: 16, alignItems: "flex-start", opacity: q, transform: `translateY(${(1 - q) * 16}px)` }}>
               <div style={{ width: 14, height: 14, borderRadius: 7, background: color, marginTop: 13, flexShrink: 0 }} />
-              <span style={{ fontFamily: BODY, fontWeight: 700, fontSize: 36, color: C.ink, lineHeight: 1.25 }}>{pt}</span>
+              <span style={{ fontFamily: BODY, fontWeight: 700, fontSize: horizontal ? 40 : 36, color: C.ink, lineHeight: 1.25 }}>{pt}</span>
             </div>
           );
         })}
@@ -37,11 +39,12 @@ const Card: React.FC<{
 
 export const Split: React.FC<SceneProps<"split">> = ({ scene, duration }) => {
   const { left, right } = scene.data;
+  const horizontal = useHorizontal();
   const rightDelay = Math.round(duration * 0.42);
   const vs = useIn(rightDelay - 6, { damping: 9, stiffness: 160 });
   return (
     <Stage>
-      <div style={{ display: "flex", gap: 60, alignItems: "stretch", position: "relative" }}>
+      <div style={{ display: "flex", gap: horizontal ? 140 : 60, alignItems: "stretch", position: "relative" }}>
         <Card side={left} delay={4} color={C.gold} from={-120} />
         <Card side={right} delay={rightDelay} color={C.green} from={120} />
         <div
