@@ -12,7 +12,7 @@ const PAD = { l: 30, r: 40, t: 90, b: 70 };
 export const LineChart: React.FC<SceneProps<"lineChart">> = ({ scene, duration }) => {
   const frame = useCurrentFrame();
   const horizontal = useHorizontal();
-  const W = horizontal ? 1700 : 900;
+  const W = horizontal ? 1560 : 900;
   const H = horizontal ? 560 : 640;
   const d = scene.data;
   const all = d.series.flatMap((s) => s.values);

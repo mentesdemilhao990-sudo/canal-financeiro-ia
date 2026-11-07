@@ -17,7 +17,7 @@ const Card: React.FC<{
   const p = useIn(delay);
   const icon = useIn(delay + 6, { damping: 30, stiffness: 60 });
   return (
-    <Panel glow={color} style={{ width: horizontal ? 760 : 440, padding: "50px 34px 46px", opacity: p, transform: `translateX(${(1 - p) * from}px)` }}>
+    <Panel glow={color} style={{ width: horizontal ? 640 : 440, padding: "50px 34px 46px", opacity: p, transform: `translateX(${(1 - p) * from}px)` }}>
       <div style={{ display: "flex", justifyContent: "center" }}>
         <Icon name={side.icon} size={150} color={color} progress={icon} />
       </div>
@@ -44,7 +44,7 @@ export const Split: React.FC<SceneProps<"split">> = ({ scene, duration }) => {
   const vs = useIn(rightDelay - 6, { damping: 9, stiffness: 160 });
   return (
     <Stage>
-      <div style={{ display: "flex", gap: horizontal ? 140 : 60, alignItems: "stretch", position: "relative" }}>
+      <div style={{ display: "flex", gap: horizontal ? 110 : 60, alignItems: "stretch", position: "relative" }}>
         <Card side={left} delay={4} color={C.gold} from={-120} />
         <Card side={right} delay={rightDelay} color={C.green} from={120} />
         <div
