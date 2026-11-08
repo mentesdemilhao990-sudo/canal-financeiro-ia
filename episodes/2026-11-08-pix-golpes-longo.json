@@ -1,0 +1,358 @@
+{
+  "id": "2026-11-08-pix-golpes-longo",
+  "formato": "longo",
+  "title": "Novo GOLPE do PIX: Como Proteger sua CONTA Agora",
+  "description": "Você sabia que os golpes bancários estão cada vez mais sofisticados e usando o medo para esvaziar contas? Entenda neste vídeo como funcionam as fraudes pelo Pix, acompanhe um caso real e descubra o que fazer para blindar o seu patrimônio hoje mesmo.",
+  "tags": [
+    "golpes pix",
+    "segurança bancária",
+    "educação financeira",
+    "fraudes financeiras",
+    "proteger dinheiro",
+    "mente de milhão",
+    "reserva de emergência"
+  ],
+  "targetDurationSeconds": 603,
+  "disclaimer": "Conteúdo educativo. Valores ilustrativos, não é recomendação de investimento.",
+  "scenes": [
+    {
+      "id": "cena-1-gancho",
+      "template": "hook",
+      "narration": "Você sabia que hoje um brasileiro cai em um golpe a cada poucos segundos? O Pix facilitou demais a nossa vida, mas virou a arma predileta dos criminosos. E não ache que isso só pega quem não entende de internet. De trabalhador comum a artistas de televisão, todo mundo virou alvo. Só nos últimos dias vimos órgãos de proteção e a polícia alertando sobre novas fraudes que estão esvaziando contas bancárias. Se você tem qualquer valor guardado ou usa o celular no dia a dia, precisa prestar muita atenção no que vou te mostrar antes de abrir o aplicativo do seu banco hoje.",
+      "data": {
+        "kicker": "ALERTA FINANCEIRO",
+        "title": "GOLPES NO PIX: Como se Proteger",
+        "subtitle": "O que as quadrilhas fazem pra esvaziar sua conta em poucos minutos"
+      }
+    },
+    {
+      "id": "cena-2-contexto",
+      "template": "split",
+      "narration": "O grande perigo não é a ferramenta do Pix, mas o teatro profissional que criaram em volta dele. Antigamente o golpe vinha com português errado ou promessa milagrosa de dinheiro fácil. Hoje mudou completamente. Eles usam ligações que imitam a central verdadeira do seu banco, com música de espera, som de escritório e até seus dados pessoais já confirmados na tela. Eles usam o seu próprio pânico contra você, fazendo parecer que a sua conta foi invadida e que cada segundo de demora vai te custar tudo o que você tem guardado.",
+      "data": {
+        "left": {
+          "label": "Golpes Antigos",
+          "icon": "warning",
+          "points": [
+            "Mensagens com erros de português",
+            "Promessas absurdas de dinheiro fácil",
+            "Links óbvios e suspeitos"
+          ]
+        },
+        "right": {
+          "label": "Golpes Atuais",
+          "icon": "safe",
+          "points": [
+            "Falsa central idêntica à do banco",
+            "Uso de dados reais da vítima",
+            "Pressão psicológica e urgência"
+          ]
+        }
+      }
+    },
+    {
+      "id": "cena-3-personagem",
+      "template": "counter",
+      "narration": "Pensa no caso concreto do Marcos. Ele tem trinta e oito anos, ganha quatro mil reais por mês e passou dois anos guardando quinhentos reais todo santo mês, com muito sacrifício. Ele conseguiu juntar doze mil reais pra montar a reserva de emergência da família. O Marcos sempre se considerou um cara precavido: não clicava em link estranho, não acreditava em dinheiro fácil e tomava todo cuidado do mundo no aplicativo.",
+      "data": {
+        "label": "Reserva de Emergência do Marcos",
+        "from": 0,
+        "to": 12000,
+        "prefix": "R$ ",
+        "trend": "up",
+        "caption": "Dois anos economizando R$ 500 por mês com salário de R$ 4.000",
+        "badge": "Reserva"
+      }
+    },
+    {
+      "id": "cena-4-a-ligacao",
+      "template": "bars",
+      "narration": "Só que numa terça feira comum, no meio do expediente de trabalho, o celular dele tocou. Uma voz calma e profissional disse que uma transferência suspeita de três mil e quinhentos reais estava em andamento na conta dele. Se não tivesse sido ele, ele deveria confirmar o cancelamento na hora. Pensa comigo: na correria do dia a dia, com a cabeça cheia, você ouve que estão roubando seu dinheiro. O primeiro impulso é o desespero.",
+      "data": {
+        "title": "A Falsa Transação Criada no Golpe",
+        "valuePrefix": "R$ ",
+        "items": [
+          {
+            "label": "Reserva do Marcos",
+            "value": 12000,
+            "color": "green"
+          },
+          {
+            "label": "Falso débito alegado",
+            "value": 3500,
+            "color": "red"
+          }
+        ],
+        "caption": "O susto usado pelo criminoso para desligar a razão da vítima"
+      }
+    },
+    {
+      "id": "cena-5-o-prejuizo",
+      "template": "counter",
+      "narration": "E foi aí que a armadilha se fechou. A falsa atendente disse que, pra proteger o saldo restante, o Marcos precisava fazer uma transferência de segurança pra uma conta provisória do sistema de segurança. Garantiram que em cinco minutos o dinheiro voltaria pra conta dele. Apavorado com a ideia de perder tudo, ele fez um Pix de cinco mil reais. Em dez segundos a ligação caiu, o aplicativo desconectou e o dinheiro evaporou.",
+      "data": {
+        "label": "Saldo Restante Após o Golpe",
+        "from": 12000,
+        "to": 7000,
+        "prefix": "R$ ",
+        "trend": "down",
+        "caption": "Pix de R$ 5.000 enviado sob pressão da falsa central de segurança",
+        "badge": "Prejuízo"
+      }
+    },
+    {
+      "id": "cena-6-curiosidade",
+      "template": "list",
+      "narration": "Mas por que uma pessoa honesta e inteligente cai em uma cilada dessa? E mais importante: existe um detalhe que os golpistas sempre usam e uma única pergunta que desmonta qualquer falsa central telefônica na hora. O problema é que noventa por cento das pessoas não conhecem esse segredo e só descobrem quando a conta já está zerada. Segura aí, porque agora a gente vai abrir essa caixa preta e entender como você pode blindar o seu dinheiro de vez.",
+      "data": {
+        "title": "O Que Você Vai Entender Agora",
+        "items": [
+          "O gatilho mental que desliga a sua desconfiança",
+          "A pergunta que desarma o criminoso em 10 segundos",
+          "O passo a passo para nunca ser a próxima vítima"
+        ]
+      }
+    },
+    {
+      "id": "etapas-do-golpe",
+      "template": "list",
+      "narration": "E aí vem a parte que ninguém te conta: esses caras não invadem o seu aplicativo, eles invadem a sua mente. O roteiro tem três fases certeiras. Primeiro, criam o pânico dizendo que tem uma compra enorme aprovada. Depois, vem o senso de urgência: você precisa agir em minutos antes de perder tudo. E por fim, oferecem a saída mágica, que é mandar seu saldo pra uma tal conta segura. Com medo, o cérebro desliga a razão e obedece.",
+      "data": {
+        "title": "O Roteiro Mental do Golpe",
+        "items": [
+          "1. Criação do pânico imediato",
+          "2. Pressão por urgência extrema",
+          "3. Oferta de uma falsa solução segura"
+        ]
+      }
+    },
+    {
+      "id": "prejuizo-medio",
+      "template": "counter",
+      "narration": "E olha o tamanho do estrago. Em média, um trabalhador perde entre três e quatro mil reais em uma ligação de dez minutos. Para quem ganha dois ou três salários mínimos, isso é meses de suor jogados fora. Não é dinheiro que sobra, é o aluguel, o mercado, a prestação da casa. O golpista limpa tudo o que vê: saldo, limite do cheque especial e até empréstimo pré-aprovado.",
+      "data": {
+        "label": "Prejuízo médio por vítima em falsa central",
+        "from": 0,
+        "to": 3500,
+        "prefix": "R$ ",
+        "trend": "up",
+        "caption": "Valores médios drenados entre saldo disponível e limite"
+      }
+    },
+    {
+      "id": "principais-golpes",
+      "template": "bars",
+      "narration": "Agora repara numa coisa: a falsa central é só uma das pontas. Entre os golpes mais comuns hoje, quase metade dos casos é essa falsa ligação bancária. Logo atrás vem a mensagem no celular se passando por filho ou parente com número novo, pedindo dinheiro urgente. E em terceiro, os falsos anúncios de produtos baratos demais nas redes. Todos com o mesmo objetivo: fazer você enviar o dinheiro voluntariamente.",
+      "data": {
+        "title": "Os Golpes Mais Comuns no Brasil",
+        "valueSuffix": "%",
+        "items": [
+          {
+            "label": "Falsa Central de Banco",
+            "value": 45,
+            "color": "red"
+          },
+          {
+            "label": "Falso Parente no Zap",
+            "value": 35,
+            "color": "gold"
+          },
+          {
+            "label": "Falsas Promoções na Web",
+            "value": 20,
+            "color": "white"
+          }
+        ],
+        "caption": "Estimativa de distribuição das ocorrências registradas"
+      }
+    },
+    {
+      "id": "banco-vs-golpista",
+      "template": "split",
+      "narration": "Mas como diferenciar um contato real de uma farsa? O banco de verdade nunca vai te ligar pedindo pra fazer transferência pra cancelar outra. Eles nunca pedem sua senha, códigos enviados por mensagem nem pedem pra instalar aplicativos de suporte. Já o golpista sempre exige que você faça um envio agora mesmo pra salvar seu saldo. Se pediram dinheiro pra proteger dinheiro, é golpe na certa.",
+      "data": {
+        "left": {
+          "label": "Banco de Verdade",
+          "icon": "safe",
+          "points": [
+            "Bloqueia transações por conta própria",
+            "Nunca pede Pix para cancelar compra",
+            "Não pede instalação de aplicativo"
+          ]
+        },
+        "right": {
+          "label": "Golpista na Linha",
+          "icon": "warning",
+          "points": [
+            "Pede transferência de segurança",
+            "Cria desespero e impede você de pensar",
+            "Pede códigos de validação por SMS"
+          ]
+        }
+      }
+    },
+    {
+      "id": "tempo-recuperacao",
+      "template": "lineChart",
+      "narration": "E sabe por que eles exigem tanta pressa? Por causa dessa linha do tempo. Se você percebe a fraude nos primeiros minutos, a chance de bloquear o valor no banco ainda existe. Mas depois de quinze ou trinta minutos, esse dinheiro já passou por várias contas diferentes e foi sacado. Em menos de uma hora, a chance de reaver qualquer centavo cai pra quase zero.",
+      "data": {
+        "title": "Chance Estimada de Recuperar o Valor",
+        "xLabels": [
+          "5 min",
+          "15 min",
+          "30 min",
+          "60 min",
+          "2h"
+        ],
+        "valueSuffix": "%",
+        "series": [
+          {
+            "label": "Chance de Devolução",
+            "color": "green",
+            "values": [
+              80,
+              45,
+              15,
+              5,
+              1
+            ]
+          }
+        ],
+        "caption": "Velocidade em que os valores são pulverizados entre contas"
+      }
+    },
+    {
+      "id": "segredo-revelado",
+      "template": "list",
+      "narration": "Lembra daquela pergunta que desmonta qualquer falsa central que eu prometi lá no começo? Anota aí: quando ligarem dizendo que são do seu banco, diga apenas: qual é o protocolo, porque eu vou desligar agora e retornar pelo número atrás do meu cartão. Se for golpe, a pessoa vai entrar em pânico, inventar ameaças e tentar te segurar na linha. Nenhum atendente real se incomoda quando você diz que vai ligar de volta no canal oficial.",
+      "data": {
+        "title": "A Pergunta que Desarma o Golpe",
+        "items": [
+          "1. Peça o número de protocolo do chamado",
+          "2. Diga que vai ligar no número do seu cartão",
+          "3. Desligue a chamada imediatamente"
+        ]
+      }
+    },
+    {
+      "id": "cena-13",
+      "template": "split",
+      "narration": "Mas além da ligação falsa, três erros bobos facilitam a vida dos criminosos. O primeiro é deixar o limite de transferência diário lá no teto, tipo dez mil ou vinte mil reais, mesmo quando a gente só gasta cinquenta na padaria. O segundo é usar a mesma senha pro banco e pras redes sociais. E o terceiro é o desespero de clicar no link da mensagem dizendo que a sua conta foi bloqueada. Se você faz alguma dessas coisas, você tá facilitando a vida do bandido.",
+      "data": {
+        "left": {
+          "label": "Vacilos comuns",
+          "icon": "warning",
+          "points": [
+            "Limite do Pix no teto",
+            "Mesma senha em tudo",
+            "Clicar em SMS urgente"
+          ]
+        },
+        "right": {
+          "label": "Postura blindada",
+          "icon": "safe",
+          "points": [
+            "Limite diário baixo",
+            "Duas etapas ativadas",
+            "Checagem pelo app"
+          ]
+        }
+      }
+    },
+    {
+      "id": "cena-14",
+      "template": "bars",
+      "narration": "Dá uma olhada nessa comparação. Quando a gente abre a conta, o banco costuma liberar um limite enorme, às vezes de quinze mil reais. Se alguém rouba seu acesso, o estrago é gigante. Mas se você vai no aplicativo e reduz esse teto pra mil reais de dia e duzentos reais à noite, o golpista simplesmente não consegue tirar quase nada. Você cria uma barreira simples que te dá tempo de respirar e cancelar qualquer transação.",
+      "data": {
+        "title": "Exposição Máxima Diária",
+        "valuePrefix": "R$ ",
+        "items": [
+          {
+            "label": "Padrão do Banco",
+            "value": 15000,
+            "color": "red"
+          },
+          {
+            "label": "Conta Blindada",
+            "value": 1000,
+            "color": "green"
+          },
+          {
+            "label": "Limite Noturno",
+            "value": 200,
+            "color": "gold"
+          }
+        ],
+        "caption": "Ajuste os limites diários nas configurações do seu banco"
+      }
+    },
+    {
+      "id": "cena-15",
+      "template": "list",
+      "narration": "Agora anota esse plano prático de quatro passos pra aplicar hoje mesmo. Primeiro: entre no aplicativo e baixe o limite do Pix pro que você realmente gasta. Segundo: guarde a sua reserva num banco diferente, que não fique no celular do dia a dia. Terceiro: ative a biometria pra autorizar pagamentos. E quarto: se cair em golpe, ligue pro banco na mesma hora e peça a abertura do Mecanismo Especial de Devolução.",
+      "data": {
+        "title": "Plano Prático em 4 Passos",
+        "items": [
+          "1. Reduza o limite do Pix diário e noturno",
+          "2. Deixe a reserva em conta fora do celular",
+          "3. Ative a biometria para pagamentos",
+          "4. Acione o MED imediatamente se houver golpe"
+        ]
+      }
+    },
+    {
+      "id": "cena-16",
+      "template": "counter",
+      "narration": "E isso funciona de verdade. Especialistas mostram que só de separar a conta dos gastos diários da conta da sua reserva, você reduz em mais de noventa e cinco por cento a chance de perder as economias de uma vida. Golpista procura presa fácil. Quando ele percebe que a conta tem travas, limites baixos e pede confirmação em duas etapas, ele prefere desistir.",
+      "data": {
+        "label": "Queda no risco ao separar contas e travar limites",
+        "from": 0,
+        "to": 95,
+        "suffix": "%",
+        "decimals": 0,
+        "trend": "up",
+        "caption": "Medidas simples reduzem quase todo o perigo",
+        "badge": "Segurança"
+      }
+    },
+    {
+      "id": "cena-17",
+      "template": "split",
+      "narration": "Pra resumir tudo: na dúvida, desligue. Não fale código por chamada, não clique em link de mensagem e nunca faça transferência de teste pra proteger saldo. Banco nenhum precisa do seu dinheiro pra cancelar compra falsa. Se falarem isso, desligue imediatamente e olhe seu extrato oficial no aplicativo. Simples assim.",
+      "data": {
+        "left": {
+          "label": "Na dúvida",
+          "icon": "warning",
+          "points": [
+            "Desligue a chamada",
+            "Não passe códigos",
+            "Nunca faça Pix de teste"
+          ]
+        },
+        "right": {
+          "label": "Ação correta",
+          "icon": "safe",
+          "points": [
+            "Ligue atrás do cartão",
+            "Consulte extrato no app",
+            "Acione o banco com calma"
+          ]
+        }
+      }
+    },
+    {
+      "id": "cena-18",
+      "template": "outro",
+      "narration": "Dinheiro custa muito suor pra ser entregue pra golpista. Agora me conta nos comentários: você já recebeu ligação suspeita do seu banco ou conhece alguém que caiu num golpe desses? Vamos trocar essa ideia. E se essa conversa te ajudou a proteger seu bolso, se inscreve aí no canal que toda semana tem mais. Um abraço e até a próxima!",
+      "data": {
+        "title": "Proteja seu dinheiro.\nAssuma o controle.",
+        "points": [
+          "Limite baixo salva seu bolso",
+          "Desconfie de ligações alarmistas",
+          "Reserva guardada em local seguro"
+        ],
+        "cta": "Inscreva-se"
+      }
+    }
+  ]
+}

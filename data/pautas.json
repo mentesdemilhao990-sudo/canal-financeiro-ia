@@ -110,6 +110,28 @@
         "Comprar AÇÕES te deixa rico ou quebra? Entenda o RISCO"
       ],
       "modelo": "gemini:gemini-3.8-flash"
+    },
+    {
+      "data": "2026-11-08",
+      "tema": "pix-golpes",
+      "nome": "Golpes financeiros e Pix",
+      "pontos": 22.4,
+      "manchetes": [
+        "Hoje no TecMundo (6): Motorola supera iPhone em ranking de câmeras, Anatel combate golpes e mais",
+        "Motorola Signature 27: smartphone de R$ 12 mil aposta em câmera e bateria de ponta",
+        "Vivo abre pré-venda do Motorola Signature 27 com até R$ 4.800 de desconto",
+        "Bora ajudar a campanha Lula: doe R$ 13 até o dia 11! A sua ajuda faz diferença",
+        "PT abre 'vaquinha virtual' com meta de R$ 7 milhões em doações para quitar despesas de campanha de Lula"
+      ],
+      "episodios": [
+        "2026-11-08-pix-golpes-longo",
+        "2026-11-08-pix-golpes-short"
+      ],
+      "titulos": [
+        "Novo GOLPE do PIX: Como Proteger sua CONTA Agora",
+        "Os 3 SINAIS claros de que aquele Pix é GOLPE"
+      ],
+      "modelo": "gemini:gemini-3.8-flash"
     }
   ]
 }

@@ -1,0 +1,94 @@
+{
+  "id": "2026-11-08-pix-golpes-short",
+  "formato": "short",
+  "title": "Os 3 SINAIS claros de que aquele Pix é GOLPE",
+  "description": "Recebeu mensagem pedindo dinheiro com urgência? Cuidado antes de transferir! Entenda como funciona a armadilha do Pix mais comum do momento e aprenda uma regra simples de segurança para blindar o seu bolso.",
+  "tags": [
+    "golpe do pix",
+    "educação financeira",
+    "segurança digital",
+    "dinheiro",
+    "finanças pessoais",
+    "mente de milhao",
+    "dicas financeiras"
+  ],
+  "targetDurationSeconds": 52,
+  "disclaimer": "Conteúdo educativo. Valores ilustrativos, não é recomendação de investimento.",
+  "scenes": [
+    {
+      "id": "cena-1",
+      "template": "hook",
+      "narration": "Um amigo te manda mensagem no sufoco pedindo duzentos reais pra ontem. Você manda na hora, né? É exatamente aí que mora o perigo.",
+      "data": {
+        "kicker": "CUIDADO COM A PRESSA",
+        "title": "Golpe do Pix Urgente",
+        "subtitle": "Como não cair na cilada mais comum"
+      }
+    },
+    {
+      "id": "cena-2",
+      "template": "split",
+      "narration": "O golpista usa sempre a mesma arma: a pressa. Ele clona a foto de quem você conhece, inventa uma emergência e pede socorro.",
+      "data": {
+        "left": {
+          "label": "O Golpe",
+          "icon": "warning",
+          "points": [
+            "Foto clonada",
+            "Pedido urgente",
+            "Conta em outro nome"
+          ]
+        },
+        "right": {
+          "label": "A Realidade",
+          "icon": "safe",
+          "points": [
+            "Número falso",
+            "História inventada",
+            "Golpista lucrando"
+          ]
+        }
+      }
+    },
+    {
+      "id": "cena-3",
+      "template": "counter",
+      "narration": "Mas tem uma regra de ouro: a pausa de sessenta segundos. Antes de transferir, ligue por voz no número antigo da pessoa.",
+      "data": {
+        "label": "Tempo de pausa para confirmar",
+        "from": 0,
+        "to": 60,
+        "suffix": "s",
+        "trend": "up",
+        "caption": "Ligue no número oficial antes de pagar",
+        "badge": "Defesa"
+      }
+    },
+    {
+      "id": "cena-4",
+      "template": "list",
+      "narration": "Confira sempre o nome final na tela e nunca mande dinheiro se o destinatário for um desconhecido. Simples assim.",
+      "data": {
+        "title": "Checklist antifraude",
+        "items": [
+          "Ligue por voz no número salvo",
+          "Confira o titular da conta",
+          "Zero transferência na correria"
+        ]
+      }
+    },
+    {
+      "id": "cena-5",
+      "template": "outro",
+      "narration": "Segurança começa com calma. Já tentaram esse truque com você? Comenta aí e se inscreve no canal pra proteger seu bolso.",
+      "data": {
+        "title": "Proteja seu dinheiro\nNão decida na correria",
+        "points": [
+          "Desconfie da pressa",
+          "Confirme quem recebe"
+        ],
+        "cta": "Siga para mais"
+      }
+    }
+  ]
+}

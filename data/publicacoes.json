@@ -337,6 +337,68 @@
       "url": "https://youtu.be/5IpUC2AvMr0",
       "enviadoEm": "2026-11-07T23:18:23.789Z",
       "publicarEm": "2026-11-07T23:49:00.000Z"
+    },
+    {
+      "historico": [
+        {
+          "em": "2026-11-08T10:23:14.290Z",
+          "status": "enviando"
+        },
+        {
+          "em": "2026-11-08T10:23:17.726Z",
+          "status": "privado",
+          "nota": "enviado (agendando)"
+        },
+        {
+          "em": "2026-11-08T10:23:17.730Z",
+          "status": "agendado",
+          "nota": "fica público às 10:41 (Brasília)"
+        }
+      ],
+      "plataforma": "youtube",
+      "episodio": "2026-11-08-pix-golpes-longo",
+      "titulo": "Novo GOLPE do PIX: Como Proteger sua CONTA Agora",
+      "hashEpisodio": "25f4cff119ed9a40",
+      "hashVideo": "610f605ddef55c83",
+      "duracao": 514.848,
+      "status": "agendado",
+      "atualizadoEm": "2026-11-08T10:23:17.730Z",
+      "privacidade": "private",
+      "videoId": "pZOS7g7rsI0",
+      "url": "https://youtu.be/pZOS7g7rsI0",
+      "enviadoEm": "2026-11-08T10:23:17.726Z",
+      "publicarEm": "2026-11-08T13:41:00.000Z"
+    },
+    {
+      "historico": [
+        {
+          "em": "2026-11-08T10:23:17.762Z",
+          "status": "enviando"
+        },
+        {
+          "em": "2026-11-08T10:23:19.824Z",
+          "status": "privado",
+          "nota": "enviado (agendando)"
+        },
+        {
+          "em": "2026-11-08T10:23:19.840Z",
+          "status": "agendado",
+          "nota": "fica público às 16:29 (Brasília)"
+        }
+      ],
+      "plataforma": "youtube",
+      "episodio": "2026-11-08-pix-golpes-short",
+      "titulo": "Os 3 SINAIS claros de que aquele Pix é GOLPE",
+      "hashEpisodio": "8c5ec6d5699de6bf",
+      "hashVideo": "4324588179090510",
+      "duracao": 50.636,
+      "status": "agendado",
+      "atualizadoEm": "2026-11-08T10:23:19.840Z",
+      "privacidade": "private",
+      "videoId": "_5A6oraIvjk",
+      "url": "https://youtu.be/_5A6oraIvjk",
+      "enviadoEm": "2026-11-08T10:23:19.824Z",
+      "publicarEm": "2026-11-08T19:29:00.000Z"
     }
   ]
 }
