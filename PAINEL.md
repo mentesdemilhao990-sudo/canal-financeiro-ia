@@ -1,13 +1,13 @@
 # 📊 Painel · Mente de Milhão
 
-_Atualizado em 08/11/2026, 07:23 (Brasília). Este arquivo é gerado sozinho: não edite à mão._
+_Atualizado em 08/11/2026, 10:13 (Brasília). Este arquivo é gerado sozinho: não edite à mão._
 
 ## Chaves de segurança
 
 | O quê | Situação |
 | --- | --- |
 | Credenciais do YouTube (Secrets) | ✅ configuradas |
-| envia vídeos ao YouTube (sempre como privados) | 🟢 **ligado** |
+| envia vídeos ao YouTube (sempre como privados) | ⚪ desligado (`YOUTUBE_PUBLICACAO`) |
 | envia as respostas que você aprovou | ⚪ desligado (`YOUTUBE_RESPOSTAS`) |
 | responde sozinho só comentários simples (elogios curtos) | ⚪ desligado (`YOUTUBE_RESPOSTA_AUTOMATICA`) |
 
@@ -15,16 +15,16 @@ Com tudo desligado, os workflows só **simulam**: nada é enviado nem respondido
 
 ## Cota do YouTube hoje
 
-3 de 9000 unidades · 2 de 10 envios de vídeo (zera à meia-noite do Pacífico, 4h ou 5h em Brasília).
+16 de 9000 unidades · 2 de 10 envios de vídeo (zera à meia-noite do Pacífico, 4h ou 5h em Brasília).
 
 ## Vídeos
 
 | Episódio | Título | Status | Link | Views | 👍 | 💬 | Atualizado |
 | --- | --- | --- | --- | ---: | ---: | ---: | --- |
-| `2026-11-08-pix-golpes-short` | Os 3 SINAIS claros de que aquele Pix é GOLPE | ⏰ agendado | [abrir](https://youtu.be/_5A6oraIvjk) | — | — | — | 08/11/2026, 07:23 |
-| `2026-11-08-pix-golpes-longo` | Novo GOLPE do PIX: Como Proteger sua CONTA Agora | ⏰ agendado | [abrir](https://youtu.be/pZOS7g7rsI0) | — | — | — | 08/11/2026, 07:23 |
-| `2026-11-07-acoes-e-dividendos-short` | Comprar AÇÕES te deixa rico ou quebra? Entenda o RISCO | 🟢 público | [abrir](https://youtu.be/5IpUC2AvMr0) | 11 | 1 | 0 | 07/11/2026, 20:18 |
-| `2026-11-07-acoes-e-dividendos-longo` | VIVER DE DIVIDENDOS: O que Ninguém te Conta Antes de Começar | 🟢 público | [abrir](https://youtu.be/rufpbcGNSWg) | 1 | 0 | 0 | 07/11/2026, 20:18 |
+| `2026-11-08-pix-golpes-short` | Os 3 SINAIS claros de que aquele Pix é GOLPE | ⏰ agendado | [abrir](https://youtu.be/_5A6oraIvjk) | 0 | 0 | 0 | 08/11/2026, 07:23 |
+| `2026-11-08-pix-golpes-longo` | Novo GOLPE do PIX: Como Proteger sua CONTA Agora | ⏰ agendado | [abrir](https://youtu.be/pZOS7g7rsI0) | 0 | 0 | 0 | 08/11/2026, 07:23 |
+| `2026-11-07-acoes-e-dividendos-short` | Comprar AÇÕES te deixa rico ou quebra? Entenda o RISCO | 🟢 público | [abrir](https://youtu.be/5IpUC2AvMr0) | 12 | 1 | 0 | 07/11/2026, 20:18 |
+| `2026-11-07-acoes-e-dividendos-longo` | VIVER DE DIVIDENDOS: O que Ninguém te Conta Antes de Começar | 🟢 público | [abrir](https://youtu.be/rufpbcGNSWg) | 2 | 0 | 0 | 07/11/2026, 20:18 |
 | `2026-11-05-apostas-short` | Bets não são investimento: O impacto na sua economia | 🟢 público | [abrir](https://youtu.be/M96Lm2rWqZA) | 19 | 2 | 0 | 05/11/2026, 15:59 |
 | `2026-11-05-apostas-longo` | Bets não são investimento: O impacto na sua economia | 🟢 público | [abrir](https://youtu.be/OlsAA0VeooA) | 4 | 0 | 0 | 05/11/2026, 15:59 |
 | `2026-11-04-dolar-short` | Dólar alto, preços caros? Sim, mas você pode se proteger! | 🟢 público | [abrir](https://youtu.be/0jf-q8YoF6k) | 242 | 4 | 0 | 04/11/2026, 14:08 |
@@ -43,7 +43,7 @@ Com tudo desligado, os workflows só **simulam**: nada é enviado nem respondido
 
 ## Comentários
 
-Última leitura: 08/11/2026, 07:02
+Última leitura: 08/11/2026, 10:13
 
 | Aguardando você | 💰 Financeiras (revisão obrigatória) | Aprovadas, não enviadas | Respondidas | Automáticas | Ignoradas |
 | ---: | ---: | ---: | ---: | ---: | ---: |
