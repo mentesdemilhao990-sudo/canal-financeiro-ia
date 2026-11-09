@@ -1,0 +1,369 @@
+{
+  "id": "2026-11-09-dividas-longo",
+  "formato": "longo",
+  "title": "Como quitar DÍVIDAS ganhando pouco: o passo a passo definitivo",
+  "description": "Está sufocado pelos juros e não sabe por onde começar a pagar as contas? Neste vídeo, você vai entender exatamente como organizar suas pendências e preparar o terreno para negociar sem cair em armadilhas.",
+  "tags": [
+    "sair das dívidas",
+    "como quitar dívidas",
+    "educação financeira",
+    "negociar dívidas",
+    "cartão de crédito",
+    "organização financeira",
+    "finanças pessoais"
+  ],
+  "targetDurationSeconds": 679,
+  "disclaimer": "Conteúdo educativo. Valores ilustrativos, não é recomendação de investimento.",
+  "scenes": [
+    {
+      "id": "cena-1-gancho",
+      "template": "hook",
+      "narration": "Você paga o cartão todo mês, trabalha duro, corta o cafezinho e, mesmo assim, parece que a conta nunca diminui? Calma, você não está sozinho nessa. O que quase ninguém te explica é que o sistema bancário foi desenhado justamente pra te prender numa esteira rolante onde você corre sem sair do lugar. Mas hoje a gente vai quebrar essa lógica. Se você ficar comigo até o fim desta aula, vai entender exatamente como retomar o controle do seu dinheiro, mesmo achando que ganha pouco pra isso.",
+      "data": {
+        "kicker": "SAIA DO VERMELHO",
+        "title": "A Armadilha Invisível",
+        "subtitle": "Por que pagar o mínimo só alimenta a bola de neve"
+      }
+    },
+    {
+      "id": "cena-2-cenario",
+      "template": "split",
+      "narration": "E olha só: segundo as notícias desta semana, a inadimplência das famílias no crédito livre caminha pra bater recorde no país. Com juros altos no mercado, qualquer atraso bobo vira um monstro em poucos meses. O problema é que a maioria das pessoas tenta resolver o desespero fazendo mais uma loucura: pede outro empréstimo pra tampar o buraco anterior ou aceita o primeiro parcelamento que o banco oferece no aplicativo. Só que trocar uma dívida sem estratégia é cavar o próprio buraco mais fundo.",
+      "data": {
+        "left": {
+          "label": "Sem Estratégia",
+          "icon": "warning",
+          "points": [
+            "Paga o mínimo da fatura",
+            "Pega empréstimo caro",
+            "Aceita juros abusivos"
+          ]
+        },
+        "right": {
+          "label": "Com Método",
+          "icon": "safe",
+          "points": [
+            "Mapeia os valores reais",
+            "Prioriza pelo custo",
+            "Negocia na hora certa"
+          ]
+        }
+      }
+    },
+    {
+      "id": "cena-3-caso-marcos",
+      "template": "counter",
+      "narration": "Pra você ver como isso funciona na prática, pensa no Marcos. Ele trabalha de carteira assinada e ganha três mil reais líquidos por mês. No começo do ano, a geladeira dele quebrou e ele teve que gastar dois mil reais no cartão de crédito. Sem reserva de emergência, ele não conseguiu quitar a fatura inteira e pagou só o mínimo. Agora repara no que aconteceu: depois de alguns meses empurrando essa conta com juros rotativos de quase quinze por cento ao mês, aqueles dois mil reais viraram cinco mil e quatrocentos reais.",
+      "data": {
+        "label": "A dívida do Marcos crescendo",
+        "from": 2000,
+        "to": 5400,
+        "prefix": "R$ ",
+        "decimals": 0,
+        "trend": "up",
+        "caption": "Efeito dos juros rotativos em poucos meses",
+        "badge": "+170%"
+      }
+    },
+    {
+      "id": "cena-4-comparativo-renda",
+      "template": "bars",
+      "narration": "Pensa comigo: o salário do Marcos continua em três mil reais. Só o custo mensal pra rolar essa dívida já consome mais de oitocentos reais todo santo mês. Isso é mais de vinte e cinco por cento do que ele ganha, indo direto pro bolso do banco, sem amortizar um centavo do valor principal! Enquanto isso, sobra menos pra comida, pro aluguel e pra água. A pessoa entra num estado de ansiedade diária, perde o sono e acha que o único jeito de resolver é fazer hora extra até não aguentar mais.",
+      "data": {
+        "title": "Para onde vai o salário de R$ 3.000?",
+        "valuePrefix": "R$ ",
+        "items": [
+          {
+            "label": "Moradia e Mercado",
+            "value": 1800,
+            "color": "white"
+          },
+          {
+            "label": "Juros do Cartão",
+            "value": 850,
+            "color": "red"
+          },
+          {
+            "label": "Contas Básicas",
+            "value": 350,
+            "color": "white"
+          }
+        ],
+        "caption": "Quase um terço da renda vira apenas juros bancários"
+      }
+    },
+    {
+      "id": "cena-5-classificacao-dividas",
+      "template": "list",
+      "narration": "Só que existe uma saída lógica, e o primeiro passo não é sair pagando tudo no impulso. Você precisa classificar o que deve em três categorias fundamentais: primeiro, dívidas com bens em garantia, como carro ou imóvel financiado. Segundo, serviços essenciais pra sua sobrevivência, como luz e aluguel. E terceiro, dívidas sem garantia, que são justamente o cartão de crédito e o cheque especial, onde estão as taxas mais caras do mercado.",
+      "data": {
+        "title": "A Separação Obrigatória",
+        "items": [
+          "1. Essenciais: Água, luz e moradia",
+          "2. Com garantia: Financiamento de veículo ou casa",
+          "3. Sem garantia: Cartão e cheque especial"
+        ]
+      }
+    },
+    {
+      "id": "cena-6-curiosidade-gancho",
+      "template": "split",
+      "narration": "E aí vem a parte que ninguém te conta, e que deixa muita gente chocada. Sabe qual é o maior erro que o Marcos e a maioria dos brasileiros cometem bem aqui? Eles pegam o pouco dinheiro que sobra e entregam correndo pro cartão de crédito, enquanto deixam a conta de luz atrasar. Existe uma regra de sobrevivência financeira que os gerentes de banco rezam pra você nunca descobrir, e que inverte completamente essa ordem pra você recuperar a sua paz.",
+      "data": {
+        "left": {
+          "label": "O que todos fazem",
+          "icon": "warning",
+          "points": [
+            "Pagar o cartão por medo",
+            "Atrasar contas básicas",
+            "Ficar sem dinheiro para comer"
+          ]
+        },
+        "right": {
+          "label": "O Segredo Prático",
+          "icon": "growth",
+          "points": [
+            "Proteger o essencial primeiro",
+            "Estancar o sangramento",
+            "Negociar com vantagem"
+          ]
+        }
+      }
+    },
+    {
+      "id": "passo-prioridades",
+      "template": "split",
+      "narration": "Essa regra de ouro é simples: primeiro você protege seu teto e a sua comida, e só depois conversa com o banco. Pensa comigo. Se você atrasar a luz ou o aluguel pra pagar o mínimo do cartão, você fica no escuro, mas a dívida continua crescendo. O banco não vai cortar sua energia nem tomar suas roupas por dívida de cartão. O primeiro passo do Marcos foi separar o jogo em dois: dívidas de sobrevivência, que mantêm a casa de pé, e dívidas de consumo sem garantia, como o cartão e o cheque especial.",
+      "data": {
+        "left": {
+          "label": "Sobrevivência",
+          "icon": "safe",
+          "points": [
+            "Aluguel e moradia",
+            "Água e energia elétrica",
+            "Alimentação básica"
+          ]
+        },
+        "right": {
+          "label": "Dívidas de Consumo",
+          "icon": "warning",
+          "points": [
+            "Cartão de crédito",
+            "Cheque especial",
+            "Empréstimo pessoal"
+          ]
+        }
+      }
+    },
+    {
+      "id": "custo-dividas",
+      "template": "bars",
+      "narration": "Pra você ver o tamanho do abismo, repara na diferença dessas contas no orçamento. As contas essenciais do Marcos somavam mil e quinhentos reais por mês, sem juros correndo. Já as dívidas de cartão e cheque especial batiam em oito mil reais no total, acumulando juros que passavam de dez por cento todo mês se fossem roladas. Quando você enxerga isso com clareza, percebe o perigo que é tirar dinheiro da comida da sua família pra alimentar uma bola de neve que só beneficia o credor.",
+      "data": {
+        "title": "Custo essencial vs Dívida acumulada",
+        "valuePrefix": "R$ ",
+        "items": [
+          {
+            "label": "Gastos Essenciais",
+            "value": 1500,
+            "color": "green"
+          },
+          {
+            "label": "Dívida no Rotativo",
+            "value": 8000,
+            "color": "red"
+          }
+        ],
+        "caption": "Priorizar o essencial protege sua dignidade"
+      }
+    },
+    {
+      "id": "tres-passos",
+      "template": "list",
+      "narration": "Com isso em mente, entra o plano prático em três passos. O passo um é estancar o vazamento: travar os cartões e não fazer nenhuma dívida nova. O passo dois é criar uma reserva básica de paz, juntando trezentos a quinhentos reais numa conta separada pra imprevistos como um remédio, sem recorrer a empréstimo. E o passo três é abrir o cofre da quitação: guardar o que der todo mês pra negociar a dívida inteira à vista no futuro, em vez de ficar pagando parcelas que nunca acabam.",
+      "data": {
+        "title": "Plano Prático em 3 Etapas",
+        "items": [
+          "1. Estancar novos gastos no crédito",
+          "2. Criar reserva de paz de R$ 300 a R$ 500",
+          "3. Acumular saldo para quitar à vista"
+        ]
+      }
+    },
+    {
+      "id": "negociacao-desconto",
+      "template": "counter",
+      "narration": "E a mágica acontece na negociação à vista. A dívida do Marcos estava em oito mil reais. Ele atendeu as ligações, não sumiu, mas explicou com firmeza que não tinha como pagar parcelas caras. Enquanto isso, guardou cem reais por mês. Passados seis meses, ele tinha seiscentos reais guardados. Vendo que ele não ia pagar juros infinitos, o banco fez um feirão de renegociação e ofereceu quitar a dívida total por oitocentos reais à vista. Ele arrumou mais um bico e liquidou o saldo de vez.",
+      "data": {
+        "label": "Proposta de quitação com desconto",
+        "from": 8000,
+        "to": 800,
+        "prefix": "R$ ",
+        "trend": "down",
+        "caption": "Acordo com até 90% de desconto à vista",
+        "badge": "-90%"
+      }
+    },
+    {
+      "id": "grafico-comparativo",
+      "template": "lineChart",
+      "narration": "Olha o gráfico na tela. Se ele tivesse continuado pagando o mínimo do cartão, teria entregue dois mil e quatrocentos reais em doze meses e a dívida ainda estaria em dez mil reais por causa dos juros compostos. Com a estratégia da quitação à vista, ele gastou oitocentos reais e se livrou do problema para sempre. Essa é a diferença gritante entre ser refém dos juros e assumir as rédeas do seu próprio dinheiro.",
+      "data": {
+        "title": "Pagar Mínimo vs Quitar à Vista",
+        "xLabels": [
+          "Mês 1",
+          "Mês 3",
+          "Mês 6",
+          "Mês 9",
+          "Mês 12"
+        ],
+        "valuePrefix": "R$ ",
+        "series": [
+          {
+            "label": "Pagando Mínimo (saldo devedor)",
+            "color": "red",
+            "values": [
+              8000,
+              8500,
+              9200,
+              9800,
+              10000
+            ]
+          },
+          {
+            "label": "Estratégia à Vista (saldo)",
+            "color": "green",
+            "values": [
+              8000,
+              8000,
+              800,
+              0,
+              0
+            ]
+          }
+        ],
+        "caption": "Economia real quebrando o ciclo do rotativo"
+      }
+    },
+    {
+      "id": "revelacao-banco",
+      "template": "split",
+      "narration": "E isso responde aquela grande dúvida: por que o banco reza pra você não saber disso? Porque o lucro do banco está em quem paga o mínimo todo mês, virando um cliente refém pra sempre. Quando você entende que dívidas sem garantia chegam a ter descontos de até noventa por cento em mutirões de renegociação, quem assume o controle é você. Só que pra essa virada funcionar sem dor de cabeça, existem erros clássicos que você precisa evitar a todo custo.",
+      "data": {
+        "left": {
+          "label": "O que o banco quer",
+          "icon": "chart",
+          "points": [
+            "Pagamento mínimo eterno",
+            "Parcelamentos intermináveis",
+            "Juros compostos a favor dele"
+          ]
+        },
+        "right": {
+          "label": "O que liberta você",
+          "icon": "piggy",
+          "points": [
+            "Proteger a renda da família",
+            "Reserva contra imprevistos",
+            "Quitação com grande desconto"
+          ]
+        }
+      }
+    },
+    {
+      "id": "erros-renegociacao",
+      "template": "split",
+      "narration": "O primeiro erro grave é aceitar a primeira contraproposta do banco por desespero. O gerente te liga com uma voz simpática oferecendo juntar tudo num empréstimo parcelado em quarenta e oito vezes. Parece que alivia na hora, né? Só que quase sempre eles pegam uma dívida cheia de juros abusivos e jogam mais juros em cima, travando sua renda por anos. Outro erro clássico é assinar um acordo com parcelas que você mal consegue pagar. Se você atrasar uma única parcela, o acordo é cancelado, o desconto some e todo o dinheiro que você pagou até ali foi jogado no ralo.",
+      "data": {
+        "left": {
+          "label": "Erro Fatal",
+          "icon": "warning",
+          "points": [
+            "Aceitar primeira contraproposta",
+            "Trocar dívida sem desconto",
+            "Assumir parcela que não cabe"
+          ]
+        },
+        "right": {
+          "label": "Estratégia Certa",
+          "icon": "safe",
+          "points": [
+            "Esperar feirões oficiais",
+            "Exigir desconto real nos juros",
+            "Pagar valor total à vista"
+          ]
+        }
+      }
+    },
+    {
+      "id": "comparativo-armadilha",
+      "template": "bars",
+      "narration": "Olha a diferença na ponta do lápis. Imagina que você deve dois mil reais. O banco liga oferecendo trinta e seis parcelas de duzentos reais. Muita gente pensa: duzentos cabe no bolso! Mas trinta e seis vezes duzentos dá sete mil e duzentos reais, mais que o triplo da dívida original. Enquanto isso, quem tem paciência, guarda o dinheiro todo mês numa reserva separada e espera um feirão oficial consegue quitar esses mesmos dois mil reais à vista por cerca de mil e quinhentos reais, ou até menos. Percebe a cilada de olhar só o valor da parcela em vez do custo total?",
+      "data": {
+        "title": "Custo Final: Parcelar vs Negociar à Vista",
+        "valuePrefix": "R$ ",
+        "items": [
+          {
+            "label": "Parcelamento do Banco",
+            "value": 7200,
+            "color": "red"
+          },
+          {
+            "label": "Dívida Original",
+            "value": 2000,
+            "color": "gold"
+          },
+          {
+            "label": "Quitação com Desconto",
+            "value": 1500,
+            "color": "green"
+          }
+        ],
+        "caption": "Exemplo ilustrativo de proposta bancária vs quitação à vista"
+      }
+    },
+    {
+      "id": "plano-passos",
+      "template": "list",
+      "narration": "Pra colocar a sua vida nos trilhos de vez, o seu plano a partir de hoje é muito direto. Passo um: blinde seu teto, sua comida e suas contas básicas. Nenhuma dívida vem antes da sua sobrevivência. Passo dois: pare de usar o cartão e de pagar o valor mínimo. Assuma a inadimplência temporária dessa dívida sem garantia se for preciso, pra estancar a sangria. Passo três: junte o dinheiro que sobrava numa conta separada, sem mexer pra nada. E passo quatro: só feche negócio quando o desconto for agressivo e você tiver o comprovante de quitação total em mãos.",
+      "data": {
+        "title": "Seu Plano em 4 Passos",
+        "items": [
+          "1. Proteger despesas essenciais",
+          "2. Cortar o rotativo e estancar juros",
+          "3. Acumular saldo em conta separada",
+          "4. Exigir quitação com desconto alto"
+        ]
+      }
+    },
+    {
+      "id": "economia-liberdade",
+      "template": "counter",
+      "narration": "Sabe quanto as pessoas economizam em média quando seguem esse método com calma? Fácil mais de setenta por cento do valor cobrado, limpando o nome sem vender o almoço pra pagar a janta. Resumindo tudo o que a gente conversou neste vídeo: primeiro, não se desespere com cobrança abusiva, porque dívida sem garantia não penhora seu prato de comida. Segundo, parar a bola de neve do mínimo é a única forma de recuperar o fôlego. E terceiro, banco não é seu amigo, mas precisa negociar quando percebe que você está no comando do seu dinheiro.",
+      "data": {
+        "label": "Desconto Médio em Mutirões",
+        "from": 0,
+        "to": 75,
+        "suffix": "%",
+        "decimals": 0,
+        "trend": "up",
+        "badge": "Economia",
+        "caption": "Redução sobre juros abusivos acumulados"
+      }
+    },
+    {
+      "id": "fechamento-canal",
+      "template": "outro",
+      "narration": "A partir de agora, o jogo virou. Você tem a informação que as instituições financeiras escondem a sete chaves. Ter dívida não faz de você uma pessoa desonesta nem irresponsável; o sistema foi desenhado exatamente pra te prender nessa engrenagem de juros sobre juros. Mas agora você já tem o mapa pra sair dela. Me conta aqui nos comentários: quanto tempo faz que você tá lutando contra o cartão, e qual o primeiro passo que você vai dar hoje? Se esse conteúdo abriu seus olhos e te ajudou, se inscreve aí que toda semana tem mais conversa reta pra você dominar seu dinheiro.",
+      "data": {
+        "title": "O Controle da sua Vida\nVoltou pra Você",
+        "points": [
+          "Não aceite a primeira oferta",
+          "Negocie sempre no seu tempo",
+          "Recupere sua tranquilidade"
+        ],
+        "cta": "Inscreva-se"
+      }
+    }
+  ]
+}

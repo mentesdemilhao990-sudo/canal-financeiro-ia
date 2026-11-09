@@ -399,6 +399,68 @@
       "url": "https://youtu.be/_5A6oraIvjk",
       "enviadoEm": "2026-11-08T10:23:19.824Z",
       "publicarEm": "2026-11-08T19:29:00.000Z"
+    },
+    {
+      "historico": [
+        {
+          "em": "2026-11-09T11:20:54.337Z",
+          "status": "enviando"
+        },
+        {
+          "em": "2026-11-09T11:20:57.524Z",
+          "status": "privado",
+          "nota": "enviado (agendando)"
+        },
+        {
+          "em": "2026-11-09T11:20:57.525Z",
+          "status": "agendado",
+          "nota": "fica público às 13:16 (Brasília)"
+        }
+      ],
+      "plataforma": "youtube",
+      "episodio": "2026-11-09-dividas-longo",
+      "titulo": "Como quitar DÍVIDAS ganhando pouco: o passo a passo definitivo",
+      "hashEpisodio": "ba564598fedd0aab",
+      "hashVideo": "83461e86f9be59a9",
+      "duracao": 574.439,
+      "status": "agendado",
+      "atualizadoEm": "2026-11-09T11:20:57.525Z",
+      "privacidade": "private",
+      "videoId": "9RJ1_vXqqRg",
+      "url": "https://youtu.be/9RJ1_vXqqRg",
+      "enviadoEm": "2026-11-09T11:20:57.524Z",
+      "publicarEm": "2026-11-09T16:16:00.000Z"
+    },
+    {
+      "historico": [
+        {
+          "em": "2026-11-09T11:20:57.545Z",
+          "status": "enviando"
+        },
+        {
+          "em": "2026-11-09T11:20:59.136Z",
+          "status": "privado",
+          "nota": "enviado (agendando)"
+        },
+        {
+          "em": "2026-11-09T11:20:59.137Z",
+          "status": "agendado",
+          "nota": "fica público às 20:16 (Brasília)"
+        }
+      ],
+      "plataforma": "youtube",
+      "episodio": "2026-11-09-dividas-short",
+      "titulo": "O SEGREDO prático para DESTRANCAR suas dívidas",
+      "hashEpisodio": "6b8de0d0992a0713",
+      "hashVideo": "264f013d8a2d63cd",
+      "duracao": 47.394,
+      "status": "agendado",
+      "atualizadoEm": "2026-11-09T11:20:59.137Z",
+      "privacidade": "private",
+      "videoId": "xX9udGxGAl4",
+      "url": "https://youtu.be/xX9udGxGAl4",
+      "enviadoEm": "2026-11-09T11:20:59.136Z",
+      "publicarEm": "2026-11-09T23:16:00.000Z"
     }
   ]
 }

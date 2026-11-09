@@ -1,0 +1,108 @@
+{
+  "id": "2026-11-09-dividas-short",
+  "formato": "short",
+  "title": "O SEGREDO prático para DESTRANCAR suas dívidas",
+  "description": "Cansado de ver as contas crescerem todo mês? Veja um passo a passo prático e direto para organizar suas dívidas, focar no que realmente pesa e negociar descontos com os bancos sem se desesperar.",
+  "tags": [
+    "sair das dividas",
+    "educação financeira",
+    "renegociar dividas",
+    "mente de milhao",
+    "finanças pessoais",
+    "organizar contas"
+  ],
+  "targetDurationSeconds": 50,
+  "disclaimer": "Conteúdo educativo. Valores ilustrativos, não é recomendação de investimento.",
+  "scenes": [
+    {
+      "id": "cena-1",
+      "template": "hook",
+      "narration": "Pagar o mínimo do cartão não resolve nada. Na verdade, só faz a sua dívida virar uma bola de neve sem fim.",
+      "data": {
+        "kicker": "LIVRE DAS DÍVIDAS",
+        "title": "O ERRO que te prende",
+        "subtitle": "Pagar o mínimo nunca foi solução"
+      }
+    },
+    {
+      "id": "cena-2",
+      "template": "counter",
+      "narration": "Pensa no Carlos. Uma dívida de três mil reais no rotativo, com juros altos, pode passar de oito mil em apenas um ano.",
+      "data": {
+        "label": "Dívida de R$ 3.000 após 1 ano no rotativo",
+        "from": 3000,
+        "to": 8400,
+        "prefix": "R$ ",
+        "trend": "up",
+        "caption": "Exemplo ilustrativo de efeito dos juros",
+        "badge": "Atenção"
+      }
+    },
+    {
+      "id": "cena-3",
+      "template": "bars",
+      "narration": "Pra virar esse jogo, primeiro liste tudo e priorize a dívida mais cara. É nela que você vai focar cada centavo extra.",
+      "data": {
+        "title": "Custo das dívidas: ataque a mais cara",
+        "valueSuffix": "%",
+        "items": [
+          {
+            "label": "Consignado",
+            "value": 25,
+            "color": "green"
+          },
+          {
+            "label": "Pessoal",
+            "value": 75,
+            "color": "gold"
+          },
+          {
+            "label": "Cartão Rotativo",
+            "value": 400,
+            "color": "red"
+          }
+        ],
+        "caption": "Elimine primeiro as taxas mais pesadas"
+      }
+    },
+    {
+      "id": "cena-4",
+      "template": "split",
+      "narration": "Aí vem o segredo: nunca feche na primeira proposta. Bancos dão descontos de até oitenta por cento pra quem negocia com calma.",
+      "data": {
+        "left": {
+          "label": "Sem negociar",
+          "icon": "warning",
+          "points": [
+            "Aceita primeira oferta",
+            "Juros continuam altos",
+            "Prazo sem fim"
+          ]
+        },
+        "right": {
+          "label": "Com negociação",
+          "icon": "growth",
+          "points": [
+            "Descontos de até 80%",
+            "Parcela que cabe na renda",
+            "Fim definitivo da pendência"
+          ]
+        }
+      }
+    },
+    {
+      "id": "cena-5",
+      "template": "outro",
+      "narration": "Comenta aí: qual conta tá tirando seu sono? E se o vídeo te ajudou, se inscreve no canal que toda semana tem mais.",
+      "data": {
+        "title": "Pronto para\nVIRAR O JOGO?",
+        "points": [
+          "Liste todas as contas",
+          "Ataque o maior juro",
+          "Negocie descontos à vista"
+        ],
+        "cta": "Siga para mais"
+      }
+    }
+  ]
+}

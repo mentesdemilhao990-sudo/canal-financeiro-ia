@@ -132,6 +132,28 @@
         "Os 3 SINAIS claros de que aquele Pix é GOLPE"
       ],
       "modelo": "gemini:gemini-3.8-flash"
+    },
+    {
+      "data": "2026-11-09",
+      "tema": "dividas",
+      "nome": "Sair das dívidas",
+      "pontos": 12.5,
+      "manchetes": [
+        "As gerações mais velhas têm uma dívida com os jovens? - G1",
+        "13º salário: pagar dívidas, quitar impostos ou investir? Veja dicas de especialistas - Diário do Comércio",
+        "A inadimplência da população e de empresas nos 30 maiores PIBs do RS - GZH",
+        "Desenrola Brasil 3.0: quem poderá renegociar dívidas e quando começam os descontos? - Hora Brasil",
+        "Pela primeira vez, Lula manifestou preocupação com a trajetória da dívida e dos juros depois da vitória - Brasil 247"
+      ],
+      "episodios": [
+        "2026-11-09-dividas-longo",
+        "2026-11-09-dividas-short"
+      ],
+      "titulos": [
+        "Como quitar DÍVIDAS ganhando pouco: o passo a passo definitivo",
+        "O SEGREDO prático para DESTRANCAR suas dívidas"
+      ],
+      "modelo": "gemini:gemini-flash-latest + gemini:gemini-3.8-flash"
     }
   ]
 }
