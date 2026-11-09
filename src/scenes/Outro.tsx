@@ -4,10 +4,12 @@ import type { SceneProps } from "../types";
 import { C, GOLD_GRADIENT, GREEN_GRADIENT } from "../theme";
 import { BODY, DISPLAY } from "../fonts";
 import { Stage } from "../components/SceneShell";
+import { useHorizontal } from "../components/Landscape";
 import { useIn } from "./common";
 
 export const Outro: React.FC<SceneProps<"outro">> = ({ scene, channel, episode, duration }) => {
   const frame = useCurrentFrame();
+  const horizontal = useHorizontal();
   const d = scene.data;
   const lines = d.title.split("\n");
   const ctaIn = useIn(Math.round(duration * 0.45), { damping: 10, stiffness: 140 });
@@ -69,7 +71,7 @@ export const Outro: React.FC<SceneProps<"outro">> = ({ scene, channel, episode, 
         {d.cta} · {channel.handle}
       </div>
       {episode.disclaimer && (
-        <div style={{ position: "absolute", bottom: -20, fontFamily: BODY, fontWeight: 500, fontSize: 24, color: C.muted, textAlign: "center", opacity: ctaIn * 0.9 }}>
+        <div style={{ position: "absolute", bottom: horizontal ? 0 : -20, fontFamily: BODY, fontWeight: 500, fontSize: 24, color: C.muted, textAlign: "center", opacity: ctaIn * 0.9 }}>
           {episode.disclaimer}
         </div>
       )}

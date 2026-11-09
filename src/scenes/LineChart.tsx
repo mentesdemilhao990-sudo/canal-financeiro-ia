@@ -4,14 +4,16 @@ import type { SceneProps } from "../types";
 import { C, fmtNumber, seriesColor } from "../theme";
 import { BODY, DISPLAY } from "../fonts";
 import { Stage } from "../components/SceneShell";
+import { useHorizontal } from "../components/Landscape";
 import { Caption, Panel, Title } from "./common";
 
-const W = 900;
-const H = 640;
 const PAD = { l: 30, r: 40, t: 90, b: 70 };
 
 export const LineChart: React.FC<SceneProps<"lineChart">> = ({ scene, duration }) => {
   const frame = useCurrentFrame();
+  const horizontal = useHorizontal();
+  const W = horizontal ? 1560 : 900;
+  const H = horizontal ? 560 : 640;
   const d = scene.data;
   const all = d.series.flatMap((s) => s.values);
   const min = Math.min(...all) * 0.85;

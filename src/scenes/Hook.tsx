@@ -4,10 +4,12 @@ import type { SceneProps } from "../types";
 import { C, GOLD_GRADIENT, GREEN_GRADIENT } from "../theme";
 import { BODY, DISPLAY } from "../fonts";
 import { Stage } from "../components/SceneShell";
+import { useHorizontal } from "../components/Landscape";
 import { Kicker, useIn } from "./common";
 
 export const Hook: React.FC<SceneProps<"hook">> = ({ scene }) => {
   const frame = useCurrentFrame();
+  const horizontal = useHorizontal();
   const { kicker, title, subtitle } = scene.data;
   const ring = interpolate(frame, [0, 60], [0, 1], { extrapolateRight: "clamp" });
   // Quebra por palavra (nunca no meio da palavra) e anima letra a letra.
@@ -16,7 +18,7 @@ export const Hook: React.FC<SceneProps<"hook">> = ({ scene }) => {
   const sub = useIn(28);
   return (
     <Stage>
-      <svg width={900} height={900} viewBox="0 0 900 900" style={{ position: "absolute", top: 120, opacity: 0.55, transform: `rotate(${frame * 0.4}deg)` }}>
+      <svg width={900} height={900} viewBox="0 0 900 900" style={{ position: "absolute", top: horizontal ? 40 : 120, opacity: 0.55, transform: `rotate(${frame * 0.4}deg)` }}>
         <defs>
           <linearGradient id="ring" x1="0" x2="1">
             <stop offset="0" stopColor={C.gold} />
@@ -27,7 +29,7 @@ export const Hook: React.FC<SceneProps<"hook">> = ({ scene }) => {
         <circle cx={450} cy={450} r={350} fill="none" stroke={C.gold} strokeOpacity={0.25} strokeWidth={1.5} strokeDasharray="6 14" />
       </svg>
       {kicker && <Kicker text={kicker} delay={4} />}
-      <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", marginTop: 40, maxWidth: 940 }}>
+      <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", marginTop: 40, maxWidth: horizontal ? 2000 : 940 }}>
         {words.map((word, wi) => (
           <span key={wi} style={{ display: "inline-flex", whiteSpace: "nowrap", margin: "0 18px" }}>
           {word.map(({ ch, i }) => {
@@ -72,7 +74,7 @@ export const Hook: React.FC<SceneProps<"hook">> = ({ scene }) => {
             marginTop: 44,
             opacity: sub,
             transform: `translateY(${(1 - sub) * 24}px)`,
-            maxWidth: 860,
+            maxWidth: horizontal ? 1500 : 860,
             lineHeight: 1.25,
           }}
         >

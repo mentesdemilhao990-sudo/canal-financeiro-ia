@@ -1,6 +1,7 @@
 import React from "react";
 import { AbsoluteFill, interpolate, spring, useCurrentFrame, useVideoConfig } from "remotion";
 import { C } from "../theme";
+import { PALCO_H, useHorizontal } from "./Landscape";
 
 /** Jeitos de a cena entrar; cada cena usa um diferente para o vídeo não ficar repetitivo. */
 const ENTRADAS = ["subir", "direita", "zoom", "esquerda"] as const;
@@ -53,14 +54,14 @@ export const SceneShell: React.FC<{ duration: number; index?: number; children: 
 };
 
 /** Área útil da cena (evita o topo com o nome do canal e a faixa da legenda). */
-export const Stage: React.FC<{ children: React.ReactNode; style?: React.CSSProperties }> = ({ children, style }) => (
+export const Stage: React.FC<{ children: React.ReactNode; style?: React.CSSProperties }> = ({ children, style }) => {
+  const horizontal = useHorizontal();
+  const area = horizontal ? PALCO_H : { top: 190, left: 70, right: 70, height: 1150 };
+  return (
   <div
     style={{
       position: "absolute",
-      top: 190,
-      left: 70,
-      right: 70,
-      height: 1150,
+      ...area,
       display: "flex",
       flexDirection: "column",
       alignItems: "center",
@@ -70,4 +71,5 @@ export const Stage: React.FC<{ children: React.ReactNode; style?: React.CSSPrope
   >
     {children}
   </div>
-);
+  );
+};
