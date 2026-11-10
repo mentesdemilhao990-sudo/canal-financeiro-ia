@@ -1,6 +1,6 @@
 # 📊 Painel · Mente de Milhão
 
-_Atualizado em 10/11/2026, 01:10 (Brasília). Este arquivo é gerado sozinho: não edite à mão._
+_Atualizado em 10/11/2026, 04:33 (Brasília). Este arquivo é gerado sozinho: não edite à mão._
 
 ## Chaves de segurança
 
@@ -15,15 +15,15 @@ Com tudo desligado, os workflows só **simulam**: nada é enviado nem respondido
 
 ## Cota do YouTube hoje
 
-100 de 9000 unidades · 2 de 10 envios de vídeo (zera à meia-noite do Pacífico, 4h ou 5h em Brasília).
+117 de 9000 unidades · 2 de 10 envios de vídeo (zera à meia-noite do Pacífico, 4h ou 5h em Brasília).
 
 ## Vídeos
 
 | Episódio | Título | Status | Link | Views | 👍 | 💬 | Atualizado |
 | --- | --- | --- | --- | ---: | ---: | ---: | --- |
 | `2026-11-09-dividas-short` | O SEGREDO prático para DESTRANCAR suas dívidas | 🟢 público | [abrir](https://youtu.be/xX9udGxGAl4) | 5 | 1 | 0 | 09/11/2026, 08:20 |
-| `2026-11-09-dividas-longo` | Como quitar DÍVIDAS ganhando pouco: o passo a passo definitivo | 🟢 público | [abrir](https://youtu.be/9RJ1_vXqqRg) | 0 | 0 | 0 | 09/11/2026, 08:20 |
-| `2026-11-08-pix-golpes-short` | Os 3 SINAIS claros de que aquele Pix é GOLPE | 🟢 público | [abrir](https://youtu.be/_5A6oraIvjk) | 16 | 1 | 0 | 08/11/2026, 07:23 |
+| `2026-11-09-dividas-longo` | Como quitar DÍVIDAS ganhando pouco: o passo a passo definitivo | 🟢 público | [abrir](https://youtu.be/9RJ1_vXqqRg) | 1 | 0 | 0 | 09/11/2026, 08:20 |
+| `2026-11-08-pix-golpes-short` | Os 3 SINAIS claros de que aquele Pix é GOLPE | 🟢 público | [abrir](https://youtu.be/_5A6oraIvjk) | 19 | 1 | 0 | 08/11/2026, 07:23 |
 | `2026-11-08-pix-golpes-longo` | Novo GOLPE do PIX: Como Proteger sua CONTA Agora | 🟢 público | [abrir](https://youtu.be/pZOS7g7rsI0) | 10 | 1 | 0 | 08/11/2026, 07:23 |
 | `2026-11-07-acoes-e-dividendos-short` | Comprar AÇÕES te deixa rico ou quebra? Entenda o RISCO | 🟢 público | [abrir](https://youtu.be/5IpUC2AvMr0) | 13 | 1 | 0 | 07/11/2026, 20:18 |
 | `2026-11-07-acoes-e-dividendos-longo` | VIVER DE DIVIDENDOS: O que Ninguém te Conta Antes de Começar | 🟢 público | [abrir](https://youtu.be/rufpbcGNSWg) | 7 | 1 | 0 | 07/11/2026, 20:18 |
@@ -45,7 +45,7 @@ Com tudo desligado, os workflows só **simulam**: nada é enviado nem respondido
 
 ## Comentários
 
-Última leitura: 10/11/2026, 01:10
+Última leitura: 10/11/2026, 04:33
 
 | Aguardando você | 💰 Financeiras (revisão obrigatória) | Aprovadas, não enviadas | Respondidas | Automáticas | Ignoradas |
 | ---: | ---: | ---: | ---: | ---: | ---: |
