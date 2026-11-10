@@ -461,6 +461,37 @@
       "url": "https://youtu.be/xX9udGxGAl4",
       "enviadoEm": "2026-11-09T11:20:59.136Z",
       "publicarEm": "2026-11-09T23:16:00.000Z"
+    },
+    {
+      "historico": [
+        {
+          "em": "2026-11-10T12:21:12.049Z",
+          "status": "enviando"
+        },
+        {
+          "em": "2026-11-10T12:21:14.373Z",
+          "status": "privado",
+          "nota": "enviado (agendando)"
+        },
+        {
+          "em": "2026-11-10T12:21:14.374Z",
+          "status": "agendado",
+          "nota": "fica público às 16:25 (Brasília)"
+        }
+      ],
+      "plataforma": "youtube",
+      "episodio": "2026-11-10-black-friday-short",
+      "titulo": "Como comprar com CONSCIÊNCIA na Black Friday e EVITAR golpes",
+      "hashEpisodio": "5a4f42e330a5f358",
+      "hashVideo": "3fc45d3d59c253c0",
+      "duracao": 51.217,
+      "status": "agendado",
+      "atualizadoEm": "2026-11-10T12:21:14.374Z",
+      "privacidade": "private",
+      "videoId": "261-PmSbuIk",
+      "url": "https://youtu.be/261-PmSbuIk",
+      "enviadoEm": "2026-11-10T12:21:14.373Z",
+      "publicarEm": "2026-11-10T19:25:00.000Z"
     }
   ]
 }

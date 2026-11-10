@@ -1,0 +1,128 @@
+{
+  "id": "2026-11-10-black-friday-short",
+  "formato": "short",
+  "title": "Como comprar com CONSCIÊNCIA na Black Friday e EVITAR golpes",
+  "description": "Siga nossos conselhos para aproveitar as ofertas sem cair em armadilhas. Saiba como evitar falsos descontos e parcelamentos exagerados!",
+  "tags": [
+    "Black Friday",
+    "compras conscientes",
+    "golpes",
+    "descontos",
+    "parcelamento"
+  ],
+  "targetDurationSeconds": 60,
+  "disclaimer": "Conteúdo educativo. Valores ilustrativos, não é recomendação de investimento.",
+  "scenes": [
+    {
+      "id": "hook",
+      "template": "hook",
+      "narration": "Imagina a Ana, que ganha três mil reais por mês. e quer comprar na Black Friday. Mas tem armadilhas. Sabe por quê?",
+      "data": {
+        "kicker": "3.000",
+        "title": "Black Friday sem cair em armadilha",
+        "subtitle": "Compre com consciência"
+      }
+    },
+    {
+      "id": "split",
+      "template": "split",
+      "narration": "LADO DA ANA: Falsa ofertinha. LADO DOS VENDEDORES: Promessas de desconto e parcelamento exagerado.",
+      "data": {
+        "left": {
+          "label": "Ana",
+          "points": [
+            "Falsos descontos",
+            "Parcelamentos caros"
+          ]
+        },
+        "right": {
+          "label": "Vendedores",
+          "points": [
+            "Promessas atraentes",
+            "Armadilhas escondidas"
+          ]
+        }
+      }
+    },
+    {
+      "id": "counter",
+      "template": "counter",
+      "narration": "E se Ana comprar uma TV de dez mil reais em vinte e quatro vezes? Ela vai pagar um real. oitenta e três por mês. Isso é.",
+      "data": {
+        "label": "Quanto realmente paga",
+        "from": 1083,
+        "to": 1000,
+        "prefix": "R$",
+        "suffix": "%",
+        "decimals": 2,
+        "trend": "down",
+        "caption": "É só você calcular",
+        "badge": "atenção"
+      }
+    },
+    {
+      "id": "linechart",
+      "template": "lineChart",
+      "narration": "E agora veja como as ofertas variam. Em novembro, Ana encontra uma TV por nove reais.",
+      "data": {
+        "title": "Preço da TV ao longo do ano",
+        "xLabels": [
+          "Novembro",
+          "Dezembro",
+          "Janeiro"
+        ],
+        "valuePrefix": "R$",
+        "valueSuffix": "",
+        "series": [
+          {
+            "label": "Oferta atual",
+            "values": [
+              -5000,
+              -9000,
+              -12000
+            ],
+            "color": "gold"
+          }
+        ],
+        "caption": "Preços podem subir!"
+      }
+    },
+    {
+      "id": "bars",
+      "template": "bars",
+      "narration": "E o terceiro erro é o mais caro de todos. A Ana cai na armadilha do Pix e paga juros altos. Só ela acha isso absurdo?",
+      "data": {
+        "title": "Cuidado com parcelamentos",
+        "valuePrefix": "R$",
+        "valueSuffix": "%",
+        "items": [
+          {
+            "label": "Compra normal",
+            "value": 12,
+            "color": "gold"
+          },
+          {
+            "label": "Pix",
+            "value": 36,
+            "color": "red"
+          }
+        ],
+        "caption": "Cálculo de juros é crucial"
+      }
+    },
+    {
+      "id": "outro",
+      "template": "outro",
+      "narration": "Siga para mais dicas e evite essas armadilhas. Comenta aí: você faria isso? Inscreva-se na Mente de Milhão se quiser saber mais sobre educação financeira.",
+      "data": {
+        "title": "Aprenda a comprar com CONSCIÊNCIA",
+        "points": [
+          "Evite falsos descontos",
+          "Comparar preços",
+          "Cuidado com parcelamentos"
+        ],
+        "cta": "Siga para mais"
+      }
+    }
+  ]
+}

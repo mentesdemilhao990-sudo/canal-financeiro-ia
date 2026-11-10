@@ -154,6 +154,26 @@
         "O SEGREDO prático para DESTRANCAR suas dívidas"
       ],
       "modelo": "gemini:gemini-flash-latest + gemini:gemini-3.8-flash"
+    },
+    {
+      "data": "2026-11-10",
+      "tema": "black-friday",
+      "nome": "Black Friday sem cair em armadilha",
+      "pontos": 13.5,
+      "manchetes": [
+        "Correios oferecem negociação de dívidas com até 99% de desconto e orientação gratuita - ncnews.com.br",
+        "Promoção na gôndola, prejuízo no bolso - Correio Braziliense",
+        "Black Friday 2026: desconto em novembro ou dívida em janeiro? - Consumidor Moderno",
+        "Na Black Friday: como aproveitar as ofertas e evitar golpes - al1.com.br",
+        "Black Friday é o primeiro teste em escala do WhatsApp pago - Consumidor Moderno"
+      ],
+      "episodios": [
+        "2026-11-10-black-friday-short"
+      ],
+      "titulos": [
+        "Como comprar com CONSCIÊNCIA na Black Friday e EVITAR golpes"
+      ],
+      "modelo": "ollama:qwen2.5:7b"
     }
   ]
 }
