@@ -1,6 +1,6 @@
 # 📊 Painel · Mente de Milhão
 
-_Atualizado em 09/11/2026, 19:02 (Brasília). Este arquivo é gerado sozinho: não edite à mão._
+_Atualizado em 09/11/2026, 22:26 (Brasília). Este arquivo é gerado sozinho: não edite à mão._
 
 ## Chaves de segurança
 
@@ -15,13 +15,13 @@ Com tudo desligado, os workflows só **simulam**: nada é enviado nem respondido
 
 ## Cota do YouTube hoje
 
-66 de 9000 unidades · 2 de 10 envios de vídeo (zera à meia-noite do Pacífico, 4h ou 5h em Brasília).
+83 de 9000 unidades · 2 de 10 envios de vídeo (zera à meia-noite do Pacífico, 4h ou 5h em Brasília).
 
 ## Vídeos
 
 | Episódio | Título | Status | Link | Views | 👍 | 💬 | Atualizado |
 | --- | --- | --- | --- | ---: | ---: | ---: | --- |
-| `2026-11-09-dividas-short` | O SEGREDO prático para DESTRANCAR suas dívidas | ⏰ agendado | [abrir](https://youtu.be/xX9udGxGAl4) | 0 | 0 | 0 | 09/11/2026, 08:20 |
+| `2026-11-09-dividas-short` | O SEGREDO prático para DESTRANCAR suas dívidas | 🟢 público | [abrir](https://youtu.be/xX9udGxGAl4) | 2 | 1 | 0 | 09/11/2026, 08:20 |
 | `2026-11-09-dividas-longo` | Como quitar DÍVIDAS ganhando pouco: o passo a passo definitivo | 🟢 público | [abrir](https://youtu.be/9RJ1_vXqqRg) | 0 | 0 | 0 | 09/11/2026, 08:20 |
 | `2026-11-08-pix-golpes-short` | Os 3 SINAIS claros de que aquele Pix é GOLPE | 🟢 público | [abrir](https://youtu.be/_5A6oraIvjk) | 12 | 0 | 0 | 08/11/2026, 07:23 |
 | `2026-11-08-pix-golpes-longo` | Novo GOLPE do PIX: Como Proteger sua CONTA Agora | 🟢 público | [abrir](https://youtu.be/pZOS7g7rsI0) | 9 | 1 | 0 | 08/11/2026, 07:23 |
@@ -45,7 +45,7 @@ Com tudo desligado, os workflows só **simulam**: nada é enviado nem respondido
 
 ## Comentários
 
-Última leitura: 09/11/2026, 19:02
+Última leitura: 09/11/2026, 22:25
 
 | Aguardando você | 💰 Financeiras (revisão obrigatória) | Aprovadas, não enviadas | Respondidas | Automáticas | Ignoradas |
 | ---: | ---: | ---: | ---: | ---: | ---: |
