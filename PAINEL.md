@@ -1,13 +1,13 @@
 # 📊 Painel · Mente de Milhão
 
-_Atualizado em 10/11/2026, 09:21 (Brasília). Este arquivo é gerado sozinho: não edite à mão._
+_Atualizado em 10/11/2026, 10:26 (Brasília). Este arquivo é gerado sozinho: não edite à mão._
 
 ## Chaves de segurança
 
 | O quê | Situação |
 | --- | --- |
 | Credenciais do YouTube (Secrets) | ✅ configuradas |
-| envia vídeos ao YouTube (sempre como privados) | 🟢 **ligado** |
+| envia vídeos ao YouTube (sempre como privados) | ⚪ desligado (`YOUTUBE_PUBLICACAO`) |
 | envia as respostas que você aprovou | ⚪ desligado (`YOUTUBE_RESPOSTAS`) |
 | responde sozinho só comentários simples (elogios curtos) | ⚪ desligado (`YOUTUBE_RESPOSTA_AUTOMATICA`) |
 
@@ -15,14 +15,14 @@ Com tudo desligado, os workflows só **simulam**: nada é enviado nem respondido
 
 ## Cota do YouTube hoje
 
-3 de 9000 unidades · 1 de 10 envios de vídeo (zera à meia-noite do Pacífico, 4h ou 5h em Brasília).
+20 de 9000 unidades · 1 de 10 envios de vídeo (zera à meia-noite do Pacífico, 4h ou 5h em Brasília).
 
 ## Vídeos
 
 | Episódio | Título | Status | Link | Views | 👍 | 💬 | Atualizado |
 | --- | --- | --- | --- | ---: | ---: | ---: | --- |
-| `2026-11-10-black-friday-short` | Como comprar com CONSCIÊNCIA na Black Friday e EVITAR golpes | ⏰ agendado | [abrir](https://youtu.be/261-PmSbuIk) | — | — | — | 10/11/2026, 09:21 |
-| `2026-11-09-dividas-short` | O SEGREDO prático para DESTRANCAR suas dívidas | 🟢 público | [abrir](https://youtu.be/xX9udGxGAl4) | 5 | 1 | 0 | 09/11/2026, 08:20 |
+| `2026-11-10-black-friday-short` | Como comprar com CONSCIÊNCIA na Black Friday e EVITAR golpes | ⏰ agendado | [abrir](https://youtu.be/261-PmSbuIk) | 0 | 0 | 0 | 10/11/2026, 09:21 |
+| `2026-11-09-dividas-short` | O SEGREDO prático para DESTRANCAR suas dívidas | 🟢 público | [abrir](https://youtu.be/xX9udGxGAl4) | 6 | 1 | 0 | 09/11/2026, 08:20 |
 | `2026-11-09-dividas-longo` | Como quitar DÍVIDAS ganhando pouco: o passo a passo definitivo | 🟢 público | [abrir](https://youtu.be/9RJ1_vXqqRg) | 1 | 0 | 0 | 09/11/2026, 08:20 |
 | `2026-11-08-pix-golpes-short` | Os 3 SINAIS claros de que aquele Pix é GOLPE | 🟢 público | [abrir](https://youtu.be/_5A6oraIvjk) | 19 | 1 | 0 | 08/11/2026, 07:23 |
 | `2026-11-08-pix-golpes-longo` | Novo GOLPE do PIX: Como Proteger sua CONTA Agora | 🟢 público | [abrir](https://youtu.be/pZOS7g7rsI0) | 10 | 1 | 0 | 08/11/2026, 07:23 |
@@ -46,7 +46,7 @@ Com tudo desligado, os workflows só **simulam**: nada é enviado nem respondido
 
 ## Comentários
 
-Última leitura: 10/11/2026, 07:12
+Última leitura: 10/11/2026, 10:26
 
 | Aguardando você | 💰 Financeiras (revisão obrigatória) | Aprovadas, não enviadas | Respondidas | Automáticas | Ignoradas |
 | ---: | ---: | ---: | ---: | ---: | ---: |
