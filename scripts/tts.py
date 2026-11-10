@@ -291,8 +291,8 @@ def main() -> int:
 
                 textos = [aplicar_pronuncia(" ".join(split_sentences(sc["narration"])), regras) for sc in episode["scenes"]]
                 gemini_cenas = narrar_cenas(textos, gcfg, chave, split_words)
-                # O Short não pode passar de 60 s: se a fala ficou longa, acelera um pouco (no máximo 25%).
-                limite = {"short": 58.0, "longo": 890.0}.get(episode.get("formato", ""), 0)
+                # O Short não pode chegar aos 3 min do YouTube Shorts: se a fala ficou longa, acelera um pouco (no máximo 25%).
+                limite = {"short": 170.0, "longo": 890.0}.get(episode.get("formato", ""), 0)
                 total = sum(len(s) for s, _ in gemini_cenas) / GRATE + lead_in + tail + scene_pause * (len(gemini_cenas) - 1)
                 if limite and total > limite:
                     from voz_gemini import esticar

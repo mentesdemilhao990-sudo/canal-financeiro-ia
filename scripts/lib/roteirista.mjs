@@ -27,8 +27,9 @@ export function modelosPadrao(env = process.env) {
 /** Metas de tamanho por formato (a voz calma do Gemini fala ~13 caracteres por segundo, mais as pausas). */
 export const METAS = {
   // caracteres: meta pedida à IA; aceite: duração estimada que ainda aprovamos (a IA nem sempre acerta o tamanho;
-  // no Short a voz acelera até 1,25x se passar de 58 s).
-  short: { cenas: [5, 7], caracteres: [480, 640], duracao: [36, 58], aceite: [32, 68], cta: "Siga para mais", porCena: 380, minCena: 110 },
+  // o Short tem mais de 1 min e 31 s (pedido do Patrick) e fica abaixo dos 3 min do YouTube Shorts;
+  // a voz acelera até 1,25x se passar de 170 s).
+  short: { cenas: [8, 12], caracteres: [1250, 1550], duracao: [100, 130], aceite: [93, 165], cta: "Siga para mais", porCena: 380, minCena: 110 },
   // O longo tem no mínimo 8 minutos (pedido do Patrick) e é escrito em partes de ~3 minutos:
   // começo, meio e fim; se as partes vierem curtas, entram mais partes de meio (até maxPartes).
   longo: { cenas: [15, 44], caracteres: [6800, 8600], duracao: [480, 660], aceite: [480, 900], cta: "Inscreva-se", porCena: 650, minCena: 260, partes: 3, maxPartes: 5 },
@@ -129,7 +130,7 @@ function sistema(formato, parte) {
   const L = METAS.longo;
   const tipo =
     formato === "short"
-      ? `um YouTube Short vertical de ${m.duracao[0]} a ${m.duracao[1]} segundos: direto ao ponto, gancho forte nos 3 primeiros segundos, uma ideia central`
+      ? `um YouTube Short vertical de ${m.duracao[0]} a ${m.duracao[1]} segundos: gancho forte nos 3 primeiros segundos, uma ideia central bem explicada com um exemplo concreto e uma conta simples`
       : `a PARTE ${parte.i + 1} de ${parte.n} de um vídeo normal do YouTube (horizontal) de ${Math.round(L.duracao[0] / 60)} a ${Math.round(L.duracao[1] / 60)} minutos: uma aula completa e envolvente, com contexto, explicação passo a passo, exemplos com contas, erros comuns e resumo final.
 Plano do vídeo inteiro (escreva SÓ a sua parte, continuando de onde a anterior parou, sem repetir o que já foi dito):
 ${PLANO_DO_LONGO.map((x, k) => `${k === papel(parte) ? "→ " : "  "}${x}`).join("\n")}${papel(parte) === 1 && parte.i > 1 ? "\nEsta é uma parte extra do MEIO: aprofunde com um caso novo, outra conta ou outro ângulo que ainda não apareceu." : ""}`;
@@ -529,7 +530,7 @@ export function consertarParte(ep, parte) {
   });
   // Cenas que ficaram vazias depois da limpeza saem.
   ep.scenes = ep.scenes.filter((s) => typeof s.narration !== "string" || s.narration.length >= 10);
-  // Short comprido demais (a IA local escreve ~900 caracteres): tira a última frase das cenas
+  // Short comprido demais (a IA às vezes passa muito do tamanho): tira a última frase das cenas
   // do meio mais longas até caber, sem mexer no gancho nem no fechamento.
   if (!parte && ep.formato === "short") {
     const limite = METAS.short.caracteres[1] * 1.1;
