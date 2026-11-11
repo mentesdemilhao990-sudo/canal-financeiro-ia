@@ -1,0 +1,96 @@
+{
+  "id": "2026-11-11-inflacao-short",
+  "formato": "short",
+  "title": "Por que seus R$ 100 COMPRAM MENOS a cada ano?",
+  "description": "Você sente que vai ao supermercado e sai com menos sacolas gastando o mesmo valor? Entenda de forma simples como a inflação corrói o seu poder de compra e o que você pode fazer para se defender.",
+  "tags": [
+    "inflacao",
+    "educacao financeira",
+    "poder de compra",
+    "dinheiro parado",
+    "renda fixa",
+    "economia basica",
+    "mente de milhao"
+  ],
+  "targetDurationSeconds": 51,
+  "disclaimer": "Conteúdo educativo. Valores ilustrativos, não é recomendação de investimento.",
+  "scenes": [
+    {
+      "id": "cena-1-gancho",
+      "template": "hook",
+      "narration": "Pensa comigo: aquela nota de cem reais continua marcando cem, né? Mas tenta encher o carrinho no mercado pra ver a diferença de dez anos pra cá.",
+      "data": {
+        "kicker": "A conta do supermercado",
+        "title": "Seu dinheiro encolheu?",
+        "subtitle": "Por que cem reais compram cada vez menos"
+      }
+    },
+    {
+      "id": "cena-2-perda",
+      "template": "counter",
+      "narration": "Isso é a inflação. O dinheiro impresso não muda, mas o que ele compra derrete todo mês sem você notar.",
+      "data": {
+        "label": "Poder de compra estimado de R$ 100",
+        "from": 100,
+        "to": 52,
+        "prefix": "R$ ",
+        "trend": "down",
+        "caption": "Exemplo ilustrativo de desvalorização com o tempo",
+        "badge": "-48%"
+      }
+    },
+    {
+      "id": "cena-3-comparativo",
+      "template": "bars",
+      "narration": "E o maior erro é deixar a grana parada na conta. Enquanto o custo de vida dispara, seu saldo fica congelado no tempo.",
+      "data": {
+        "title": "Exemplo de R$ 1.000 com o tempo",
+        "valuePrefix": "R$ ",
+        "items": [
+          {
+            "label": "Parado na conta",
+            "value": 1000,
+            "color": "red"
+          },
+          {
+            "label": "Custo da mesma cesta",
+            "value": 1400,
+            "color": "white"
+          },
+          {
+            "label": "Rendimento com IPCA",
+            "value": 1500,
+            "color": "green"
+          }
+        ],
+        "caption": "Simulação hipotética com proteção contra a inflação"
+      }
+    },
+    {
+      "id": "cena-4-passos",
+      "template": "list",
+      "narration": "Pra se proteger, o caminho é buscar investimentos seguros que paguem a inflação mais uma taxa, defendendo seu poder de compra.",
+      "data": {
+        "title": "Como se defender da alta dos preços",
+        "items": [
+          "Investir em opções que rendem acima da inflação",
+          "Evitar deixar dinheiro parado na conta corrente",
+          "Renegociar contratos e revisar gastos supérfluos"
+        ]
+      }
+    },
+    {
+      "id": "cena-5-fechamento",
+      "template": "outro",
+      "narration": "Comenta aí: o que mais encareceu no seu mercado? E se curtiu, se inscreve aí que toda semana tem dica boa pra você.",
+      "data": {
+        "title": "Proteja seu bolso\nda inflação",
+        "points": [
+          "Dinheiro parado perde valor todo dia",
+          "Busque sempre ganho acima dos preços"
+        ],
+        "cta": "Siga para mais"
+      }
+    }
+  ]
+}

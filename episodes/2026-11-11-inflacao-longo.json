@@ -1,0 +1,386 @@
+{
+  "id": "2026-11-11-inflacao-longo",
+  "formato": "longo",
+  "title": "O LADRÃO SILENCIOSO que destrói seu salário todo mês",
+  "description": "Você sente que o seu salário acaba mais rápido a cada mês, mesmo sem ter mudado em nada o seu padrão de vida? Neste vídeo, você vai entender na prática o que a inflação faz com o seu poder de compra e o segredo que separa quem perde dinheiro de quem consegue se proteger.",
+  "tags": [
+    "inflação",
+    "poder de compra",
+    "educação financeira",
+    "custo de vida",
+    "como se proteger da inflação",
+    "finanças pessoais",
+    "mente de milhão",
+    "dinheiro"
+  ],
+  "targetDurationSeconds": 627,
+  "disclaimer": "Conteúdo educativo. Valores ilustrativos, não é recomendação de investimento.",
+  "scenes": [
+    {
+      "id": "cena-1-hook",
+      "template": "hook",
+      "narration": "Você já teve aquela sensação de ir ao mercado, pegar os mesmos itens de sempre e pagar bem mais caro no caixa? Você não esbanjou nem trocou de marca, mas a conta veio muito mais pesada. A verdade desconfortável é uma só: se o seu dinheiro não cresce no ritmo dos aumentos ao seu redor, você fica mais pobre todo dia sem perceber. Mas hoje você vai entender como esse mecanismo funciona e como virar o jogo.",
+      "data": {
+        "kicker": "O EFEITO NO SEU BOLSO",
+        "title": "Para Onde Foi Seu Dinheiro?",
+        "subtitle": "Por que tudo parece mais caro mesmo mantendo os mesmos hábitos"
+      }
+    },
+    {
+      "id": "cena-2-bars",
+      "template": "bars",
+      "narration": "Olha o que aconteceu nos últimos tempos. Se você pegar uma compra básica que custava cem reais há poucos anos, hoje precisa desembolsar quase cento e trinta reais pelos mesmos produtos. A inflação comeu essa fatia. Muita gente acha que inflação é só notícia de jornal, mas na prática ela é um imposto invisível. As notícias mostram o custo de vida alto apertando as famílias, o que significa que cada nota na sua carteira perdeu poder de compra.",
+      "data": {
+        "title": "Custo da Mesma Compra de Mercado",
+        "valuePrefix": "R$ ",
+        "items": [
+          {
+            "label": "Dois anos atrás",
+            "value": 100,
+            "color": "green"
+          },
+          {
+            "label": "Ano passado",
+            "value": 115,
+            "color": "gold"
+          },
+          {
+            "label": "Hoje em dia",
+            "value": 130,
+            "color": "red"
+          }
+        ],
+        "caption": "Exemplo ilustrativo de corrosão de poder de compra"
+      }
+    },
+    {
+      "id": "cena-3-split",
+      "template": "split",
+      "narration": "Pra entender isso na prática, pensa no Marcos. Ele é trabalhador, super controlado e detesta dívidas. Dois anos atrás, ele juntou cinco mil reais com muito esforço. Por medo de arriscar, deixou tudo parado na conta corrente, achando que estava seguro. Na cabeça dele, cinco mil continuam sendo cinco mil, já que o número no aplicativo não mudou. Mas será que esse dinheiro compra as mesmas coisas hoje?",
+      "data": {
+        "left": {
+          "label": "A Ilusão do Saldo",
+          "icon": "safe",
+          "points": [
+            "R$ 5.000 intocados na conta",
+            "Sensação de segurança total",
+            "Nenhum risco aparente"
+          ]
+        },
+        "right": {
+          "label": "A Realidade",
+          "icon": "warning",
+          "points": [
+            "Preços subiram sem parar",
+            "Mesmo saldo compra bem menos",
+            "Perda invisível de patrimônio"
+          ]
+        }
+      }
+    },
+    {
+      "id": "cena-4-counter",
+      "template": "counter",
+      "narration": "É aqui que a conta assusta. O extrato ainda mostra cinco mil reais, mas o que ele comprava antes hoje custaria quase seis mil. Em poder de compra real, aqueles cinco mil agora equivalem a pouco mais de quatro mil e duzentos reais do passado. O Marcos não gastou nada, não caiu em golpe, mas perdeu quase oitocentos reais em poder de compra só por deixar a grana parada. Dinheiro parado é garantia de perda.",
+      "data": {
+        "label": "Poder de Compra Real dos R$ 5.000",
+        "from": 5000,
+        "to": 4200,
+        "prefix": "R$ ",
+        "decimals": 0,
+        "trend": "down",
+        "badge": "-16%",
+        "caption": "Equivalência prática após o aumento de preços"
+      }
+    },
+    {
+      "id": "cena-5-list",
+      "template": "list",
+      "narration": "E por que você precisa prestar atenção nisso agora? Notícias recentes mostram o Banco Central preocupado com a inflação resistente e juros altos para segurar os preços. Isso afeta tudo: prestação do carro, carne, combustível e aluguel. Se você achar que se proteger da inflação é assunto só de quem tem muito dinheiro, seu salário vai continuar encolhendo mês a mês enquanto o custo de vida dispara.",
+      "data": {
+        "title": "Onde o Aperto Bate Primeiro",
+        "items": [
+          "Supermercado e alimentação básica",
+          "Energia elétrica, gás e combustíveis",
+          "Aluguel e custos de habitação",
+          "Serviços e transporte do dia a dia"
+        ]
+      }
+    },
+    {
+      "id": "cena-6-hook",
+      "template": "hook",
+      "narration": "Aí vem a pergunta que ninguém responde direito: se guardar dinheiro parado dá prejuízo, o que fazer pra se blindar de verdade? Existe um conceito simples que faz o seu dinheiro render acima dos preços. E tem uma armadilha muito popular onde noventa por cento dos brasileiros caem achando que estão seguros, quando na verdade estão perdendo feio. Mas antes de ver essa saída, você precisa ver a conta real.",
+      "data": {
+        "kicker": "A RESPOSTA QUE FALTA",
+        "title": "Como Virar o Jogo?",
+        "subtitle": "O método prático para proteger seu poder de compra"
+      }
+    },
+    {
+      "id": "cena-p2-1",
+      "template": "bars",
+      "narration": "Vamos colocar isso no papel pra ficar bem claro. Imagina que você guardou dez mil reais debaixo do colchão ou na conta corrente parada por dez anos. No papel, o saldo continua exatamente o mesmo: dez mil reais. Só que, com uma inflação média hipotética de seis por cento ao ano, o poder de compra dessa mesma nota despenca quase pela metade. Aquilo que você comprava com dez mil lá no primeiro ano, dez anos depois exige quase dezoito mil reais pra levar as mesmas coisas pro carrinho. Percebe o truque?",
+      "data": {
+        "title": "Poder de Compra de R$ 10.000 em 10 anos",
+        "valuePrefix": "R$ ",
+        "items": [
+          {
+            "label": "Ano 1 (Poder Real)",
+            "value": 10000,
+            "color": "green"
+          },
+          {
+            "label": "Ano 5 (Poder Real)",
+            "value": 7470,
+            "color": "gold"
+          },
+          {
+            "label": "Ano 10 (Poder Real)",
+            "value": 5580,
+            "color": "red"
+          }
+        ],
+        "caption": "Simulação com inflação média de 6% ao ano"
+      }
+    },
+    {
+      "id": "cena-p2-2",
+      "template": "split",
+      "narration": "E é aqui que entra o grande segredo que os bancos não explicam direito: a diferença brutal entre rendimento nominal e ganho real. O ganho nominal é apenas aquele número bonito que pisca no seu aplicativo. Se o seu dinheiro rendeu dez por cento no ano, parece maravilhoso, né? Mas calma. Se no mesmo período o arroz, o feijão, a energia e o aluguel subiram oito por cento, você não ficou dez por cento mais rico de jeito nenhum.",
+      "data": {
+        "left": {
+          "label": "Rendimento Nominal",
+          "icon": "growth",
+          "points": [
+            "O número que pisca na tela",
+            "Não desconta a carestia",
+            "Cria ilusão de riqueza"
+          ]
+        },
+        "right": {
+          "label": "Ganho Real",
+          "icon": "safe",
+          "points": [
+            "O que sobra após a inflação",
+            "Aumento real de patrimônio",
+            "Poder de compra preservado"
+          ]
+        }
+      }
+    },
+    {
+      "id": "cena-p2-3",
+      "template": "counter",
+      "narration": "Olha a matemática de padaria: de dez por cento de rendimento bruto, você precisa subtrair os oito por cento da carestia do período. O que sobrou no seu bolso de verdade? Apenas dois por cento de ganho real. É só esse pedacinho minúsculo que realmente aumentou o que você consegue comprar no supermercado. Qualquer coisa abaixo disso significa que você trabalhou o ano todo apenas pra ficar no mesmo lugar ou pior, ficando mais pobre devagarzinho.",
+      "data": {
+        "label": "Ganho Real Efetivo no Exemplo",
+        "from": 10,
+        "to": 2,
+        "suffix": "%",
+        "decimals": 0,
+        "trend": "down",
+        "caption": "10% de ganho nominal menos 8% de inflação",
+        "badge": "Ganho Real"
+      }
+    },
+    {
+      "id": "cena-p2-4",
+      "template": "lineChart",
+      "narration": "Dá uma olhada neste gráfico comparando três caminhos comuns ao longo de cinco anos. Quem deixa o dinheiro parado na conta vê o valor de compra derreter ladeira abaixo. Já quem busca aplicações atreladas à inflação tenta fazer a curva patrimonial acompanhar ou superar o custo de vida. Não é sobre tentar acertar a ação da moda ou correr riscos malucos, mas sim buscar preservar o fruto do seu trabalho contra os aumentos de preços do dia a dia.",
+      "data": {
+        "title": "Evolução do Poder de Compra (5 anos)",
+        "xLabels": [
+          "Ano 1",
+          "Ano 2",
+          "Ano 3",
+          "Ano 4",
+          "Ano 5"
+        ],
+        "valuePrefix": "R$ ",
+        "series": [
+          {
+            "label": "Dinheiro Parado",
+            "color": "red",
+            "values": [
+              10000,
+              9400,
+              8800,
+              8300,
+              7800
+            ]
+          },
+          {
+            "label": "Protegido da Inflação",
+            "color": "green",
+            "values": [
+              10000,
+              10500,
+              11100,
+              11700,
+              12400
+            ]
+          }
+        ],
+        "caption": "Comparativo ilustrativo descontando a inflação"
+      }
+    },
+    {
+      "id": "cena-p2-5",
+      "template": "list",
+      "narration": "E agora eu vou te responder aquela curiosidade que deixei no ar lá no começo: qual é a armadilha onde nove em cada dez pessoas caem achando que estão super protegidas? É a velha caderneta de poupança em épocas de inflação acelerada. Muita gente diz com orgulho que guardou tudo na poupança porque é seguro. Só que a segurança da poupança é apenas contra quebra, porque contra a perda de poder de compra ela frequentemente perde feio.",
+      "data": {
+        "title": "A Grande Ilusão da Poupança",
+        "items": [
+          "Sensação falsa de segurança total",
+          "Rendimento travado por regra antiga",
+          "Perda frequente para o custo de vida",
+          "Ilusão de ver o saldo crescer no extrato"
+        ]
+      }
+    },
+    {
+      "id": "cena-p2-6",
+      "template": "split",
+      "narration": "Em vários momentos da nossa história recente, o rendimento da poupança foi menor do que a subida dos preços medida pelos índices oficiais. Ou seja, você via o extrato aumentar alguns centavos todo mês, mas saía do mercado com menos sacolas na mão. O conceito básico pra tentar se proteger se chama juro real positivo, que busca aplicar em alternativas conservadoras que acompanham a inflação oficial somada a uma taxa combinada previamente. Mas será que é simples fazer isso sem cometer deslizes graves?",
+      "data": {
+        "left": {
+          "label": "Armadilha Comum",
+          "icon": "warning",
+          "points": [
+            "Poupança perdendo da inflação",
+            "Dinheiro parado na conta corrente",
+            "Foco apenas no ganho nominal"
+          ]
+        },
+        "right": {
+          "label": "Blindagem Real",
+          "icon": "safe",
+          "points": [
+            "Buscar juro real positivo",
+            "Contratos atrelados ao IPCA",
+            "Foco no poder de compra futuro"
+          ]
+        }
+      }
+    },
+    {
+      "id": "erros-comuns-defesa",
+      "template": "split",
+      "narration": "E a resposta é não: não é nada simples se você cair nos dois extremos mais comuns. O primeiro erro é o desespero por atalhos. Ao ver tudo encarecer, muita gente corre atrás de apostas ou promessas de ganhos fáceis na internet e acaba perdendo tudo. O segundo erro é a paralisia pelo medo: deixar o salário parado na conta ou numa poupança tradicional achando que tá seguro, enquanto o poder de compra derrete em silêncio todo mês.",
+      "data": {
+        "left": {
+          "label": "Desespero por Atalho",
+          "icon": "warning",
+          "points": [
+            "Apostas e promessas fáceis",
+            "Busca de ganho rápido",
+            "Risco alto de perder tudo"
+          ]
+        },
+        "right": {
+          "label": "Paralisia por Medo",
+          "icon": "safe",
+          "points": [
+            "Dinheiro parado na conta",
+            "Poupança perdendo da taxa",
+            "Poder de compra corroído"
+          ]
+        }
+      }
+    },
+    {
+      "id": "impacto-estrategias",
+      "template": "bars",
+      "narration": "Pra enxergar o tamanho do estrago, repara só neste exemplo ilustrativo com dez mil reais. Se esse valor fica parado na conta sem render nada, em três anos o poder de compra dele cai pro equivalente a sete mil e oitocentos reais. É quase um quarto do seu suor jogado fora! Se você deixa numa aplicação que rende abaixo da subida dos preços, a perda diminui, mas ainda existe. Só quem busca alternativas com rendimento acima da inflação protege o que conquistou.",
+      "data": {
+        "title": "Poder de Compra Real em 3 Anos",
+        "valuePrefix": "R$ ",
+        "items": [
+          {
+            "label": "Conta Parada",
+            "value": 7800,
+            "color": "red"
+          },
+          {
+            "label": "Abaixo da Inflação",
+            "value": 8900,
+            "color": "gold"
+          },
+          {
+            "label": "Com Ganho Real",
+            "value": 10800,
+            "color": "green"
+          }
+        ],
+        "caption": "Simulação ilustrativa sobre o poder de compra de R$ 10.000 ao longo do tempo"
+      }
+    },
+    {
+      "id": "plano-pratico-passos",
+      "template": "list",
+      "narration": "Então vamos colocar ordem na casa com um plano em três passos simples. Primeiro: monitore as despesas e troque marcas no mercado; pesquisar antes de comprar dá fôlego imediato no mês. Segundo passo: monte a sua reserva em opções seguras de liquidez diária que acompanhem a taxa básica de juros. Terceiro passo: pro dinheiro do futuro, procure títulos atrelados ao índice oficial de inflação com juros combinados. Assim seu poder de compra fica blindado.",
+      "data": {
+        "title": "Plano Prático em 3 Passos",
+        "items": [
+          "1. Monitore compras e pesquise preços no mês",
+          "2. Monte reserva segura com liquidez diária",
+          "3. Foque o longo prazo em títulos com juro real"
+        ]
+      }
+    },
+    {
+      "id": "economia-mensal-alavanca",
+      "template": "counter",
+      "narration": "E você não precisa de rios de dinheiro pra começar. Olha só o que acontece quando você corta pequenos desperdícios e encontra duzentos e cinquenta reais por mês em assinaturas inúteis ou taxas de conta. Esse valor investido com constância acima da inflação cria uma barreira poderosa contra o aumento dos preços. Não é sobre quanto você ganha de uma vez, mas sobre o hábito de guardar e proteger todo mês.",
+      "data": {
+        "label": "Economia mensal reinvestida contra a inflação",
+        "from": 0,
+        "to": 250,
+        "prefix": "R$ ",
+        "trend": "up",
+        "caption": "Pequenos cortes de gastos geram o aporte necessário para se defender",
+        "badge": "Fôlego"
+      }
+    },
+    {
+      "id": "resumo-do-video",
+      "template": "split",
+      "narration": "Recapitulando tudo o que vimos até aqui: a inflação é aquele aumento silencioso que faz o mesmo carrinho de compras custar muito mais. Dinheiro parado na conta é certeza de prejuízo no longo prazo. Mas quando você entende a diferença entre ganho nominal e ganho real, corta desperdícios e busca investimentos que pagam acima dos índices oficiais, você para de correr atrás do prejuízo e assume o controle financeiro.",
+      "data": {
+        "left": {
+          "label": "O Inimigo Invisível",
+          "icon": "warning",
+          "points": [
+            "Preços sobem ano após ano",
+            "Dinheiro parado perde valor",
+            "Ganho nominal engana o bolso"
+          ]
+        },
+        "right": {
+          "label": "Sua Blindagem",
+          "icon": "growth",
+          "points": [
+            "Controle rígido de gastos",
+            "Reserva de emergência ágil",
+            "Busca por rentabilidade real"
+          ]
+        }
+      }
+    },
+    {
+      "id": "fechamento-e-cta",
+      "template": "outro",
+      "narration": "Você trabalhou duro demais por cada centavo pra deixar a alta dos preços engolir seus planos. A escolha agora tá nas suas mãos. Me conta aqui nos comentários: o que foi que mais encareceu na sua rotina nos últimos meses? Feijão, gasolina, carne? Quero muito saber a realidade de vocês. E se essa conversa te ajudou, se inscreve aí no canal que toda semana tem mais conteúdo prático pra cuidar do seu bolso. Até a próxima!",
+      "data": {
+        "title": "Proteja Seu Dinheiro\nContra a Inflação",
+        "points": [
+          "Monitore seus gastos de rotina",
+          "Busque retorno acima da inflação",
+          "Invista com foco e disciplina"
+        ],
+        "cta": "Inscreva-se"
+      }
+    }
+  ]
+}
