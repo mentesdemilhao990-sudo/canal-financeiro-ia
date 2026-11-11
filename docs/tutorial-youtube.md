@@ -36,8 +36,10 @@ No fim, o GitHub Actions consegue enviar vídeos (sempre como **privados**) e le
 
 Em **Público-alvo**, o status começa como **Teste**. Nesse modo o Google **cancela o acesso a cada 7 dias** e a automação para de funcionar.
 
+0. Antes, em **Branding** (Informações da marca), preencha os links do app: página inicial `https://mentesdemilhao990-sudo.github.io/canal-financeiro-ia/`, política de privacidade `https://mentesdemilhao990-sudo.github.io/canal-financeiro-ia/privacidade.html` e termos de uso `https://mentesdemilhao990-sudo.github.io/canal-financeiro-ia/termos.html`. Em **Domínios autorizados**, adicione `mentesdemilhao990-sudo.github.io`. (As páginas ficam na pasta `docs/` e aparecem depois de ligar o GitHub Pages em **Settings → Pages → Deploy from a branch → main → /docs**.)
 1. Clique em **Publicar app** → **Confirmar**. O status fica **Em produção**.
 2. O Google pode dizer que o app "precisa de verificação". **Para uso só seu não precisa**: o único efeito é aparecer o aviso "O Google não verificou este app" no passo 6 (limite de 100 usuários, e você é o único).
+3. **Gere um refresh token novo (passo 6) depois de publicar.** O token criado enquanto o app estava em Teste continua vencendo em 7 dias.
 
 ## 5. Criar a credencial OAuth
 
