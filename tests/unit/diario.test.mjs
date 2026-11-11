@@ -26,7 +26,7 @@ test("formatos: Short vertical por padrão, longo horizontal", () => {
 });
 
 test("formatos: limites de duração e cenas valem para cada um", () => {
-  assert.throws(() => parseEpisode({ ...short(), targetDurationSeconds: 120 }), /Short a duração vai de 30 a 60/);
+  assert.throws(() => parseEpisode({ ...short(), targetDurationSeconds: 200 }), /Short a duração vai de 30 a 175/);
   assert.throws(() => parseEpisode({ ...longo(), targetDurationSeconds: 50 }), /longo a duração vai de 90 a 900/);
   assert.throws(() => parseEpisode({ ...longo(), scenes: longo().scenes.slice(0, 4) }), /de 6 a 44 cenas/);
   const s = short();
@@ -96,14 +96,23 @@ test("pontuação sem internet: ainda escolhe um tema (época do ano e menos usa
 /** Resposta de IA válida para o Short, construída a partir do episódio de exemplo. */
 function respostaShort() {
   const e = short();
-  return { title: "Guardar dinheiro parado faz você perder?", description: e.description, tags: e.tags, scenes: e.scenes };
+  // O Short diário passa de 1 min 31 s: o exemplo ganha cenas de meio para chegar ao tamanho.
+  const extras = [
+    { id: "exemplo", template: "counter", narration: "Pense na Ana, que deixou cinco mil reais esquecidos na conta corrente por três anos. O saldo continuou igual, mas o mercado ficou mais caro e o dinheiro dela passou a comprar bem menos.", data: { label: "Poder de compra de R$ 5.000", from: 5000, to: 4380, prefix: "R$ ", trend: "down" } },
+    { id: "reserva", template: "list", narration: "Isso não quer dizer que guardar seja errado. A reserva de emergência existe para imprevistos, como uma conta de saúde ou um conserto do carro, e precisa estar num lugar seguro e fácil de tirar.", data: { title: "Para que serve guardar", items: ["Imprevistos", "Segurança", "Acesso rápido"] } },
+    { id: "tamanho", template: "bars", narration: "Uma boa regra é juntar de três a seis meses dos seus gastos. Quem gasta dois mil reais por mês mira algo entre seis mil e doze mil reais de reserva antes de pensar em outros passos.", data: { title: "Reserva ideal", valuePrefix: "R$ ", items: [{ label: "3 meses", value: 6000, color: "gold" }, { label: "6 meses", value: 12000, color: "green" }] } },
+    { id: "depois", template: "split", narration: "Depois da reserva pronta, o que sobra pode ir para investimentos de prazo maior. Assim um dinheiro protege você no presente e o outro trabalha com calma pelo seu futuro.", data: { left: { label: "Reserva", icon: "safe", points: ["Curto prazo"] }, right: { label: "Investimento", icon: "growth", points: ["Longo prazo"] } } },
+    { id: "erro", template: "list", narration: "O erro mais comum é misturar tudo na mesma conta. Separar os objetivos deixa claro quanto está protegido, quanto está crescendo e evita gastar sem perceber o que era para o futuro.", data: { title: "Separe os objetivos", items: ["Conta da reserva", "Conta dos investimentos"] } },
+  ];
+  const scenes = [...e.scenes.slice(0, -1), ...extras, e.scenes.at(-1)];
+  return { title: "Guardar dinheiro parado faz você perder?", description: e.description, tags: e.tags, scenes };
 }
 
 test("roteiro: montar, validar duração e regras de conteúdo", () => {
   const ep = montarEpisodio(respostaShort(), { id: "2026-11-01-inflacao-short", formato: "short" });
   assert.equal(ep.formato, "short");
   assert.match(ep.disclaimer, /não é recomendação/);
-  assert.ok(ep.targetDurationSeconds >= 30 && ep.targetDurationSeconds <= 60);
+  assert.ok(ep.targetDurationSeconds > 91 && ep.targetDurationSeconds < 180, `${ep.targetDurationSeconds} s`);
   parseEpisode(ep);
   assert.deepEqual(problemasDeConteudo(ep, "short"), []);
   const ruim = structuredClone(ep);
@@ -227,7 +236,7 @@ test("roteiro: com OLLAMA_MODELO usa a IA local, sem token", async () => {
     urls.push(String(url));
     const b = JSON.parse(init.body);
     assert.equal(b.model, "qwen2.5:7b");
-    assert.equal(b.format.properties.scenes.minItems, 5, "resposta presa ao formato do Short");
+    assert.equal(b.format.properties.scenes.minItems, 8, "resposta presa ao formato do Short");
     assert.equal(b.stream, true);
     return new Response(JSON.stringify({ message: { content: JSON.stringify(respostaShort()) } }), { status: 200 });
   };
@@ -483,10 +492,11 @@ test("roteiro: Short comprido é encurtado e o convite final aparece uma vez só
   const ep = montarEpisodio(respostaShort(), { id: "y-short", formato: "short" });
   ep.scenes[2].narration += " Mais uma frase longa só pra encher o roteiro e passar do tamanho certo do Short. E outra frase comprida que também não precisava estar aqui de jeito nenhum.";
   ep.scenes[3].narration += " Aqui vai mais um trecho bem comprido para deixar o Short grande demais para caber em um minuto.";
+  for (const k of [4, 5, 6, 7]) ep.scenes[k].narration += " Mais uma frase comprida para passar do tamanho certo do Short. E ainda outra frase longa que também não precisava estar aqui.";
   ep.scenes.at(-1).narration = "Se inscreve no canal. E se inscreve mesmo, viu? Comenta aí o que achou.";
   consertarParte(ep);
   const chars = ep.scenes.reduce((t, s) => t + s.narration.length, 0);
-  assert.ok(chars <= 704, `${chars} caracteres`);
+  assert.ok(chars <= 1705, `${chars} caracteres`);
   assert.equal((ep.scenes.at(-1).narration.match(/inscrev/gi) ?? []).length, 1);
   assert.match(ep.scenes[0].narration, /^Guardar dinheiro/);
 });

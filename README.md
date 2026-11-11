@@ -1,6 +1,6 @@
 # Mente de Milhão · fábrica de vídeos financeiros
 
-Gera vídeos verticais (1080x1920, 30 a 60 s) para um canal dark de educação financeira, com narração em português, legendas sincronizadas, gráficos animados e capa. Tudo roda de graça no GitHub Actions, só com CPU.
+Gera vídeos verticais (1080x1920, de 30 s a menos de 3 min; os diários passam de 1 min 31 s) para um canal dark de educação financeira, com narração em português, legendas sincronizadas, gráficos animados e capa. Tudo roda de graça no GitHub Actions, só com CPU.
 
 | Peça | Ferramenta |
 | --- | --- |
@@ -63,7 +63,7 @@ Nome do canal, @, velocidade da voz e volume da trilha ficam em `config/channel.
 
 Cada execução valida os episódios e, depois de renderizar, confere com ffprobe/ffmpeg:
 
-- vídeo H.264, 1080x1920, 30 fps, entre 30 e 60 s e até 20% longe da meta
+- vídeo H.264, 1080x1920, 30 fps, entre 30 e 175 s e até 20% longe da meta
 - narração gerada pelo Piper com a voz faber
 - faixa AAC com a mesma duração do vídeo, volume adequado, sem silêncio maior que 1,5 s
 - nenhum trecho preto e nenhuma imagem congelada por mais de 3 s
