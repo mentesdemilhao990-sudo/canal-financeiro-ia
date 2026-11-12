@@ -2,12 +2,12 @@
   "_leia": "Gerado automaticamente. Uso estimado da cota do YouTube hoje.",
   "youtube": {
     "dia": "2026-11-12",
-    "unidades": 40,
+    "unidades": 60,
     "envios": 0,
     "chamadas": {
-      "channels.list": 2,
-      "videos.list": 2,
-      "commentThreads.list": 36
+      "channels.list": 3,
+      "videos.list": 3,
+      "commentThreads.list": 54
     }
   }
 }
