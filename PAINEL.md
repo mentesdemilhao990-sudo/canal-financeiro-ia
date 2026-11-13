@@ -1,6 +1,6 @@
 # 📊 Painel · Mente de Milhão
 
-_Atualizado em 13/11/2026, 07:18 (Brasília). Este arquivo é gerado sozinho: não edite à mão._
+_Atualizado em 13/11/2026, 10:30 (Brasília). Este arquivo é gerado sozinho: não edite à mão._
 
 ## Chaves de segurança
 
@@ -15,7 +15,7 @@ Com tudo desligado, os workflows só **simulam**: nada é enviado nem respondido
 
 ## Cota do YouTube hoje
 
-20 de 9000 unidades · 0 de 10 envios de vídeo (zera à meia-noite do Pacífico, 4h ou 5h em Brasília).
+40 de 9000 unidades · 0 de 10 envios de vídeo (zera à meia-noite do Pacífico, 4h ou 5h em Brasília).
 
 ## Vídeos
 
@@ -24,7 +24,7 @@ Com tudo desligado, os workflows só **simulam**: nada é enviado nem respondido
 | `2026-11-11-inflacao-short` | Por que seus R$ 100 COMPRAM MENOS a cada ano? | 🟢 público | [abrir](https://youtu.be/itMYwQJbYuI) | 2 | 0 | 0 | 11/11/2026, 07:48 |
 | `2026-11-11-inflacao-longo` | O LADRÃO SILENCIOSO que destrói seu salário todo mês | 🟢 público | [abrir](https://youtu.be/U-dmIT9iEkc) | 4 | 0 | 0 | 11/11/2026, 07:48 |
 | `2026-11-10-black-friday-short` | Como comprar com CONSCIÊNCIA na Black Friday e EVITAR golpes | 🟢 público | [abrir](https://youtu.be/261-PmSbuIk) | 3 | 0 | 0 | 10/11/2026, 09:21 |
-| `2026-11-09-dividas-short` | O SEGREDO prático para DESTRANCAR suas dívidas | 🟢 público | [abrir](https://youtu.be/xX9udGxGAl4) | 18 | 1 | 0 | 09/11/2026, 08:20 |
+| `2026-11-09-dividas-short` | O SEGREDO prático para DESTRANCAR suas dívidas | 🟢 público | [abrir](https://youtu.be/xX9udGxGAl4) | 19 | 1 | 0 | 09/11/2026, 08:20 |
 | `2026-11-09-dividas-longo` | Como quitar DÍVIDAS ganhando pouco: o passo a passo definitivo | 🟢 público | [abrir](https://youtu.be/9RJ1_vXqqRg) | 2 | 0 | 0 | 09/11/2026, 08:20 |
 | `2026-11-08-pix-golpes-short` | Os 3 SINAIS claros de que aquele Pix é GOLPE | 🟢 público | [abrir](https://youtu.be/_5A6oraIvjk) | 19 | 1 | 0 | 08/11/2026, 07:23 |
 | `2026-11-08-pix-golpes-longo` | Novo GOLPE do PIX: Como Proteger sua CONTA Agora | 🟢 público | [abrir](https://youtu.be/pZOS7g7rsI0) | 12 | 1 | 0 | 08/11/2026, 07:23 |
@@ -48,7 +48,7 @@ Com tudo desligado, os workflows só **simulam**: nada é enviado nem respondido
 
 ## Comentários
 
-Última leitura: 13/11/2026, 07:18
+Última leitura: 13/11/2026, 10:30
 
 | Aguardando você | 💰 Financeiras (revisão obrigatória) | Aprovadas, não enviadas | Respondidas | Automáticas | Ignoradas |
 | ---: | ---: | ---: | ---: | ---: | ---: |
