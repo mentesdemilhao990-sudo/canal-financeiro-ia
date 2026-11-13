@@ -1,0 +1,19 @@
+name: Métricas do canal (temporário, só leitura)
+on:
+  push:
+    branches: [claude/project-thread-rt1xnr]
+    paths: ["tmp-metricas/**", ".github/workflows/metricas-temp.yml"]
+permissions:
+  contents: read
+jobs:
+  ler:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22 }
+      - env:
+          YOUTUBE_CLIENT_ID: ${{ secrets.YOUTUBE_CLIENT_ID }}
+          YOUTUBE_CLIENT_SECRET: ${{ secrets.YOUTUBE_CLIENT_SECRET }}
+          YOUTUBE_REFRESH_TOKEN: ${{ secrets.YOUTUBE_REFRESH_TOKEN }}
+        run: node tmp-metricas/metricas.mjs
