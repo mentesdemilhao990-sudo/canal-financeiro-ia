@@ -500,3 +500,56 @@ test("roteiro: Short comprido é encurtado e o convite final aparece uma vez só
   assert.equal((ep.scenes.at(-1).narration.match(/inscrev/gi) ?? []).length, 1);
   assert.match(ep.scenes[0].narration, /^Guardar dinheiro/);
 });
+
+test("roteiro: texto da tela maior que o limite é cortado em vez de recusar (Gemini em 13/11)", async () => {
+  const { cortarTextosLongos } = await import("../../scripts/lib/roteirista.mjs");
+  const ep = montarEpisodio(respostaShort(), { id: "2026-11-13-x-short", formato: "short" });
+  const i = ep.scenes.findIndex((s) => s.template === "hook");
+  ep.scenes[i].data.title = "Um título de abertura bem comprido que passa muito do limite permitido";
+  cortarTextosLongos(ep);
+  assert.ok(ep.scenes[i].data.title.length <= 60);
+  assert.doesNotThrow(() => parseEpisode(ep));
+});
+
+test("roteiro longo: parte final sem \"outro\" (fala repetida) ganha o fechamento padrão", async () => {
+  // A IA local devolve a parte final com o "outro" repetindo uma fala da parte anterior: a cena sai,
+  // e antes o roteiro era recusado 3 vezes ("a última cena precisa ser outro").
+  const respostas = [parteLonga(0, 3), parteLonga(1, 3)];
+  const final = parteLonga(2, 3);
+  final.scenes[7] = { ...final.scenes[7], narration: respostas[1].scenes[3].narration };
+  respostas.push(final);
+  let k = 0;
+  const f = async () => new Response(JSON.stringify({ message: { content: JSON.stringify(respostas[Math.min(k++, 2)]) } }), { status: 200 });
+  const r = await escreverEpisodio({ tema: temas.temas[0], formato: "longo", id: "2026-11-13-x-longo" }, { token: "", modelos: ["ollama:qwen2.5:7b"], fetch: f, log: () => {} });
+  assert.equal(r.episodio.scenes.at(-1).template, "outro");
+  assert.equal(k, 3, "cada parte saiu na primeira tentativa");
+});
+
+test("roteiro: Gemini sem resposta (fetch failed) passa logo para a reserva", async () => {
+  const antes = process.env.GEMINI_API_KEY;
+  process.env.GEMINI_API_KEY = "chave-teste";
+  try {
+    let gemini = 0;
+    const f = async (url) => {
+      if (/generativelanguage/.test(String(url))) {
+        gemini++;
+        throw new TypeError("fetch failed");
+      }
+      return new Response(JSON.stringify({ message: { content: JSON.stringify(respostaShort()) } }), { status: 200 });
+    };
+    const r = await escreverEpisodio({ tema: temas.temas[0], formato: "short", id: "g4-short" }, { token: "", modelos: ["gemini:a", "ollama:qwen2.5:7b"], fetch: f, log: () => {} });
+    assert.equal(r.modelo, "ollama:qwen2.5:7b");
+    assert.equal(gemini, 1);
+  } finally {
+    if (antes === undefined) delete process.env.GEMINI_API_KEY;
+    else process.env.GEMINI_API_KEY = antes;
+  }
+});
+
+test("roteiro: Short com 6 ou 7 cenas e tamanho certo é aceito (a IA local erra a contagem)", () => {
+  const ep = montarEpisodio(respostaShort(), { id: "2026-11-13-y-short", formato: "short" });
+  const meio = ep.scenes.slice(1, -1);
+  const juntas = [ep.scenes[0], ...meio.slice(0, 4), { ...meio[4], narration: meio.slice(4).map((s) => s.narration).join(" ").slice(0, 370) }, ep.scenes.at(-1)];
+  const p = problemasDeConteudo({ ...ep, scenes: juntas }, "short");
+  assert.ok(!p.some((x) => /cenas \(vieram/.test(x)), p.join("; "));
+});
