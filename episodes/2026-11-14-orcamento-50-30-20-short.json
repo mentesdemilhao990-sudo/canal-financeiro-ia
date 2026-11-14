@@ -1,0 +1,182 @@
+{
+  "id": "2026-11-14-orcamento-50-30-20-short",
+  "formato": "short",
+  "title": "A REGRA 50-30-20 para seu dinheiro SOBRAR no mês",
+  "description": "Seu salário cai na conta e some em poucos dias sem você nem ver para onde foi? Conheça o método prático da regra 50-30-20 para organizar seus gastos, sair do sufoco e começar a guardar dinheiro todo mês com tranquilidade.",
+  "tags": [
+    "orçamento",
+    "regra 50 30 20",
+    "educação financeira",
+    "guardar dinheiro",
+    "finanças pessoais",
+    "mente de milhão",
+    "economia doméstica"
+  ],
+  "targetDurationSeconds": 138,
+  "disclaimer": "Conteúdo educativo. Valores ilustrativos, não é recomendação de investimento.",
+  "scenes": [
+    {
+      "id": "cena-1",
+      "template": "hook",
+      "narration": "Você trabalha o mês inteirinho, o salário cai na conta e, em cinco dias, já sumiu quase tudo. Parece mágica ao contrário, né? Fica comigo até o final que eu vou te mostrar uma regra simples de divisão que vai fazer seu dinheiro finalmente sobrar.",
+      "data": {
+        "kicker": "Chega de aperto no fim do mês",
+        "title": "Para onde foi seu salário?",
+        "subtitle": "Aprenda a regra prática do 50-30-20"
+      }
+    },
+    {
+      "id": "cena-2",
+      "template": "bars",
+      "narration": "O segredo não é cortar o cafezinho ou viver na miséria. É dar um destino certo pra cada real que entra.",
+      "data": {
+        "title": "Divisão Ideal do Salário",
+        "valueSuffix": "%",
+        "items": [
+          {
+            "label": "Necessidades",
+            "value": 50,
+            "color": "green"
+          },
+          {
+            "label": "Desejos",
+            "value": 30,
+            "color": "gold"
+          },
+          {
+            "label": "Futuro",
+            "value": 20,
+            "color": "white"
+          }
+        ],
+        "caption": "Três fatias para organizar sua vida financeira"
+      }
+    },
+    {
+      "id": "cena-3",
+      "template": "counter",
+      "narration": "Pra entender na prática, imagina a Ana. Ela ganha três mil reais limpos todo mês. Pela regra, metade disso, ou seja, exatamente mil e quinhentos reais, deve ir para os gastos essenciais. Aquilo sem o que ela não vive.",
+      "data": {
+        "label": "Gastos Essenciais (50%)",
+        "from": 0,
+        "to": 1500,
+        "prefix": "R$ ",
+        "decimals": 0,
+        "trend": "up",
+        "caption": "Metade do salário de R$ 3.000 para sobreviver",
+        "badge": "50%"
+      }
+    },
+    {
+      "id": "cena-4",
+      "template": "list",
+      "narration": "Essenciais são coisas que se você cortar, sua vida trava: o aluguel ou condomínio, a conta de luz e água, a feira do mês, remédios e a passagem de ônibus.",
+      "data": {
+        "title": "O que entra nos 50%?",
+        "items": [
+          "Aluguel, condomínio e parcelas",
+          "Contas básicas: água e energia",
+          "Supermercado e alimentação básica",
+          "Transporte para o trabalho e saúde"
+        ]
+      }
+    },
+    {
+      "id": "cena-5",
+      "template": "counter",
+      "narration": "Aí vem a segunda fatia: trinta por cento, que no salário da Ana dá novecentos reais. Essa é a parte do estilo de vida. Porque ninguém é de ferro e viver só pra pagar boleto adoece qualquer um.",
+      "data": {
+        "label": "Estilo de Vida (30%)",
+        "from": 0,
+        "to": 900,
+        "prefix": "R$ ",
+        "decimals": 0,
+        "trend": "up",
+        "caption": "Lazer e conforto sem peso na consciência",
+        "badge": "30%"
+      }
+    },
+    {
+      "id": "cena-6",
+      "template": "split",
+      "narration": "Aqui entra a pizza do final de semana, a academia, o streaming de filme e aquela roupa nova. A grande sacada é: gastou os trinta por cento? Acabou o lazer do mês.",
+      "data": {
+        "left": {
+          "label": "Lazer Permitido",
+          "icon": "coin",
+          "points": [
+            "Passeios e saídas",
+            "Serviços por assinatura",
+            "Pequenos mimos"
+          ]
+        },
+        "right": {
+          "label": "O Grande Perigo",
+          "icon": "warning",
+          "points": [
+            "Usar cartão de crédito sem teto",
+            "Achar que limite é salário",
+            "Comprometer o mês seguinte"
+          ]
+        }
+      }
+    },
+    {
+      "id": "cena-7",
+      "template": "counter",
+      "narration": "E agora a parte mais importante, os vinte por cento finais. No caso da Ana, são seiscentos reais carimbados para construir segurança. Se ela tem dívidas caras, esse dinheiro vai direto pra quitar.",
+      "data": {
+        "label": "Construção de Futuro (20%)",
+        "from": 0,
+        "to": 600,
+        "prefix": "R$ ",
+        "decimals": 0,
+        "trend": "up",
+        "caption": "Quitar dívidas ou montar sua reserva",
+        "badge": "20%"
+      }
+    },
+    {
+      "id": "cena-8",
+      "template": "lineChart",
+      "narration": "Olha só o poder da constância. Guardando esses seiscentos reais todo mês, em um ano a Ana junta mais de sete mil e duzentos reais, sem nem contar o rendimento seguro.",
+      "data": {
+        "title": "Evolução da Reserva em 12 Meses",
+        "xLabels": [
+          "Mês 1",
+          "Mês 4",
+          "Mês 8",
+          "Mês 12"
+        ],
+        "valuePrefix": "R$ ",
+        "series": [
+          {
+            "label": "Total Guardado",
+            "color": "green",
+            "values": [
+              600,
+              2400,
+              4800,
+              7200
+            ]
+          }
+        ],
+        "caption": "Exemplo guardando R$ 600 por mês"
+      }
+    },
+    {
+      "id": "cena-9",
+      "template": "outro",
+      "narration": "Parece simples, e é mesmo. O segredo não é quanto você ganha, mas como você distribui. Se isso clareou sua cabeça, se inscreve aí que toda semana tem mais. E me conta nos comentários: qual fatia hoje pesa mais no seu bolso?",
+      "data": {
+        "title": "Organize seu salário hoje mesmo",
+        "points": [
+          "50% para necessidades básicas",
+          "30% para estilo de vida",
+          "20% para quitar dívidas e reserva"
+        ],
+        "cta": "Siga para mais"
+      }
+    }
+  ]
+}

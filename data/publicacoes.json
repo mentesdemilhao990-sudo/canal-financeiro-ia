@@ -554,6 +554,68 @@
       "url": "https://youtu.be/itMYwQJbYuI",
       "enviadoEm": "2026-11-11T10:48:55.239Z",
       "publicarEm": "2026-11-11T21:22:00.000Z"
+    },
+    {
+      "historico": [
+        {
+          "em": "2026-11-14T11:18:45.088Z",
+          "status": "enviando"
+        },
+        {
+          "em": "2026-11-14T11:18:49.032Z",
+          "status": "privado",
+          "nota": "enviado (agendando)"
+        },
+        {
+          "em": "2026-11-14T11:18:49.033Z",
+          "status": "agendado",
+          "nota": "fica público às 12:28 (Brasília)"
+        }
+      ],
+      "plataforma": "youtube",
+      "episodio": "2026-11-14-orcamento-50-30-20-longo",
+      "titulo": "Como dividir o SALÁRIO em 3 partes e NUNCA mais ter DÍVIDAS",
+      "hashEpisodio": "0424bd85431e547f",
+      "hashVideo": "a91d6750e8d11100",
+      "duracao": 584.129,
+      "status": "agendado",
+      "atualizadoEm": "2026-11-14T11:18:49.033Z",
+      "privacidade": "private",
+      "videoId": "JdCBb3_L_9I",
+      "url": "https://youtu.be/JdCBb3_L_9I",
+      "enviadoEm": "2026-11-14T11:18:49.032Z",
+      "publicarEm": "2026-11-14T15:28:00.000Z"
+    },
+    {
+      "historico": [
+        {
+          "em": "2026-11-14T11:18:49.076Z",
+          "status": "enviando"
+        },
+        {
+          "em": "2026-11-14T11:18:51.574Z",
+          "status": "privado",
+          "nota": "enviado (agendando)"
+        },
+        {
+          "em": "2026-11-14T11:18:51.576Z",
+          "status": "agendado",
+          "nota": "fica público às 18:58 (Brasília)"
+        }
+      ],
+      "plataforma": "youtube",
+      "episodio": "2026-11-14-orcamento-50-30-20-short",
+      "titulo": "A REGRA 50-30-20 para seu dinheiro SOBRAR no mês",
+      "hashEpisodio": "598081958fd77ae2",
+      "hashVideo": "176ab55b66933453",
+      "duracao": 127.691,
+      "status": "agendado",
+      "atualizadoEm": "2026-11-14T11:18:51.576Z",
+      "privacidade": "private",
+      "videoId": "UwqKeFmjEtU",
+      "url": "https://youtu.be/UwqKeFmjEtU",
+      "enviadoEm": "2026-11-14T11:18:51.574Z",
+      "publicarEm": "2026-11-14T21:58:00.000Z"
     }
   ]
 }

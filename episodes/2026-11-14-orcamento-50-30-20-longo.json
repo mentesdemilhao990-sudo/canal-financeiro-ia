@@ -1,0 +1,499 @@
+{
+  "id": "2026-11-14-orcamento-50-30-20-longo",
+  "formato": "longo",
+  "title": "Como dividir o SALÁRIO em 3 partes e NUNCA mais ter DÍVIDAS",
+  "description": "Saiba como aplicar o método Orçamento 50-30-20 para gerenciar seu dinheiro com eficiência! Descubra qual parte de seus ganhos deve ser usada para necessidades, desejos e poupança. Comente aí: você faria isso? #orçamentoproprio #finançaspessoais",
+  "tags": [
+    "orçamento",
+    "50-30-20",
+    "gerenciamento financeiro",
+    "dicas de finanças",
+    "educação financeira",
+    "controle orçamentário"
+  ],
+  "targetDurationSeconds": 642,
+  "disclaimer": "Conteúdo educativo. Valores ilustrativos, não é recomendação de investimento.",
+  "scenes": [
+    {
+      "id": "hook",
+      "template": "hook",
+      "narration": "Imagina a Ana, que ganha três mil reais por mês. E tem um real. quinhentos em dívidas? Tá chocado, né? Vamos ver como ela pode mudar isso hoje! Saiba mais aqui no vídeo do Mente de Milhão. finançaspessoais orçamentoproprio Parece pouco, né? E aí vem a parte que ninguém te conta: tem um método simples e eficaz para dividir o salário com perfeição!",
+      "data": {
+        "kicker": "Saiba mais",
+        "title": "O Método SIMPLES para NUNCA mais ter DÍVIDAS",
+        "subtitle": "Descubra como aplicar o Orçamento 50-30-20 e mude sua vida financeira"
+      }
+    },
+    {
+      "id": "split",
+      "template": "split",
+      "narration": "Mas qual é a porcentagem certa para cada categoria? Olha só: Necessidades - cinquenta por cento Desejos - trinta por cento Poupança - vinte por cento E o terceiro erro é o mais caro de todos. Vamos ver por que depois. orçamentoproprio finançaspessoais Sabe por quê? Porque a poupança é a base para todo planejamento financeiro!",
+      "data": {
+        "left": {
+          "label": "50%",
+          "points": [
+            "Necessidades",
+            "Alimentação",
+            "Transporte",
+            "Moradia"
+          ]
+        },
+        "right": {
+          "label": "30%",
+          "points": [
+            "Desejos",
+            "Viagens",
+            "Lazer",
+            "Estudos"
+          ]
+        }
+      }
+    },
+    {
+      "id": "counter",
+      "template": "counter",
+      "narration": "E aí vem o segredo: se Ana ganha três reais. zero, ela deve: um real. quinhentos em Necessidades (cinquenta por cento) novecentos reais em Desejos (trinta por cento) seiscentos reais em Poupança (vinte por cento) E o seiscentos reais da poupança vai fazer toda a diferença! orçamentoproprio finançaspessoais Parece pouco, né? Mas é fundamental para construir seu futuro.",
+      "data": {
+        "label": "Quanto Ana deve economizar?",
+        "from": 0,
+        "to": 600,
+        "prefix": "R$ ",
+        "suffix": "%",
+        "decimals": 0,
+        "trend": "up",
+        "caption": "Ela precisa desse dinheiro para ter segurança financeira.",
+        "badge": "segredo"
+      }
+    },
+    {
+      "id": "linechart",
+      "template": "lineChart",
+      "narration": "Agora repara numa coisa: se Ana continuar assim, em cinco anos ela terá acumulado trinta e seis reais. zero só nas poupanças! Isso pode ser o início de uma grande mudança. E aí vem a parte que ninguém te conta: tem um erro que pode custar caro. Vamos ver qual é depois. orçamentoproprio finançaspessoais.",
+      "data": {
+        "title": "Quanto Ana pode economizar em 5 anos?",
+        "xLabels": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5"
+        ],
+        "valuePrefix": "R$ ",
+        "valueSuffix": "%",
+        "series": [
+          {
+            "label": "Necessidades",
+            "values": [
+              600,
+              600,
+              600,
+              600,
+              600
+            ],
+            "color": "green"
+          },
+          {
+            "label": "Desejos",
+            "values": [
+              360,
+              720,
+              1.08,
+              1.44,
+              1.8
+            ],
+            "color": "gold"
+          },
+          {
+            "label": "Poupança",
+            "values": [
+              1.2,
+              2.4,
+              3.6,
+              4.8,
+              6
+            ],
+            "color": "red"
+          }
+        ],
+        "caption": "Veja como a poupança pode crescer!"
+      }
+    },
+    {
+      "id": "list",
+      "template": "list",
+      "narration": "E o terceiro erro é simples, mas muito caro. Aqui estão os erros mais comuns: um. Não definir metas claras dois. Gastar demais nos desejos três. Não reservar para emergências Olha só: se Ana não fizer nada, ela continuará com dívidas e nunca sairá do lugar! orçamentoproprio finançaspessoais.",
+      "data": {
+        "title": "Erros mais comuns no Orçamento 50-30-20",
+        "items": [
+          "Não definir metas claras",
+          "Gastar demais nos desejos",
+          "Não reservar para emergências"
+        ]
+      }
+    },
+    {
+      "id": "introducao-ana",
+      "template": "list",
+      "narration": "Imagina a Ana, que ganha três reais. zero por mês. e tem um real. quinhentos em dívidas? Tá complicado, né? Vamos resolver isso juntos. Neste vídeo, você vai aprender a dividir o seu salário da forma certa para nunca mais ter dívidas!",
+      "data": {
+        "title": "Como dividir o SALÁRIO em 3 partes",
+        "items": [
+          "Imagina a Ana",
+          "E NUNCA mais ter DÍVIDAS"
+        ]
+      }
+    },
+    {
+      "id": "orcamento-50-30-20",
+      "template": "split",
+      "narration": "Agora repara numa coisa: se Ana seguir o Orçamento cinquenta-trinta-vinte, ela vai dividir assim: cinquenta por cento para Necessidades, trinta por cento para Desejos e vinte por cento para Metas. E aí vem o segredo: se Ana ganha três reais. ela deve um real. quinhentos em Necessidades!",
+      "data": {
+        "left": {
+          "label": "Necessidades",
+          "points": [
+            "50% de R$ 3.000 = R$ 1.500"
+          ]
+        },
+        "right": {
+          "label": "Desejos + Metas",
+          "points": [
+            "30% de R$ 3.000 = R$ 900",
+            "20% de R$ 3.000 = R$ 600"
+          ]
+        }
+      }
+    },
+    {
+      "id": "erro-metas",
+      "template": "counter",
+      "narration": "E o terceiro erro é simples, mas muito caro. Aqui estão os erros mais comuns: um. Não definir metas claras dois. Gastar demais nos desejos três. Não reservar para emergências Olha só: se Ana não fizer nada. ela continuará com dívidas e nunca sairá do lugar! Comenta aí: você faria isso?",
+      "data": {
+        "label": "Erros mais comuns",
+        "from": 0,
+        "to": 3,
+        "prefix": "",
+        "suffix": "",
+        "decimals": 0,
+        "trend": "up",
+        "caption": "Nem sempre é fácil, mas vale a pena definir metas e ter uma reserva para emergê",
+        "badge": "Não deixe"
+      }
+    },
+    {
+      "id": "resultado-50-30-20",
+      "template": "lineChart",
+      "narration": "Agora veja o resultado: em cinco anos, Ana teria acumulado dezoito reais. Isso mesmo, mais de dez vezes o que ela tem em dívidas hoje. O Orçamento cinquenta-trinta-vinte pode ser a chave para a sua liberdade financeira. Você faria isso? Comenta aí: você faria isso?",
+      "data": {
+        "title": "Resultado do Orçamento 50-30-20",
+        "xLabels": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5"
+        ],
+        "valuePrefix": "R$ ",
+        "valueSuffix": "",
+        "series": [
+          {
+            "label": "Dívidas",
+            "values": [
+              1500,
+              3000,
+              4500,
+              6000,
+              7500
+            ]
+          },
+          {
+            "label": "Total",
+            "values": [
+              3000,
+              6000,
+              9000,
+              12000,
+              15000
+            ]
+          }
+        ],
+        "caption": "A diferença entre manter as dívidas e ter dinheiro para investir"
+      }
+    },
+    {
+      "id": "erro-emergencia",
+      "template": "bars",
+      "narration": "Agora repara numa coisa: se Ana não reservar seiscentos reais para emergências. ela pode perder tudo isso quando algo inesperado acontecer. E aí vem o quarto erro: não planejar para imprevistos. Olha só, você faria isso? Comenta aí: você faria isso?",
+      "data": {
+        "title": "Quarto erro: Não planejar para imprevistos",
+        "valuePrefix": "R$ ",
+        "valueSuffix": "",
+        "items": [
+          {
+            "label": "Dívidas",
+            "value": 7500,
+            "color": "red"
+          },
+          {
+            "label": "Total",
+            "value": 18000,
+            "color": "gold"
+          }
+        ],
+        "caption": "A diferença entre manter as dívidas e ter dinheiro para investir"
+      }
+    },
+    {
+      "id": "cena-1-realidade-apertada",
+      "template": "split",
+      "narration": "Pois é, mas você deve estar pensando: tudo lindo no papel, só que as minhas contas básicas já levam quase todo o meu salário. Como limitar isso a metade do que ganho? Calma, você não está sozinho. Olha o caso do Marcos. Ele ganha dois mil e quinhentos reais por mês e, ao colocar tudo no papel, tomou um susto. Os gastos essenciais dele não estavam em cinquenta por cento, mas sim em setenta por cento de tudo o que recebia.",
+      "data": {
+        "left": {
+          "label": "O Ideal",
+          "icon": "growth",
+          "points": [
+            "50% para necessidades",
+            "30% para estilo de vida",
+            "20% para o futuro"
+          ]
+        },
+        "right": {
+          "label": "A Realidade",
+          "icon": "warning",
+          "points": [
+            "Contas fixas passam de 70%",
+            "Quase nada para poupar",
+            "Sensação de sufoco"
+          ]
+        }
+      }
+    },
+    {
+      "id": "cena-2-orcamento-marcos",
+      "template": "bars",
+      "narration": "Olha só a situação do Marcos: mil e setecentos e cinquenta reais iam para as necessidades básicas, ou setenta por cento. Sobravam seiscentos e vinte e cinco reais para o lazer, e míseros cento e vinte e cinco reais, apenas cinco por cento, para guardar. Qualquer imprevisto, como um remédio ou conserto, jogava o Marcos direto no rotativo do cartão. Ele vivia sufocado, trabalhando apenas para pagar boleto.",
+      "data": {
+        "title": "Orçamento Inicial do Marcos",
+        "valuePrefix": "R$ ",
+        "items": [
+          {
+            "label": "Necessidades (70%)",
+            "value": 1750,
+            "color": "red"
+          },
+          {
+            "label": "Desejos (25%)",
+            "value": 625,
+            "color": "gold"
+          },
+          {
+            "label": "Poupança (5%)",
+            "value": 125,
+            "color": "white"
+          }
+        ],
+        "caption": "Salário de R$ 2.500 sem margem para imprevistos"
+      }
+    },
+    {
+      "id": "cena-3-regra-transicao",
+      "template": "counter",
+      "narration": "E aqui entra o pulo do gato: o método cinquenta, trinta, vinte não é uma prisão. Se a sua situação hoje está apertada, use uma regra de transição. O Marcos não tentou derrubar os gastos fixos de setenta para cinquenta por cento de um dia para o outro, porque ninguém aguenta isso. Ele estabeleceu uma meta intermediária: chegar em sessenta por cento nos primeiros seis meses, renegociando contas e cortando desperdícios.",
+      "data": {
+        "label": "Meta de Necessidades na Transição",
+        "from": 70,
+        "to": 60,
+        "suffix": "%",
+        "decimals": 0,
+        "trend": "down",
+        "caption": "Ajuste gradual sem desespero",
+        "badge": "Meta 6M"
+      }
+    },
+    {
+      "id": "cena-4-evolucao-grafico",
+      "template": "lineChart",
+      "narration": "Pensa comigo no poder dessa mudança. Ao trocar o plano do celular, negociar a internet e diminuir desperdícios no mercado, o Marcos baixou os gastos fixos de mil e setecentos e cinquenta para mil e quinhentos reais. Essa folga de duzentos e cinquenta reais foi direto para a poupança dele. Somando ao que já guardava, ele passou a reservar quinhentos reais por mês, atingindo os sonhados vinte por cento.",
+      "data": {
+        "title": "Evolução do Marcos em 12 Meses",
+        "xLabels": [
+          "Mês 1",
+          "Mês 4",
+          "Mês 8",
+          "Mês 12"
+        ],
+        "valuePrefix": "R$ ",
+        "series": [
+          {
+            "label": "Custos Fixos",
+            "color": "red",
+            "values": [
+              1750,
+              1680,
+              1580,
+              1500
+            ]
+          },
+          {
+            "label": "Reserva Mensal",
+            "color": "green",
+            "values": [
+              125,
+              200,
+              350,
+              500
+            ]
+          }
+        ],
+        "caption": "Custos caindo e reserva subindo rumo aos 20%"
+      }
+    },
+    {
+      "id": "cena-5-onde-cortar",
+      "template": "split",
+      "narration": "E repara onde muita gente tropeça: na ânsia de economizar, cortam todo o lazer e a pizza do fim de semana. Isso gera tanta frustração que a pessoa chuta o balde no mês seguinte. O Marcos não zerou o descanso dele. Ele manteve vinte por cento para o estilo de vida, ou seja, quinhentos reais, e mirou a tesoura onde realmente importava: nas despesas fixas pesadas. É esse equilíbrio que garante consistência no longo prazo.",
+      "data": {
+        "left": {
+          "label": "Erro Típico",
+          "icon": "warning",
+          "points": [
+            "Zerar totalmente o lazer",
+            "Frustração e recaída",
+            "Desistir em semanas"
+          ]
+        },
+        "right": {
+          "label": "Foco Certo",
+          "icon": "safe",
+          "points": [
+            "Atacar custos fixos pesados",
+            "Manter descanso saudável",
+            "Consistência no plano"
+          ]
+        }
+      }
+    },
+    {
+      "id": "cena-6-passos-praticos",
+      "template": "list",
+      "narration": "Então, se o seu salário não fecha no cinquenta, trinta, vinte agora, faz assim: primeiro, descubra a sua divisão real de hoje. Segundo, crie a sua regra de transição, como sessenta, vinte, vinte. E terceiro, nunca zere a fatia de guardar dinheiro, nem que comece com dez por cento. Porque o hábito de se pagar primeiro vale muito mais do que começar com uma fortuna.",
+      "data": {
+        "title": "3 Passos para Quem Está Apertado",
+        "items": [
+          "1. Mapeie sua porcentagem real hoje",
+          "2. Use regra de transição como 60-20-20",
+          "3. Guarde algo sempre, mesmo que 10%"
+        ]
+      }
+    },
+    {
+      "id": "cena-1-armadilha-categorias",
+      "template": "split",
+      "narration": "Só que pra essa virada funcionar, você precisa fugir de duas armadilhas. A primeira é mentir pra você mesmo nas contas. Sabe quando a gente coloca o delivery de comida ou a troca de celular como necessidade básica? Pois é. Necessidade é só o que mantém a sua vida em pé: comida simples, moradia, luz, transporte e saúde. Pedir comida fora ou assinar vários streamings é estilo de vida. E não tem problema nenhum curtir isso, desde que caiba certinho nos seus trinta por cento.",
+      "data": {
+        "left": {
+          "label": "Necessidade Real",
+          "icon": "safe",
+          "points": [
+            "Aluguel, água e energia",
+            "Supermercado básico",
+            "Transporte para o trabalho",
+            "Saúde e remédios essenciais"
+          ]
+        },
+        "right": {
+          "label": "Estilo de Vida",
+          "icon": "warning",
+          "points": [
+            "Aplicativos de delivery",
+            "Assinaturas de entretenimento",
+            "Passeios e compras por impulso",
+            "Troca frequente de aparelho"
+          ]
+        }
+      }
+    },
+    {
+      "id": "cena-2-boletos-anuais",
+      "template": "counter",
+      "narration": "A segunda armadilha é ignorar os boletos sazonais, como IPTU, IPVA ou material escolar. Muita gente se organiza o ano inteiro, mas em janeiro se endivida no cartão e volta pra estaca zero. Se você sabe que essas despesas vão somar mil e duzentos reais no ano, divida isso por doze meses. São cem reais que você precisa guardar todo mês dentro dos seus cinquenta por cento essenciais. Assim, quando o boleto chegar, o dinheiro já tá lá pronto e sem estresse.",
+      "data": {
+        "label": "Reserva mensal para gastos anuais",
+        "from": 0,
+        "to": 100,
+        "prefix": "R$ ",
+        "suffix": "/mês",
+        "trend": "up",
+        "badge": "Planejado",
+        "caption": "R$ 1.200 ao ano divididos em 12 parcelas sem susto"
+      }
+    },
+    {
+      "id": "cena-3-passo-a-passo",
+      "template": "list",
+      "narration": "Com isso em mente, o seu plano prático começa no próximo pagamento em três passos. Primeiro: puxe o extrato do último mês e separe as despesas nas três caixas. Segundo: assim que o salário cair, transfira a fatia de guardar dinheiro pra uma conta separada logo no primeiro dia. E terceiro: divida o restante entre o essencial e o lazer. Não deixe pra ver o que sobrou no fim do mês; defina os limites antes de começar a gastar.",
+      "data": {
+        "title": "Plano Prático em 3 Passos",
+        "items": [
+          "1. Mapeie o extrato em 3 caixas",
+          "2. Pague o seu futuro nas primeiras 24 horas",
+          "3. Defina limites fixos para o lazer"
+        ]
+      }
+    },
+    {
+      "id": "cena-4-comparativo-visual",
+      "template": "bars",
+      "narration": "Olha só a diferença prática. Sem método, a pessoa gasta setenta por cento no sufoco das contas e trinta por cento no impulso, terminando com zero no bolso. Já no cinquenta, trinta, vinte, a metade cobre o essencial, trinta por cento banca o seu lazer sem culpa nenhuma e vinte por cento constrói a sua segurança financeira. Você não precisa deixar de viver o presente pra cuidar do amanhã. É só dar uma função clara pra cada real.",
+      "data": {
+        "title": "A Divisão Equilibrada do Salário",
+        "valueSuffix": "%",
+        "items": [
+          {
+            "label": "Necessidades",
+            "value": 50,
+            "color": "green"
+          },
+          {
+            "label": "Estilo de vida",
+            "value": 30,
+            "color": "gold"
+          },
+          {
+            "label": "Futuro e reserva",
+            "value": 20,
+            "color": "white"
+          }
+        ],
+        "caption": "Distribuição sustentável para viver bem e sem dívidas"
+      }
+    },
+    {
+      "id": "cena-5-resumo-de-bolso",
+      "template": "list",
+      "narration": "Pra guardar de vez: cinquenta por cento pro que você precisa pra viver, trinta por cento pro que te faz feliz hoje e vinte por cento pro seu futuro, pra quitar dívidas e montar a sua reserva. Se não der pra cravar esses números agora, ajuste no seu ritmo com uma regra temporária, mas nunca zere a caixinha do futuro. O segredo da tranquilidade não é mágica, é constância.",
+      "data": {
+        "title": "Resumo de Bolso: Método 50-30-20",
+        "items": [
+          "50% para viver com tranquilidade",
+          "30% para curtir o presente sem culpa",
+          "20% para quitar dívidas e investir",
+          "Adapte as porcentagens ao seu ponto de partida"
+        ]
+      }
+    },
+    {
+      "id": "cena-6-fechamento",
+      "template": "outro",
+      "narration": "No final, ter paz com o dinheiro não é sobre quanto você ganha, mas sobre quem manda no seu salário: você ou os boletos. Me conta nos comentários: qual dessas fatias tá mais difícil de equilibrar na sua rotina hoje? Se isso te ajudou a enxergar uma saída, se inscreve aí que toda semana tem mais conversa prática sobre o seu bolso.",
+      "data": {
+        "title": "O Controle do Dinheiro\nNas Suas Mãos",
+        "points": [
+          "Assuma o comando do seu salário",
+          "Construa sua reserva passo a passo",
+          "Comente qual fatia você vai ajustar hoje"
+        ],
+        "cta": "Inscreva-se"
+      }
+    }
+  ]
+}

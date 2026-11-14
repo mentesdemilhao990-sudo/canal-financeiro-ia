@@ -196,6 +196,27 @@
         "Por que seus R$ 100 COMPRAM MENOS a cada ano?"
       ],
       "modelo": "gemini:gemini-3.8-flash"
+    },
+    {
+      "data": "2026-11-14",
+      "tema": "orcamento-50-30-20",
+      "nome": "Orçamento 50-30-20",
+      "pontos": 7,
+      "manchetes": [
+        "Procon JF está com inscrições abertas para curso sobre Educação Financeira e Orçamento Familiar - radiocatedraljf.com.br",
+        "Como sair das dívidas e retomar o controle financeiro? - Comunica UFU",
+        "O Brasil contra o ajuste fiscal: o novo governo Lula e a batalha pelo orçamento - Esquerda Online",
+        "Orçamento da União: entenda como o governo planeja e decide onde gastar o dinheiro público - Republicanos 10"
+      ],
+      "episodios": [
+        "2026-11-14-orcamento-50-30-20-longo",
+        "2026-11-14-orcamento-50-30-20-short"
+      ],
+      "titulos": [
+        "Como dividir o SALÁRIO em 3 partes e NUNCA mais ter DÍVIDAS",
+        "A REGRA 50-30-20 para seu dinheiro SOBRAR no mês"
+      ],
+      "modelo": "ollama:qwen2.5:7b + gemini:gemini-3.8-flash"
     }
   ]
 }
