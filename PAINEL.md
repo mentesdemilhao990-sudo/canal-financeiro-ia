@@ -1,6 +1,6 @@
 # 📊 Painel · Mente de Milhão
 
-_Atualizado em 14/11/2026, 10:14 (Brasília). Este arquivo é gerado sozinho: não edite à mão._
+_Atualizado em 14/11/2026, 12:56 (Brasília). Este arquivo é gerado sozinho: não edite à mão._
 
 ## Chaves de segurança
 
@@ -15,14 +15,14 @@ Com tudo desligado, os workflows só **simulam**: nada é enviado nem respondido
 
 ## Cota do YouTube hoje
 
-23 de 9000 unidades · 2 de 10 envios de vídeo (zera à meia-noite do Pacífico, 4h ou 5h em Brasília).
+44 de 9000 unidades · 2 de 10 envios de vídeo (zera à meia-noite do Pacífico, 4h ou 5h em Brasília).
 
 ## Vídeos
 
 | Episódio | Título | Status | Link | Views | 👍 | 💬 | Atualizado |
 | --- | --- | --- | --- | ---: | ---: | ---: | --- |
 | `2026-11-14-orcamento-50-30-20-short` | A REGRA 50-30-20 para seu dinheiro SOBRAR no mês | ⏰ agendado | [abrir](https://youtu.be/UwqKeFmjEtU) | 0 | 0 | 0 | 14/11/2026, 08:18 |
-| `2026-11-14-orcamento-50-30-20-longo` | Como dividir o SALÁRIO em 3 partes e NUNCA mais ter DÍVIDAS | ⏰ agendado | [abrir](https://youtu.be/JdCBb3_L_9I) | 0 | 0 | 0 | 14/11/2026, 08:18 |
+| `2026-11-14-orcamento-50-30-20-longo` | Como dividir o SALÁRIO em 3 partes e NUNCA mais ter DÍVIDAS | 🟢 público | [abrir](https://youtu.be/JdCBb3_L_9I) | 0 | 0 | 0 | 14/11/2026, 08:18 |
 | `2026-11-11-inflacao-short` | Por que seus R$ 100 COMPRAM MENOS a cada ano? | 🟢 público | [abrir](https://youtu.be/itMYwQJbYuI) | 2 | 0 | 0 | 11/11/2026, 07:48 |
 | `2026-11-11-inflacao-longo` | O LADRÃO SILENCIOSO que destrói seu salário todo mês | 🟢 público | [abrir](https://youtu.be/U-dmIT9iEkc) | 4 | 0 | 0 | 11/11/2026, 07:48 |
 | `2026-11-10-black-friday-short` | Como comprar com CONSCIÊNCIA na Black Friday e EVITAR golpes | 🟢 público | [abrir](https://youtu.be/261-PmSbuIk) | 3 | 0 | 0 | 10/11/2026, 09:21 |
@@ -50,7 +50,7 @@ Com tudo desligado, os workflows só **simulam**: nada é enviado nem respondido
 
 ## Comentários
 
-Última leitura: 14/11/2026, 10:14
+Última leitura: 14/11/2026, 12:56
 
 | Aguardando você | 💰 Financeiras (revisão obrigatória) | Aprovadas, não enviadas | Respondidas | Automáticas | Ignoradas |
 | ---: | ---: | ---: | ---: | ---: | ---: |
