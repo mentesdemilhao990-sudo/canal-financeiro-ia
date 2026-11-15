@@ -1,0 +1,334 @@
+{
+  "id": "2026-11-15-cdb-lci-lca-longo",
+  "formato": "longo",
+  "title": "CDB ou LCI: Onde Guardar R$ 10.000 para Render Mais de VERDADE?",
+  "description": "CDB, LCI ou LCA: afinal, qual é a melhor opção para o seu dinheiro na renda fixa? Entenda a diferença de impostos, como funciona a proteção do FGC e veja por que nem sempre o investimento isento rende mais no seu bolso.",
+  "tags": [
+    "cdb ou lci",
+    "lca",
+    "renda fixa",
+    "investimentos iniciantes",
+    "fgc garantia",
+    "imposto de renda cdb",
+    "onde investir"
+  ],
+  "targetDurationSeconds": 664,
+  "disclaimer": "Conteúdo educativo. Valores ilustrativos, não é recomendação de investimento.",
+  "scenes": [
+    {
+      "id": "cena-1-gancho",
+      "template": "hook",
+      "narration": "Você sabia que um investimento que cobra imposto de renda pode colocar mais dinheiro no seu bolso do que outro totalmente isento de imposto? Parece pegadinha, mas é exatamente isso o que acontece todos os dias com quem tenta escolher entre CDB, LCI e LCA no aplicativo do banco. Muita gente vê aquela sigla bonita, lê a frase sem imposto de renda e clica na hora, achando que fez o melhor negócio do mundo. Só que, na prática, essa escolha precipitada pode estar fazendo você deixar centenas de reais na mesa sem perceber. E hoje você vai descobrir como nunca mais cair nessa ilusão.",
+      "data": {
+        "kicker": "RENDA FIXA DESCOMPLICADA",
+        "title": "CDB, LCI ou LCA?",
+        "subtitle": "Entenda onde colocar seu dinheiro sem cair em pegadinhas"
+      }
+    },
+    {
+      "id": "cena-2-contexto",
+      "template": "split",
+      "narration": "Nas últimas semanas, os jornais não param de falar sobre a volta com força total da renda fixa. Com as taxas em alta e a bolsa cheia de altos e baixos, emprestar dinheiro pro banco virou o porto seguro de milhões de brasileiros. Só que, junto com essa corrida, veio uma sopa de letrinhas que confunde qualquer um. É CDB pra cá, LCI pra lá, LCA no meio. O gerente te manda mensagem oferecendo um título com nome complicado e você fica sem saber se aquele rendimento vale a pena ou se é apenas bom pro próprio banco bater a meta do mês.",
+      "data": {
+        "left": {
+          "label": "CDB",
+          "icon": "chart",
+          "points": [
+            "Empréstimo para bancos",
+            "Tem imposto de renda",
+            "Prazos bem flexíveis"
+          ]
+        },
+        "right": {
+          "label": "LCI e LCA",
+          "icon": "safe",
+          "points": [
+            "Setor Imobiliário e Agro",
+            "Totalmente isento de IR",
+            "Prazos mínimos maiores"
+          ]
+        }
+      }
+    },
+    {
+      "id": "cena-3-caso-marcos",
+      "template": "bars",
+      "narration": "Pra entender o tamanho da confusão, pensa no caso do Marcos. Ele trabalha de carteira assinada, juntou dez mil reais com muito suor e decidiu tirar essa reserva da conta corrente. Ao abrir o aplicativo, ele deu de cara com duas opções principais. A primeira era um CDB pagando cento e dez por cento da taxa de referência. A segunda opção era uma LCI pagando noventa por cento. De cara, o Marcos pensou: cento e dez por cento é muito mais que noventa, então o CDB ganha de lavada. Mas aí um colega do trabalho falou: não faça isso, porque a LCI não paga imposto e o CDB paga.",
+      "data": {
+        "title": "A Dúvida do Marcos: Qual Rende Mais?",
+        "valueSuffix": "% CDI",
+        "items": [
+          {
+            "label": "CDB (com IR)",
+            "value": 110,
+            "color": "gold"
+          },
+          {
+            "label": "LCI (sem IR)",
+            "value": 90,
+            "color": "green"
+          }
+        ],
+        "caption": "Exemplo ilustrativo de oferta no aplicativo"
+      }
+    },
+    {
+      "id": "cena-4-seguranca-fgc",
+      "template": "counter",
+      "narration": "O Marcos ficou completamente perdido. Afinal, se o banco quebrar, o que acontece com esses dez mil reais? É aí que entra um detalhe fundamental que muita gente esquece de olhar: tanto o CDB quanto a LCI e a LCA contam com a exata mesma garantia de proteção do Fundo Garantidor de Créditos, até o limite de duzentos e cinquenta mil reais por pessoa e por instituição. Ou seja, em termos de segurança básica contra o banco quebrar, eles jogam no mesmo time. O perigo real não está na segurança do dinheiro, mas sim nas regras escondidas do rendimento e dos prazos.",
+      "data": {
+        "label": "Garantia do FGC por CPF e Instituição",
+        "from": 0,
+        "to": 250000,
+        "prefix": "R$ ",
+        "decimals": 0,
+        "trend": "up",
+        "caption": "Mesma cobertura de segurança para CDB, LCI e LCA",
+        "badge": "SEGURO"
+      }
+    },
+    {
+      "id": "cena-5-gancho-curiosidade",
+      "template": "list",
+      "narration": "E é exatamente aqui que a história do Marcos fica interessante. Ele achava que a resposta era simples, mas descobriu que existe uma conta exata que vira o jogo dependendo do tempo em que o dinheiro fica investido. Pior ainda: existe uma regra silenciosa de liquidez que mudou recentemente no mercado e que pode travar o seu dinheiro justamente quando você tiver uma emergência. Sabe aquela pergunta que o Marcos se fez sobre qual dos dois rende mais de verdade depois dos descontos? A resposta vai te surpreender, e a gente vai fazer essa conta centavo por centavo agora.",
+      "data": {
+        "title": "O Que Você Precisa Descobrir:",
+        "items": [
+          "O impacto real da tabela de Imposto de Renda",
+          "A nova regra de carência e dinheiro preso",
+          "A conta exata de qual sobra mais no bolso"
+        ]
+      }
+    },
+    {
+      "id": "regra-imposto-cdb",
+      "template": "list",
+      "narration": "Pra começar a desatar esse nó, a gente precisa entender o Certificado de Depósito Bancário, o famoso CDB. Quando o Marcos empresta dinheiro pro banco através de um CDB, o governo entra na jogada cobrando Imposto de Renda só sobre o lucro. E não é uma taxa fixa, ela diminui com o tempo. Se ele tirar o dinheiro em até seis meses, o imposto morde vinte e dois e meio por cento do que rendeu. Entre seis meses e um ano, cai pra vinte por cento. De um a dois anos, vira dezessete e meio por cento. E só depois de dois anos inteiros atinge a menor taxa possível, que é de quinze por cento.",
+      "data": {
+        "title": "Tabela Regressiva de IR no CDB",
+        "items": [
+          "Até 180 dias: 22,5% sobre os rendimentos",
+          "De 181 a 360 dias: 20% sobre o lucro",
+          "De 361 a 720 dias: 17,5% de imposto",
+          "Acima de 720 dias: 15% (menor taxa)"
+        ]
+      }
+    },
+    {
+      "id": "tabela-regressiva-ir",
+      "template": "bars",
+      "narration": "Muita gente olha pra essa tabela e já torce o nariz, pensando que o governo tá levando todo o dinheiro embora. Mas olha só: o imposto nunca é cobrado do total que você colocou lá, só do rendimento. Se os seus dez mil renderam mil reais em um ano, o imposto de vinte por cento come duzentos reais do lucro, e você recebe dez mil e oitocentos líquidos. O banco já desconta isso na fonte de forma automática na hora do resgate, então você nem precisa se preocupar em emitir boleto ou calcular imposto na mão.",
+      "data": {
+        "title": "Alíquotas do IR no CDB",
+        "valueSuffix": "%",
+        "items": [
+          {
+            "label": "Até 6 meses",
+            "value": 22.5,
+            "color": "red"
+          },
+          {
+            "label": "6 a 12 meses",
+            "value": 20,
+            "color": "red"
+          },
+          {
+            "label": "1 a 2 anos",
+            "value": 17.5,
+            "color": "gold"
+          },
+          {
+            "label": "Mais de 2 anos",
+            "value": 15,
+            "color": "green"
+          }
+        ],
+        "caption": "O imposto incide somente sobre o rendimento gerado"
+      }
+    },
+    {
+      "id": "vantagem-lci-lca",
+      "template": "split",
+      "narration": "Agora entra o outro lado da moeda: a LCI e a LCA. Essas siglas significam Letra de Crédito Imobiliário e do Agronegócio. O Marcos tá emprestando dinheiro pro banco igualzinho no CDB, mas o banco é obrigado por lei a repassar esse recurso pra financiar construções ou produtores rurais. E pra incentivar esses dois setores fundamentais pro Brasil, o governo dá um presentão pro investidor comum: isenção total de Imposto de Renda. Cada centavo que rende fica integralmente no seu bolso. Parece uma vitória esmagadora da LCI, né? Só que o banco não é bobo.",
+      "data": {
+        "left": {
+          "label": "CDB",
+          "icon": "warning",
+          "points": [
+            "Uso livre pelo banco",
+            "Paga Imposto de Renda",
+            "Taxa regressiva de 22,5% a 15%"
+          ]
+        },
+        "right": {
+          "label": "LCI e LCA",
+          "icon": "safe",
+          "points": [
+            "Crédito para imóveis e agro",
+            "Totalmente isento de IR",
+            "Cem por cento do rendimento é seu"
+          ]
+        }
+      }
+    },
+    {
+      "id": "comparativo-rendimento",
+      "template": "bars",
+      "narration": "Como a LCI não tem imposto, adivinha o que o banco faz? Ele oferece uma taxa percentual menor. Enquanto você encontra facilmente no mercado um CDB pagando cem por cento do CDI, uma LCI costuma oferecer algo em torno de oitenta e cinco a noventa por cento. Aí o Marcos pegou a calculadora: se um CDB de cem por cento rende mil reais brutos no ano, com desconto de vinte por cento de imposto, sobram oitocentos reais líquidos. Já uma LCI pagando oitenta e cinco por cento entrega oitocentos e cinquenta reais cravados, sem desconto nenhum. Nesse caso, a LCI ganhou do CDB.",
+      "data": {
+        "title": "Lucro Líquido de R$ 10.000 em 1 Ano",
+        "valuePrefix": "R$ ",
+        "items": [
+          {
+            "label": "CDB 100% CDI Líquido",
+            "value": 800,
+            "color": "gold"
+          },
+          {
+            "label": "LCI 85% CDI Líquido",
+            "value": 850,
+            "color": "green"
+          },
+          {
+            "label": "LCI 75% CDI Líquido",
+            "value": 750,
+            "color": "red"
+          }
+        ],
+        "caption": "Exemplo didático considerando retorno bruto de 10% ao ano"
+      }
+    },
+    {
+      "id": "reposta-curiosidade-resgate",
+      "template": "split",
+      "narration": "E agora vem a resposta daquela curiosidade da primeira parte, a pegadinha que quase pegou o Marcos desprevenido! Lembra que a LCI rendeu cinquenta reais a mais no exemplo? O problema é o que mudou recentemente no mercado: as novas regras aumentaram a carência mínima dessas letras. Na LCI e na LCA, você é obrigado a deixar o dinheiro totalmente travado por muitos meses, sem poder sacar nem se a casa cair. Já o CDB tem opções com liquidez diária, permitindo resgatar o dinheiro a qualquer momento em dias úteis com um clique no aplicativo.",
+      "data": {
+        "left": {
+          "label": "CDB com Liquidez",
+          "icon": "growth",
+          "points": [
+            "Saque em dias úteis",
+            "Dinheiro livre a qualquer hora",
+            "Perfeito para reserva"
+          ]
+        },
+        "right": {
+          "label": "LCI e LCA Atuais",
+          "icon": "warning",
+          "points": [
+            "Carência mínima ampliada",
+            "Dinheiro travado por meses",
+            "Sem resgate antes do prazo"
+          ]
+        }
+      }
+    },
+    {
+      "id": "erros-reserva",
+      "template": "list",
+      "narration": "E é por causa dessa trava de prazo que muita gente comete o primeiro grande erro: colocar a reserva de emergência numa LCI só porque não tem imposto. Imagina se o carro quebra ou surge um imprevisto de saúde, e o seu dinheiro tá trancado sem poder mexer? Não adianta nada ganhar cinquenta reais a mais no ano se você tiver que entrar no cheque especial pagando juros abusivos porque não pôde resgatar a grana. Em reserva de emergência, a liquidez imediata vem sempre na frente da rentabilidade.",
+      "data": {
+        "title": "Erros Comuns na Renda Fixa",
+        "items": [
+          "Travar a reserva de emergência",
+          "Ignorar a data de carência",
+          "Olhar só a isenção de imposto"
+        ]
+      }
+    },
+    {
+      "id": "protecao-fgc",
+      "template": "counter",
+      "narration": "O segundo erro tem a ver com segurança. Com as notícias recentes do Banco Central tirando instituições do mercado, muita gente se assusta. Mas olha só: tanto o CDB quanto a LCI e a LCA contam com a proteção do Fundo Garantidor de Créditos. Esse mecanismo cobre até duzentos e cinquenta mil reais por CPF e por instituição financeira. Ou seja, mesmo que a instituição passe por apuros, o dinheiro aplicado e os rendimentos acumulados até esse limite estão protegidos.",
+      "data": {
+        "label": "Proteção do FGC por Instituição",
+        "from": 0,
+        "to": 250000,
+        "prefix": "R$ ",
+        "trend": "up",
+        "caption": "Garantia válida para CDB, LCI e LCA",
+        "badge": "Protegido"
+      }
+    },
+    {
+      "id": "comparacao-longo-prazo",
+      "template": "bars",
+      "narration": "O terceiro erro clássico é esquecer de fazer a conta do prazo. Quanto mais tempo o dinheiro fica no CDB, menor fica o imposto de renda, caindo até quinze por cento após dois anos. Se você comparar uma LCI pagando oitenta e cinco por cento do CDI com um CDB pagando cento e dez por cento, no longo prazo o CDB com imposto pode render mais no bolso do que a LCI isenta! Por isso, nunca decida no automático: compare o prazo do resgate com a taxa líquida final.",
+      "data": {
+        "title": "Simulação Líquida em 2 Anos",
+        "valuePrefix": "R$ ",
+        "items": [
+          {
+            "label": "CDB 110% do CDI",
+            "value": 12150,
+            "color": "green"
+          },
+          {
+            "label": "LCI 85% do CDI",
+            "value": 11950,
+            "color": "gold"
+          },
+          {
+            "label": "Poupança Comum",
+            "value": 11300,
+            "color": "white"
+          }
+        ],
+        "caption": "Exemplo sobre R$ 10.000 após imposto de renda"
+      }
+    },
+    {
+      "id": "passo-a-passo",
+      "template": "list",
+      "narration": "Pra você nunca mais errar, segue este plano prático. Primeiro: dê nome e prazo ao seu dinheiro. Se for aquela quantia para imprevistos, o caminho é CDB com liquidez diária. Segundo: se você tem uma meta com data certa daqui a um ou dois anos, calcule a taxa equivalente da LCI contra o CDB após o imposto. Terceiro: confira o período de carência antes de confirmar a aplicação. E quarto: sempre respeite o teto de garantia por instituição.",
+      "data": {
+        "title": "Plano Prático em 4 Passos",
+        "items": [
+          "1. Separe a reserva em liquidez diária",
+          "2. Compare a taxa líquida pro seu prazo",
+          "3. Verifique a carência antes de aplicar",
+          "4. Respeite o teto de garantia do FGC"
+        ]
+      }
+    },
+    {
+      "id": "resumo-final",
+      "template": "split",
+      "narration": "Resumindo tudo o que vimos: não existe investimento perfeito, existe a escolha certa pro seu plano. O CDB é o campeão da flexibilidade com liquidez diária, perfeito pra reserva ou pra prazos longos em que o imposto cai pro piso mínimo. Já a LCI e a LCA brilham em metas de médio prazo, onde você tem certeza de que não vai mexer na grana e a taxa oferecida supera o rendimento do CDB já livre de impostos.",
+      "data": {
+        "left": {
+          "label": "Quando Usar CDB",
+          "icon": "safe",
+          "points": [
+            "Reserva com liquidez diária",
+            "Aplicações de longo prazo",
+            "Imposto cai para 15% após 2 anos"
+          ]
+        },
+        "right": {
+          "label": "Quando Usar LCI/LCA",
+          "icon": "growth",
+          "points": [
+            "Isenção total de imposto",
+            "Metas médias com data fixa",
+            "Dinheiro pode ficar travado"
+          ]
+        }
+      }
+    },
+    {
+      "id": "fechamento-pergunta",
+      "template": "outro",
+      "narration": "No fim das contas, o Marcos dividiu a grana: colocou uma parte no CDB de resgate diário pra ter paz e a outra numa LCA travada pra render sem imposto. E você? Se tivesse dez mil reais hoje, você preferiria a liberdade de sacar a qualquer hora ou aceitaria prender o dinheiro pra buscar um rendimento um pouquinho maior? Comenta aí embaixo a sua escolha! E se esse vídeo te ajudou, se inscreve no canal que toda semana tem mais conteúdo direto ao ponto pra você.",
+      "data": {
+        "title": "O que você prefere:\nLiquidez ou Rendimento?",
+        "points": [
+          "CDB com resgate diário para ter paz",
+          "LCI travada para render sem imposto",
+          "Divisão equilibrada dos recursos"
+        ],
+        "cta": "Inscreva-se"
+      }
+    }
+  ]
+}

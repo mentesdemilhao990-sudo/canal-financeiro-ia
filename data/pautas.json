@@ -217,6 +217,23 @@
         "A REGRA 50-30-20 para seu dinheiro SOBRAR no mês"
       ],
       "modelo": "ollama:qwen2.5:7b + gemini:gemini-3.8-flash"
+    },
+    {
+      "data": "2026-11-15",
+      "tema": "cdb-lci-lca",
+      "nome": "CDB, LCI e LCA",
+      "pontos": 4.8,
+      "manchetes": [
+        "BB corta dividendo, crise na Nvidia, CDB, LCI/LCA ou Tesouro? O que mexeu com seu dinheiro na semana - Estadão",
+        "Banco Central tira instituições do mercado, Banco do Brasil (BBAS3) decepciona no 3T26 e renda fixa volta a brilhar: veja o que bombou na semana - Seu Dinheiro"
+      ],
+      "episodios": [
+        "2026-11-15-cdb-lci-lca-longo"
+      ],
+      "titulos": [
+        "CDB ou LCI: Onde Guardar R$ 10.000 para Render Mais de VERDADE?"
+      ],
+      "modelo": "gemini:gemini-3.8-flash"
     }
   ]
 }
