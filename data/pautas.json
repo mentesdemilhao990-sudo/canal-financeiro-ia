@@ -234,6 +234,27 @@
         "CDB ou LCI: Onde Guardar R$ 10.000 para Render Mais de VERDADE?"
       ],
       "modelo": "gemini:gemini-3.8-flash"
+    },
+    {
+      "data": "2026-11-16",
+      "tema": "criptomoedas",
+      "nome": "Criptomoedas com pé no chão",
+      "pontos": 7,
+      "manchetes": [
+        "Notícias XRP: moeda Ripple cai abaixo de US$1 à medida que o dinheiro sai do mercado cripto - CoinDesk",
+        "Pânico ou oportunidade? Entenda por que a queda do bitcoin e a Black Friday podem formar uma combinação rara - Seu Dinheiro",
+        "Bitcoin hoje: acompanhe ao vivo a cotação - GZH",
+        "Bitcoin: por que as liquidações bilionárias são mais frequentes - InvestNews"
+      ],
+      "episodios": [
+        "2026-11-16-criptomoedas-longo",
+        "2026-11-16-criptomoedas-short"
+      ],
+      "titulos": [
+        "CRIPTO Vale a Pena? O RISCO Real que Ninguém te Conta",
+        "Colocar sua RESERVA em CRIPTO pode te quebrar?"
+      ],
+      "modelo": "gemini:gemini-flash-latest + gemini:gemini-3.8-flash"
     }
   ]
 }

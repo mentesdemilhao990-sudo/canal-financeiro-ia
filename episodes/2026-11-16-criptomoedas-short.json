@@ -1,0 +1,154 @@
+{
+  "id": "2026-11-16-criptomoedas-short",
+  "formato": "short",
+  "title": "Colocar sua RESERVA em CRIPTO pode te quebrar?",
+  "description": "Muita gente confunde investimento de alto risco com reserva de emergência e acaba tendo prejuízos enormes bem na hora do aperto. Entenda por que misturar moedas digitais com o dinheiro da sua segurança é perigoso e como proteger seu bolso.",
+  "tags": [
+    "educação financeira",
+    "criptomoedas",
+    "reserva de emergência",
+    "finanças pessoais",
+    "investimentos",
+    "mente de milhão",
+    "dinheiro"
+  ],
+  "targetDurationSeconds": 130,
+  "disclaimer": "Conteúdo educativo. Valores ilustrativos, não é recomendação de investimento.",
+  "scenes": [
+    {
+      "id": "cena-1-gancho",
+      "template": "hook",
+      "narration": "Se você acordasse amanhã e metade do seu salário tivesse evaporado, como pagaria o aluguel? Tem gente colocando a reserva de emergência em moedas digitais achando que é poupança turbinada. Mas olha o perigo disso.",
+      "data": {
+        "kicker": "CUIDADO COM SEU BOLSO",
+        "title": "RESERVA EM CRIPTO?",
+        "subtitle": "Por que essa mistura pode quebrar você"
+      }
+    },
+    {
+      "id": "cena-2-caso-marcos",
+      "template": "counter",
+      "narration": "Pensa comigo no caso do Marcos. Ele juntou cinco mil reais com bastante sacrifício pra imprevistos. Aí viu amigos comentando sobre moedas valorizando e resolveu aplicar tudo de uma vez.",
+      "data": {
+        "label": "Economias do Marcos",
+        "from": 0,
+        "to": 5000,
+        "prefix": "R$ ",
+        "trend": "up",
+        "caption": "Dinheiro suado guardado para imprevistos"
+      }
+    },
+    {
+      "id": "cena-3-queda-grafico",
+      "template": "lineChart",
+      "narration": "Só que esse mercado é uma verdadeira montanha-russa. Como saiu nas notícias recentes com quedas fortes no setor, em poucas semanas o dinheiro do Marcos despencou de cinco mil pra três mil reais.",
+      "data": {
+        "title": "Oscilação em 30 Dias",
+        "xLabels": [
+          "Sem 1",
+          "Sem 2",
+          "Sem 3",
+          "Sem 4"
+        ],
+        "valuePrefix": "R$ ",
+        "series": [
+          {
+            "label": "Saldo",
+            "color": "red",
+            "values": [
+              5000,
+              5200,
+              3800,
+              3000
+            ]
+          }
+        ],
+        "caption": "Queda brusca de 40% em poucas semanas"
+      }
+    },
+    {
+      "id": "cena-4-imprevisto-bate",
+      "template": "split",
+      "narration": "E aí vem a parte que ninguém te avisa: o imprevisto não espera o mercado subir. O carro do Marcos quebrou bem na semana da baixa. Sem outra saída, ele precisou sacar na pior hora possível.",
+      "data": {
+        "left": {
+          "label": "Imprevisto",
+          "icon": "warning",
+          "points": [
+            "Carro quebrado",
+            "Gasto urgente"
+          ]
+        },
+        "right": {
+          "label": "Mercado em Baixa",
+          "icon": "coin",
+          "points": [
+            "Saldo em queda",
+            "Venda no prejuízo"
+          ]
+        }
+      }
+    },
+    {
+      "id": "cena-5-prejuizo-real",
+      "template": "counter",
+      "narration": "O que era só uma oscilação na tela virou um prejuízo real de dois mil reais no bolso. O dinheiro que deveria proteger a família dele acabou trazendo mais dívida e dor de cabeça.",
+      "data": {
+        "label": "Prejuízo Realizado",
+        "from": 5000,
+        "to": 3000,
+        "prefix": "R$ ",
+        "trend": "down",
+        "caption": "R$ 2.000 perdidos na hora da emergência"
+      }
+    },
+    {
+      "id": "cena-6-comparacao-barras",
+      "template": "bars",
+      "narration": "Repara só: reserva de emergência não foi feita pra render muito, foi feita pra estar inteira quando você precisar. Por isso, dinheiro de segurança fica em opções seguras e estáveis de renda fixa.",
+      "data": {
+        "title": "Divisão Inteligente",
+        "valueSuffix": "%",
+        "items": [
+          {
+            "label": "Reserva Segura",
+            "value": 95,
+            "color": "green"
+          },
+          {
+            "label": "Risco Alto",
+            "value": 5,
+            "color": "gold"
+          }
+        ],
+        "caption": "Priorize segurança na sua proteção"
+      }
+    },
+    {
+      "id": "cena-7-regras-ouro",
+      "template": "list",
+      "narration": "Quer investir em cripto? Beleza, mas com duas regras. Primeiro: garanta sua reserva completa em renda fixa antes de começar. Segundo: no risco, só coloque um dinheiro pequeno, que não te tire o sono se cair.",
+      "data": {
+        "title": "Regras de Ouro",
+        "items": [
+          "Garanta a reserva segura antes de tudo",
+          "Em risco, só coloque o que pode perder",
+          "Nunca use o dinheiro de pagar contas"
+        ]
+      }
+    },
+    {
+      "id": "cena-8-fechamento",
+      "template": "outro",
+      "narration": "Dinheiro de emergência a gente protege, não aposta. Comenta aí: você já passou sufoco com oscilação de cripto? E se isso te ajudou, se inscreve no canal que toda semana tem mais conversa reta sobre o seu bolso.",
+      "data": {
+        "title": "Proteja sua paz\nantes de buscar lucro",
+        "points": [
+          "Reserva não se arrisca",
+          "Segurança vem em primeiro lugar"
+        ],
+        "cta": "Siga para mais"
+      }
+    }
+  ]
+}

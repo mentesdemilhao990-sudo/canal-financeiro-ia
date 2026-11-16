@@ -1,0 +1,366 @@
+{
+  "id": "2026-11-16-criptomoedas-longo",
+  "formato": "longo",
+  "title": "CRIPTO Vale a Pena? O RISCO Real que Ninguém te Conta",
+  "description": "Pensando em investir em Bitcoin ou moedas digitais? Cuidado com a ilusão do dinheiro fácil. Neste vídeo, mostramos na prática a volatilidade das criptomoedas, os perigos reais para o seu bolso e por que você nunca deve colocar a sua reserva de emergência nisso.",
+  "tags": [
+    "criptomoedas",
+    "bitcoin iniciantes",
+    "riscos cripto",
+    "reserva de emergencia",
+    "educacao financeira",
+    "volatilidade bitcoin",
+    "mente de milhao"
+  ],
+  "targetDurationSeconds": 603,
+  "disclaimer": "Conteúdo educativo. Valores ilustrativos, não é recomendação de investimento.",
+  "scenes": [
+    {
+      "id": "cena-1-gancho",
+      "template": "hook",
+      "narration": "Colocar o dinheiro que você suou o mês inteiro pra juntar numa moeda digital que pode cair vinte por cento num único fim de semana parece loucura, né? Só que tem muita gente caindo nessa conversa de que criptomoeda é o caminho mais rápido pra ficar rico da noite pro dia. Você abre as redes sociais e só vê gente ostentando, falando de lucros surreais com moedas que você nem sabia que existiam. Só que ninguém te mostra o print da conta quando tudo despenca. E se você não entender as regras desse jogo agora, o próximo a perder o sono vai ser você.",
+      "data": {
+        "kicker": "Dinheiro Rápido ou Cilada?",
+        "title": "Cripto Sem Ilusão",
+        "subtitle": "A verdade sobre a montanha-russa das moedas digitais"
+      }
+    },
+    {
+      "id": "cena-2-noticias-mercado",
+      "template": "bars",
+      "narration": "Olha só o que tem saído nas notícias esta semana. Moedas famosas caindo mais de dez por cento em poucas horas, liquidações bilionárias acontecendo do nada e gente em pânico vendo o saldo derreter. O mercado cripto funciona vinte e quatro horas por dia, sete dias por semana. Não tem pausa pro almoço, não tem intervalo no fim de semana. Uma simples notícia ou um movimento de grandes investidores pode fazer o preço despencar enquanto você tá dormindo. Parece exagero? Pensa comigo: você aguentaria ver o dinheiro do seu aluguel cair trinta por cento numa terça-feira qualquer?",
+      "data": {
+        "title": "Oscilações Comuns em Criptomoedas",
+        "valuePrefix": "",
+        "valueSuffix": "%",
+        "items": [
+          {
+            "label": "Queda em 24h",
+            "value": -18,
+            "color": "red"
+          },
+          {
+            "label": "Oscilação Semanal",
+            "value": -28,
+            "color": "red"
+          },
+          {
+            "label": "Renda Fixa Mês",
+            "value": 1,
+            "color": "green"
+          }
+        ],
+        "caption": "Exemplos ilustrativos de oscilações normais desse mercado"
+      }
+    },
+    {
+      "id": "cena-3-caso-marcos",
+      "template": "split",
+      "narration": "Pra você entender o tamanho do perigo, imagina o caso do Marcos. Ele trabalha de carteira assinada, ganha três mil e quinhentos reais por mês e passou quase dois anos economizando cada centavo até juntar dez mil reais na conta. Esse dinheiro era a segurança dele, a famosa reserva de emergência pra qualquer imprevisto com saúde ou no trabalho. Aí, na hora do cafezinho, um colega mostrou no celular que tinha dobrado uma grana com moedas digitais. O Marcos sentiu aquele medo de ficar de fora e pensou: por que deixar rendendo pouquinho se posso turbinar tudo de uma vez?",
+      "data": {
+        "left": {
+          "label": "O Plano do Marcos",
+          "icon": "safe",
+          "points": [
+            "Juntou R$ 10.000 em 2 anos",
+            "Reserva para emergências",
+            "Rendimento seguro e calmo"
+          ]
+        },
+        "right": {
+          "label": "A Tentação Cripto",
+          "icon": "warning",
+          "points": [
+            "Promessa de ganho rápido",
+            "Medo de ficar de fora",
+            "Risco de perder a paz"
+          ]
+        }
+      }
+    },
+    {
+      "id": "cena-4-a-queda-do-marcos",
+      "template": "lineChart",
+      "narration": "E aí vem a parte que ninguém te conta no anúncio da internet. O Marcos pegou todos os dez mil reais e colocou de uma vez só em criptomoedas. Nos primeiros três dias, parecia que ele tinha tirado a sorte grande: o saldo bateu onze mil reais. Mas no final de semana, o mercado virou de repente. Veio uma onda de liquidações e o saldo dele despencou pra sete mil reais em questão de quarenta e oito horas. Três mil reais de suor sumiram da tela. Foi aí que bateu o desespero e o Marcos percebeu o buraco onde tinha se enfiado.",
+      "data": {
+        "title": "A Montanha-Russa do Marcos",
+        "xLabels": [
+          "Dia 1",
+          "Dia 3",
+          "Dia 5",
+          "Dia 7"
+        ],
+        "valuePrefix": "R$ ",
+        "valueSuffix": "",
+        "series": [
+          {
+            "label": "Saldo do Marcos",
+            "color": "red",
+            "values": [
+              10000,
+              11000,
+              8200,
+              7000
+            ]
+          }
+        ],
+        "caption": "Exemplo ilustrativo de volatilidade em curtíssimo prazo"
+      }
+    },
+    {
+      "id": "cena-5-gancho-curiosidade",
+      "template": "counter",
+      "narration": "Agora repara numa coisa muito séria: investir em cripto não é proibido e muita gente estuda esse mercado de forma séria. O problema nunca foi a tecnologia em si, mas sim o lugar de onde sai o seu dinheiro. O Marcos cometeu o erro mais perigoso de todos, que é colocar o dinheiro da sobrevivência num ativo de altíssimo risco. Mas você sabe qual é o limite exato que os grandes investidores aceitam arriscar nesse tipo de moeda pra não comprometer a própria vida? Existe uma porcentagem mágica de segurança, e é justamente isso que a gente vai desvendar agora.",
+      "data": {
+        "label": "Limite Seguro Recomendado por Especialistas",
+        "from": 0,
+        "to": 5,
+        "prefix": "Até ",
+        "suffix": "%",
+        "decimals": 0,
+        "trend": "up",
+        "caption": "A fatia máxima do patrimônio para ativos de alto risco",
+        "badge": "REGRA"
+      }
+    },
+    {
+      "id": "cena-01-montanha-russa",
+      "template": "lineChart",
+      "narration": "Pra começar a clarear a sua mente, olha como o preço de uma criptomoeda se mexe na vida real. Num mês ela sobe forte e todo mundo comemora. No mês seguinte, uma notícia ruim faz o mercado derreter e o preço despenca quase pela metade. Esse sobe e desce violento é o que a gente chama de volatilidade. Se você colocou dez mil reais pensando em pagar o conserto do carro ou a fatura do cartão daqui a trinta dias, você vira refém do desespero.",
+      "data": {
+        "title": "Oscilação Típica de Criptoativos",
+        "xLabels": [
+          "Mês 1",
+          "Mês 2",
+          "Mês 3",
+          "Mês 4",
+          "Mês 5",
+          "Mês 6"
+        ],
+        "valuePrefix": "R$ ",
+        "series": [
+          {
+            "label": "Patrimônio Aplicado",
+            "color": "gold",
+            "values": [
+              10000,
+              13500,
+              8000,
+              6200,
+              9500,
+              7100
+            ]
+          }
+        ],
+        "caption": "Variação brusca no curto prazo em mercados voláteis"
+      }
+    },
+    {
+      "id": "cena-02-papel-da-reserva",
+      "template": "split",
+      "narration": "E é aqui que muita gente confunde as coisas. A sua reserva de emergência tem um único trabalho: trazer paz quando o imprevisto bater na sua porta. Ela não foi feita pra te deixar rico, foi feita pra não te deixar endividado. Por isso, dinheiro de emergência precisa de segurança total e liquidez imediata, ou seja, a certeza de que você pode resgatar no mesmo dia sem perder nenhum centavo do valor principal.",
+      "data": {
+        "left": {
+          "label": "Reserva Segura",
+          "icon": "safe",
+          "points": [
+            "Segurança em primeiro lugar",
+            "Liquidez imediata no resgate",
+            "Sem oscilações negativas"
+          ]
+        },
+        "right": {
+          "label": "Criptomoedas",
+          "icon": "chart",
+          "points": [
+            "Altíssima oscilação diária",
+            "Risco de perda no curto prazo",
+            "Foco apenas em especulação"
+          ]
+        }
+      }
+    },
+    {
+      "id": "cena-03-prejuizo-marcos",
+      "template": "counter",
+      "narration": "Lembra do Marcos que a gente comentou? Olha o que acontece quando a emergência surge no pior momento possível. Ele precisou sacar seis mil reais pra pagar o hospital da mãe bem na semana em que o mercado despencou quarenta por cento. Os dez mil reais dele tinham virado apenas seis mil. Ele sacou tudo no prejuízo, ficou sem nenhum centavo guardado e ainda perdeu quatro mil reais do suor do trabalho dele.",
+      "data": {
+        "label": "Saldo do Marcos no Momento do Resgate",
+        "from": 10000,
+        "to": 6000,
+        "prefix": "R$ ",
+        "trend": "down",
+        "caption": "Perda real de R$ 4.000 ao resgatar na queda",
+        "badge": "-40%"
+      }
+    },
+    {
+      "id": "cena-04-tres-pilares-seguranca",
+      "template": "list",
+      "narration": "Pensa comigo: pra você não passar por esse sufoco, você precisa construir o seu patrimônio como quem levanta uma casa de tijolo, e não um castelo de areia. Primeiro vem a fundação firme, depois as paredes e só no fim o teto. Você nunca coloca o teto antes de garantir que o chão não vai ceder no primeiro temporal.",
+      "data": {
+        "title": "A Ordem Saudável do Dinheiro",
+        "items": [
+          "1. Quitar dívidas caras e organizar o básico",
+          "2. Montar a reserva em renda fixa segura",
+          "3. Só depois arriscar uma pequena fatia"
+        ]
+      }
+    },
+    {
+      "id": "cena-05-porcentagem-magica",
+      "template": "bars",
+      "narration": "Lembra daquela curiosidade do começo, sobre qual é o limite que os investidores experientes aceitam arriscar em cripto? A resposta é simples e direta: no máximo de dois a cinco por cento do patrimônio total. Olha essa divisão na tela. Se você tem cem por cento do seu dinheiro guardado, noventa e cinco por cento fica totalmente protegido e apenas uma pequena lasquinha vai pro risco extremo.",
+      "data": {
+        "title": "Divisão Consciente de Carteira",
+        "valueSuffix": "%",
+        "items": [
+          {
+            "label": "Renda Fixa Segura",
+            "value": 75,
+            "color": "green"
+          },
+          {
+            "label": "Outros Ativos",
+            "value": 20,
+            "color": "white"
+          },
+          {
+            "label": "Criptoativos",
+            "value": 5,
+            "color": "gold"
+          }
+        ],
+        "caption": "Exemplo de exposição controlada ao alto risco"
+      }
+    },
+    {
+      "id": "cena-06-impacto-real-da-regra",
+      "template": "split",
+      "narration": "Sabe por que essa regrinha dos cinco por cento muda tudo? Porque se o mercado de moedas cair pela metade, a sua carteira total perdeu menos de três por cento. Você não perde o sono, não atrasa as contas de casa e não precisa pedir dinheiro emprestado pra ninguém. Mas se você colocou cem por cento lá dentro, como fez o Marcos, qualquer vento contrário destrói a sua estabilidade financeira.",
+      "data": {
+        "left": {
+          "label": "100% em Cripto",
+          "icon": "warning",
+          "points": [
+            "Queda de 50% quebra as contas",
+            "Sem margem para imprevistos",
+            "Pânico e noites em claro"
+          ]
+        },
+        "right": {
+          "label": "Limite Seguro (5%)",
+          "icon": "growth",
+          "points": [
+            "Queda de 50% abala quase nada",
+            "Reserva principal intocada",
+            "Total tranquilidade mental"
+          ]
+        }
+      }
+    },
+    {
+      "id": "erros-comuns-cripto",
+      "template": "split",
+      "narration": "E falando em vento contrário, é aí que muita gente tropeça feio. O primeiro erro é entrar só quando sai no jornal que tudo subiu. Você vê o pessoal comemorando, bate aquele medo de ficar de fora e compra no topo. Aí o mercado cai vinte por cento, bate o desespero e você vende no prejuízo. O segundo erro, ainda pior, é colocar dinheiro com data marcada. Se você precisa pagar contas no mês que vem, esse valor jamais pode ficar num ativo que oscila tanto.",
+      "data": {
+        "left": {
+          "label": "Erro Emocional",
+          "icon": "warning",
+          "points": [
+            "Comprar no topo por euforia",
+            "Vender no fundo em pânico"
+          ]
+        },
+        "right": {
+          "label": "Erro Estratégico",
+          "icon": "coin",
+          "points": [
+            "Apostar dinheiro com data marcada",
+            "Ignorar a reserva de emergência"
+          ]
+        }
+      }
+    },
+    {
+      "id": "impacto-emocional-risco",
+      "template": "counter",
+      "narration": "Olha a diferença brutal que isso faz na sua cabeça. Se você coloca cem por cento das economias em cripto e o mercado derrete quarenta por cento, o desespero toma conta. Você perde o sono e faz besteira no impulso. Agora, se a sua exposição for de três a cinco por cento do seu patrimônio, uma oscilação forte não mexe na sua vida. Você acompanha com calma, estuda e aprende sem arriscar a comida da sua mesa.",
+      "data": {
+        "label": "Exposição Máxima Recomendada",
+        "from": 100,
+        "to": 5,
+        "suffix": "%",
+        "trend": "down",
+        "caption": "Limite o risco para proteger sua tranquilidade",
+        "badge": "Pé no chão"
+      }
+    },
+    {
+      "id": "plano-pratico-passos",
+      "template": "list",
+      "narration": "Então vamos montar um plano simples pra colocar em prática hoje. Passo um: monte a sua reserva de emergência num lugar seguro, com liquidez diária e protegido de sustos. Passo dois: quite dívidas caras e garanta que o mês fecha no azul antes de inventar moda. E passo três: se quiser mesmo conhecer esse mercado, comece aos poucos, só com aquele trocadilho que sobraria da pizza, nunca com o dinheiro do leite.",
+      "data": {
+        "title": "Plano Prático em 3 Passos",
+        "items": [
+          "1. Monte a reserva segura em renda fixa",
+          "2. Quite dívidas e organize o orçamento",
+          "3. Teste cripto só com dinheiro da sobra"
+        ]
+      }
+    },
+    {
+      "id": "divisao-saudavel-carteira",
+      "template": "bars",
+      "narration": "Dá uma olhada nessa divisão que ilustra o que é ter tranquilidade. A maior parte das economias, por exemplo setenta por cento, fica na base sólida e segura. Outra parte vai pra planos de médio prazo. E uma fatia pequenininha, cinco por cento no máximo, fica livre pra ativos arriscados. Se essa fatia valorizar muito, ótimo. Se ela despencar, o seu padrão de vida continua exatamente o mesmo.",
+      "data": {
+        "title": "Distribuição Equilibrada da Carteira",
+        "valueSuffix": "%",
+        "items": [
+          {
+            "label": "Reserva Segura",
+            "value": 70,
+            "color": "green"
+          },
+          {
+            "label": "Médio Prazo",
+            "value": 25,
+            "color": "gold"
+          },
+          {
+            "label": "Cripto / Risco",
+            "value": 5,
+            "color": "white"
+          }
+        ],
+        "caption": "Exemplo ilustrativo de proteção patrimonial"
+      }
+    },
+    {
+      "id": "resumo-geral",
+      "template": "list",
+      "narration": "Pra resumir o que aprendemos: primeiro, cripto oscila muito e isso é normal desse mercado, não é promessa de dinheiro fácil. Segundo, reserva de emergência serve pra trazer paz, nunca pra correr risco. E terceiro, quem vence no longo prazo não tenta adivinhar o futuro, mas sim protege o próprio bolso com estratégia e pé no chão.",
+      "data": {
+        "title": "Resumo de Ouro",
+        "items": [
+          "Oscilação alta exige cautela e paciência",
+          "Reserva de emergência nunca fica em risco",
+          "Exposição pequena protege a estabilidade"
+        ]
+      }
+    },
+    {
+      "id": "fechamento-e-cta",
+      "template": "outro",
+      "narration": "No fim das contas, a escolha é sua: você quer emoção passageira ou tranquilidade duradoura? Me conta nos comentários: você já investe em cripto ou prefere a segurança da renda fixa? Quero saber a sua história. E se esse vídeo te ajudou a clarear as ideias, se inscreve aí no canal que toda semana tem conversa honesta sobre o seu dinheiro. Um abraço e até o próximo vídeo!",
+      "data": {
+        "title": "Segurança Primeiro,\nCrescimento Depois",
+        "points": [
+          "Proteja a base da sua vida",
+          "Invista com responsabilidade"
+        ],
+        "cta": "Inscreva-se"
+      }
+    }
+  ]
+}
