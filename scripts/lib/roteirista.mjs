@@ -4,7 +4,7 @@
 // e por regras extras de segurança; se falhar, ela recebe os erros e tenta de novo.
 import http from "node:http";
 import { z } from "zod";
-import { FORMATOS, MODELOS_CENA, parseEpisode } from "../../src/lib/schema.mjs";
+import { FORMATOS, MODELOS_CENA, episodeSchema, parseEpisode } from "../../src/lib/schema.mjs";
 import { semAcento } from "./metadata.mjs";
 import { narracaoPorExtenso } from "./por-extenso.mjs";
 
@@ -29,13 +29,13 @@ export const METAS = {
   // caracteres: meta pedida à IA; aceite: duração estimada que ainda aprovamos (a IA nem sempre acerta o tamanho;
   // o Short tem mais de 1 min e 31 s (pedido do Patrick) e fica abaixo dos 3 min do YouTube Shorts;
   // a voz acelera até 1,25x se passar de 170 s).
-  short: { cenas: [8, 12], caracteres: [1250, 1550], duracao: [100, 130], aceite: [93, 165], cta: "Siga para mais", porCena: 380, minCena: 110 },
+  short: { cenas: [8, 12], cenasAceite: [6, 12], caracteres: [1250, 1550], duracao: [100, 130], aceite: [93, 165], cta: "Siga para mais", porCena: 380, minCena: 110 },
   // O longo tem no mínimo 8 minutos (pedido do Patrick) e é escrito em partes de ~3 minutos:
   // começo, meio e fim; se as partes vierem curtas, entram mais partes de meio (até maxPartes).
   longo: { cenas: [15, 44], caracteres: [6800, 8600], duracao: [480, 660], aceite: [480, 900], cta: "Inscreva-se", porCena: 650, minCena: 260, partes: 3, maxPartes: 5 },
   // Cada parte do longo (só usado na escrita; o vídeo final é validado como "longo").
   // A parte aceita até 50% do tamanho pedido: o que faltar vira mais uma parte de meio.
-  longoParte: { cenas: [5, 10], caracteres: [2300, 2900], minimo: 0.5, cta: "Inscreva-se", porCena: 650, minCena: 260 },
+  longoParte: { cenas: [5, 10], cenasAceite: [4, 10], caracteres: [2300, 2900], minimo: 0.5, cta: "Inscreva-se", porCena: 650, minCena: 260 },
 };
 
 /** O que cada parte do vídeo longo cobre (a IA recebe o plano inteiro para não repetir assunto). */
@@ -96,8 +96,11 @@ export function problemasDeConteudo(ep, formato, { titulosUsados = [], parte } =
   falas.forEach((f, i) => {
     if (f && falas.indexOf(f) !== i) p.push(`cena ${i + 1}: repete a fala da cena ${falas.indexOf(f) + 1}; cada cena precisa de fala nova`);
   });
+  // A IA recebe a meta de cenas, mas aceitamos um pouco menos (cenasAceite): a IA local erra a contagem
+  // e o tamanho certo do vídeo já é conferido pelos caracteres e pela duração.
   const n = ep.scenes.length;
-  if (n < meta.cenas[0] || n > meta.cenas[1]) p.push(`use de ${meta.cenas[0]} a ${meta.cenas[1]} cenas (vieram ${n})`);
+  const [cMin, cMax] = meta.cenasAceite ?? meta.cenas;
+  if (n < cMin || n > cMax) p.push(`use de ${meta.cenas[0]} a ${meta.cenas[1]} cenas (vieram ${n})`);
   if (primeira && /^\s*(bom dia|boa tarde|boa noite|ol[aá]|oi|e a[ií]|hoje (vamos|eu vou|vou)|neste v[ií]deo)\b/i.test(ep.scenes[0]?.narration ?? ""))
     p.push('cena 1: não abra com saudação ou "hoje vamos falar"; comece com um fato surpreendente, uma conta ou uma pergunta forte');
   if (primeira && ep.scenes[0]?.template !== "hook") p.push('a primeira cena precisa ser "hook"');
@@ -320,11 +323,17 @@ async function chamarGemini(f, modelo, messages, espera = Number(process.env.GEM
   // 503 = servidor do Google lotado (passa em minutos): espera e tenta de novo antes de desistir.
   // Cada nova tentativa também gasta a cota grátis do dia: só uma espera, depois passa adiante.
   for (let i = 0; i < 2; i++) {
-    r = await f("https://generativelanguage.googleapis.com/v1beta/openai/chat/completions", {
-      method: "POST",
-      headers: { authorization: `Bearer ${chave}`, "content-type": "application/json" },
-      body: JSON.stringify({ model: modelo.replace(/^gemini:/, ""), temperature: 0.8, response_format: { type: "json_object" }, messages }),
-    });
+    try {
+      r = await f("https://generativelanguage.googleapis.com/v1beta/openai/chat/completions", {
+        method: "POST",
+        headers: { authorization: `Bearer ${chave}`, "content-type": "application/json" },
+        body: JSON.stringify({ model: modelo.replace(/^gemini:/, ""), temperature: 0.8, response_format: { type: "json_object" }, messages }),
+      });
+    } catch (e) {
+      // "fetch failed" = o Google demorou mais de 5 min ou caiu a conexão. Repetir só gasta tempo
+      // (em 13/11 foram 30 min assim): passa para o próximo modelo, sem marcar como esgotado.
+      throw Object.assign(new Error(`${modelo}: sem resposta (${e.message})`), { limite: true, temporario: true });
+    }
     if (r.status !== 503 || i === 1) break;
     await new Promise((ok) => setTimeout(ok, espera * (i + 1)));
   }
@@ -449,24 +458,7 @@ export function montarEpisodio(bruto, { id, formato, semFechamento = false }) {
     // A IA às vezes escreve "R$ 10.000" ou "4,5%" na narração: vira texto falado.
     return { ...s, id: sid, ...(typeof s?.narration === "string" ? { narration: narracaoPorExtenso(s.narration) } : {}) };
   });
-  // A IA às vezes esquece a cena de fechamento: colocamos uma padrão (ou trocamos a última, se já tem cenas demais).
-  if (!semFechamento && cenas.length && cenas.at(-1)?.template !== "outro") {
-    const m = METAS[formato];
-    const outro = {
-      template: "outro",
-      data: { title: String(bruto?.title ?? "Até o próximo vídeo").trim().slice(0, 80), points: [], cta: m.cta },
-    };
-    if (cenas.length >= m.cenas[1]) Object.assign(cenas[cenas.length - 1], outro);
-    else
-      cenas.push({
-        id: vistos.has("fechamento") ? `fechamento-${cenas.length + 1}` : "fechamento",
-        ...outro,
-        narration:
-          formato === "short"
-            ? "Gostou? Siga o canal para aprender mais sobre dinheiro sem complicação."
-            : "Se esse vídeo te ajudou, se inscreve aí e manda pra alguém que também quer organizar as finanças. A gente se vê no próximo!",
-      });
-  }
+  if (!semFechamento) garantirFechamento(cenas, formato, bruto?.title);
   const F = FORMATOS[formato];
   const alvo = cenas.every((s) => typeof s?.narration === "string") && cenas.length ? estimarDuracao(cenas) : F.minDuracao;
   return {
@@ -479,6 +471,56 @@ export function montarEpisodio(bruto, { id, formato, semFechamento = false }) {
     disclaimer: AVISO,
     scenes: cenas,
   };
+}
+
+/**
+ * A IA às vezes esquece a cena de fechamento (ou ela sai por repetir uma fala anterior):
+ * colocamos uma padrão (ou trocamos a última, se já tem cenas demais).
+ */
+export function garantirFechamento(cenas, formato, titulo) {
+  if (!cenas.length || cenas.at(-1)?.template === "outro") return cenas;
+  const m = METAS[formato];
+  const outro = { template: "outro", data: { title: String(titulo || "Até o próximo vídeo").trim().slice(0, 80), points: [], cta: m.cta } };
+  if (cenas.length >= m.cenas[1]) Object.assign(cenas[cenas.length - 1], outro);
+  else {
+    const ids = new Set(cenas.map((c) => c.id));
+    cenas.push({
+      id: ids.has("fechamento") ? `fechamento-${cenas.length + 1}` : "fechamento",
+      ...outro,
+      narration:
+        formato === "short"
+          ? "Gostou? Siga o canal para aprender mais sobre dinheiro sem complicação."
+          : "Se esse vídeo te ajudou, se inscreve aí e manda pra alguém que também quer organizar as finanças. A gente se vê no próximo!",
+    });
+  }
+  return cenas;
+}
+
+/**
+ * Textos da tela maiores que o limite (ex.: "badge" com 14 letras quando o máximo é 10)
+ * são cortados em vez de recusar o roteiro inteiro: em 13/11 o Gemini perdeu uma parte só por isso.
+ */
+export function cortarTextosLongos(ep) {
+  for (let volta = 0; volta < 3; volta++) {
+    const r = episodeSchema.safeParse(ep);
+    if (r.success) return ep;
+    let mexeu = false;
+    for (const i of r.error.issues) {
+      if (i.code !== "too_big" || i.origin !== "string" || i.path[0] !== "scenes" || i.path[2] !== "data") continue;
+      const dono = i.path.slice(0, -1).reduce((o, k) => o?.[k], ep);
+      const chave = i.path.at(-1);
+      const v = dono?.[chave];
+      if (typeof v !== "string") continue;
+      const max = Number(i.maximum);
+      let corte = v.slice(0, max).trimEnd();
+      const espaco = corte.lastIndexOf(" ");
+      if (v.length > max && espaco >= max * 0.5) corte = corte.slice(0, espaco).replace(/[\s,;:–-]+$/, "");
+      dono[chave] = corte;
+      mexeu = true;
+    }
+    if (!mexeu) return ep;
+  }
+  return ep;
 }
 
 /**
@@ -571,6 +613,7 @@ export async function escreverEpisodio(pedidoDoDia, opcoes = {}) {
     { title: p1.bruto.title, description: p1.bruto.description, tags: p1.bruto.tags, scenes: partes.flatMap((p) => p.bruto.scenes) },
     { id, formato },
   );
+  cortarTextosLongos(episodio);
   const problemas = [...(() => {
     try {
       parseEpisode(episodio, "roteiro longo");
@@ -633,7 +676,10 @@ async function escreverTrecho(
           const ja = new Set(anteriores.flatMap((a) => a.scenes.map((s) => chaveFala(s.narration))));
           episodio.scenes = episodio.scenes.filter((s) => !ja.has(chaveFala(s.narration)));
         }
+        // O fechamento padrão entra de novo se a cena "outro" da IA saiu por repetir fala.
+        if (!semFechamento) garantirFechamento(episodio.scenes, formatoIA, episodio.title);
         consertarParte(episodio, parte);
+        cortarTextosLongos(episodio);
         validarTrecho(episodio, formato, parte);
         problemas = problemasDeConteudo(episodio, formato, { titulosUsados, parte });
       } catch (e) {
