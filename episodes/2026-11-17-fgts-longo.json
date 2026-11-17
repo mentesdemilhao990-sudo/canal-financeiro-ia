@@ -1,0 +1,373 @@
+{
+  "id": "2026-11-17-fgts-longo",
+  "formato": "longo",
+  "title": "SAQUE-ANIVERSÁRIO Vale a Pena ou é ARMADILHA? Entenda de Vez",
+  "description": "Você já pensou em ativar o saque-aniversário para pegar uma grana do seu FGTS todo ano? Cuidado: o que parece um dinheiro extra na conta pode virar uma tremenda dor de cabeça se você for demitido. Entenda como funciona essa regra e o que acontece nos bastidores.",
+  "tags": [
+    "fgts",
+    "saque aniversario",
+    "educação financeira",
+    "direitos trabalhistas",
+    "demissao sem justa causa",
+    "dinheiro",
+    "mente de milhao"
+  ],
+  "targetDurationSeconds": 653,
+  "disclaimer": "Conteúdo educativo. Valores ilustrativos, não é recomendação de investimento.",
+  "scenes": [
+    {
+      "id": "cena-1-gancho",
+      "template": "hook",
+      "narration": "Você sabia que uma decisão simples no aplicativo do banco pode te impedir de sacar o seu dinheiro se você perder o emprego amanhã? O Fundo de Garantia voltou com tudo ao noticiário esta semana, inclusive com novas decisões da Justiça sobre valores que entram nessa conta. Só que muita gente não faz ideia do perigo real do saque-aniversário. Hoje você vai entender se essa opção é um alívio ou uma armadilha para o seu bolso.",
+      "data": {
+        "kicker": "SEU DINHEIRO",
+        "title": "FGTS: Alívio ou Armadilha?",
+        "subtitle": "O perigo escondido de ativar o saque-aniversário"
+      }
+    },
+    {
+      "id": "cena-2-como-funciona",
+      "template": "counter",
+      "narration": "Pensa comigo: de onde vem essa grana? Todo mês com carteira assinada, o patrão deposita oito por cento do seu salário bruto em uma conta na Caixa, no seu nome. Esse valor não sai do seu pagamento, é um custo da empresa. Se você ganha três mil reais, entram duzentos e quarenta reais lá todo mês. Em um ano, somando décimo terceiro e férias, já passa de três mil reais guardados.",
+      "data": {
+        "label": "Depósito mensal da empresa sobre o salário",
+        "from": 0,
+        "to": 8,
+        "suffix": "%",
+        "trend": "up",
+        "caption": "Obrigatório por lei para todo CLT",
+        "badge": "REGRA CLT"
+      }
+    },
+    {
+      "id": "cena-3-caso-marcelo-acumulo",
+      "template": "bars",
+      "narration": "Imagina o caso do Marcelo. Ele trabalha há cinco anos como assistente em uma transportadora, ganhando três mil reais por mês. A empresa depositou tudo certinho e, com a correção do período, o saldo dele chegou a dezesseis mil e quinhentos reais. Para quem vive de salário em salário, ver esse montante acumulado dá uma baita sensação de segurança, né?",
+      "data": {
+        "title": "Saldo Acumulado do Marcelo (Salário R$ 3.000)",
+        "valuePrefix": "R$ ",
+        "items": [
+          {
+            "label": "Ano 1",
+            "value": 3100,
+            "color": "white"
+          },
+          {
+            "label": "Ano 3",
+            "value": 9600,
+            "color": "gold"
+          },
+          {
+            "label": "Ano 5",
+            "value": 16500,
+            "color": "green"
+          }
+        ],
+        "caption": "Valores ilustrativos considerando depósitos e correções"
+      }
+    },
+    {
+      "id": "cena-4-a-tentacao-saque",
+      "template": "split",
+      "narration": "Só que aí bate aquela tentação. O aplicativo oferece o saque-aniversário: uma grana todo ano para você gastar como quiser, em vez de esperar uma demissão. O Marcelo viu a oferta e achou excelente. Afinal, por que deixar o dinheiro parado rendendo pouco se ele é seu por direito? Ele foi lá no aplicativo e ativou a opção na hora.",
+      "data": {
+        "left": {
+          "label": "Modo Tradicional",
+          "icon": "safe",
+          "points": [
+            "Fica guardado no fundo",
+            "Proteção na demissão",
+            "Saque total em rescisão"
+          ]
+        },
+        "right": {
+          "label": "Saque-Aniversário",
+          "icon": "coin",
+          "points": [
+            "Retirada anual autorizada",
+            "Grana extra no aniversário",
+            "Uso imediato do dinheiro"
+          ]
+        }
+      }
+    },
+    {
+      "id": "cena-5-a-troca-perigosa",
+      "template": "counter",
+      "narration": "O problema é a regra que vem nas letras miúdas. Ao escolher a retirada anual, você abre mão do saque-rescisão. Se a empresa te mandar embora sem justa causa, você não pode sacar o saldo da conta. Você recebe apenas a multa de quarenta por cento paga pelo patrão, e todo o restante do dinheiro acumulado fica preso no fundo.",
+      "data": {
+        "label": "Multa da empresa paga na demissão sem justa causa",
+        "from": 0,
+        "to": 40,
+        "suffix": "%",
+        "trend": "up",
+        "caption": "O restante do saldo acumulado fica bloqueado",
+        "badge": "ATENÇÃO"
+      }
+    },
+    {
+      "id": "cena-6-o-choque-da-demissao",
+      "template": "lineChart",
+      "narration": "E foi aí que o Marcelo se complicou. Ele retirou dois mil e quatrocentos reais no aniversário. Seis meses depois, veio um corte na empresa e ele foi demitido. Ele tinha mais de quatorze mil reais guardados no fundo, mas na hora de pagar as contas de casa enquanto procurava emprego, adivinha só? Não pôde tirar nem um centavo desse saldo.",
+      "data": {
+        "title": "Acesso ao Dinheiro na Demissão Inesperada",
+        "xLabels": [
+          "Antes",
+          "Saque",
+          "Demissão",
+          "Bloqueado"
+        ],
+        "valuePrefix": "R$ ",
+        "series": [
+          {
+            "label": "Saldo Total",
+            "color": "gold",
+            "values": [
+              16500,
+              14100,
+              14100,
+              14100
+            ]
+          },
+          {
+            "label": "Valor Liberado para Sacar",
+            "color": "red",
+            "values": [
+              16500,
+              2400,
+              0,
+              0
+            ]
+          }
+        ],
+        "caption": "O saldo principal fica retido após a rescisão"
+      }
+    },
+    {
+      "id": "cena-7-curiosidade-gancho",
+      "template": "split",
+      "narration": "Pra piorar, se você se arrepender, a lei exige esperar mais de dois anos para voltar ao modelo antigo. E tem algo ainda mais perigoso: a tal antecipação de saque que os bancos oferecem todo dia. Você sabe qual é o custo real dessa dívida disfarçada de saque? É essa conta que vamos desvendar agora mesmo.",
+      "data": {
+        "left": {
+          "label": "Prazo de Retorno",
+          "icon": "warning",
+          "points": [
+            "Espera de vinte e cinco meses",
+            "Dinheiro segue bloqueado",
+            "Sem liquidez imediata"
+          ]
+        },
+        "right": {
+          "label": "A Pegadinha Oculta",
+          "icon": "chart",
+          "points": [
+            "Empréstimo com juros altos",
+            "Bloqueio total da garantia",
+            "Custo real na ponta do lápis"
+          ]
+        }
+      }
+    },
+    {
+      "id": "cena-01-antecipacao-explicada",
+      "template": "list",
+      "narration": "Olha só como a propaganda pinta bonito: pegue o seu FGTS adiantado agora mesmo, sem burocracia e sem pagar parcelas todo mês. Parece mágica, né? Mas a verdade é que isso não é saque, é um empréstimo puro e simples. O banco te dá um dinheiro na hora e cobra juros por isso. Em troca, ele bloqueia o saldo do seu fundo ano após ano para garantir que vai receber de volta direto da Caixa. Você não sente a parcela saindo do holerite, mas o seu patrimônio de segurança vai sumindo sem você nem perceber.",
+      "data": {
+        "title": "A Ilusão da Antecipação",
+        "items": [
+          "Propaganda vende como dinheiro fácil",
+          "Na prática, é empréstimo com juros",
+          "Saldo do FGTS fica travado no banco",
+          "Proteção contra demissão desaparece"
+        ]
+      }
+    },
+    {
+      "id": "cena-02-a-conta-do-banco",
+      "template": "bars",
+      "narration": "Vamos colocar na ponta do lápis para você enxergar o tamanho do buraco. Imagina que alguém decida antecipar cinco anos de saque-aniversário para pegar cerca de quatro mil reais à vista para reformar a casa. O banco aceita, mas trava quase seis mil e quinhentos reais do saldo do FGTS. Essa diferença de dois mil e quinhentos reais foi direto pro lucro da instituição financeira em forma de juros e taxas. Ou seja, você pagou uma fortuna adiantada para ter acesso a um dinheiro que já era seu por direito.",
+      "data": {
+        "title": "Custo da Antecipação em 5 Anos",
+        "valuePrefix": "R$ ",
+        "items": [
+          {
+            "label": "Valor no Bolso",
+            "value": 4000,
+            "color": "green"
+          },
+          {
+            "label": "Juros Cobrados",
+            "value": 2500,
+            "color": "red"
+          },
+          {
+            "label": "Bloqueado no FGTS",
+            "value": 6500,
+            "color": "gold"
+          }
+        ],
+        "caption": "Simulação ilustrativa de juros bancários acumulados"
+      }
+    },
+    {
+      "id": "cena-03-comparativo-realidade",
+      "template": "split",
+      "narration": "Agora pensa comigo: o saque-aniversário é sempre ruim? Não necessariamente, e eu preciso ser justo com você. Se a pessoa está com o nome sujo, pagando vinte por cento ao mês no rotativo do cartão, trocar uma dívida caríssima por uma taxa menor de antecipação pode salvar o orçamento no desespero. O problema mora quando o trabalhador gasta essa grana com consumo imediato, churrasco de fim de semana ou viagem, e depois fica desprotegido se perder o emprego no mês seguinte.",
+      "data": {
+        "left": {
+          "label": "Quando Faz Sentido",
+          "icon": "safe",
+          "points": [
+            "Quitar cartão ou cheque especial",
+            "Trocar dívida cara por taxa menor",
+            "Empreendedorismo planejado",
+            "Situação de socorro financeiro"
+          ]
+        },
+        "right": {
+          "label": "Quando é Armadilha",
+          "icon": "warning",
+          "points": [
+            "Gastar com compras e lazer",
+            "Sem reserva de emergência",
+            "Risco alto de demissão",
+            "Ficar dois anos preso na regra"
+          ]
+        }
+      }
+    },
+    {
+      "id": "cena-04-bloqueio-na-demissao",
+      "template": "counter",
+      "narration": "Lembra do Marcelo que vimos no começo? Ele tinha dez mil reais guardados no fundo. Quando foi demitido, por estar na modalidade de aniversário, ele só pôde sacar a multa rescisória de quarenta por cento, que deu quatro mil reais. Os outros seis mil reais continuaram completamente travados no aplicativo. Ele precisava pagar o aluguel e fazer as compras do mês, mas o próprio dinheiro estava trancado a sete chaves, rendendo pouco e sem poder ser tocado.",
+      "data": {
+        "label": "Saldo Travado sem Acesso",
+        "from": 10000,
+        "to": 6000,
+        "prefix": "R$ ",
+        "trend": "down",
+        "badge": "Bloqueado",
+        "caption": "Marcelo só recebeu a multa rescisória na demissão"
+      }
+    },
+    {
+      "id": "cena-05-novidades-recentes",
+      "template": "list",
+      "narration": "E tem mais um ponto importante para quem gosta de ficar de olho em cada centavo: segundo as notícias desta semana, o Superior Tribunal de Justiça reforçou que o vale-transporte pago em dinheiro aos funcionários passa a ter incidência de FGTS. Isso significa que, para quem recebe dessa forma, o patrão precisa depositar mais saldo na conta do fundo todo mês. É mais patrimônio se acumulando, o que torna ainda mais crucial saber proteger cada centavo desse depósito.",
+      "data": {
+        "title": "Decisão Recente sobre o Fundo",
+        "items": [
+          "Vale-transporte em dinheiro gera FGTS",
+          "Decisão confirmada nos tribunais",
+          "Mais dinheiro entrando na conta vinculada",
+          "Atenção redobrada com bloqueios desnecessários"
+        ]
+      }
+    },
+    {
+      "id": "cena-06-respondendo-a-curiosidade",
+      "template": "split",
+      "narration": "Lembra daquela curiosidade sobre qual é o custo real da antecipação que os gerentes oferecem sorrindo? O custo real não é só a taxa de juros que você entrega ao banco. O custo real é perder a sua paz de espírito e o seu único colchão de segurança justamente quando você mais precisa dele. Ao adiantar o saque, você transforma o seu seguro-desemprego particular em garantia para enriquecer agência bancária. Mas calma, porque se você já caiu nessa ou tem dúvidas, existem saídas práticas.",
+      "data": {
+        "left": {
+          "label": "O Custo Visível",
+          "icon": "coin",
+          "points": [
+            "Taxas de juros embutidas",
+            "Desconto direto na Caixa",
+            "Perda de rendimento futuro"
+          ]
+        },
+        "right": {
+          "label": "O Custo Invisível",
+          "icon": "warning",
+          "points": [
+            "Sem rede de apoio na demissão",
+            "Dois anos de carência legal",
+            "Dependência de novos empréstimos"
+          ]
+        }
+      }
+    },
+    {
+      "id": "erros-comuns-fgts",
+      "template": "list",
+      "narration": "E o primeiro erro clássico que muita gente comete é trocar uma segurança vitalícia por um consumo passageiro. Pegar o saque-aniversário para pagar conta de consumo ou comprar coisa que perde valor é cavar um buraco. O segundo erro é esquecer completamente da carência. A pessoa clica no botão achando que pode voltar atrás a qualquer instante, mas a lei trava a sua volta por mais de dois anos. E o terceiro erro, talvez o mais perigoso de todos, é usar essa opção sem ter nem um centavo de reserva de emergência guardada em outro lugar. Se a demissão vier amanhã, você simplesmente fica sem chão.",
+      "data": {
+        "title": "Os 3 Erros Fatais no Saque-Aniversário",
+        "items": [
+          "Gastar a grana com compras passageiras",
+          "Esquecer os 25 meses de carência",
+          "Aderir sem ter reserva de emergência"
+        ]
+      }
+    },
+    {
+      "id": "carencia-retorno",
+      "template": "counter",
+      "narration": "Dá uma olhada nesse número na tela: vinte e cinco meses. Esse é o tempo médio que o trabalhador precisa esperar se quiser cancelar o saque-aniversário e voltar para o saque-rescisão. São mais de dois anos torcendo para não ser demitido sem justa causa. Muita gente só descobre isso quando chega no departamento pessoal com a carta de demissão na mão e escuta que o saldo do fundo tá bloqueado. Por isso, nunca tome essa decisão por impulso de aplicativo num fim de tarde. O arrependimento aqui custa muito caro e demora dois anos inteiros para passar.",
+      "data": {
+        "label": "Carência para voltar ao saque-rescisão",
+        "from": 0,
+        "to": 25,
+        "suffix": " meses",
+        "decimals": 0,
+        "trend": "up",
+        "caption": "Tempo travado na modalidade após pedir retorno",
+        "badge": "Atenção"
+      }
+    },
+    {
+      "id": "passo-a-passo-pratico",
+      "template": "list",
+      "narration": "Mas afinal, o que você deve fazer a partir de hoje? O plano prático se resume a três passos simples. Primeiro passo: baixe o aplicativo oficial e confira se a sua modalidade tá no saque-rescisão. Se você não planejou estrategicamente, essa é a opção mais segura. Segundo passo: se você já aderiu e não fez empréstimo, solicite a mudança de volta agora mesmo para começar a contagem da carência. E terceiro passo: antes de inventar qualquer moda com o seu fundo de garantia, construa uma reserva própria de pelo menos três meses dos seus gastos essenciais.",
+      "data": {
+        "title": "Plano Prático em 3 Passos",
+        "items": [
+          "1. Confira sua modalidade no app oficial",
+          "2. Peça o retorno se não tiver dívidas",
+          "3. Monte sua própria reserva financeira"
+        ]
+      }
+    },
+    {
+      "id": "resumo-comparativo",
+      "template": "split",
+      "narration": "Pra gente amarrar tudo o que vimos até aqui, pensa nessa divisão bem simples. De um lado, você deixa o saque-rescisão quieto se a sua prioridade for estabilidade, garantia em caso de demissão e o sonho de financiar a casa própria usando o saldo acumulado. Do outro lado, o saque-aniversário só faz sentido para quem já é autônomo estabilizado, quem tem dívidas sufocantes com juros nas alturas pra liquidar, ou quem já montou um colchão de segurança gordo por fora. Fora dessas exceções muito específicas, o fundo tá ali justamente para te proteger.",
+      "data": {
+        "left": {
+          "label": "Foque na Rescisão",
+          "icon": "safe",
+          "points": [
+            "Proteção total contra demissão",
+            "Acesso integral aos recursos",
+            "Ideal para quem quer comprar imóvel"
+          ]
+        },
+        "right": {
+          "label": "Avalie o Aniversário",
+          "icon": "warning",
+          "points": [
+            "Só para quitar juros abusivos",
+            "Exige reserva própria bem montada",
+            "Trava o saque integral por anos"
+          ]
+        }
+      }
+    },
+    {
+      "id": "fechamento-final",
+      "template": "outro",
+      "narration": "No fim das contas, o fundo de garantia não foi criado para ser mesada anual e muito menos lucro fácil pra instituição financeira. Ele é a sua rede de proteção quando o chão sumir. Agora eu quero ouvir de você aqui embaixo: você prefere a tranquilidade de poder sacar tudo na demissão ou acha melhor pegar uma parte todo ano para fazer a grana rodar? Deixa seu comentário com a sua opinião sincera. E se essa conversa abriu os seus olhos sobre o seu dinheiro, se inscreve aí no canal que toda semana tem vídeo direto ao ponto pra te ajudar a prosperar.",
+      "data": {
+        "title": "Proteja Seu Futuro e\nFaça Escolhas Conscientes",
+        "points": [
+          "FGTS é rede de proteção, não mesada",
+          "Evite antecipações que cobram juros",
+          "Construa sua própria independência"
+        ],
+        "cta": "Inscreva-se"
+      }
+    }
+  ]
+}

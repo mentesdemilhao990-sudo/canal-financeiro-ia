@@ -255,6 +255,28 @@
         "Colocar sua RESERVA em CRIPTO pode te quebrar?"
       ],
       "modelo": "gemini:gemini-flash-latest + gemini:gemini-3.8-flash"
+    },
+    {
+      "data": "2026-11-17",
+      "tema": "fgts",
+      "nome": "FGTS",
+      "pontos": 7.8,
+      "manchetes": [
+        "Vale-transporte em dinheiro terá incidência de FGTS - Portal Contabeis",
+        "Vale-transporte em dinheiro integra cálculo do FGTS, decide STJ - Sistema FENACON",
+        "STJ reforça incidência de FGTS sobre vale-transporte pago em dinheiro - 082noticias.com",
+        "Vale-transporte pago em dinheiro terá incidência de FGTS, decide STJ - O Diário de Teresópolis",
+        "FGTS: decisão do STJ afeta vale-transporte pago em dinheiro - Jornal Contábil"
+      ],
+      "episodios": [
+        "2026-11-17-fgts-longo",
+        "2026-11-17-fgts-short"
+      ],
+      "titulos": [
+        "SAQUE-ANIVERSÁRIO Vale a Pena ou é ARMADILHA? Entenda de Vez",
+        "Por que o SAQUE-ANIVERSÁRIO pode travar seu FGTS?"
+      ],
+      "modelo": "gemini:gemini-3.8-flash + gemini:gemini-flash-latest"
     }
   ]
 }

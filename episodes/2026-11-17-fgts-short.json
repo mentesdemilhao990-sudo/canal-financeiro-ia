@@ -1,0 +1,156 @@
+{
+  "id": "2026-11-17-fgts-short",
+  "formato": "short",
+  "title": "Por que o SAQUE-ANIVERSÁRIO pode travar seu FGTS?",
+  "description": "Entenda de forma simples como funciona o FGTS e conheça a pegadinha do saque-aniversário antes de apertar qualquer botão no aplicativo. Descubra os prós, os contras e em que situações essa escolha pode prejudicar a sua segurança financeira.",
+  "tags": [
+    "fgts",
+    "saque aniversario",
+    "educação financeira",
+    "direitos trabalhistas",
+    "reserva de emergencia",
+    "planejamento financeiro",
+    "dinheiro"
+  ],
+  "targetDurationSeconds": 121,
+  "disclaimer": "Conteúdo educativo. Valores ilustrativos, não é recomendação de investimento.",
+  "scenes": [
+    {
+      "id": "cena-1-hook",
+      "template": "hook",
+      "narration": "Se você apertar um botão no aplicativo do FGTS, pode perder o direito de sacar seu saldo se for demitido amanhã. Muita gente ativa sem ler as regras. Entenda agora a pegadinha do saque-aniversário.",
+      "data": {
+        "kicker": "Atenção no aplicativo",
+        "title": "A PEGADINHA DO FGTS",
+        "subtitle": "Descubra o risco oculto do saque-aniversário"
+      }
+    },
+    {
+      "id": "cena-2-como-funciona",
+      "template": "list",
+      "narration": "Funciona assim: a cada mês, a empresa deposita oito por cento do seu salário bruto numa conta da Caixa, sem descontar de você. É uma garantia criada por lei pra socorrer você no desemprego.",
+      "data": {
+        "title": "Como o FGTS é formado",
+        "items": [
+          "8% do salário bruto todo mês",
+          "Pago pela empresa, sem desconto",
+          "Reserva de proteção ao trabalhador"
+        ]
+      }
+    },
+    {
+      "id": "cena-3-exemplo-carlos",
+      "template": "counter",
+      "narration": "Pensa no Carlos, que ganha três mil reais. O patrão dele deposita duzentos e quarenta reais por mês. Em um ano, são quase dois mil e novecentos reais acumulados como reserva de proteção.",
+      "data": {
+        "label": "Depósito anual estimado (salário de R$ 3.000)",
+        "from": 0,
+        "to": 2880,
+        "prefix": "R$ ",
+        "trend": "up",
+        "caption": "R$ 240 por mês depositados pela empresa",
+        "badge": "Exemplo"
+      }
+    },
+    {
+      "id": "cena-4-os-dois-modelos",
+      "template": "split",
+      "narration": "No modelo normal, na demissão sem justa causa, ele saca tudo mais a multa de quarenta por cento. Já no saque-aniversário, você retira uma parcela todo ano no mês do seu aniversário.",
+      "data": {
+        "left": {
+          "label": "Saque-Rescisão",
+          "icon": "safe",
+          "points": [
+            "Saca 100% do saldo na demissão",
+            "Recebe multa de 40%",
+            "Modelo padrão de proteção"
+          ]
+        },
+        "right": {
+          "label": "Saque-Aniversário",
+          "icon": "coin",
+          "points": [
+            "Saca uma parcela todo ano",
+            "Dinheiro extra na data",
+            "Opção voluntária no app"
+          ]
+        }
+      }
+    },
+    {
+      "id": "cena-5-a-pegadinha",
+      "template": "bars",
+      "narration": "Só que tem um detalhe crucial: se você escolher o saque-aniversário e perder o emprego, você NÃO saca o saldo da conta. Só leva a multa. O valor principal fica todo bloqueado lá.",
+      "data": {
+        "title": "O que você recebe na demissão",
+        "valueSuffix": "%",
+        "items": [
+          {
+            "label": "Multa de rescisão",
+            "value": 40,
+            "color": "green"
+          },
+          {
+            "label": "Saldo retido no app",
+            "value": 60,
+            "color": "red"
+          }
+        ],
+        "caption": "No saque-aniversário, o saldo principal fica bloqueado"
+      }
+    },
+    {
+      "id": "cena-6-tempo-bloqueio",
+      "template": "counter",
+      "narration": "E pra cancelar e voltar ao modelo antigo? Você precisa esperar vinte e cinco meses. São mais de dois anos de carência com o dinheiro preso sem poder resgatar na emergência.",
+      "data": {
+        "label": "Carência para voltar ao modelo padrão",
+        "from": 1,
+        "to": 25,
+        "suffix": " meses",
+        "trend": "up",
+        "caption": "Mais de dois anos de espera se quiser cancelar",
+        "badge": "Carência"
+      }
+    },
+    {
+      "id": "cena-7-quando-vale-a-pena",
+      "template": "split",
+      "narration": "Compensa se você tem dívidas com juros brutais no cartão pra quitar. Mas se seu trabalho é instável e você não tem reserva, trocar a segurança por um trocado anual é arriscado.",
+      "data": {
+        "left": {
+          "label": "Quando compensa",
+          "icon": "growth",
+          "points": [
+            "Quitar dívidas muito caras",
+            "Trocar juros altos por alívio",
+            "Emergência financeira real"
+          ]
+        },
+        "right": {
+          "label": "Quando é cilada",
+          "icon": "warning",
+          "points": [
+            "Emprego sem estabilidade",
+            "Gastar com compras no mês",
+            "Sem nenhuma reserva guardada"
+          ]
+        }
+      }
+    },
+    {
+      "id": "cena-8-outro",
+      "template": "outro",
+      "narration": "Proteção financeira vem em primeiro lugar. Comenta aí: você ativou o saque-aniversário ou deixou quieto? Se isso te ajudou, se inscreve no canal que toda semana tem vídeo novo.",
+      "data": {
+        "title": "Proteja seu dinheiro antes de decidir",
+        "points": [
+          "Avalie a estabilidade do trabalho",
+          "Não troque rescisão por consumo rápido",
+          "Decida sempre com consciência"
+        ],
+        "cta": "Siga para mais"
+      }
+    }
+  ]
+}

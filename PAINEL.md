@@ -1,6 +1,6 @@
 # 📊 Painel · Mente de Milhão
 
-_Atualizado em 17/11/2026, 07:25 (Brasília). Este arquivo é gerado sozinho: não edite à mão._
+_Atualizado em 17/11/2026, 07:44 (Brasília). Este arquivo é gerado sozinho: não edite à mão._
 
 ## Chaves de segurança
 
@@ -49,6 +49,8 @@ Com tudo desligado, os workflows só **simulam**: nada é enviado nem respondido
 | `2026-11-15-cdb-lci-lca-longo` | sem data: só envio manual |
 | `2026-11-16-criptomoedas-longo` | sem data: só envio manual |
 | `2026-11-16-criptomoedas-short` | sem data: só envio manual |
+| `2026-11-17-fgts-longo` | sem data: só envio manual |
+| `2026-11-17-fgts-short` | sem data: só envio manual |
 | `exemplo-estilo-novo-13-salario` | sem data: só envio manual |
 
 ## Comentários
