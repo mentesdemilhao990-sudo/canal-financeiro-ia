@@ -1,0 +1,415 @@
+{
+  "id": "2026-11-18-aposentadoria-longo",
+  "formato": "longo",
+  "title": "Por que APOSENTAR RENDENDO MAIS que ganha hoje: O SEGREDO do INSS e PREVIDÊNCIA PRIVADA",
+  "description": "Descubra por que começar a planejar agora pode te fazer render mais na aposentadoria. Veja como o INSS e previdência privada podem mudar sua vida futura! #Aposentadoria #PrevidenciaPrivada #PlanoDeRenda",
+  "tags": [
+    "aposentadoria",
+    "previdência privada",
+    "inss",
+    "planejamento financeiro",
+    "renda na aposentadoria"
+  ],
+  "targetDurationSeconds": 622,
+  "disclaimer": "Conteúdo educativo. Valores ilustrativos, não é recomendação de investimento.",
+  "scenes": [
+    {
+      "id": "hook",
+      "template": "hook",
+      "narration": "Imagina a Ana, que ganha três mil reais por mês. Ela pensou em aposentar com dez reais. Mas na prática, ela só receberia três reais. E aí vem a parte que ninguém te conta: o segredo do INSS e previdência privada. Vem ver como isso pode mudar tudo no seu futuro!",
+      "data": {
+        "kicker": "3 mil reais por mês",
+        "title": "Aposentando RENDENDO mais que ganha hoje",
+        "subtitle": "Descubra o segredo do INSS e previdência privada"
+      }
+    },
+    {
+      "id": "split",
+      "template": "split",
+      "narration": "Vamos comparar Ana com a Bela, que pensou diferente. Ela fez um plano de poupança desde jovem. E olha o resultado: dez reais. zero no INSS x vinte e cinco reais. zero na previdência privada! E você? Vai apostar só no INSS ou tem planos melhores pra aposentar bem? Aposentadoria PrevidenciaPrivada.",
+      "data": {
+        "left": {
+          "label": "Ana",
+          "points": [
+            "R$10.000 no INSS",
+            "Apenas pensou em aposentar"
+          ]
+        },
+        "right": {
+          "label": "Bela",
+          "points": [
+            "R$25.000 na previdência privada",
+            "Fez um plano desde jovem"
+          ]
+        }
+      }
+    },
+    {
+      "id": "counter",
+      "template": "counter",
+      "narration": "E olha só o impacto na aposentadoria! Com os mesmos três reais. zero ganhando, Ana receberia dois reais. mas Bela teria quatro reais. Então, qual é o segredo? Vamos ver no próximo vídeo! Aposentadoria PrevidenciaPrivada PlanoDeRendaNoVídeoPróximoParteum bilhão duzentos e trinta e quatro milhões quinhentos e sessenta e sete mil oitocentos e noventa-um bilhão duzentos e trinta e quatro milhões quinhentos e sessenta e sete mil oitocentos e noventa.",
+      "data": {
+        "label": "Com R$3.000 ganhando...",
+        "from": 2500,
+        "to": 4500,
+        "prefix": "R$ ",
+        "suffix": "",
+        "decimals": 0,
+        "trend": "up",
+        "caption": "E Bela teria R$1.000 a mais na aposentadoria!",
+        "badge": "segredo"
+      }
+    },
+    {
+      "id": "linechart",
+      "template": "lineChart",
+      "narration": "Agora veja o que acontece com Ana e Bela ao longo do tempo. O gráfico mostra a evolução de seus rendimentos até a aposentadoria! E você? Vai apostar só no INSS ou tem planos melhores pra aposentar bem? Aposentadoria PrevidenciaPrivada PlanoDeRendaNoVídeoPróximoParteum bilhão duzentos e trinta e quatro milhões quinhentos e sessenta e sete mil oitocentos e noventa-um bilhão duzentos e trinta e quatro milhões quinhentos e sessenta e sete mil oitocentos e noventa.",
+      "data": {
+        "title": "Evolução de Rendimentos até a Aposentadoria",
+        "xLabels": [
+          "25",
+          "50",
+          "75",
+          "100"
+        ],
+        "valuePrefix": "R$ ",
+        "valueSuffix": "",
+        "series": [
+          {
+            "label": "Ana",
+            "values": [
+              3000,
+              4000,
+              4500,
+              2500
+            ],
+            "color": "gold"
+          },
+          {
+            "label": "Bela",
+            "values": [
+              3000,
+              4500,
+              6000,
+              7500
+            ],
+            "color": "green"
+          }
+        ],
+        "caption": "E Bela teria R$2.000 a mais na aposentadoria!"
+      }
+    },
+    {
+      "id": "bars",
+      "template": "bars",
+      "narration": "Mas o que muda se Ana tivesse feito um plano de previdência privada? Olha só: quinze reais. zero no INSS x vinte e cinco reais. zero na previdência privada! Então, qual é o segredo? Vamos ver no próximo vídeo! Aposentadoria PrevidenciaPrivada PlanoDeRendaNoVídeoPróximoParteum bilhão duzentos e trinta e quatro milhões quinhentos e sessenta e sete mil oitocentos e noventa-um bilhão duzentos e trinta e quatro milhões quinhentos e sessenta e sete mil oitocentos e noventa.",
+      "data": {
+        "title": "Evolução de Rendimentos até a Aposentadoria",
+        "valuePrefix": "R$ ",
+        "valueSuffix": "",
+        "items": [
+          {
+            "label": "Ana (INSS)",
+            "value": 15000
+          },
+          {
+            "label": "Bela (Previdência Priv.)",
+            "value": 25000
+          }
+        ],
+        "caption": "E Bela teria R$10.000 a mais na aposentadoria!"
+      }
+    },
+    {
+      "id": "list",
+      "template": "list",
+      "narration": "Agora, vamos ver os três erros mais comuns na previdência: um - Pensar só no INSS; dois - Não começar a poupar cedo; e três - Achar que é tarde demais para mudar. Então, qual é o segredo? Vamos ver no próximo vídeo! Aposentadoria PrevidenciaPrivada PlanoDeRendaNoVídeoPróximoParteum bilhão duzentos e trinta e quatro milhões quinhentos e sessenta e sete mil oitocentos e noventa-um bilhão duzentos e trinta e quatro milhões quinhentos e sessenta e sete mil oitocentos e noventa.",
+      "data": {
+        "title": "Erros comuns na previdência",
+        "items": [
+          "Pensar só no INSS",
+          "Não começar a poupar cedo",
+          "Achar que é tarde demais para mudar"
+        ]
+      }
+    },
+    {
+      "id": "cena-1-tripe",
+      "template": "split",
+      "narration": "E o primeiro passo pra virar esse jogo é entender que o INSS e a previdência privada não são inimigos, eles jogam no mesmo time. O INSS funciona como um seguro básico: ele garante que você nunca fique com a renda zerada se acontecer algum imprevisto ou quando a idade chegar. Só que depender apenas dele é pedir pra ter o padrão de vida cortado pela metade no futuro. Já a previdência complementar ou os seus próprios investimentos servem pra manter o seu conforto, pra pagar aquele almoço de domingo com a família sem você ter que ficar fazendo conta de centavos.",
+      "data": {
+        "left": {
+          "label": "INSS Básico",
+          "icon": "safe",
+          "points": [
+            "Piso de proteção social",
+            "Seguro contra invalidez",
+            "Teto máximo limitado"
+          ]
+        },
+        "right": {
+          "label": "Previdência Privada",
+          "icon": "growth",
+          "points": [
+            "Mantém seu padrão de vida",
+            "Poder dos juros no tempo",
+            "Patrimônio sob seu controle"
+          ]
+        }
+      }
+    },
+    {
+      "id": "cena-2-counter-tempo",
+      "template": "counter",
+      "narration": "Olha só a força do tempo trabalhando a seu favor. Se você começar aos vinte e cinco anos guardando duzentos reais todo mês, com uma taxa média moderada, lá na frente, aos sessenta anos, você não vai ter acumulado só o que tirou do bolso. O seu bolso colocou oitenta e quatro mil reais, mas o montante final ultrapassa os trezentos e cinquenta mil reais. Mais de duzentos e sessenta mil vieram só dos juros compostos! Agora, se você deixar pra começar aos quarenta anos, pra chegar perto desse valor, o esforço mensal precisa ser quase quatro vezes maior.",
+      "data": {
+        "label": "Total acumulado com R$ 200 por mês",
+        "from": 84000,
+        "to": 356000,
+        "prefix": "R$ ",
+        "decimals": 0,
+        "trend": "up",
+        "caption": "Exemplo aos 60 anos: R$ 84 mil do bolso e o resto de juros",
+        "badge": "Juros"
+      }
+    },
+    {
+      "id": "cena-3-grafico-curva",
+      "template": "lineChart",
+      "narration": "Pensa comigo olhando pra esse gráfico. Nos primeiros dez anos parece que o dinheiro quase não anda, né? Você guarda, guarda e o crescimento parece uma linha reta preguiçosa. Mas repara o que acontece depois do vigésimo ano: a curva dispara pra cima feito um foguete. É aí que os juros começam a trabalhar mais do que a sua própria força de trabalho. O dinheiro que rende gera mais rendimento, criando uma bola de neve do bem. Quem tem paciência colhe o fruto, quem tem pressa desiste no meio do caminho achando que não funciona.",
+      "data": {
+        "title": "Efeito Bola de Neve no Longo Prazo",
+        "xLabels": [
+          "5 anos",
+          "10 anos",
+          "15 anos",
+          "20 anos",
+          "25 anos",
+          "35 anos"
+        ],
+        "valuePrefix": "R$ ",
+        "series": [
+          {
+            "label": "Total Acumulado",
+            "color": "green",
+            "values": [
+              16000,
+              42000,
+              85000,
+              155000,
+              260000,
+              356000
+            ]
+          },
+          {
+            "label": "Total Investido",
+            "color": "gold",
+            "values": [
+              12000,
+              24000,
+              36000,
+              48000,
+              60000,
+              84000
+            ]
+          }
+        ],
+        "caption": "Simulação hipotética com aportes mensais constantes"
+      }
+    },
+    {
+      "id": "cena-4-pgbl-vgbl",
+      "template": "split",
+      "narration": "E quando a gente fala de previdência privada, muita gente trava porque ouve falar de PGBL e VGBL e acha que é grego. Mas é simples demais. O PGBL é indicado pra quem faz a declaração completa do Imposto de Renda, porque você pode abater os aportes até o limite de doze por cento da sua renda anual bruta. Já o VGBL funciona melhor pra quem faz a declaração simplificada ou é isento, porque o imposto só vai incidir sobre os rendimentos lá no resgate. Escolher o modelo certo evita que você pague imposto à toa pro leão da Receita.",
+      "data": {
+        "left": {
+          "label": "Plano PGBL",
+          "icon": "chart",
+          "points": [
+            "Declaração completa do IR",
+            "Abate até 12% da renda bruta",
+            "Imposto sobre o montante final"
+          ]
+        },
+        "right": {
+          "label": "Plano VGBL",
+          "icon": "piggy",
+          "points": [
+            "Declaração simplificada ou isento",
+            "Sem dedução anual de IR",
+            "Imposto incide só no ganho"
+          ]
+        }
+      }
+    },
+    {
+      "id": "cena-5-bars-comparativo",
+      "template": "bars",
+      "narration": "Agora junta as peças dessa conta e repara no tamanho da diferença lá na frente. Enquanto quem depende só da previdência pública recebe um valor que costuma cobrir apenas os custos básicos de moradia e remédios, quem construiu uma renda complementar recebe dois salários: a base do governo mais a renda dos seus próprios investimentos. No nosso exemplo prático da Ana, isso significa transformar uma aposentadoria de dois mil e duzentos reais numa renda mensal combinada de mais de quatro mil e quinhentos reais.",
+      "data": {
+        "title": "Renda Mensal Estimada no Futuro",
+        "valuePrefix": "R$ ",
+        "items": [
+          {
+            "label": "Apenas INSS",
+            "value": 2200,
+            "color": "gold"
+          },
+          {
+            "label": "INSS + Previdência",
+            "value": 4500,
+            "color": "green"
+          }
+        ],
+        "caption": "Cenário ilustrativo comparando renda individual e combinada"
+      }
+    },
+    {
+      "id": "cena-6-resposta-curiosidade",
+      "template": "list",
+      "narration": "Lembra daquela curiosidade da primeira parte, sobre como conseguir se aposentar recebendo mais do que você ganha trabalhando hoje? O segredo não é nenhum milagre financeiro, e sim uma regra simples de três passos: nunca contar com uma fonte só de renda, usar os benefícios fiscais pra reinvestir o imposto que você economizou, e deixar o efeito dos juros compostos cobrir a perda que a inflação causa no teto da previdência pública. Quem faz isso não sofre com corte de padrão de vida na velhice.",
+      "data": {
+        "title": "O Segredo da Renda Multiplicada",
+        "items": [
+          "1. Não depender de uma única fonte de sustento",
+          "2. Reinvestir os descontos fiscais no longo prazo",
+          "3. Deixar os juros superarem o teto da inflação"
+        ]
+      }
+    },
+    {
+      "id": "erros-comuns",
+      "template": "list",
+      "narration": "E os erros mais comuns na hora de planejar aposentadoria? Um: Pensar só no INSS. Dois: Achar que é tarde demais para começar. Três: Ignorar o poder dos juros compostos. Vamos ver cada um desses problemas e como resolver, ok? um - Pensar só no INSS dois - Achando que é tarde demais pra começar três - Ignorando os juros compostos.",
+      "data": {
+        "title": "Os 3 erros mais comuns na previdência",
+        "items": [
+          "Pensar só no INSS",
+          "Achar que é tarde demais para começar",
+          "Ignorar o poder dos juros compostos"
+        ]
+      }
+    },
+    {
+      "id": "erro-um",
+      "template": "split",
+      "narration": "Falando primeiro sobre pensar só no INSS. Olha só: Se Ana, que ganha três mil por mês, aposentar com dez reais, e Bela, que planeja desde cedo, ganhará vinte e cinco mil na aposentadoria. Lado A - Só no INSS: dez reais. zero Lado B - Com plano de previdência: vinte e cinco reais. zero Parece pouco, né? Mas olha só o que muda ao longo do tempo.",
+      "data": {
+        "left": {
+          "label": "Só no INSS",
+          "points": [
+            "R$10.000"
+          ]
+        },
+        "right": {
+          "label": "Com plano de previdê",
+          "points": [
+            "R$25.000"
+          ]
+        }
+      }
+    },
+    {
+      "id": "erro-dois",
+      "template": "counter",
+      "narration": "E o segundo erro? Achando que é tarde demais para começar a poupar. Olha só: Ana, que começa aos trinta e cinco anos com três mil por mês, receberá doze mil na aposentadoria. Mas se ela começasse aos vinte e cinco anos. Contagem regressiva do tempo de diferença: Desde os vinte e cinco até os trinta e cinco anos: -dez anos.",
+      "data": {
+        "label": "Tempo perdido na previdência",
+        "from": 10,
+        "to": 0,
+        "prefix": "-",
+        "suffix": "anos",
+        "decimals": 0,
+        "trend": "down",
+        "caption": "Comece cedo para garantir uma aposentadoria melhor.",
+        "badge": "Aposte no"
+      }
+    },
+    {
+      "id": "erro-tres",
+      "template": "lineChart",
+      "narration": "E o terceiro erro? Ignorar os juros compostos. Olha só: Ana, que poupa quinze reais por mês desde os vinte e cinco anos, receberá mais de trezentos mil na aposentadoria. Mas se ela apenas economizasse três reais. Gráfico da evolução dos saldos: - Lado A: quinze reais/mês x quarenta e dois anos = trezentos e setenta e nove reais. duzentos e sessenta - Lado B: três reais/mês x quarenta e dois anos = cinquenta e oito reais.",
+      "data": {
+        "title": "Evolução dos saldos de previdência",
+        "xLabels": [
+          "10",
+          "20",
+          "30",
+          "40",
+          "50",
+          "60"
+        ],
+        "valuePrefix": "R$ ",
+        "valueSuffix": "",
+        "series": [
+          {
+            "label": "Poupança 15 reais/mês",
+            "values": [
+              87.9,
+              203.6,
+              451.4,
+              936.5,
+              1.945,
+              3.891
+            ],
+            "color": "gold"
+          },
+          {
+            "label": "Poupança 3 reais/mês",
+            "values": [
+              19.2,
+              43.9,
+              98.7,
+              209.4,
+              439.6,
+              885.2
+            ],
+            "color": "red"
+          }
+        ],
+        "caption": "Poupança diária vs. Poupança semestral"
+      }
+    },
+    {
+      "id": "resumo",
+      "template": "bars",
+      "narration": "Resumindo: Aposentar rendendo mais do que ganha hoje não é mágica, mas sim um plano de três passos. Nunca contar com uma fonte só de renda, usar os benefícios fiscais pra reinvestir o imposto que você economizou, e deixar o efeito dos juros compostos cobrir a perda que a inflação causa no teto da previdência pública. Quem faz isso não sofre com corte de padrão de vida na velhice. um - Nunca contar com uma fonte só de renda dois - Usar os benefícios fiscais pra reinvestir o imposto que você economizou três - Deixar juros compostos cobrir a perda da inflação.",
+      "data": {
+        "title": "Os 3 passos para uma aposentadoria melhor",
+        "valuePrefix": "",
+        "valueSuffix": "",
+        "items": [
+          {
+            "label": "Nunca contar com uma",
+            "value": 1,
+            "color": "gold"
+          },
+          {
+            "label": "Usar os benefícios fisca",
+            "value": 2,
+            "color": "red"
+          },
+          {
+            "label": "Deixar juros compostos",
+            "value": 3,
+            "color": "green"
+          }
+        ],
+        "caption": "Passo a passo para garantir uma aposentadoria melhor"
+      }
+    },
+    {
+      "id": "conclusao",
+      "template": "outro",
+      "narration": "Então, você faria esses três passos? Comenta aqui nos comentários! E se isso te ajudou, se inscreve aí que toda semana tem mais.",
+      "data": {
+        "title": "Por que APOSENTAR RENDENDO MAIS que ganha hoje: O SEGREDO do INSS e PREVIDÊNCIA ",
+        "points": [
+          "Aprenda a garantir uma aposentadoria melhor",
+          "Descubra os erros mais comuns na previdência"
+        ],
+        "cta": "se inscreve aí"
+      }
+    }
+  ]
+}

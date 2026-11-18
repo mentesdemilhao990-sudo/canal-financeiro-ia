@@ -1,13 +1,13 @@
 # 📊 Painel · Mente de Milhão
 
-_Atualizado em 18/11/2026, 07:24 (Brasília). Este arquivo é gerado sozinho: não edite à mão._
+_Atualizado em 18/11/2026, 08:32 (Brasília). Este arquivo é gerado sozinho: não edite à mão._
 
 ## Chaves de segurança
 
 | O quê | Situação |
 | --- | --- |
 | Credenciais do YouTube (Secrets) | ✅ configuradas |
-| envia vídeos ao YouTube (sempre como privados) | ⚪ desligado (`YOUTUBE_PUBLICACAO`) |
+| envia vídeos ao YouTube (sempre como privados) | 🟢 **ligado** |
 | envia as respostas que você aprovou | ⚪ desligado (`YOUTUBE_RESPOSTAS`) |
 | responde sozinho só comentários simples (elogios curtos) | ⚪ desligado (`YOUTUBE_RESPOSTA_AUTOMATICA`) |
 
@@ -51,6 +51,8 @@ Com tudo desligado, os workflows só **simulam**: nada é enviado nem respondido
 | `2026-11-16-criptomoedas-short` | sem data: só envio manual |
 | `2026-11-17-fgts-longo` | sem data: só envio manual |
 | `2026-11-17-fgts-short` | sem data: só envio manual |
+| `2026-11-18-aposentadoria-longo` | sem data: só envio manual |
+| `2026-11-18-aposentadoria-short` | sem data: só envio manual |
 | `exemplo-estilo-novo-13-salario` | sem data: só envio manual |
 
 ## Comentários

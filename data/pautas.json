@@ -277,6 +277,26 @@
         "Por que o SAQUE-ANIVERSÁRIO pode travar seu FGTS?"
       ],
       "modelo": "gemini:gemini-3.8-flash + gemini:gemini-flash-latest"
+    },
+    {
+      "data": "2026-11-18",
+      "tema": "aposentadoria",
+      "nome": "Aposentadoria e previdência",
+      "pontos": 6,
+      "manchetes": [
+        "Aposentadoria: como garantir uma renda extra no futuro? - DOL",
+        "Corre para o Futuro: Diretor-Presidente da Vivest fala sobre plano de previdência complementar para motoristas de aplicativo e autônomos – Blog Abrapp Em Foco - Abrapp",
+        "Sob Edvaldo, Instituto de Previdência abriu caminho para colocar dinheiro dos aposentados de Aracaju no colo do Banco Master - Mangue Jornalismo"
+      ],
+      "episodios": [
+        "2026-11-18-aposentadoria-longo",
+        "2026-11-18-aposentadoria-short"
+      ],
+      "titulos": [
+        "Por que APOSENTAR RENDENDO MAIS que ganha hoje: O SEGREDO do INSS e PREVIDÊNCIA PRIVADA",
+        "Por que depender SÓ do INSS pode QUEBRAR seu futuro?"
+      ],
+      "modelo": "ollama:qwen2.5:7b + gemini:gemini-3.8-flash"
     }
   ]
 }

@@ -1,0 +1,197 @@
+{
+  "id": "2026-11-18-aposentadoria-short",
+  "formato": "short",
+  "title": "Por que depender SÓ do INSS pode QUEBRAR seu futuro?",
+  "description": "Achar que o INSS sozinho vai manter o seu padrão de vida na velhice é um dos maiores erros financeiros. Veja a conta prática de quanto custa começar cedo a montar sua própria previdência complementar e proteja o seu futuro.",
+  "tags": [
+    "aposentadoria",
+    "inss",
+    "previdencia privada",
+    "educacao financeira",
+    "juros compostos",
+    "planejamento financeiro"
+  ],
+  "targetDurationSeconds": 135,
+  "disclaimer": "Conteúdo educativo. Valores ilustrativos, não é recomendação de investimento.",
+  "scenes": [
+    {
+      "id": "cena-1-hook",
+      "template": "hook",
+      "narration": "Você sabia que a maioria dos brasileiros toma um susto enorme quando se aposenta e descobre que a renda cai quase pela metade de um dia pro outro? Se você acha que o governo vai garantir o seu padrão de vida no futuro, precisa ver este cálculo agora.",
+      "data": {
+        "kicker": "A REALIDADE DO FUTURO",
+        "title": "O Choque da Aposentadoria",
+        "subtitle": "Por que depender só do INSS pode custar muito caro"
+      }
+    },
+    {
+      "id": "cena-2-realidade",
+      "template": "split",
+      "narration": "Olha só como a conta não fecha. O teto da previdência pública existe, mas pouquíssima gente chega a receber esse valor máximo.",
+      "data": {
+        "left": {
+          "label": "O que você espera",
+          "icon": "growth",
+          "points": [
+            "Mesmo salário da ativa",
+            "Manter padrão de vida",
+            "Tranquilidade total"
+          ]
+        },
+        "right": {
+          "label": "A realidade comum",
+          "icon": "warning",
+          "points": [
+            "Queda brusca de renda",
+            "Gastos com saúde sobem",
+            "Necessidade de bicos"
+          ]
+        }
+      }
+    },
+    {
+      "id": "cena-3-exemplo-ana",
+      "template": "counter",
+      "narration": "Pensa comigo no caso do Marcos. Ele ganha cinco mil reais por mês na ativa. Ao se aposentar contando só com a regra básica, a renda dele pode despencar pra algo perto de três mil reais.",
+      "data": {
+        "label": "Queda estimada na renda mensal",
+        "from": 5000,
+        "to": 3000,
+        "prefix": "R$ ",
+        "trend": "down",
+        "caption": "Simulação ilustrativa de perda de padrão de vida",
+        "badge": "-40%"
+      }
+    },
+    {
+      "id": "cena-4-os-dois-pilares",
+      "template": "list",
+      "narration": "E é aqui que entra o grande segredo dos países desenvolvidos: pensar na aposentadoria em dois pilares separados. Um é o público, que te dá uma base mínima.",
+      "data": {
+        "title": "Os Dois Pilares da Segurança",
+        "items": [
+          "Pilar 1: INSS como rede de segurança mínima",
+          "Pilar 2: Previdência própria e investimentos",
+          "Autonomia total sobre o seu patrimônio"
+        ]
+      }
+    },
+    {
+      "id": "cena-5-custo-do-tempo",
+      "template": "bars",
+      "narration": "Agora repara no poder do tempo. Imagina guardar duzentos reais todo mês num investimento seguro rendendo juros compostos.",
+      "data": {
+        "title": "Total investido do próprio bolso até os 60 anos",
+        "valuePrefix": "R$ ",
+        "items": [
+          {
+            "label": "Começando aos 20",
+            "value": 96000,
+            "color": "green"
+          },
+          {
+            "label": "Começando aos 30",
+            "value": 72000,
+            "color": "gold"
+          },
+          {
+            "label": "Começando aos 40",
+            "value": 48000,
+            "color": "red"
+          }
+        ],
+        "caption": "Exemplo guardando R$ 200 por mês em cada faixa de idade"
+      }
+    },
+    {
+      "id": "cena-6-magia-dos-juros",
+      "template": "lineChart",
+      "narration": "Sabe por quê? Porque com quarenta anos de prazo, a maior parte do dinheiro final acumulado não saiu do seu salário, mas sim dos juros trabalhando pra você dia e noite.",
+      "data": {
+        "title": "Crescimento acumulado com o tempo",
+        "valuePrefix": "R$ ",
+        "xLabels": [
+          "10 anos",
+          "20 anos",
+          "30 anos",
+          "40 anos"
+        ],
+        "series": [
+          {
+            "label": "Montante com juros",
+            "color": "green",
+            "values": [
+              40000,
+              150000,
+              450000,
+              1100000
+            ]
+          },
+          {
+            "label": "Total desembolsado",
+            "color": "white",
+            "values": [
+              24000,
+              48000,
+              72000,
+              96000
+            ]
+          }
+        ],
+        "caption": "Simulação hipotética com aportes regulares e juros contínuos"
+      }
+    },
+    {
+      "id": "cena-7-comparacao-caminhos",
+      "template": "split",
+      "narration": "Quem é autônomo, motorista de aplicativo ou CLT precisa entender isso ontem. Esperar sobrar dinheiro no final do mês nunca dá certo.",
+      "data": {
+        "left": {
+          "label": "Deixar pra depois",
+          "icon": "coin",
+          "points": [
+            "Depender só de auxílio",
+            "Ter que trabalhar doente",
+            "Culpar o sistema no final"
+          ]
+        },
+        "right": {
+          "label": "Criar seu pilar",
+          "icon": "safe",
+          "points": [
+            "Aportes automáticos",
+            "Previdência ou renda fixa",
+            "Liberdade de escolha"
+          ]
+        }
+      }
+    },
+    {
+      "id": "cena-8-passos-praticos",
+      "template": "list",
+      "narration": "Pra começar a virar esse jogo hoje, são três passos simples: descubra quanto você realmente gasta por mês, continue contribuindo com a seguridade pra não perder o auxílio doença, e comece um plano próprio nem que seja com cinquenta reais por mês.",
+      "data": {
+        "title": "3 Passos para Blindar seu Futuro",
+        "items": [
+          "1. Mapeie seu custo de vida real",
+          "2. Mantenha a proteção social básica",
+          "3. Aporte mensal contínuo, mesmo que pouco"
+        ]
+      }
+    },
+    {
+      "id": "cena-9-fechamento",
+      "template": "outro",
+      "narration": "A melhor época pra plantar uma árvore foi há vinte anos. A segunda melhor é hoje. Comenta aí: com que idade você começou a pensar de verdade no seu futuro? E se esse vídeo abriu os seus olhos, segue o canal pra aprender a cuidar do seu dinheiro toda semana.",
+      "data": {
+        "title": "O seu futuro quem faz\né você hoje",
+        "points": [
+          "Não dependa de uma fonte só",
+          "O tempo vale mais que a quantia",
+          "Comece pequeno, mas comece hoje"
+        ],
+        "cta": "Siga para mais"
+      }
+    }
+  ]
+}
