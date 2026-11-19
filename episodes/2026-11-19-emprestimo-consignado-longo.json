@@ -1,0 +1,333 @@
+{
+  "id": "2026-11-19-emprestimo-consignado-longo",
+  "formato": "longo",
+  "title": "A ARMADILHA do Consignado: Como NÃO Pagar o Dobro",
+  "description": "O empréstimo consignado parece o crédito mais barato do Brasil, mas a parcela esconde custos que quase ninguém calcula. Entenda o que é o Custo Efetivo Total e aprenda a se proteger antes de assinar qualquer contrato.",
+  "tags": [
+    "empréstimo consignado",
+    "custo efetivo total",
+    "educação financeira",
+    "planejamento financeiro",
+    "finanças pessoais",
+    "sair das dívidas",
+    "crédito consciente"
+  ],
+  "targetDurationSeconds": 651,
+  "disclaimer": "Conteúdo educativo. Valores ilustrativos, não é recomendação de investimento.",
+  "scenes": [
+    {
+      "id": "cena-1-abertura",
+      "template": "hook",
+      "narration": "Sabe aquela propaganda que promete dinheiro fácil, com o menor juro do mercado e desconto direto na folha de pagamento? Pois é, ela parece a salvação da lavoura quando o aperto bate. Muita gente assina sem pensar duas vezes achando que fez o melhor negócio do mundo. Só que tem um abismo gigante entre a taxa bonita que o gerente fala na sua cara e o que realmente sai do seu bolso todos os meses. Se você já tem ou tá pensando em pegar um consignado, presta muita atenção, porque entender essa diferença pode salvar milhares de reais do seu suor.",
+      "data": {
+        "kicker": "CUIDADO COM A PARCELA",
+        "title": "Consignado é Barato Mesmo?",
+        "subtitle": "A conta escondida que quase todo mundo esquece de fazer"
+      }
+    },
+    {
+      "id": "cena-2-ilusao-vs-realidade",
+      "template": "split",
+      "narration": "Olha só como funciona o jogo. O banco chega pra você com um sorriso de orelha a orelha e diz: a nossa taxa é de apenas um e meio por cento ao mês. Comparado com o cheque especial ou com o cartão de crédito, parece até presente de mãe, né? Mas é aqui que mora o perigo. Essa taxa que eles anunciam é só a taxa de juros nominal, a casquinha do sorvete. O que quase ninguém te explica na hora de assinar o papel é que existem penduricalhos silenciosos que inflam a conta sem você perceber. E no fim das contas, quem paga o pato é o seu salário.",
+      "data": {
+        "left": {
+          "label": "Taxa da Vitrine",
+          "icon": "safe",
+          "points": [
+            "Juros baixos na propaganda",
+            "Desconto direto na folha",
+            "Aparência de crédito barato"
+          ]
+        },
+        "right": {
+          "label": "Custo Real",
+          "icon": "warning",
+          "points": [
+            "Impostos obrigatórios",
+            "Seguros embutidos",
+            "Taxas de administração"
+          ]
+        }
+      }
+    },
+    {
+      "id": "cena-3-caso-seu-marcos",
+      "template": "counter",
+      "narration": "Pra você ver isso na prática, pensa comigo no caso do seu Marcos. Ele é aposentado, recebe três mil reais líquidos por mês e precisava fazer uma reforma urgente no telhado de casa. Foi até o banco e pediu dez mil reais emprestados no consignado pra pagar em quarenta e oito meses. O atendente garantiu uma taxa ótima, com uma parcela de trezentos e cinquenta reais que cabia no orçamento dele. Parecia suave, né? Só que quando você multiplica quarenta e oito parcelas por trezentos e cinquenta reais, o seu Marcos vai devolver dezesseis mil e oitocentos reais.",
+      "data": {
+        "label": "Custo Total do Empréstimo",
+        "from": 10000,
+        "to": 16800,
+        "prefix": "R$ ",
+        "suffix": "",
+        "decimals": 0,
+        "trend": "up",
+        "caption": "Simulação de 10 mil reais pagos em 48 vezes",
+        "badge": "Exemplo"
+      }
+    },
+    {
+      "id": "cena-4-onde-foi-o-dinheiro",
+      "template": "bars",
+      "narration": "Agora repara numa coisa assustadora. Dos quase dezessete mil reais que o seu Marcos vai desembolsar ao longo de quatro anos, dez mil foram pro telhado dele. E os outros seis mil e oitocentos reais? Mais de cinco mil reais foram puramente juros. E o resto, quase mil e quinhentos reais, sumiu em tarifas de cadastro, imposto sobre operações financeiras e um tal de seguro prestamista que empurraram no contrato dele sem ele sequer pedir. O seu Marcos achou que tava pagando uma taxa camarada, mas na verdade o custo real ficou muito acima do anunciado.",
+      "data": {
+        "title": "Para Onde Vai o Dinheiro?",
+        "valuePrefix": "R$ ",
+        "valueSuffix": "",
+        "items": [
+          {
+            "label": "Valor Emprestado",
+            "value": 10000,
+            "color": "green"
+          },
+          {
+            "label": "Juros Cobrados",
+            "value": 5300,
+            "color": "gold"
+          },
+          {
+            "label": "Taxas e Seguros",
+            "value": 1500,
+            "color": "red"
+          }
+        ],
+        "caption": "Valores ilustrativos de um contrato comum"
+      }
+    },
+    {
+      "id": "cena-5-gancho-curiosidade",
+      "template": "list",
+      "narration": "E aí vem a parte que quase ninguém te conta: existe uma letrinha miúda que resume tudo isso em três letras mágicas, que é o Custo Efetivo Total. É essa sigla que diz quanto o empréstimo custa de verdade, somando tudo até o último centavo. O problema é que muita gente foca só no valor da parcela que cabe no bolso e esquece de olhar pro tamanho total do rombo. E pior: tem um detalhe oculto no contrato do seu Marcos que fez ele perder mais de dois mil reais à toa, um erro clássico que você nunca mais vai cometer depois de ver a conta certa.",
+      "data": {
+        "title": "O Que Inflaciona o Consignado",
+        "items": [
+          "IOF obrigatório por lei",
+          "Taxa de abertura de crédito",
+          "Seguro prestamista embutido",
+          "Prazo longo que acumula juros"
+        ]
+      }
+    },
+    {
+      "id": "parte2-cena1-cet-explicado",
+      "template": "list",
+      "narration": "Pra entender onde o dinheiro do seu Marcos foi parar, você precisa olhar pro Custo Efetivo Total, o famoso C-E-T. Muita gente olha só pra taxa de juros do anúncio, tipo um e meio por cento ao mês, e acha barato. Mas o C-E-T é a soma de tudo que você realmente vai pagar. Nele entram os juros de verdade, o imposto sobre operações financeiras que o governo cobra, as tarifas de cadastro do banco e, na maioria das vezes, seguros que eles empurram sem você nem perceber. Quando você junta todos esses penduricalhos, aquela taxa pequenininha vira um monstro bem maior.",
+      "data": {
+        "title": "O que compõe o Custo Efetivo Total (CET)",
+        "items": [
+          "Taxa de juros nominal do contrato",
+          "Impostos obrigatórios (IOF)",
+          "Tarifas bancárias de abertura e cadastro",
+          "Seguros embutidos sem o seu consentimento"
+        ]
+      }
+    },
+    {
+      "id": "parte2-cena2-vitrine-vs-realidade",
+      "template": "bars",
+      "narration": "Olha só a diferença na prática. O banco bate no peito e anuncia que a taxa do consignado é de vinte e um por cento ao ano. Parece vantajoso quando a gente compara com o cartão de crédito, né? Mas quando você pede a planilha do contrato com o C-E-T anual detalhado, descobre que o custo total tá passando fácil dos trinta e dois por cento ao ano. Essa diferença de mais de dez pontos percentuais parece abstrata na tela, mas é exatamente o dinheiro que sai direto do seu bolso todo santo mês sem você notar.",
+      "data": {
+        "title": "Taxa da Vitrine vs. Custo Real (CET)",
+        "valueSuffix": "% a.a.",
+        "items": [
+          {
+            "label": "Taxa anunciada",
+            "value": 21,
+            "color": "green"
+          },
+          {
+            "label": "Custo real (CET)",
+            "value": 32,
+            "color": "red"
+          }
+        ],
+        "caption": "O CET revela todas as tarifas que encarecem o crédito"
+      }
+    },
+    {
+      "id": "parte2-cena3-efeito-prazo-longo",
+      "template": "lineChart",
+      "narration": "E o segundo golpe silencioso é o prazo. O gerente chega pro aposentado ou pro trabalhador e fala: seu Marcos, se a gente fizer em setenta e duas vezes, a parcela fica levinha e cabe com folga no seu orçamento. O que ele não mostra é esse gráfico aqui. Pegando os mesmos dez mil reais, pagar em vinte e quatro meses custaria pouco mais de doze mil e oitocentos reais no total. Já esticando pra setenta e duas parcelas, o valor total passa de dezesseis mil e novecentos reais. A parcela fica menor por mês, mas você paga quase quatro mil reais a mais só pelo tempo passando.",
+      "data": {
+        "title": "Total Pago no Empréstimo de R$ 10.000",
+        "valuePrefix": "R$ ",
+        "xLabels": [
+          "Início",
+          "24 meses",
+          "48 meses",
+          "72 meses"
+        ],
+        "series": [
+          {
+            "label": "Prazo de 24 meses",
+            "color": "green",
+            "values": [
+              10000,
+              12800,
+              12800,
+              12800
+            ]
+          },
+          {
+            "label": "Prazo de 72 meses",
+            "color": "red",
+            "values": [
+              10000,
+              12200,
+              14500,
+              16900
+            ]
+          }
+        ],
+        "caption": "Prazos maiores reduzem a parcela, mas multiplicam os juros"
+      }
+    },
+    {
+      "id": "parte2-cena4-comparacao-bancos",
+      "template": "split",
+      "narration": "Pensa comigo: se você vai na feira comprar um quilo de tomate, você pesquisa qual barraca tá mais barata, certo? No banco tem que ser igual. Dois bancos podem oferecer exatamente os mesmos dez mil reais emprestados, com parcelas que parecem parecidas. Só que no primeiro banco, cheio de taxas escondidas, você vai desembolsar quase dezessete mil reais. Enquanto no segundo, pesquisando e exigindo ver o C-E-T antes de assinar, você consegue economizar mais de dois mil reais no mesmo prazo. Comparar é a sua maior defesa.",
+      "data": {
+        "left": {
+          "label": "Banco A (Sem",
+          "icon": "warning",
+          "points": [
+            "Juro de vitrine atrativo",
+            "Taxas extras escondidas",
+            "Total final: R$ 16.900"
+          ]
+        },
+        "right": {
+          "label": "Banco B (Com CET",
+          "icon": "safe",
+          "points": [
+            "Contrato sem penduricalhos",
+            "Transparência nas taxas",
+            "Total final: R$ 14.500"
+          ]
+        }
+      }
+    },
+    {
+      "id": "parte2-cena5-revelacao-venda-casada",
+      "template": "counter",
+      "narration": "Lembra daquele detalhe oculto no contrato do seu Marcos que eu te prometi revelar? Pois é. Quando a gente analisou o contrato dele linha por linha, achamos uma cobrança de mais de dois mil e cem reais de seguro prestamista financiado junto com a dívida. O banco colocou isso de forma automática, como se fosse obrigatório. Isso tem nome na lei: venda casada, e é proibido pelo Código de Defesa do Consumidor. Ele não era obrigado a contratar esse seguro e, se soubesse disso na hora, teria poupado mais de dois mil reais no bolso.",
+      "data": {
+        "label": "Prejuízo do Seu Marcos com Seguro Embutido",
+        "from": 0,
+        "to": 2150,
+        "prefix": "R$ ",
+        "trend": "down",
+        "badge": "Venda",
+        "caption": "Cobrança indevida financiada direto nas parcelas"
+      }
+    },
+    {
+      "id": "scene-erros-comuns",
+      "template": "list",
+      "narration": "E esse seguro embutido nem é o único buraco onde as pessoas caem. O segundo erro clássico é o conto do refinanciamento. O banco te liga quando você pagou metade das parcelas e diz: quer liberar mais um troco na sua conta mantendo a mesma prestação? Parece bom, né? Só que aí o relógio zera de novo, o prazo volta pro começo e você passa a vida inteira pagando juros sem quitar a dívida. E o outro erro perigoso é pegar consignado no seu nome pra emprestar pra parente. Se a pessoa não pagar, o desconto continua saindo do seu bolso todo santo mês.",
+      "data": {
+        "title": "Erros mais comuns no consignado",
+        "items": [
+          "Cair no conto do refinanciamento",
+          "Pegar empréstimo para terceiros",
+          "Olhar apenas o valor da parcela",
+          "Aceitar seguro embutido no contrato"
+        ]
+      }
+    },
+    {
+      "id": "scene-impacto-refinanciamento",
+      "template": "bars",
+      "narration": "Olha só o tamanho desse estrago na tela. Se o seu Marcos pegasse dez mil reais e pagasse até o fim, desembolsaria dezessete mil reais. Mas se no meio do caminho ele aceitasse refinanciar pra pegar mais um dinheirinho, o custo total pularia pra vinte e seis mil reais. E tem gente que refinancia duas vezes, transformando aquela continha inicial em trinta e quatro mil reais jogados fora. O consignado vira uma espécie de aluguel eterno do seu próprio salário. Isso não é ajuda, é uma âncora pesada amarrada no seu pé.",
+      "data": {
+        "title": "O custo real de refinanciar sempre",
+        "valuePrefix": "R$ ",
+        "caption": "Refinanciar reinicia o prazo e multiplica os juros",
+        "items": [
+          {
+            "label": "Original 48x",
+            "value": 17000,
+            "color": "green"
+          },
+          {
+            "label": "1º refinanciamento",
+            "value": 26000,
+            "color": "gold"
+          },
+          {
+            "label": "2º refinanciamento",
+            "value": 34000,
+            "color": "red"
+          }
+        ]
+      }
+    },
+    {
+      "id": "scene-plano-pratico",
+      "template": "list",
+      "narration": "Pra você nunca mais cair nessa cilada, segue esse plano em quatro passos práticos. Primeiro: antes de fechar contrato, exija a planilha detalhada do Custo Efetivo Total. Não aceite só a taxa falada pelo atendente. Segundo: compare esse custo em pelo menos três bancos diferentes, porque a variação é enorme. Terceiro: passe um pente fino e recuse qualquer seguro ou tarifa extra adicionada de surpresa. E quarto passo: escolha sempre o menor prazo que couber no seu bolso, pra diminuir o peso dos juros.",
+      "data": {
+        "title": "Plano prático antes de assinar",
+        "items": [
+          "1. Exija a planilha de CET detalhada",
+          "2. Compare em pelo menos 3 instituições",
+          "3. Recuse seguros e tarifas adicionais",
+          "4. Escolha o menor prazo possível"
+        ]
+      }
+    },
+    {
+      "id": "scene-como-reagir",
+      "template": "split",
+      "narration": "E se você já contratou um consignado e desconfia que pagou seguro sem querer? Não se desespere. Você pode ligar pro banco e solicitar o cancelamento e a devolução desse valor embutido. Além disso, se encontrar taxas menores e um Custo Efetivo mais baixo em outra instituição, você tem direito de fazer a portabilidade de graça. O banco antigo é obrigado a transferir sua dívida. Não precisa aceitar juros altos só porque já assinou o papel, combinado?",
+      "data": {
+        "left": {
+          "label": "Se já contratou",
+          "icon": "warning",
+          "points": [
+            "Cancele o seguro prestamista",
+            "Peça o reembolso proporcional",
+            "Avalie fazer portabilidade"
+          ]
+        },
+        "right": {
+          "label": "Nova postura",
+          "icon": "safe",
+          "points": [
+            "Juros menores no bolso",
+            "Salário livre mais cedo",
+            "Controle total do dinheiro"
+          ]
+        }
+      }
+    },
+    {
+      "id": "scene-resumo-final",
+      "template": "list",
+      "narration": "Pra gente amarrar tudo: lembre sempre que parcela baixa não significa empréstimo barato, é só o prazo que foi esticado pra te cobrar juros em dobro. O Custo Efetivo Total é a única régua confiável pra saber o preço real do crédito. Nunca aceite tarifas embutidas sem o seu aval. Dinheiro não aceita desaforo, e o que você ganha com esforço não pode virar lucro fácil na mão dos outros.",
+      "data": {
+        "title": "Resumo do que aprendemos",
+        "items": [
+          "Parcela pequena esconde prazo longo",
+          "O CET é o único número que importa",
+          "Venda casada de seguros é proibida",
+          "Comparar opções dá poder a você"
+        ]
+      }
+    },
+    {
+      "id": "scene-fechamento",
+      "template": "outro",
+      "narration": "Agora me conta nos comentários: você já conferiu se tem seguro embutido no seu contrato ou conhece alguém que caiu nessa? Quero muito saber. E se essa conversa te ajudou a proteger o seu bolso, se inscreve aí no canal que toda semana tem mais. Um abraço e até a próxima!",
+      "data": {
+        "title": "Seu dinheiro livre\nde armadilhas",
+        "points": [
+          "Compare sempre o CET antes de fechar",
+          "Evite refinanciar dívidas em andamento",
+          "Recuse cobranças e tarifas abusivas"
+        ],
+        "cta": "Inscreva-se"
+      }
+    }
+  ]
+}

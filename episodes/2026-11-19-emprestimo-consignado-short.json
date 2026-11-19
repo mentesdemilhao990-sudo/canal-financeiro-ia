@@ -1,0 +1,160 @@
+{
+  "id": "2026-11-19-emprestimo-consignado-short",
+  "formato": "short",
+  "title": "A pegadinha do CONSIGNADO que NINGUÉM te conta",
+  "description": "Vai pegar um empréstimo consignado achando que a taxa é baixa? Cuidado! Veja como o Custo Efetivo Total pode esconder taxas e seguros que você não pediu, e aprenda a comparar direito.",
+  "tags": [
+    "consignado",
+    "empréstimo consignado",
+    "educação financeira",
+    "finanças pessoais",
+    "custo efetivo total",
+    "dívidas",
+    "mente de milhão"
+  ],
+  "targetDurationSeconds": 109,
+  "disclaimer": "Conteúdo educativo. Valores ilustrativos, não é recomendação de investimento.",
+  "scenes": [
+    {
+      "id": "cena-1-hook",
+      "template": "hook",
+      "narration": "Você sabia que a taxa de juros que o banco te promete no consignado quase nunca é o valor real que você vai pagar no final?",
+      "data": {
+        "kicker": "CUIDADO COM O CRÉDITO",
+        "title": "A Ilusão do Consignado",
+        "subtitle": "A taxa da propaganda não é o que você paga"
+      }
+    },
+    {
+      "id": "cena-2-personagem",
+      "template": "split",
+      "narration": "Olha só o caso do seu Carlos. Ele precisava de cinco mil reais e viu um anúncio com juros de um vírgula seis por cento ao mês. Parecia um baita negócio, né?",
+      "data": {
+        "left": {
+          "label": "Na Propaganda",
+          "icon": "coin",
+          "points": [
+            "R$ 5.000 liberados",
+            "Juros: 1,6% ao mês",
+            "Parece muito barato"
+          ]
+        },
+        "right": {
+          "label": "No Contrato",
+          "icon": "warning",
+          "points": [
+            "Seguro embutido",
+            "Taxas administrativas",
+            "Parcela mais pesada"
+          ]
+        }
+      }
+    },
+    {
+      "id": "cena-3-revelacao",
+      "template": "counter",
+      "narration": "Mas aí vem a parte que ninguém te conta. Quando a parcela chegou, o valor total a pagar no fim do contrato subiu quase mil reais além do esperado. Sabe por quê?",
+      "data": {
+        "label": "Custo Extra Oculto",
+        "from": 0,
+        "to": 980,
+        "prefix": "R$ ",
+        "decimals": 0,
+        "trend": "up",
+        "caption": "Cobranças embutidas sem você perceber",
+        "badge": "Atenção"
+      }
+    },
+    {
+      "id": "cena-4-explicacao-cet",
+      "template": "split",
+      "narration": "Porque existe uma letrinha miúda chamada Custo Efetivo Total, ou simplesmente C E T. A taxa de juros é só uma parte da conta.",
+      "data": {
+        "left": {
+          "label": "Taxa Nominal",
+          "icon": "chart",
+          "points": [
+            "Só os juros vitrine",
+            "Ilude quem não lê",
+            "1,6% ao mês"
+          ]
+        },
+        "right": {
+          "label": "Custo Efetivo (CET)",
+          "icon": "safe",
+          "points": [
+            "Juros reais",
+            "Impostos (IOF)",
+            "Seguros e tarifas",
+            "O que você paga de fato"
+          ]
+        }
+      }
+    },
+    {
+      "id": "cena-5-comparacao-barras",
+      "template": "bars",
+      "narration": "Pensa comigo: no papel, o banco falou um vírgula seis por cento. Mas quando junta o imposto do governo, tarifa de cadastro e aquele seguro que empurraram, o custo real pulou para quase dois e meio por cento ao mês.",
+      "data": {
+        "title": "Comparativo: Onde Seu Dinheiro Vai",
+        "valuePrefix": "",
+        "valueSuffix": "%",
+        "items": [
+          {
+            "label": "Juros da vitrine",
+            "value": 1.6,
+            "color": "green"
+          },
+          {
+            "label": "Custo real (CET)",
+            "value": 2.45,
+            "color": "red"
+          }
+        ],
+        "caption": "Taxa mensal real incluindo todos os penduricalhos"
+      }
+    },
+    {
+      "id": "cena-6-dicas-praticas",
+      "template": "list",
+      "narration": "E como você não cai nessa? Primeiro, nunca pergunte qual é a taxa de juros. Pergunte sempre: qual é o C E T anual da operação? Segundo, exija a folha de simulação com todas as tarifas abertas.",
+      "data": {
+        "title": "2 Perguntas Antes de Assinar",
+        "items": [
+          "1. Qual é o CET anual exato?",
+          "2. Tem seguro embutido que não pedi?",
+          "3. Posso recusar as tarifas extras?"
+        ]
+      }
+    },
+    {
+      "id": "cena-7-direito-consumidor",
+      "template": "counter",
+      "narration": "E o terceiro detalhe é o mais valioso: venda casada é proibida por lei. Você não é obrigado a aceitar seguro prestamista para aprovar o consignado.",
+      "data": {
+        "label": "Seguro Obrigatório?",
+        "from": 100,
+        "to": 0,
+        "suffix": "%",
+        "decimals": 0,
+        "trend": "down",
+        "caption": "Venda casada é proibida pelo Código de Defesa do Consumidor",
+        "badge": "Seu Direit"
+      }
+    },
+    {
+      "id": "cena-8-outro",
+      "template": "outro",
+      "narration": "Comparar o C E T entre dois bancos leva dez minutos e pode te poupar centenas de reais. Você já conferiu as taxas do seu contrato? Comenta aí, e se esse toque te ajudou, se inscreve no canal.",
+      "data": {
+        "title": "Olhe o CET,\nnão só os juros!",
+        "points": [
+          "Compare sempre o custo total",
+          "Recuse taxas embutidas",
+          "Proteja seu salário"
+        ],
+        "cta": "Siga para mais"
+      }
+    }
+  ]
+}

@@ -297,6 +297,24 @@
         "Por que depender SÓ do INSS pode QUEBRAR seu futuro?"
       ],
       "modelo": "ollama:qwen2.5:7b + gemini:gemini-3.8-flash"
+    },
+    {
+      "data": "2026-11-19",
+      "tema": "emprestimo-consignado",
+      "nome": "Empréstimo consignado",
+      "pontos": 3,
+      "manchetes": [
+        "Amortizar o crédito pessoal ou investir para a reforma aos 29 anos? As contas que ajudam a decidir - Expresso"
+      ],
+      "episodios": [
+        "2026-11-19-emprestimo-consignado-longo",
+        "2026-11-19-emprestimo-consignado-short"
+      ],
+      "titulos": [
+        "A ARMADILHA do Consignado: Como NÃO Pagar o Dobro",
+        "A pegadinha do CONSIGNADO que NINGUÉM te conta"
+      ],
+      "modelo": "gemini:gemini-3.8-flash + gemini:gemini-flash-latest"
     }
   ]
 }
