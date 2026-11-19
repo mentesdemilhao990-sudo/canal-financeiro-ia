@@ -1,13 +1,13 @@
 # 📊 Painel · Mente de Milhão
 
-_Atualizado em 18/11/2026, 08:32 (Brasília). Este arquivo é gerado sozinho: não edite à mão._
+_Atualizado em 19/11/2026, 07:25 (Brasília). Este arquivo é gerado sozinho: não edite à mão._
 
 ## Chaves de segurança
 
 | O quê | Situação |
 | --- | --- |
 | Credenciais do YouTube (Secrets) | ✅ configuradas |
-| envia vídeos ao YouTube (sempre como privados) | 🟢 **ligado** |
+| envia vídeos ao YouTube (sempre como privados) | ⚪ desligado (`YOUTUBE_PUBLICACAO`) |
 | envia as respostas que você aprovou | ⚪ desligado (`YOUTUBE_RESPOSTAS`) |
 | responde sozinho só comentários simples (elogios curtos) | ⚪ desligado (`YOUTUBE_RESPOSTA_AUTOMATICA`) |
 
