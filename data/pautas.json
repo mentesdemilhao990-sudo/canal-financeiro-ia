@@ -315,6 +315,24 @@
         "A pegadinha do CONSIGNADO que NINGUÉM te conta"
       ],
       "modelo": "gemini:gemini-3.8-flash + gemini:gemini-flash-latest"
+    },
+    {
+      "data": "2026-11-21",
+      "tema": "ferias-e-viagem",
+      "nome": "Planejar férias sem dívida",
+      "pontos": 3,
+      "manchetes": [
+        "Feriado da Consciência Negra eleva venda de passagens e aquece turismo no Brasil - Economic News Brasil"
+      ],
+      "episodios": [
+        "2026-11-21-ferias-e-viagem-longo",
+        "2026-11-21-ferias-e-viagem-short"
+      ],
+      "titulos": [
+        "Como Planejar Férias sem DÍVIDAS em 12 meses",
+        "Como Planejar Férias sem DÍVIDAS em 6 meses"
+      ],
+      "modelo": "ollama:qwen2.5:7b"
     }
   ]
 }

@@ -1,0 +1,140 @@
+{
+  "id": "2026-11-21-ferias-e-viagem-short",
+  "formato": "short",
+  "title": "Como Planejar Férias sem DÍVIDAS em 6 meses",
+  "description": "Descubra como criar uma meta de viagem e evitar parcelar o lazer. Saiba como poupar para suas férias sem se endividar. #férias #planejamentofinanceiro #nãopedirdívida",
+  "tags": [
+    "férias",
+    "planejamento",
+    "viagem",
+    "poupança",
+    "endividamento"
+  ],
+  "targetDurationSeconds": 97,
+  "disclaimer": "Conteúdo educativo. Valores ilustrativos, não é recomendação de investimento.",
+  "scenes": [
+    {
+      "id": "hook",
+      "template": "hook",
+      "narration": "Olha só, você quer viajar sem dívida. Mas como fazer? Imagina a Ana, que ganha três mil reais por mês. Sabe por quê?",
+      "data": {
+        "kicker": "3 mil",
+        "title": "Férias sem DÍVIDAS em 6 meses",
+        "subtitle": "Descubra o segredo da Ana!"
+      }
+    },
+    {
+      "id": "split",
+      "template": "split",
+      "narration": "A Ana ganha três mil reais por mês. Um terço vai para a casa, outro para as despesas e o último para poupar. Mas aí vem a parte que ninguém te conta: ela divide o restante em duas partes iguais.",
+      "data": {
+        "left": {
+          "label": "Casa",
+          "points": [
+            "30%",
+            "Gastos fixos"
+          ]
+        },
+        "right": {
+          "label": "Poupança",
+          "points": [
+            "33.33%",
+            "Meta de viagem"
+          ]
+        }
+      }
+    },
+    {
+      "id": "counter",
+      "template": "counter",
+      "narration": "E aí vem o truque: Ana divide o que sobra em duas partes iguais, uma para a casa e outra para poupar. Olha só, se ela economiza trinta por cento do que sobra, no fim do mês ela tem. cento e cinquenta reais para a viagem!",
+      "data": {
+        "label": "Economia mensal",
+        "from": 75,
+        "to": 150,
+        "prefix": "R$",
+        "suffix": "",
+        "decimals": 2,
+        "trend": "up",
+        "caption": "Só 30% do que sobra",
+        "badge": "metade"
+      }
+    },
+    {
+      "id": "linechart",
+      "template": "lineChart",
+      "narration": "Vamos ver como isso funciona ao longo de um ano. Olha o gráfico: em seis meses, Ana juntou novecentos reais para sua viagem!",
+      "data": {
+        "title": "Meta de Viagem",
+        "xLabels": [
+          "1",
+          "3",
+          "6",
+          "9",
+          "12"
+        ],
+        "valuePrefix": "R$",
+        "valueSuffix": "",
+        "series": [
+          {
+            "label": "Economia",
+            "values": [
+              75,
+              150,
+              300,
+              450,
+              600
+            ]
+          }
+        ],
+        "caption": "Em 6 meses: R$ 900"
+      }
+    },
+    {
+      "id": "bars",
+      "template": "bars",
+      "narration": "Mas aí vem o truque do segundo mês. Ana divide o que sobra em duas partes iguais, uma para a casa e outra para poupar. Olha só: se ela economiza trinta por cento do que sobra, no fim do mês ela tem cento e cinquenta reais para a viagem!",
+      "data": {
+        "title": "Economia mensal",
+        "valuePrefix": "R$",
+        "valueSuffix": "",
+        "items": [
+          {
+            "label": "Casa",
+            "value": 75
+          },
+          {
+            "label": "Poupança",
+            "value": 150
+          }
+        ],
+        "caption": "Só 30% do que sobra"
+      }
+    },
+    {
+      "id": "list",
+      "template": "list",
+      "narration": "E o terceiro erro é o mais caro de todos: parcelar a viagem. Se Ana comprasse tudo no cartão, gastaria um real. Isso sem contar as taxas.",
+      "data": {
+        "title": "Erros ao planejar férias",
+        "items": [
+          "Dividir o restante do salário igualmente",
+          "Evitar parcelamento"
+        ]
+      }
+    },
+    {
+      "id": "outro",
+      "template": "outro",
+      "narration": "Com essas dicas, você pode viajar sem se endividar. Planeje suas férias e garanta uma viagem relaxante! Comenta aí: você faria isso?",
+      "data": {
+        "title": "Férias sem DÍVIDAS em 6 meses",
+        "points": [
+          "Cria meta",
+          "Evita parcelamento"
+        ],
+        "cta": "Siga para mais"
+      }
+    }
+  ]
+}

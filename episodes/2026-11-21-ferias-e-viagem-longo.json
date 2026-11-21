@@ -1,0 +1,565 @@
+{
+  "id": "2026-11-21-ferias-e-viagem-longo",
+  "formato": "longo",
+  "title": "Como Planejar Férias sem DÍVIDAS em 12 meses",
+  "description": "Vamos aprender a planejar férias sem deixar dívidas pendentes. Descubra como criar uma meta de viagem e evitar parcelamentos caros. Saiba mais aqui!",
+  "tags": [
+    "férias",
+    "planejamento",
+    "dívidas",
+    "viagem",
+    "economia"
+  ],
+  "targetDurationSeconds": 623,
+  "disclaimer": "Conteúdo educativo. Valores ilustrativos, não é recomendação de investimento.",
+  "scenes": [
+    {
+      "id": "hook",
+      "template": "hook",
+      "narration": "Imagina a Ana, que ganha três mil reais por mês. Parece pouco, né? Mas ela quer viajar o Brasil todo. Ela pensa: 'Como eu faço isso sem ficar com dívidas? ' Aqui vamos mostrar como! Compreenda a matemática do seu dinheiro e garanta suas férias sem riscos.",
+      "data": {
+        "kicker": "3 mil reais",
+        "title": "Como Planejar Férias sem DÍVIDAS em 12 meses",
+        "subtitle": "Saiba como criar uma meta de viagem e evitar parcelamentos caros"
+      }
+    },
+    {
+      "id": "split",
+      "template": "split",
+      "narration": "Ana tem três reais. zero por mês. Ela gasta um real. oitocentos no básico: aluguel, alimentação e outras despesas. Isso deixa ela com um real. duzentos para guardar e investir. Parece pouco, né? Mas é o suficiente se planejarmos bem! Vamos entender como? E aí vem a parte que ninguém te conta.",
+      "data": {
+        "left": {
+          "label": "R$ 1.800",
+          "points": [
+            "no básico"
+          ]
+        },
+        "right": {
+          "label": "R$ 1.200",
+          "points": [
+            "para guardar e investir"
+          ]
+        }
+      }
+    },
+    {
+      "id": "counter",
+      "template": "counter",
+      "narration": "Ela decide dividir um real. duzentos em três partes: quatrocentos reais para metas, quatrocentos reais para emergência e quatrocentos reais para lazer. Pra chegar aos quatrocentos reais, ela precisa economizar trinta e três reais por mês. Ela pode fazer isso cortando gastos no café da manhã ou na viagem ao shopping. Só falta escolher o destino! Agora repara numa coisa.",
+      "data": {
+        "label": "R$ 1200 para guardar e investir",
+        "from": 0,
+        "to": 1200,
+        "prefix": "R$",
+        "suffix": "",
+        "decimals": 0,
+        "trend": "up",
+        "caption": "Dividindo em três partes, tudo fica mais fácil!",
+        "badge": "3 partes"
+      }
+    },
+    {
+      "id": "linechart",
+      "template": "lineChart",
+      "narration": "Imagine Ana quer viajar para o Rio de Janeiro. Ela planeja gastar doze reais. zero no total, dividido em seis meses. No primeiro mês, ela coloca dois reais. zero para a viagem. Nos outros cinco meses, ela economiza um real. quinhentos por mês. Ela consegue chegar lá com sete reais. zero no final! Parece pouco, né? Mas é o suficiente se planejarmos bem! Agora repara numa coisa.",
+      "data": {
+        "title": "Planejando a viagem para o Rio de Janeiro",
+        "xLabels": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6"
+        ],
+        "valuePrefix": "R$",
+        "valueSuffix": "",
+        "series": [
+          {
+            "label": "Gastos",
+            "values": [
+              0,
+              2000,
+              4000,
+              6000,
+              8000,
+              10000
+            ],
+            "color": "red"
+          },
+          {
+            "label": "Economia",
+            "values": [
+              0,
+              -2000,
+              -4000,
+              -6000,
+              -8000,
+              -10000
+            ],
+            "color": "green"
+          }
+        ],
+        "caption": "Planejando passo a passo, tudo fica mais fácil!"
+      }
+    },
+    {
+      "id": "bars",
+      "template": "bars",
+      "narration": "Mas atenção: o terceiro erro é o mais caro de todos. Muitas pessoas parcelam as férias e acabam pagando muito mais. E aí vem a parte que ninguém te conta. Sabe por quê? Porque parcelar gera juros! Parece pouco, né? Mas é o suficiente se planejarmos bem! Agora repara numa coisa.",
+      "data": {
+        "title": "Erros comuns na hora de viajar",
+        "valuePrefix": "R$",
+        "valueSuffix": "",
+        "items": [
+          {
+            "label": "Gastos inesperados",
+            "value": 1500,
+            "color": "red"
+          },
+          {
+            "label": "Juros da parcela",
+            "value": 2400,
+            "color": "red"
+          }
+        ],
+        "caption": "Compreenda a matemática do seu dinheiro e garanta suas férias sem riscos!"
+      }
+    },
+    {
+      "id": "list",
+      "template": "list",
+      "narration": "Então, o que Ana precisa fazer? Eis os três passos: um. Defina a meta de viagem. Planeje em quantas parcelas você vai economizar. Evite parcelar: use dinheiro próprio ou cartão de crédito sem juros. Parece pouco, né? Mas é o suficiente se planejarmos bem! Agora repara numa coisa.",
+      "data": {
+        "title": "Passos para viajar sem dívidas",
+        "items": [
+          "Defina a meta de viagem",
+          "Planeje em quantas parcelas você vai economizar",
+          "Evite parcelar: use dinheiro próprio ou cartão de\n"
+        ]
+      }
+    },
+    {
+      "id": "passo-1",
+      "template": "split",
+      "narration": "Passo um: Defina a meta de viagem. Olha só: Ana quer viajar para o Rio de Janeiro gastando cento e vinte reais no total. Parece pouco, né? Mas é suficiente se planejarmos bem! Imagine que Ana tem três reais. zero por mês e gasta oitocentos reais com despesas básicas. Então ela pode economizar quatrocentos reais para metas.",
+      "data": {
+        "left": {
+          "label": "Metas",
+          "points": [
+            "Ana quer viajar para o Rio de Janeiro",
+            "Gastando R$120 no total",
+            "Parece pouco, né?"
+          ]
+        },
+        "right": {
+          "label": "Despesas básicas",
+          "points": [
+            "R$800 por mês",
+            "Ou seja, R$400 para metas"
+          ]
+        }
+      }
+    },
+    {
+      "id": "passo-2",
+      "template": "counter",
+      "narration": "Passo dois: Planeje em quantas parcelas você vai economizar. Olha só: se Ana planeja viajar no próximo mês, ela precisa economizar dez reais por dia. Parece pouco, né? Mas é o suficiente se planejarmos bem! Agora repara numa coisa: se Ana economizar quatrocentos reais por mês em metas, ela pode poupar cinco reais. zero em doze meses.",
+      "data": {
+        "label": "Poupa R$400 por mês",
+        "from": 0,
+        "to": 5000,
+        "prefix": "R$ ",
+        "suffix": "",
+        "decimals": 0,
+        "trend": "up",
+        "caption": "Economize em metas para viajar sem dívida",
+        "badge": "5000 reais"
+      }
+    },
+    {
+      "id": "passo-3",
+      "template": "bars",
+      "narration": "Passo três: Evite parcelar. Olha só: se Ana usar cartão de crédito com juros, ela pode acabar pagando duzentos e quarenta reais de juros no total. Parece pouco, né? Mas é o suficiente se planejarmos bem! Agora repara numa coisa: se Ana economizar cento e vinte reais em viagem e não usar cartão de crédito, ela mantém o dinheiro próprio.",
+      "data": {
+        "title": "Juros do cartão de crédito",
+        "valuePrefix": "R$ ",
+        "valueSuffix": "",
+        "items": [
+          {
+            "label": "Sem juros",
+            "value": 120,
+            "color": "green"
+          },
+          {
+            "label": "Com juros (20% ao mês)",
+            "value": 240,
+            "color": "red"
+          }
+        ],
+        "caption": "Economize evitando dívidas"
+      }
+    },
+    {
+      "id": "conclusao",
+      "template": "list",
+      "narration": "Então, a curiosidade que prometi no início: o terceiro erro é o mais caro de todos. Muitas pessoas parcelam as férias e acabam pagando juros. Parece pouco, né? Mas é o suficiente se planejarmos bem! Agora repara numa coisa: viajar sem dívida custa menos do que achar que vai gastar.",
+      "data": {
+        "title": "3 erros na hora de organizar férias",
+        "items": [
+          "Parcelar as férias e pagar juros",
+          "Não planejar a viagem",
+          "Gastar sem pensar nas despesas"
+        ]
+      }
+    },
+    {
+      "id": "erro-parcelamento",
+      "template": "split",
+      "narration": "Parece pouco, né? Mas é o suficiente se planejarmos bem! Agora repara numa coisa: viajar sem dívida custa menos do que achar que vai gastar. Olha só um exemplo: Ana planeja duzentos e quarenta reais em férias, mas acaba pagando trezentos e sessenta reais parcelados com juros. É mais caro do que imaginou!",
+      "data": {
+        "left": {
+          "label": "Viajar sem dívida",
+          "points": [
+            "R$ 240"
+          ],
+          "icon": "piggy"
+        },
+        "right": {
+          "label": "Parcelar com juros",
+          "points": [
+            "R$ 360"
+          ],
+          "icon": "chart"
+        }
+      }
+    },
+    {
+      "id": "erro-parcelamento-2",
+      "template": "counter",
+      "narration": "E olha só: se Ana parcela no cartão, ela pode acabar pagando até cinquenta reais a mais! É impressionante como os juros podem aumentar o valor final. Olha só: de duzentos e quarenta reais para duzentos e noventa reais apenas com juros. Parece pouco, né? Mas é o suficiente se planejarmos bem! Agora repara numa coisa: viajar sem dívida custa menos do que achar que vai gastar.",
+      "data": {
+        "label": "O que Ana pode pagar",
+        "from": 240,
+        "to": 290,
+        "prefix": "R$ ",
+        "suffix": "%",
+        "decimals": 1,
+        "trend": "up",
+        "caption": "Mais caro do que imaginou",
+        "badge": "+50%"
+      }
+    },
+    {
+      "id": "planos-praticos",
+      "template": "list",
+      "narration": "Então, o que Ana precisa fazer? Eis os três passos: um. Defina a meta de viagem. Planeje e crie uma conta separada para economizar. Dois. Planeje em quantas parcelas você vai economizar. Olha só: se Ana planeja viajar no mês que vem, ela pode dividir o valor em doze meses. Três. Evite parcelar. Olha só: se Ana usar cartão de crédito com juros, ela pode acabar pagando mais do que imaginou.",
+      "data": {
+        "title": "Passos para viajar sem dívida",
+        "items": [
+          "Defina a meta de viagem e crie uma conta separada",
+          "Planeje em quantas parcelas você vai economizar",
+          "Evite parcelar, prefira dinheiro à vista"
+        ]
+      }
+    },
+    {
+      "id": "resumo-final",
+      "template": "list",
+      "narration": "Comenta aí: você faria isso? Viajar sem dívida custa menos do que acharia. MenteDeMilhão educaçãofinanceira.",
+      "data": {
+        "title": "Se isso te ajudou, se inscreve aí que toda semana ",
+        "items": [
+          "Comenta aí:",
+          "Viajar sem dívida custa menos do que acharia"
+        ]
+      }
+    },
+    {
+      "id": "case-new",
+      "template": "list",
+      "narration": "Imagina a Ana, que ganha três mil reais por mês. Parece pouco, né? Mas ela quer viajar para o Rio de Janeiro gastando doze reais. zero no total! É incrível, né? Olha só como ela faz isso, sem dívida alguma. Sabe por quê? Vem aí mais um caso que vai te surpreender!",
+      "data": {
+        "title": "Ana viaja sem DÍVIDAS",
+        "items": [
+          "Como Ana viaja sem dívida",
+          "Veja como planejar férias gastando menos"
+        ]
+      }
+    },
+    {
+      "id": "new-case",
+      "template": "split",
+      "narration": "E aí vem o caso de Ana. Ela ganha três mil reais por mês, mas quer viajar para o Rio de Janeiro gastando doze reais no total. Vamos comparar como ela faz isso com outras pessoas que parcelam suas férias. Olha só: se Ana usar cartão de crédito, pode acabar pagando até cinquenta reais a mais!",
+      "data": {
+        "left": {
+          "label": "Ana",
+          "points": [
+            "viaja sem dívida",
+            "paga R$ 12 no total"
+          ]
+        },
+        "right": {
+          "label": "Outras pessoas",
+          "points": [
+            "parcelam férias",
+            "pago R$ 62 no total"
+          ]
+        }
+      }
+    },
+    {
+      "id": "counter-17",
+      "template": "counter",
+      "narration": "E o quanto você economiza? Olha só: se Ana usar cartão de crédito, ela pode acabar pagando até cinquenta reais a mais! É impressionante, né? Vamos ver exatamente quanto é isso. Começando em doze reais, vamos chegar em. sessenta e dois reais! Isso mesmo, uma diferença de quarenta e dois reais! É só isso que você economiza.",
+      "data": {
+        "label": "Diferença na conta",
+        "from": 12,
+        "to": 62,
+        "prefix": "R$ ",
+        "suffix": "",
+        "decimals": 0,
+        "trend": "down",
+        "caption": "Economia com cartão de crédito",
+        "badge": "diferença"
+      }
+    },
+    {
+      "id": "linechart-18",
+      "template": "lineChart",
+      "narration": "Agora veja como isso se compara ao longo do tempo. Olha só a diferença nos gastos com cartão de crédito e viajar sem dívida. No primeiro mês, o valor é doze reais. No último mês, já estamos em. sessenta e dois reais! É uma diferença crescente que você pode evitar, Ana. Vamos ver mais detalhes.",
+      "data": {
+        "title": "Gastos com cartão de crédito vs viajar sem dívida",
+        "xLabels": [
+          "1º mês",
+          "2º mês",
+          "3º mês",
+          "4º mês",
+          "5º mês",
+          "6º mês",
+          "7º mês",
+          "8º mês",
+          "9º mês",
+          "10º mês",
+          "11º mês",
+          "12º mês"
+        ],
+        "valuePrefix": "R$ ",
+        "valueSuffix": "",
+        "series": [
+          {
+            "label": "Viajar sem dívida",
+            "values": [
+              12,
+              12,
+              12,
+              12,
+              12,
+              12,
+              12,
+              12,
+              12,
+              12,
+              12,
+              12
+            ]
+          },
+          {
+            "label": "Cartão de crédito",
+            "values": [
+              17,
+              22,
+              27,
+              32,
+              37,
+              42,
+              47,
+              52,
+              57,
+              62,
+              62,
+              62
+            ]
+          }
+        ],
+        "caption": "Economia crescente"
+      }
+    },
+    {
+      "id": "bars-19",
+      "template": "bars",
+      "narration": "Veja os resultados em barras. Olha só: no primeiro mês, viajar sem dívida custa doze reais, enquanto com cartão de crédito você já paga. dezessete reais! E a diferença aumenta cada vez mais. No último mês, o valor do cartão de crédito chega a. É uma diferença enorme que pode ser evitada.",
+      "data": {
+        "title": "Gastos com cartão de crédito vs viajar sem dívida",
+        "valuePrefix": "R$ ",
+        "valueSuffix": "",
+        "items": [
+          {
+            "label": "1º mês",
+            "value": 12,
+            "color": "gold"
+          },
+          {
+            "label": "Cartão de crédito",
+            "value": 17,
+            "color": "red"
+          },
+          {
+            "label": "10º mês",
+            "value": 57,
+            "color": "gold"
+          },
+          {
+            "label": "Cartão de crédito",
+            "value": 62,
+            "color": "red"
+          }
+        ],
+        "caption": "Economia crescente"
+      }
+    },
+    {
+      "id": "list-20",
+      "template": "list",
+      "narration": "Então, o que Ana precisa fazer? Eis os três passos: um. Defina a meta de viagem. Planeje e defina claramente onde você quer ir. Dois. Planeje em quantas parcelas você vai economizar. Ana planeja viajar no dozeº mês, então ela divide o valor em doze meses. Três. Evite parcelar. Olha só: se Ana usar cartão de crédito com juros, ela pode acabar pagando até cinquenta reais a mais! É impressionante, né?",
+      "data": {
+        "title": "Passos para planejar férias sem dívida",
+        "items": [
+          "Defina a meta de viagem",
+          "Planeje em quantas parcelas você vai economizar",
+          "Evite parcelar"
+        ]
+      }
+    },
+    {
+      "id": "definindo-meta",
+      "template": "split",
+      "narration": "Então, o que Ana precisa fazer? Eis os três passos: um. Defina a meta de viagem. Planeje e defina claramente onde você quer ir. E olha só! Para viajar para o Rio de Janeiro gastando doze reais no mês, Ana planeja dividir esse valor em doze meses. Isso significa que ela economiza um real por mês.",
+      "data": {
+        "left": {
+          "label": "Doze reais mensal",
+          "points": [
+            "Defina a meta"
+          ]
+        },
+        "right": {
+          "label": "Doze parcelas de um",
+          "points": [
+            "Divida o valor"
+          ]
+        }
+      }
+    },
+    {
+      "id": "plano-parcelas",
+      "template": "counter",
+      "narration": "Passo dois: Planeje em quantas parcelas você vai economizar. E olha só! Se Ana planeja viajar no dozeº mês, ela divide o valor em doze meses. Isso significa que ela economiza um real por mês durante um ano inteiro para poder viajar sem dívida no final de tudo.",
+      "data": {
+        "label": "Economize mensalmente",
+        "from": 1,
+        "to": 12,
+        "prefix": "R$",
+        "suffix": "",
+        "decimals": 0,
+        "trend": "up",
+        "caption": "Cada mês conta para a viagem!",
+        "badge": "Doze meses"
+      }
+    },
+    {
+      "id": "evite-parcelar",
+      "template": "split",
+      "narration": "Passo três: Evite parcelar. E olha só! Se Ana usar cartão de crédito com juros, ela pode acabar pagando até cinquenta reais a mais! É impressionante, né? Isso porque os juros do cartão podem fazer o valor final da viagem ser maior que o planejado originalmente.",
+      "data": {
+        "left": {
+          "label": "Sem parcelas",
+          "points": [
+            "Economize R$ 12.00"
+          ]
+        },
+        "right": {
+          "label": "Com parcelas",
+          "points": [
+            "Pague até R$ 50 a mais"
+          ]
+        }
+      }
+    },
+    {
+      "id": "resumo-ferramenta",
+      "template": "lineChart",
+      "narration": "E agora veja como isso se compara ao longo do tempo. Olha só: no primeiro mês, viajar sem dívida custa doze reais. No décimo segundo mês, ela já pode viajar gastando o mesmo valor, mas sem juros caros. Isso significa que economizar mensalmente é a chave para viajar com segurança.",
+      "data": {
+        "title": "Comparação de custo",
+        "xLabels": [
+          "1º Mês",
+          "2º Mês",
+          "3º Mês",
+          "4º Mês",
+          "5º Mês",
+          "6º Mês",
+          "7º Mês",
+          "8º Mês",
+          "9º Mês",
+          "10º Mês",
+          "11º Mês",
+          "12º Mês"
+        ],
+        "valuePrefix": "R$",
+        "valueSuffix": "",
+        "series": [
+          {
+            "label": "Sem parcelas",
+            "values": [
+              12,
+              12,
+              12,
+              12,
+              12,
+              12,
+              12,
+              12,
+              12,
+              12,
+              12,
+              12
+            ],
+            "color": "green"
+          },
+          {
+            "label": "Com parcelas",
+            "values": [
+              0,
+              5,
+              8,
+              13,
+              16,
+              19,
+              24,
+              27,
+              32,
+              35,
+              38,
+              40
+            ],
+            "color": "red"
+          }
+        ],
+        "caption": "Economia mensal vs Juros"
+      }
+    },
+    {
+      "id": "inscreva-se",
+      "template": "outro",
+      "narration": "Comenta aí: você faria isso? Viajar sem dívida custa menos do que acharia. MenteDeMilhão. Se isso te ajudou, se inscreve aí que toda semana tem mais dicas para você manter o controle financeiro e conquistar seus sonhos.",
+      "data": {
+        "title": "Como Planejar Férias sem DÍVIDAS em 12 meses",
+        "points": [
+          "Mantenha o controle financeiro",
+          "Conquiste seus sonhos"
+        ],
+        "cta": "Inscreva-se"
+      }
+    }
+  ]
+}
