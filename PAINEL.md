@@ -1,6 +1,6 @@
 # 📊 Painel · Mente de Milhão
 
-_Atualizado em 22/11/2026, 07:04 (Brasília). Este arquivo é gerado sozinho: não edite à mão._
+_Atualizado em 22/11/2026, 08:54 (Brasília). Este arquivo é gerado sozinho: não edite à mão._
 
 ## Chaves de segurança
 
@@ -57,6 +57,8 @@ Com tudo desligado, os workflows só **simulam**: nada é enviado nem respondido
 | `2026-11-19-emprestimo-consignado-short` | sem data: só envio manual |
 | `2026-11-21-ferias-e-viagem-longo` | sem data: só envio manual |
 | `2026-11-21-ferias-e-viagem-short` | sem data: só envio manual |
+| `2026-11-22-imposto-de-renda-longo` | sem data: só envio manual |
+| `2026-11-22-imposto-de-renda-short` | sem data: só envio manual |
 | `exemplo-estilo-novo-13-salario` | sem data: só envio manual |
 
 ## Comentários

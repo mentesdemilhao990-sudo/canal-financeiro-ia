@@ -1,0 +1,543 @@
+{
+  "id": "2026-11-22-imposto-de-renda-longo",
+  "formato": "longo",
+  "title": "Imposto de Renda: 3 ERROS CEGOS que você COMETE e NÃO SABIA",
+  "description": "Descubra os principais erros no Imposto de Renda e como evitar pagamentos desnecessários. Aprenda a declarar corretamente e poupar dinheiro! #ImpostoDeRenda #DeclararCorretamente #Economia",
+  "tags": [
+    "Imposto de Renda",
+    "declaração",
+    "erros comuns",
+    "economia",
+    "financeiro",
+    "poupança"
+  ],
+  "targetDurationSeconds": 695,
+  "disclaimer": "Conteúdo educativo. Valores ilustrativos, não é recomendação de investimento.",
+  "scenes": [
+    {
+      "id": "hook",
+      "template": "hook",
+      "narration": "E aí, quer saber um segredo? Você está pagando muito mais no Imposto de Renda do que deveria. Vem ver o que tá acontecendo com você, né? Vamos lá! Sabe por quê? Olha só isso: Ana, que ganha três mil reais por mês. Pensa comigo: se ela declarar corretamente, pode pagar menos! E aí vem a parte que ninguém te conta.",
+      "data": {
+        "kicker": "Imposto de Renda",
+        "title": "3 ERROS CEGOS no Imposto de Renda",
+        "subtitle": "Você está pagando muito mais do que deveria. Vem ver o que tá acontecendo!"
+      }
+    },
+    {
+      "id": "split",
+      "template": "split",
+      "narration": "Imagina a Ana, que ganha três mil reais por mês. Ela comprou uma casa nova e fez um empréstimo. Mas não sabe como declarar corretamente no Imposto de Renda. E aí vem o primeiro erro: ela está pagando muito mais do que deveria! Tá achando pouco? Então vamos ver o que tá acontecendo.",
+      "data": {
+        "left": {
+          "label": "Ana, 3 mil reais/mês",
+          "points": [
+            "Paga R$500 de IR",
+            "Podia pagar R$250"
+          ]
+        },
+        "right": {
+          "label": "Correto",
+          "points": [
+            "Paga R$250 de IR",
+            "Ganha mais dinheiro"
+          ]
+        }
+      }
+    },
+    {
+      "id": "counter",
+      "template": "counter",
+      "narration": "Agora repara numa coisa: se ela declarar corretamente, pode pagar até cinquenta por cento a menos! E é isso que vamos mostrar pra você. Vamos lá, olha só o que acontece quando você erra na declaração. O número de imposto que ela paga sobe. Tá curioso? Então vamos continuar!",
+      "data": {
+        "label": "Imposto pago por Ana",
+        "from": 500,
+        "to": 250,
+        "prefix": "R$ ",
+        "suffix": "%",
+        "decimals": 1,
+        "trend": "down",
+        "caption": "E o primeiro erro é esse: declarar imóveis errado",
+        "badge": "correto"
+      }
+    },
+    {
+      "id": "linechart",
+      "template": "lineChart",
+      "narration": "Agora olha isso: se você declarar corretamente, pode economizar muito! Vamos ver como a declaração errada afeta o dinheiro da Ana. Olha só essa linha. Cada ponto representa um ano de vida dela. Veja como a diferença no imposto que ela paga muda ao longo do tempo. Tá impressionado? Então vamos continuar!",
+      "data": {
+        "title": "Evolução do Imposto pago por Ana",
+        "xLabels": [
+          "2023",
+          "2024",
+          "2025",
+          "2026",
+          "2027"
+        ],
+        "valuePrefix": "R$ ",
+        "valueSuffix": "%",
+        "series": [
+          {
+            "label": "Imposto pago errado",
+            "values": [
+              100,
+              150,
+              200,
+              250,
+              300
+            ],
+            "color": "red"
+          },
+          {
+            "label": "Imposto pago certo",
+            "values": [
+              50,
+              75,
+              100,
+              125,
+              150
+            ],
+            "color": "green"
+          }
+        ],
+        "caption": "Economize mais e mais ao longo do tempo!"
+      }
+    },
+    {
+      "id": "bars",
+      "template": "bars",
+      "narration": "Agora olha essa: se a Ana declarar corretamente, pode economizar trinta por cento a mais em impostos! E é isso que vamos mostrar pra você. Vamos lá, olha só as diferenças. O primeiro erro é esse: declarar imóveis errado. Olha como ele afeta o dinheiro dela. Tá impressionado? Então vamos continuar!",
+      "data": {
+        "title": "Efeito do erro na declaração",
+        "valuePrefix": "R$ ",
+        "valueSuffix": "%",
+        "items": [
+          {
+            "label": "Imposto pago errado",
+            "value": 500,
+            "color": "red"
+          },
+          {
+            "label": "Imposto pago certo",
+            "value": 250,
+            "color": "green"
+          }
+        ],
+        "caption": "Economize mais e mais ao longo do tempo!"
+      }
+    },
+    {
+      "id": "list",
+      "template": "list",
+      "narration": "Agora vamos ver os outros dois erros que a Ana pode estar cometendo. Vamos lá, olha só: o segundo erro é declarar despesas errado e o terceiro é não aproveitar deduções corretamente. E o terceiro erro é o mais caro de todos! Tá curioso? Então vamos continuar para descobrir qual é!",
+      "data": {
+        "title": "Outros erros na declaração",
+        "items": [
+          "Declarar despesas errado",
+          "Não aproveitar deduções corretamente"
+        ]
+      }
+    },
+    {
+      "id": "split-1",
+      "template": "split",
+      "narration": "Imagina a Ana, que ganha três mil reais por mês. Ela comprou uma casa nova e fez um empréstimo para pagar as prestações. Agora, olha isso: se ela declarar corretamente, pode economizar muito! Vamos ver como a declaração correta ajuda nisso. Agora repara numa coisa.",
+      "data": {
+        "left": {
+          "label": "Sem deduções",
+          "points": [
+            "R$ 10.500 de IR",
+            "Paga R$ 2.100"
+          ]
+        },
+        "right": {
+          "label": "Com deduções corretí",
+          "points": [
+            "R$ 7.800 de IR",
+            "Paga R$ 1.560"
+          ]
+        }
+      }
+    },
+    {
+      "id": "counter-2",
+      "template": "counter",
+      "narration": "E olha essa: se a Ana declarar corretamente, pode economizar trinta por cento a mais e poupar setecentos e cinquenta reais. Você quer saber como? Vamos lá, vamos mostrar cada passo! Agora vamos ver os outros dois erros que a Ana pode estar cometendo. Vamos lá, olha só: o segundo erro é declarar despesas errado e o terceiro é não aproveitar deduções corretamente.",
+      "data": {
+        "label": "Economia com declaração certa",
+        "from": 750,
+        "to": 1500,
+        "prefix": "R$",
+        "suffix": "",
+        "decimals": 0,
+        "trend": "up",
+        "caption": "Poupa mais com cada erro corrigido",
+        "badge": "30%"
+      }
+    },
+    {
+      "id": "linechart-3",
+      "template": "lineChart",
+      "narration": "Agora vamos analisar esses erros um a um. O segundo é declarar despesas errado. Olha só essa gráfica: se você não declarar as despesas corretamente, pode pagar mais. Vamos ver os números reais de uma pessoa que cometeu esse erro e como ela consegue economizar.",
+      "data": {
+        "title": "Economia com declaração certa",
+        "xLabels": [
+          "Despesas",
+          "Receitas",
+          "IR"
+        ],
+        "valuePrefix": "R$ ",
+        "valueSuffix": "",
+        "series": [
+          {
+            "label": "Sem deduções",
+            "values": [
+              3000,
+              12000,
+              2400
+            ]
+          },
+          {
+            "label": "Com deduções corretas",
+            "values": [
+              3500,
+              11500,
+              1700
+            ]
+          }
+        ],
+        "caption": "Poupa mais com cada erro corrigido"
+      }
+    },
+    {
+      "id": "bars-4",
+      "template": "bars",
+      "narration": "O terceiro e último erro é não aproveitar deduções corretamente. Olha só essas barras: se você não usar todas as deduções disponíveis, pode pagar mais. Vamos ver um exemplo concreto de como a Ana economizou mil e quinhentos reais ao utilizar as deduções corretamente. E o terceiro erro é o mais caro de todos! Tá curioso? Então vamos continuar para descobrir qual é!",
+      "data": {
+        "title": "Economia com deduções corretas",
+        "valuePrefix": "R$ ",
+        "valueSuffix": "",
+        "items": [
+          {
+            "label": "Sem deduções",
+            "value": 3000
+          },
+          {
+            "label": "Com deduções corretas",
+            "value": 1500
+          }
+        ],
+        "caption": "Poupa mais com cada erro corrigido"
+      }
+    },
+    {
+      "id": "hook-5",
+      "template": "list",
+      "narration": "Então, o terceiro e último erro é realmente o mais caro de todos. Você quer saber qual é? Vamos te mostrar exatamente como corrigir isso na próxima parte do vídeo!",
+      "data": {
+        "title": "Qual é o MAIS caro de todos?",
+        "items": [
+          "Descubra o erro",
+          "Confira na próxima parte como evitar esse erro e p"
+        ]
+      }
+    },
+    {
+      "id": "errado1",
+      "template": "list",
+      "narration": "Sabe aquela despesa que você sempre esquece de declarar? É nessa hora que o imposto te surpreende com uma conta alta. Olha só a Ana, que ganha três mil reais por mês e comprou uma casa nova. Agora olha isso: se ela declarar corretamente, pode economizar até cinquenta por cento.",
+      "data": {
+        "title": "Imposto de Renda",
+        "items": [
+          "Sabe aquela despesa",
+          "3 erros que você COMETA"
+        ]
+      }
+    },
+    {
+      "id": "errado2",
+      "template": "split",
+      "narration": "Vamos analisar os outros dois erros. O segundo é declarar despesas errado. Olha só essas barras: se a Ana não declarar corretamente suas despesas, pode economizar menos. Agora olhe isso: se ela declarar corretamente, pode poupar trinta por cento a mais e poupar dinheiro.",
+      "data": {
+        "left": {
+          "label": "Despesa errada",
+          "points": [
+            "Economiza 10%",
+            "Poupa menos"
+          ]
+        },
+        "right": {
+          "label": "Despesa correta",
+          "points": [
+            "Economiza 40%",
+            "Poupa mais"
+          ]
+        }
+      }
+    },
+    {
+      "id": "errado3",
+      "template": "counter",
+      "narration": "O terceiro e último erro é realmente o mais caro de todos. Olha só essas barras: se a Ana não aproveitar deduções corretamente, pode economizar menos ainda. Agora olhe isso: se ela aproveitar todas as deduções, pode poupar até sessenta por cento a mais e poupar dinheiro.",
+      "data": {
+        "label": "Dedução errada vs Correta",
+        "from": 10,
+        "to": 70,
+        "prefix": "R$ ",
+        "suffix": "%",
+        "decimals": 2,
+        "trend": "down",
+        "caption": "Só a diferença é de R$ 60.000 ao ano!",
+        "badge": "Alerta"
+      }
+    },
+    {
+      "id": "resumo",
+      "template": "list",
+      "narration": "Então, resumindo: os três erros mais comuns na declaração do IR são esquecer despesas, declarar errado e não aproveitar deduções corretamente. Olha só esses passos práticos para evitar isso. Vamos lá, olha só: o segundo é declarar despesas errado. O terceiro e último erro é realmente o mais caro de todos.",
+      "data": {
+        "title": "3 erros comuns na declaração do IR",
+        "items": [
+          "Esquecer despesas importantes",
+          "Declarar despesas incorretamente",
+          "Não aproveitar deduções corretamente"
+        ]
+      }
+    },
+    {
+      "id": "pratico",
+      "template": "lineChart",
+      "narration": "E agora vamos ver um exemplo prático. Imagine que a Ana tem dez reais. zero de despesas dedutíveis. Se ela não aproveitar, perde quatro reais. quinhentos por ano. Mas se declarar corretamente, pode poupar até seis reais. Vamos lá, olha só esse gráfico: se a Ana declarar corretamente, pode economizar mais e poupar dinheiro.",
+      "data": {
+        "title": "Economia com deduções",
+        "xLabels": [
+          "Não declar",
+          "Correto"
+        ],
+        "valuePrefix": "R$ ",
+        "valueSuffix": "",
+        "series": [
+          {
+            "label": "Sem aproveitar",
+            "values": [
+              4500,
+              0
+            ]
+          },
+          {
+            "label": "Com aproveitamento",
+            "values": [
+              0,
+              6000
+            ]
+          }
+        ],
+        "caption": "A diferença pode ser de R$ 1.500 ao ano!"
+      }
+    },
+    {
+      "id": "exemplo-anterior",
+      "template": "list",
+      "narration": "Imagina a Ana, que ganha três mil reais por mês. Ela comprou uma casa nova e fez um empréstimo para pagar as despesas do imóvel. Agora vamos ver um exemplo prático. Imagine que a Ana tem dez reais. zero de despesas dedutíveis. Se ela não aproveitar, perde quatro reais. quinhentos por ano. Mas se declarar corretamente, pode poupar até seis reais.",
+      "data": {
+        "title": "Exemplo Prático de Economia",
+        "items": [
+          "E agora vamos ver um exemplo prático",
+          "Ana tem 10 reais e não declara despesas dedutíveis"
+        ]
+      }
+    },
+    {
+      "id": "grafico-economia",
+      "template": "counter",
+      "narration": "Vamos lá, olha só esse gráfico: se a Ana declarar corretamente, pode economizar mais e poupar dinheiro. Olhe como isso funciona na prática. Se ela tivesse dez reais e declarasse corretamente, poderia economizar quatro reais e quinhentos por ano. Mas se não declarar nada, perde seis reais.",
+      "data": {
+        "label": "Economia anual",
+        "from": 450,
+        "to": 600,
+        "prefix": "R$ ",
+        "suffix": "",
+        "decimals": 2,
+        "trend": "up",
+        "caption": "Quanto Ana economiza corretamente",
+        "badge": "Economia"
+      }
+    },
+    {
+      "id": "split-despesas-corretas",
+      "template": "split",
+      "narration": "Agora olha isso: se a Ana declarar corretamente, pode economizar muito! Vamos ver como a despesa de juros do empréstimo pode ser dedutível. Se ela declarar corretamente, pode poupar até cinquenta por cento dos impostos. Mas se não declarar nada, perde essa oportunidade.",
+      "data": {
+        "left": {
+          "label": "Correta",
+          "points": [
+            "Pode poupar 50% do IR",
+            "Aproveita dedução corretamente"
+          ]
+        },
+        "right": {
+          "label": "Errada",
+          "points": [
+            "Perde essa oportunidade",
+            "Paga mais impostos"
+          ]
+        }
+      }
+    },
+    {
+      "id": "split-despesas-erradas",
+      "template": "split",
+      "narration": "O segundo erro é declarar despesas errado. Olha só essas barras: se a Ana declarar corretamente, pode economizar trinta por cento a mais e poupar dinheiro. Mas se não declarar nada, perde essa chance de economia. O terceiro e último erro é realmente o mais caro de todos.",
+      "data": {
+        "left": {
+          "label": "Correta",
+          "points": [
+            "Economiza 30% a mais",
+            "Aproveita despesas corretamente"
+          ]
+        },
+        "right": {
+          "label": "Errada",
+          "points": [
+            "Perde essa economia",
+            "Paga mais impostos"
+          ]
+        }
+      }
+    },
+    {
+      "id": "barras-deducoes-corretas-erradas",
+      "template": "bars",
+      "narration": "O terceiro e último erro é realmente o mais caro de todos. Olha só essas barras: se a Ana declarar corretamente, pode economizar até seis reais por ano. Mas se não declarar nada, perde essa oportunidade de poupar dinheiro. Então, o que você está esperando para corrigir seus erros?",
+      "data": {
+        "title": "Economia anual",
+        "valuePrefix": "R$ ",
+        "valueSuffix": "",
+        "items": [
+          {
+            "label": "Correta",
+            "value": 6,
+            "color": "green"
+          },
+          {
+            "label": "Errada",
+            "value": 0,
+            "color": "red"
+          }
+        ],
+        "caption": "Economia ao declarar corretamente"
+      }
+    },
+    {
+      "id": "resumo-erros",
+      "template": "list",
+      "narration": "Resumindo: os três erros mais comuns na declaração do IR são esquecer despesas, declarar errado e não aproveitar deduções corretamente. Se você quiser economizar dinheiro, é essencial evitar esses erros e declarar corretamente. Vamos lá, olha só: o que a Ana poderia fazer?",
+      "data": {
+        "title": "Resumo dos Erros",
+        "items": [
+          "Esquecer despesas dedutíveis",
+          "Declarar despesas erradas",
+          "Não aproveitar deduções corretamente"
+        ]
+      }
+    },
+    {
+      "id": "introducao",
+      "template": "list",
+      "narration": "E aí, quer saber um segredo? Você está pagando muito mais no Imposto de Renda do que deveria! Imagina a Ana, que ganha três mil reais por mês. Ela comprou uma casa nova e fez um empréstimo para renovar o apartamento. Agora olha isso: se ela declarar corretamente, pode pagar até cinquenta por cento menos no IR!",
+      "data": {
+        "title": "Imposto de Renda",
+        "items": [
+          "Paga menos Imposto de Renda?",
+          "3 erros que você comete e não sabe"
+        ]
+      }
+    },
+    {
+      "id": "esquecer-despesas",
+      "template": "split",
+      "narration": "O primeiro erro é esquecer despesas. Olha só essas barras: se a Ana declarar corretamente, pode economizar trinta por cento a mais e poupar quinhentos reais reais no IR! Agora olhe essa conta: se ela declarar errado, pode pagar até cinquenta por cento mais. Tá vendo o absurdo?",
+      "data": {
+        "left": {
+          "label": "Corretamente",
+          "points": [
+            "Economiza 30%",
+            "Poupa R$ 500"
+          ]
+        },
+        "right": {
+          "label": "Errado",
+          "points": [
+            "Paga mais 25%",
+            "Perde R$ 750"
+          ]
+        }
+      }
+    },
+    {
+      "id": "declarar-errado",
+      "template": "bars",
+      "narration": "O segundo erro é declarar errado. Olha só essas barras: se a Ana declarar corretamente, pode economizar mais e poupar setecentos e cinquenta reais reais no IR! Agora olhe essa conta: se ela declarar errado, pode pagar até cinquenta por cento mais. Tá vendo o absurdo? Se você quiser economizar dinheiro, é essencial evitar esses erros e declarar corretamente.",
+      "data": {
+        "title": "Economize R$ 750",
+        "valuePrefix": "R$ ",
+        "valueSuffix": "",
+        "items": [
+          {
+            "label": "Correto",
+            "value": 750,
+            "color": "gold"
+          },
+          {
+            "label": "Errado",
+            "value": -1250,
+            "color": "red"
+          }
+        ],
+        "caption": "A diferença entre declarar corretamente e errado"
+      }
+    },
+    {
+      "id": "nao-aproveitar-deducoes",
+      "template": "counter",
+      "narration": "O terceiro erro é realmente o mais caro de todos. Olha só essa conta: se a Ana declarar corretamente, pode economizar até mil e quinhentos reais reais no IR! Agora olhe essa conta: se ela não aproveitar as deduções corretamente, pode pagar até cinquenta por cento mais. Tá vendo o absurdo? Se você quiser economizar dinheiro, é essencial evitar esses erros e declarar corretamente.",
+      "data": {
+        "label": "Economize R$ 1500",
+        "from": 0,
+        "to": 1500,
+        "prefix": "R$ ",
+        "suffix": "",
+        "decimals": 2,
+        "trend": "up",
+        "caption": "A diferença entre aproveitar deduções corretamente e não aproveitá-las",
+        "badge": "CUIDADO!"
+      }
+    },
+    {
+      "id": "exemplo-pratico",
+      "template": "list",
+      "narration": "Vamos analisar esses erros um a um. O segundo é declarar despesas errado. Olha só essas barras: se a Ana declarar corretamente, pode economizar mais e poupar setecentos e cinquenta reais reais no IR! Agora olhe essa conta: se ela declarar errado, pode pagar até cinquenta por cento mais. Tá vendo o absurdo? Se você quiser economizar dinheiro, é essencial evitar esses erros e declarar corretamente.",
+      "data": {
+        "title": "Exemplo Prático",
+        "items": [
+          "Economize R$ 750",
+          "Declarar errado vs. Correto"
+        ]
+      }
+    },
+    {
+      "id": "conclusao",
+      "template": "outro",
+      "narration": "Então, o terceiro e último erro é realmente o mais caro de todos. Olha só essas barras: se a Ana declarar corretamente, pode economizar até mil e quinhentos reais reais no IR! Agora olhe essa conta: se ela não aproveitar as deduções corretamente, pode pagar até cinquenta por cento mais. Tá vendo o absurdo? Se você quiser economizar dinheiro, é essencial evitar esses erros e declarar corretamente.",
+      "data": {
+        "title": "Economize no IR",
+        "points": [
+          "Esquecer despesas",
+          "Declarar errado",
+          "Não aproveitar deduções"
+        ],
+        "cta": "Inscreva-se e saiba mais!"
+      }
+    }
+  ]
+}

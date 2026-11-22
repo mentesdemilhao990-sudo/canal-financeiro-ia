@@ -1,0 +1,285 @@
+{
+  "id": "2026-11-22-imposto-de-renda-short",
+  "formato": "short",
+  "title": "Imposto de Renda: O QUE FAZER com SEUS R$ 3.000?",
+  "description": "Descubra o básico do Imposto de Renda para pessoas físicas e evite os erros que deixam muita gente na mão no final do ano. Siga para mais!",
+  "tags": [
+    "imposto",
+    "renda",
+    "declaração",
+    "erros",
+    "finanças"
+  ],
+  "targetDurationSeconds": 126,
+  "disclaimer": "Conteúdo educativo. Valores ilustrativos, não é recomendação de investimento.",
+  "scenes": [
+    {
+      "id": "hook",
+      "template": "hook",
+      "narration": "Sabe por quê muita gente tem medo de falar sobre Imposto de Renda? Olha só: Se você ganha três mil reais por mês, o que fazer com esse dinheiro no IR?",
+      "data": {
+        "kicker": "R$ 3.000",
+        "title": "Imposto de Renda",
+        "subtitle": "O que FAZER?"
+      }
+    },
+    {
+      "id": "split",
+      "template": "split",
+      "narration": "E aí vem a parte que ninguém te conta: O governo cobra vinte por cento do seu salário. Mas é só isso? A resposta surpreende. Olha só.",
+      "data": {
+        "left": {
+          "label": "SIM",
+          "points": [
+            "20%",
+            "cobre"
+          ]
+        },
+        "right": {
+          "label": "NÃO",
+          "points": [
+            "80%",
+            "liberados"
+          ]
+        }
+      }
+    },
+    {
+      "id": "counter",
+      "template": "counter",
+      "narration": "E o segundo erro é pior: oitenta por cento do seu dinheiro estão livres! Mas não sabia, né? Vamos calcular. Olha só: dois mil e quatrocentos reais são os teus amigos!",
+      "data": {
+        "label": "Seu Dinheiro LIBERADO",
+        "from": 3000,
+        "to": 2400,
+        "prefix": "R$ ",
+        "suffix": "%",
+        "decimals": 0,
+        "trend": "down",
+        "caption": "Quase 80% estão à sua disposição!",
+        "badge": "LIVRE"
+      }
+    },
+    {
+      "id": "linechart",
+      "template": "lineChart",
+      "narration": "E aí vem o terceiro erro: você pensa que é obrigado a pagar? Mas nem sempre. Olha só como isso pode te ajudar ao longo do ano.",
+      "data": {
+        "title": "Seu Dinheiro LIBERADO ao longo do ano",
+        "xLabels": [
+          "Jan",
+          "Fev",
+          "Mar",
+          "Abr",
+          "Mai",
+          "Jun",
+          "Jul",
+          "Ago",
+          "Set",
+          "Out",
+          "Nov",
+          "Dez"
+        ],
+        "valuePrefix": "R$ ",
+        "valueSuffix": "%",
+        "series": [
+          {
+            "label": "Salário",
+            "values": [
+              1800,
+              1800,
+              2400,
+              2400,
+              3000,
+              3000,
+              3600,
+              3600,
+              4200,
+              4200,
+              4800,
+              4800
+            ]
+          },
+          {
+            "label": "LIVRE",
+            "values": [
+              1200,
+              1200,
+              1600,
+              1600,
+              2000,
+              2000,
+              2400,
+              2400,
+              2800,
+              2800,
+              3200,
+              3200
+            ]
+          }
+        ],
+        "caption": "Só paga o que é seu no fim do ano!"
+      }
+    },
+    {
+      "id": "bars",
+      "template": "bars",
+      "narration": "Mas se quiser economizar mais ainda, tem um truque. Se você fizer certas escolhas, pode até não pagar nada! Olha só como isso funciona.",
+      "data": {
+        "title": "Seus R$ 3.000 no final do ano",
+        "valuePrefix": "R$ ",
+        "valueSuffix": "%",
+        "items": [
+          {
+            "label": "INVESTIR",
+            "value": 1500,
+            "color": "gold"
+          },
+          {
+            "label": "RESERVA",
+            "value": 800,
+            "color": "green"
+          },
+          {
+            "label": "CONTRIBUIR",
+            "value": 700,
+            "color": "red"
+          }
+        ],
+        "caption": "Economize mais e pague menos!"
+      }
+    },
+    {
+      "id": "outro",
+      "template": "outro",
+      "narration": "Comenta aí: você faria isso?  Siga para mais dicas sobre Imposto de Renda.  Toda semana tem mais!",
+      "data": {
+        "title": "Tudo que você PRECISA saber sobre IR",
+        "points": [
+          "Evite erros",
+          "Economize mais",
+          "Não pague o que é seu"
+        ],
+        "cta": "Siga para mais"
+      }
+    },
+    {
+      "id": "hook2",
+      "template": "hook",
+      "narration": "Neste vídeo, vamos mostrar os três maiores ERROS que você comete ao declarar IR. Sabe por quê? Olha só: nove em cada dez pessoas fazem isso sem saber! Siga para descobrir.",
+      "data": {
+        "kicker": "ERROS",
+        "title": "Imposto de Renda",
+        "subtitle": "3 ERROS CEGOS"
+      }
+    },
+    {
+      "id": "split2",
+      "template": "split",
+      "narration": "O primeiro erro é comum e muita gente não percebe. Olha só: você sabe que precisa declarar? Mas nem sempre precisa! Aí vem a parte surpreendente.",
+      "data": {
+        "left": {
+          "label": "SIM",
+          "points": [
+            "precisa",
+            "declarar"
+          ]
+        },
+        "right": {
+          "label": "NÃO",
+          "points": [
+            "não precisa",
+            "economia"
+          ]
+        }
+      }
+    },
+    {
+      "id": "counter2",
+      "template": "counter",
+      "narration": "E o segundo erro é pior: você pensa que só pode usar a declaração para benefícios? Mas há mais! Olha só como isso te ajuda.",
+      "data": {
+        "label": "Seus Dinheiro LIBERADOS",
+        "from": 3000,
+        "to": 2500,
+        "prefix": "R$ ",
+        "suffix": "%",
+        "decimals": 0,
+        "trend": "down",
+        "caption": "Use a declaração para economizar!",
+        "badge": "LIVRE"
+      }
+    },
+    {
+      "id": "linechart2",
+      "template": "lineChart",
+      "narration": "E o terceiro erro é o mais caro de todos. Você pensa que precisa pagar por tudo? Mas nem sempre! Olha só como isso pode te ajudar ao longo do ano.",
+      "data": {
+        "title": "Seu Dinheiro LIBERADO ao longo do ano",
+        "xLabels": [
+          "Jan",
+          "Fev",
+          "Mar",
+          "Abr",
+          "Mai",
+          "Jun",
+          "Jul",
+          "Ago",
+          "Set",
+          "Out",
+          "Nov",
+          "Dez"
+        ],
+        "valuePrefix": "R$ ",
+        "valueSuffix": "%",
+        "series": [
+          {
+            "label": "Salário",
+            "values": [
+              1800,
+              1800,
+              2400,
+              2400,
+              3000,
+              3000,
+              3600,
+              3600,
+              4200,
+              4200,
+              4800,
+              4800
+            ]
+          },
+          {
+            "label": "LIVRE",
+            "values": [
+              1200,
+              1200,
+              1600,
+              1600,
+              2000,
+              2000,
+              2400,
+              2400,
+              2800,
+              2800,
+              3200,
+              3200
+            ]
+          }
+        ],
+        "caption": "Só paga o que é seu no fim do ano!"
+      }
+    },
+    {
+      "id": "fechamento",
+      "template": "outro",
+      "data": {
+        "title": "Imposto de Renda: O QUE FAZER com SEUS R$ 3.000?",
+        "points": [],
+        "cta": "Siga para mais"
+      },
+      "narration": "Gostou? Siga o canal para aprender mais sobre dinheiro sem complicação."
+    }
+  ]
+}

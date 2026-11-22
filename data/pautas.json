@@ -333,6 +333,25 @@
         "Como Planejar Férias sem DÍVIDAS em 6 meses"
       ],
       "modelo": "ollama:qwen2.5:7b"
+    },
+    {
+      "data": "2026-11-22",
+      "tema": "imposto-de-renda",
+      "nome": "Imposto de Renda",
+      "pontos": 4.8,
+      "manchetes": [
+        "Receita Federal lança calculadora para comparar opções de negociação de dívidas - Hora Brasil",
+        "Leão XIV: quem faz a guerra e destrói a criação está cego pelo poder e pelo dinheiro - Vatican News"
+      ],
+      "episodios": [
+        "2026-11-22-imposto-de-renda-longo",
+        "2026-11-22-imposto-de-renda-short"
+      ],
+      "titulos": [
+        "Imposto de Renda: 3 ERROS CEGOS que você COMETE e NÃO SABIA",
+        "Imposto de Renda: O QUE FAZER com SEUS R$ 3.000?"
+      ],
+      "modelo": "ollama:qwen2.5:7b"
     }
   ]
 }
