@@ -1,0 +1,555 @@
+{
+  "id": "2026-11-23-tesouro-direto-longo",
+  "formato": "longo",
+  "title": "Como Funcionam OS TÍTULOS PÚBLICOS E Qual É o SEU Melhor USO",
+  "description": "Descubra como os títulos públicos podem melhorar sua renda e entenda qual é o melhor para você. Aprenda a aplicar seu dinheiro com inteligência no Tesouro Direto.",
+  "tags": [
+    "Tesouro Direto",
+    "Títulos Públicos",
+    "Investimento",
+    "Educação Financeira"
+  ],
+  "targetDurationSeconds": 706,
+  "disclaimer": "Conteúdo educativo. Valores ilustrativos, não é recomendação de investimento.",
+  "scenes": [
+    {
+      "id": "hook",
+      "template": "hook",
+      "narration": "Sabe aquela grana que você tem guardada? Imagina se ela rendesse mais. E se você pudesse escolher o melhor jeito de aplicar dinheiro com segurança? Vamos descobrir como os títulos públicos podem te ajudar, mas primeiro. Olha só isso: um cara ganhando apenas três mil reais por mês quer saber como investir melhor.",
+      "data": {
+        "kicker": "R$ 3.000",
+        "title": "Grana Guardada? Sabia que pode rende-MAIS?",
+        "subtitle": "Aprenda a aplicar seu dinheiro com inteligência no Tesouro Direto"
+      }
+    },
+    {
+      "id": "split",
+      "template": "split",
+      "narration": "E aí vem a parte que ninguém te conta: os títulos públicos são como um seguro de vida, mas para o governo. Eles garantem uma renda segura e previsível, mas nem todo título serve pra tudo. Vamos ver quais são os tipos mais comuns e a melhor forma de usar cada um.",
+      "data": {
+        "left": {
+          "label": "LFT",
+          "points": [
+            "Renda fixa",
+            "Longo prazo"
+          ]
+        },
+        "right": {
+          "label": "Tesouro Selic",
+          "points": [
+            "Renda variável",
+            "Curto prazo"
+          ]
+        }
+      }
+    },
+    {
+      "id": "linechart",
+      "template": "lineChart",
+      "narration": "E aí veja como funciona: LFT é um título que rende mais, mas com juros fixos e prazo longo. Tesouro Selic rende menos, mas com juros variáveis e prazo curto. Veja o gráfico para entender melhor. E olha só, cada título tem seu próprio jeito de render. Vou mostrar a diferença.",
+      "data": {
+        "title": "Como os títulos rendem?",
+        "xLabels": [
+          "LFT",
+          "TesouroSel"
+        ],
+        "valuePrefix": "R$",
+        "valueSuffix": "%",
+        "series": [
+          {
+            "label": "LFT",
+            "values": [
+              5,
+              6
+            ],
+            "color": "gold"
+          },
+          {
+            "label": "Tesouro Selic",
+            "values": [
+              4,
+              3.5
+            ],
+            "color": "red"
+          }
+        ],
+        "caption": "Juros fixos rendem mais no longo prazo, mas juros variáveis têm menos risco."
+      }
+    },
+    {
+      "id": "counter",
+      "template": "counter",
+      "narration": "E aí veja a diferença de rendimento: LFT pode render até sete por cento ao ano, enquanto Tesouro Selic é mais próximo dos três por cento. Você vê o problema? Olha só isso: se você tiver dez reais. zero aplicados no LFT e no Tesouro Selic. O que acontece com o valor final em um ano? Vou contar pra você.",
+      "data": {
+        "label": "Qual rende mais, LFT ou Tesouro Selic?",
+        "from": 10000,
+        "to": 107000,
+        "prefix": "R$ ",
+        "suffix": "%",
+        "decimals": 2,
+        "trend": "up",
+        "caption": "LFT rende mais, mas tem risco. Tesouro Selic é seguro e previsível.",
+        "badge": "+700"
+      }
+    },
+    {
+      "id": "bars",
+      "template": "bars",
+      "narration": "E o terceiro erro é o mais caro de todos: misturar os títulos. Se você aplicar dez reais. zero em um, e depois no outro. Vai perder dinheiro. Olha só: se a pessoa erra na escolha. O que acontece? Vou mostrar pra você agora. E o segredo é entender bem qual título serve para cada objetivo.",
+      "data": {
+        "title": "Erros comuns",
+        "valuePrefix": "R$ ",
+        "valueSuffix": "%",
+        "items": [
+          {
+            "label": "Aplicar no LFT sem plane",
+            "value": 10700,
+            "color": "red"
+          },
+          {
+            "label": "Aplicar no Tesouro Selic",
+            "value": 10350,
+            "color": "gold"
+          }
+        ],
+        "caption": "Combinação errada pode te custar."
+      }
+    },
+    {
+      "id": "list",
+      "template": "list",
+      "narration": "Então o que fazer? Aqui estão as dicas: primeiro, saiba seu objetivo. Você quer segurança ou rendimento maior? Segundo, entenda a diferença entre os títulos. E terceiro, veja seu perfil de risco. Se você é muito conservador. Vou te dar uma dica no final do vídeo.",
+      "data": {
+        "title": "3 Dicas para escolher o título certo",
+        "items": [
+          "Saiba seu objetivo: segurança ou rendimento?",
+          "Entenda a diferença entre os títulos",
+          "Veja seu perfil de risco"
+        ]
+      }
+    },
+    {
+      "id": "funcionamento-titulos-publicos",
+      "template": "list",
+      "narration": "E aí veja como funciona: LFT é um título que rende mais, mas com juros fixos e prazo longo. Imagine ter uma grana guardada que rendesse sete por cento ao ano! Isso mesmo, o LFT pode render até sete por cento. Mas para quem? E pra que serve cada tipo de título público?",
+      "data": {
+        "title": "Como Funcionam OS TÍTULOS PÚBLICOS",
+        "items": [
+          "Entenda como funcionam os títulos públic",
+          "E qual é o melhor uso para você?"
+        ]
+      }
+    },
+    {
+      "id": "diferenca-rendimento",
+      "template": "counter",
+      "narration": "Então veja a diferença de rendimento: LFT pode render até sete por cento ao ano, enquanto TES ou CDB rendem mais baixo. Vamos ver um exemplo. Ana ganha três mil reais por mês e quer investir dez reais. Onde ela vai colocar? Olha só o que acontece. Com LFT, ela terá trinta reais e noventa e sete centavos no final do ano, mas com CDB, apenas trinta reais e cinquenta e quatro centavos.",
+      "data": {
+        "label": "Diferença de rendimento",
+        "from": 30.54,
+        "to": 30.97,
+        "prefix": "R$ ",
+        "suffix": "%",
+        "decimals": 2,
+        "trend": "up",
+        "caption": "LFT: 7% ao ano\nCDB: 6,5% ao ano",
+        "badge": "Sabe porqu"
+      }
+    },
+    {
+      "id": "diferenca-usos-titulos-publicos",
+      "template": "split",
+      "narration": "E aí veja qual é o melhor uso para cada título. O LFT é ideal para quem quer segurança e rendimento maior, mas com juros fixos e prazo longo. Já o CDB oferece liquidez e rentabilidade semelhante ao LFT, mas com taxas variáveis. Vamos comparar os dois: LFT tem risco zero e rende mais, enquanto CDB é mais fácil de vender.",
+      "data": {
+        "left": {
+          "label": "LFT",
+          "points": [
+            "riscos baixíssimos",
+            "rendimento maior"
+          ]
+        },
+        "right": {
+          "label": "CDB",
+          "points": [
+            "mais liquidez",
+            "taxas variáveis"
+          ]
+        }
+      }
+    },
+    {
+      "id": "terceiro-erro",
+      "template": "counter",
+      "narration": "E o terceiro erro é o mais caro de todos: misturar os títulos. Se você aplicar dez reais em cada, Ana acabará com trinta reais e setenta e cinco centavos no final do ano. Isso mesmo, menos que o CDB. Então, cuidado! A melhor opção depende do seu objetivo e perfil financeiro. Vamos ver isso de perto.",
+      "data": {
+        "label": "Terceiro erro: misturar títulos",
+        "from": 30.54,
+        "to": 30.75,
+        "prefix": "R$ ",
+        "suffix": "%",
+        "decimals": 2,
+        "trend": "up",
+        "caption": "Menos que CDB\nMais que LFT",
+        "badge": "O terceiro"
+      }
+    },
+    {
+      "id": "dicas-uso-titulos-publicos",
+      "template": "list",
+      "narration": "Então o que fazer? Aqui estão as dicas: primeiro, saiba seu objetivo. Você quer segurança ou rendimento maior? Segundo, entenda a diferença entre os títulos. E terceiro, veja seu perfil de risco. Se você é muito conservador, LFT pode ser sua melhor escolha. Mas se quiser mais flexibilidade, CDB é uma ótima opção.",
+      "data": {
+        "title": "3 Dicas para Usar os Títulos Públicos",
+        "items": [
+          "Entenda seu objetivo financeiro",
+          "Conheça as diferenças entre LFT e CDB",
+          "Analise seu perfil de risco"
+        ]
+      }
+    },
+    {
+      "id": "resumo-final",
+      "template": "counter",
+      "narration": "Resumindo, os títulos públicos são uma ótima opção para investir. Se você quer segurança e rendimento maior, LFT é a escolha certa. Mas se precisa de mais liquidez, CDB pode ser melhor. E lembre-se: misturar não é o caminho mais econômico. Comenta aí: você faria isso?",
+      "data": {
+        "label": "Resumo Final",
+        "from": 30.54,
+        "to": 30.97,
+        "prefix": "R$ ",
+        "suffix": "%",
+        "decimals": 2,
+        "trend": "up",
+        "caption": "LFT: 7%\nCDB: 6,5%",
+        "badge": "Resumindo"
+      }
+    },
+    {
+      "id": "introducao-titulos-publicos",
+      "template": "list",
+      "narration": "Sabe aquela grana que você tem guardada? Imagina se ela rendesse mais. E aí vem a parte que ninguém te conta: os títulos públicos são como um seguro de vida, mas. E aí veja como funciona: LFT é um título que rende mais, mas com juros fixos e prazo longo. E o terceiro erro é o mais caro de todos: misturar os títulos. Se você aplicar dez reais.",
+      "data": {
+        "title": "Entenda como funcionam e qual é a melhor opção par",
+        "items": [
+          "Sobre os TÍTULOS PÚBLICOS",
+          "Saiba como misturar não é sempre a escolha mais ec"
+        ]
+      }
+    },
+    {
+      "id": "funcionamento-lft",
+      "template": "split",
+      "narration": "E aí veja como funciona: LFT é um título que rende mais, mas com juros fixos e prazo longo. Então veja a diferença de rendimento: LFT pode render até sete por cento ao ano, enquanto CDB. E o terceiro erro é o mais caro de todos: misturar os títulos. Se você aplicar dez reais.",
+      "data": {
+        "left": {
+          "label": "LFT",
+          "points": [
+            "renda 7% ao ano",
+            "juros fixos",
+            "prazo longo"
+          ]
+        },
+        "right": {
+          "label": "CDB",
+          "points": [
+            "renda menos que LFT",
+            "juros variáveis",
+            "maior liquidez"
+          ]
+        }
+      }
+    },
+    {
+      "id": "melhor-opcao",
+      "template": "counter",
+      "narration": "E aí veja qual é o melhor uso para cada título. O LFT é ideal para quem quer segurança e rendimento maior, mas se precisa de mais liquidez, CDB pode ser melhor. Então o que fazer? Aqui estão as dicas: primeiro, saiba seu objetivo. Você quer segurança e rendimento maior, LFT é a escolha certa. Mas se precisa de mais liquidez, CDB pode ser melhor. E lembre-se: misturar não é o caminho mais econômico.",
+      "data": {
+        "label": "Melhor opção para você",
+        "from": 0,
+        "to": 100,
+        "prefix": "R$ ",
+        "suffix": "%",
+        "decimals": 2,
+        "trend": "up",
+        "caption": "LFT: segurança e rendimento maior\nCDB: maior liquidez",
+        "badge": "Dicas"
+      }
+    },
+    {
+      "id": "exemplo-novo-caso",
+      "template": "lineChart",
+      "narration": "Imagina a Ana, que ganha três mil reais por mês. Vamos ver como misturar os títulos pode custar caro. A Ana quer segurança e rendimento maior, então ela decide aplicar dez reais em LFT. Mas se ela precisar de dinheiro rápido, CDB seria melhor. No final, ela perdeu vinte por cento do lucro por misturar.",
+      "data": {
+        "title": "Exemplo com Ana",
+        "xLabels": [
+          "Aplicação",
+          "Liquidez"
+        ],
+        "valuePrefix": "R$ ",
+        "valueSuffix": "",
+        "series": [
+          {
+            "label": "LFT",
+            "values": [
+              10,
+              2
+            ]
+          },
+          {
+            "label": "CDB",
+            "values": [
+              8,
+              10
+            ]
+          }
+        ],
+        "caption": "Ana misturou LFT e CDB"
+      }
+    },
+    {
+      "id": "funcionamento-titulos-publicos-17",
+      "template": "list",
+      "narration": "Sabe aquela grana que você tem guardada? Imagina se ela rendesse mais. E aí vem a parte que ninguém te conta: os títulos públicos são como um seguro de vida, mas com juros fixos e prazo longo. Vamos entender melhor como eles funcionam e qual é o seu melhor uso.",
+      "data": {
+        "title": "Como Funcionam OS TÍTULOS PÚBLICOS E Qual É o SEU ",
+        "items": [
+          "Entenda",
+          "Veja a diferença entre LFT, CDB e outros títulos p"
+        ]
+      }
+    },
+    {
+      "id": "lft-vs-cdb",
+      "template": "split",
+      "narration": "E aí veja como funciona: LFT é um título que rende mais, mas com juros fixos e prazo longo. CDB, por outro lado, tem juros variáveis, mas pode ser resgatado em qualquer momento. E aí veja qual é o melhor uso para cada título. O LFT é ideal para quem quer segurança e rendimento maior, enquanto o CDB serve para quem precisa de liquidez.",
+      "data": {
+        "left": {
+          "label": "LFT",
+          "points": [
+            "rende mais",
+            "juros fixos",
+            "prazo longo"
+          ]
+        },
+        "right": {
+          "label": "CDB",
+          "points": [
+            "juros variáveis",
+            "maior liquidez",
+            "resgate a qualquer momento"
+          ]
+        }
+      }
+    },
+    {
+      "id": "misturando-titulos",
+      "template": "counter",
+      "narration": "Imagina a Ana, que ganha três mil reais por mês. Vamos ver como misturar investimentos pode custar caro. A Ana quer segurança e rendimento maior, então ela decide aplicar dez reais em LFT. Mas se ela precisar de dinheiro rápido, CDB seria melhor. No final, ela perdeu vinte por cento do lucro por misturar.",
+      "data": {
+        "label": "Investindo mal pode custar caro",
+        "from": 10,
+        "to": -20,
+        "prefix": "R$ ",
+        "suffix": "%",
+        "decimals": 1,
+        "trend": "down",
+        "caption": "LFT rendeu menos quando Ana precisou de liquidez.",
+        "badge": "CDB"
+      }
+    },
+    {
+      "id": "melhor-uso-titulos-publicos",
+      "template": "list",
+      "narration": "Então o que fazer? Aqui estão as dicas: primeiro, saiba seu objetivo. Você quer segurança e rendimento maior, ou flexibilidade financeira? Segundo, escolha o título público mais adequado para sua situação. E por último, evite misturar investimentos sem pensar.",
+      "data": {
+        "title": "Dicas para usar os títulos públicos",
+        "items": [
+          "Saiba seu objetivo de investimento",
+          "Escolha o título público mais adequado",
+          "Evite misturar investimentos sem pensar"
+        ]
+      }
+    },
+    {
+      "id": "cuidado-misturando-investimentos",
+      "template": "list",
+      "narration": "E o terceiro erro é o mais caro de todos: misturar os títulos. Se você aplicar dez reais e precisar resgatar em um momento ruim, pode perder dinheiro. Por isso, planeje sua carteira com cuidado para evitar armadilhas financeiras como essa. Afinal, investir é uma arte que precisa de atenção.",
+      "data": {
+        "title": "MISTURANDO INVESTIMENTOS PODE CUSTAR CARO",
+        "items": [
+          "Cuidado",
+          "E aí vem o terceiro erro: misturar títulos público"
+        ]
+      }
+    },
+    {
+      "id": "resumo-investimentos",
+      "template": "lineChart",
+      "narration": "Resumindo, os títulos públicos são uma ótima opção para investir. Se você quer segurança e rendimento maior, LFT é a escolha certa. Para quem precisa de liquidez, CDB serve melhor. Mas misturar sem planejar pode custar caro. Então, pense bem antes de jogar dinheiro por aí.",
+      "data": {
+        "title": "Comparação entre LFT e CDB",
+        "xLabels": [
+          "Segurança",
+          "Rendimento",
+          "Liquidez"
+        ],
+        "valuePrefix": "R$ ",
+        "valueSuffix": "%",
+        "series": [
+          {
+            "label": "LFT",
+            "values": [
+              10,
+              7,
+              5
+            ]
+          },
+          {
+            "label": "CDB",
+            "values": [
+              8,
+              6,
+              9
+            ]
+          }
+        ],
+        "caption": "CDB oferece maior liquidez, mas menor rendimento."
+      }
+    },
+    {
+      "id": "hook-23",
+      "template": "list",
+      "narration": "Sabe aquela grana que você tem guardada? Imagina se ela rendesse mais. E aí vem a parte que ninguém te conta: os títulos públicos são como um seguro de vida, mas. Vem ver o segredo que vai mudar sua forma de investir! títulopúblico investimento segurança.",
+      "data": {
+        "title": "Como Funcionam OS TÍTULOS PÚBLICOS E Qual É o SEU ",
+        "items": [
+          "Sabe aquela grana?",
+          "Descubra aqui tudo sobre LFT e CDB"
+        ]
+      }
+    },
+    {
+      "id": "split-24",
+      "template": "split",
+      "narration": "E aí vem a parte que ninguém te conta: os títulos públicos são como um seguro de vida, mas eles rendem mais. O LFT (Leilão Federal Tesouro) é um título com juros fixos e prazo longo, enquanto o CDB (Certificado de Depósito Bancário) oferece maior liquidez. Sabe por quê?",
+      "data": {
+        "left": {
+          "label": "LFT",
+          "points": [
+            "juros fixos",
+            "prazo longo"
+          ]
+        },
+        "right": {
+          "label": "CDB",
+          "points": [
+            "maior liquidez",
+            "prazo curto"
+          ]
+        }
+      }
+    },
+    {
+      "id": "counter-25",
+      "template": "counter",
+      "narration": "E aí veja como funciona: LFT pode render até sete por cento ao ano, enquanto CDB rende entre três e cinco por cento. Parece pouco, né? Mas imagine ter mais um milhão de reais investidos! Vamos ver o que acontece em dez anos: LFT pode render setecentos reais. zero, enquanto CDB pode render quinhentos reais.",
+      "data": {
+        "label": "Rendimentos em 10 anos",
+        "from": 300000,
+        "to": 500000,
+        "prefix": "R$",
+        "suffix": "%",
+        "decimals": 2,
+        "trend": "up",
+        "caption": "LFT vs CDB: qual rende mais?",
+        "badge": "1.000.000"
+      }
+    },
+    {
+      "id": "linechart-26",
+      "template": "lineChart",
+      "narration": "E aí veja a diferença de rendimento ao longo dos anos: Primeiro ano, LFT rende setenta reais. zero, CDB rende trinta e cinco reais. zero; Terceiro ano, LFT rende cem reais. zero; Quinto ano, LFT rende cento e quarenta reais. Parece pouco, né? Mas imagine ter mais um milhão de reais investidos!",
+      "data": {
+        "title": "Rendimentos ao longo dos anos",
+        "xLabels": [
+          "1º ano",
+          "3º ano",
+          "5º ano"
+        ],
+        "valuePrefix": "R$",
+        "valueSuffix": "%",
+        "series": [
+          {
+            "label": "LFT",
+            "values": [
+              70000,
+              100000,
+              140000
+            ],
+            "color": "gold"
+          },
+          {
+            "label": "CDB",
+            "values": [
+              35000,
+              65000,
+              85000
+            ],
+            "color": "red"
+          }
+        ],
+        "caption": "LFT vs CDB: qual rende mais?"
+      }
+    },
+    {
+      "id": "bars-27",
+      "template": "bars",
+      "narration": "E o terceiro erro é o mais caro de todos: misturar os títulos. Se você aplicar dez reais e cinco na LFT, cinco no CDB, pode perder dinheiro. Só você acha isso absurdo? LFT é melhor para segurança e rendimento maior; CDB para liquidez. Mas misturar sem planejar pode custar caro.",
+      "data": {
+        "title": "Erros na mistura de títulos",
+        "valuePrefix": "R$",
+        "valueSuffix": "%",
+        "items": [
+          {
+            "label": "LFT",
+            "value": 5,
+            "color": "gold"
+          },
+          {
+            "label": "CDB",
+            "value": 5,
+            "color": "red"
+          }
+        ],
+        "caption": "LFT vs CDB: qual rende mais?"
+      }
+    },
+    {
+      "id": "list-28",
+      "template": "list",
+      "narration": "Então o que fazer? Aqui estão as dicas: um. Saiba seu objetivo. LFT para segurança e maior rendimento; três. CDB para liquidez e menor risco. Planeje antes de investir. Não misture sem planejar. Vou mostrar isso com Ana, que ganha três mil reais por mês.",
+      "data": {
+        "title": "Dicas importantes",
+        "items": [
+          "Saiba seu objetivo",
+          "LFT para segurança e maior rendimento",
+          "CDB para liquidez e menor risco",
+          "Planeje antes de investir",
+          "Não misture sem planejar"
+        ]
+      }
+    },
+    {
+      "id": "outro",
+      "template": "outro",
+      "narration": "Resumindo, os títulos públicos são uma ótima opção para investir. Se você quer segurança e rendimento maior, LFT é a escolha certa. Para quem precisa de liquidez, CDB serve melhor. Mas misturar sem planejar pode custar caro. Então, pense bem antes de jogar dinheiro por aí! Comenta aí: você faria isso?",
+      "data": {
+        "title": "Como Funcionam OS TÍTULOS PÚBLICOS E Qual É o SEU Melhor USO",
+        "points": [
+          "Entenda os títulos públicos",
+          "Saiba qual é o melhor uso para cada um",
+          "Evite erros caros no seu portfólio"
+        ],
+        "cta": "Se isso te ajudou, se inscreve"
+      }
+    }
+  ]
+}

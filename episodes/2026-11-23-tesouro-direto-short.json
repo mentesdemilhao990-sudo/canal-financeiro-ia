@@ -1,0 +1,193 @@
+{
+  "id": "2026-11-23-tesouro-direto-short",
+  "formato": "short",
+  "title": "Como Funcionam OS TÍTULOS PÚBLICOS E Qual É o SEU Melhor USO",
+  "description": "Descubra como os títulos públicos funcionam e qual é a melhor maneira de utilizá-los para garantir seu futuro financeiro. Vem com a gente!",
+  "tags": [
+    "investimentos",
+    "tesouro direto",
+    "educação financeira"
+  ],
+  "targetDurationSeconds": 132,
+  "disclaimer": "Conteúdo educativo. Valores ilustrativos, não é recomendação de investimento.",
+  "scenes": [
+    {
+      "id": "hook",
+      "template": "hook",
+      "narration": "E aí, você sabia que os títulos públicos podem ser sua melhor amiga financeira? Olha só isso: imagine ganhar um bônus só por guardar dinheiro. Com os títulos públicos, é exatamente assim! Vem ver o que tem de novo.",
+      "data": {
+        "kicker": "Ganhe um BÔNUS",
+        "title": "TÍTULOS PÚBLICOS: SEU NOVO AMIGO FINANCEIRO",
+        "subtitle": "Aprenda como funcionam e qual é o melhor uso"
+      }
+    },
+    {
+      "id": "split",
+      "template": "split",
+      "narration": "Tem títulos que são para quem quer ganhar dinheiro rápido, mas outros são para quem quer segurança. E aí vem a parte que ninguém te conta: os títulos do Tesouro Direto! LADO um - TÍTULOS DE CURTO PRAZO - Menos risco, mas rendimento também menor. LADO dois - TÍTULOS DE LONGO PRAZO - Maior risco, mas potencial de maior ganho.",
+      "data": {
+        "left": {
+          "label": "Títulos de curto prr",
+          "points": [
+            "Menos risco",
+            "Rendimento menor"
+          ]
+        },
+        "right": {
+          "label": "Títulos de longo pr",
+          "points": [
+            "Mais risco",
+            "Potencial maior rendimento"
+          ]
+        }
+      }
+    },
+    {
+      "id": "counter",
+      "template": "counter",
+      "narration": "E aí vem o número que pode te surpreender: quatro vírgula cinco por cento ao ano. Isso mesmo! É esse o rendimento médio dos títulos do Tesouro Direto atualmente.",
+      "data": {
+        "label": "Rendimento médio",
+        "from": 0,
+        "to": 4.5,
+        "prefix": "4,5%",
+        "suffix": "% ao ",
+        "decimals": 1,
+        "trend": "up",
+        "caption": "Isso pode parecer pouco, né? Mas pensa comigo: se você investir R$ 20.000 por mÊ",
+        "badge": "ATUAL"
+      }
+    },
+    {
+      "id": "linechart",
+      "template": "lineChart",
+      "narration": "Agora veja isso: se você investir dez reais. zero no Tesouro Direto, o gráfico mostra como seu dinheiro cresce ao longo dos anos.",
+      "data": {
+        "title": "O CREScimento do SEU DINHEIRO",
+        "xLabels": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5"
+        ],
+        "valuePrefix": "R$ ",
+        "valueSuffix": "",
+        "series": [
+          {
+            "label": "Início",
+            "values": [
+              10000,
+              10450,
+              10906,
+              11382,
+              11876
+            ]
+          },
+          {
+            "label": "Rendimento",
+            "values": [
+              -50,
+              -50,
+              -50,
+              -50,
+              -50
+            ]
+          }
+        ],
+        "caption": "Cada linha representa um ano. Você consegue ver o rendimento anual?"
+      }
+    },
+    {
+      "id": "bars",
+      "template": "bars",
+      "narration": "E aí vem o terceiro erro mais caro: não diversificar seus investimentos. Se você investir só em títulos do Tesouro Direto, pode estar perdendo oportunidades de ganhar mais.",
+      "data": {
+        "title": "ERROS MAIS CAROS",
+        "valuePrefix": "",
+        "valueSuffix": "",
+        "items": [
+          {
+            "label": "Investir tudo no Tesouro",
+            "value": 90,
+            "color": "red"
+          },
+          {
+            "label": "Ignorar a diversificação",
+            "value": 85,
+            "color": "gold"
+          }
+        ],
+        "caption": "As pessoas que cometeram esses erros perderam muito dinheiro. Você faria isso?"
+      }
+    },
+    {
+      "id": "list",
+      "template": "list",
+      "narration": "Agora veja os três melhores usos para os títulos do Tesouro Direto: um - Para acumular renda fixa. dois - Como reserva de emergência. três - Para investir a longo prazo.",
+      "data": {
+        "title": "Melhores USOS",
+        "items": [
+          "Para acumular renda fixa",
+          "Como reserva de emergência",
+          "Para investir a longo prazo"
+        ]
+      }
+    },
+    {
+      "id": "outro",
+      "template": "outro",
+      "narration": "Então, você faria o que com esses títulos?",
+      "data": {
+        "title": "Vamos lá! Investindo certo você pode",
+        "points": [
+          "garantir seu futuro",
+          "acumular renda fixa",
+          "construir uma reserva de emergência"
+        ],
+        "cta": "se inscreve na nossa playlist"
+      }
+    },
+    {
+      "id": "hook2",
+      "template": "hook",
+      "narration": "Parece pouco, né? Mas pensa comigo: se você investir vinte reais. zero por mÊ, veja o que pode acontecer no longo prazo.",
+      "data": {
+        "kicker": "Investir R$ 20.000",
+        "title": "Vale a PENA para SEU FUTURO?",
+        "subtitle": "Descubra qual é o melhor uso"
+      }
+    },
+    {
+      "id": "split2",
+      "template": "split",
+      "narration": "E agora veja como esses títulos podem te ajudar a construir seu futuro: LADO um - RENDA FIXA - Menos risco, rendimento mais previsível. LADO dois - INVESTIMENTO A LARGA PERSPECTIVA.",
+      "data": {
+        "left": {
+          "label": "Renda Fixa",
+          "points": [
+            "Menos risco",
+            "Rendimento mais previsível"
+          ]
+        },
+        "right": {
+          "label": "Investimento a longo",
+          "points": [
+            "Mais risco",
+            "Potencial maior rendimento"
+          ]
+        }
+      }
+    },
+    {
+      "id": "fechamento",
+      "template": "outro",
+      "data": {
+        "title": "Como Funcionam OS TÍTULOS PÚBLICOS E Qual É o SEU Melhor USO",
+        "points": [],
+        "cta": "Siga para mais"
+      },
+      "narration": "Gostou? Siga o canal para aprender mais sobre dinheiro sem complicação."
+    }
+  ]
+}

@@ -352,6 +352,25 @@
         "Imposto de Renda: O QUE FAZER com SEUS R$ 3.000?"
       ],
       "modelo": "ollama:qwen2.5:7b"
+    },
+    {
+      "data": "2026-11-23",
+      "tema": "tesouro-direto",
+      "nome": "Tesouro Direto",
+      "pontos": 4.8,
+      "manchetes": [
+        "OLITEF 2027: Olimpíada do Tesouro Direto de Educação Financeira Abre Inscrições para Escolas em Todo o País - Capital Política",
+        "Escolas municipais da Bahia são destaque na Olimpíada do Tesouro Direto de Educação Financeira 2026 - undimebahia.com.br"
+      ],
+      "episodios": [
+        "2026-11-23-tesouro-direto-longo",
+        "2026-11-23-tesouro-direto-short"
+      ],
+      "titulos": [
+        "Como Funcionam OS TÍTULOS PÚBLICOS E Qual É o SEU Melhor USO",
+        "Como Funcionam OS TÍTULOS PÚBLICOS E Qual É o SEU Melhor USO"
+      ],
+      "modelo": "ollama:qwen2.5:7b"
     }
   ]
 }
