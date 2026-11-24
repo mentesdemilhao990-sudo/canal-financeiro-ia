@@ -371,6 +371,22 @@
         "Como Funcionam OS TÍTULOS PÚBLICOS E Qual É o SEU Melhor USO"
       ],
       "modelo": "ollama:qwen2.5:7b"
+    },
+    {
+      "data": "2026-11-24",
+      "tema": "consorcio",
+      "nome": "Consórcio funciona?",
+      "pontos": 3,
+      "manchetes": [
+        "O consórcio cresceu e a responsabilidade de vender também - Monitor Mercantil"
+      ],
+      "episodios": [
+        "2026-11-24-consorcio-longo"
+      ],
+      "titulos": [
+        "CONSÓRCIO FUNCIONA? Descubra a TAXA QUE VOCÊ NUNCA VIU"
+      ],
+      "modelo": "ollama:qwen2.5:7b"
     }
   ]
 }

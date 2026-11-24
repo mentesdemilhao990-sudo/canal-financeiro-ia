@@ -1,0 +1,654 @@
+{
+  "id": "2026-11-24-consorcio-longo",
+  "formato": "longo",
+  "title": "CONSÓRCIO FUNCIONA? Descubra a TAXA QUE VOCÊ NUNCA VIU",
+  "description": "Conheça como funciona o consórcio, qual é a taxa de administração e quando realmente vale a pena. Descubra se esse sistema pode ajudar na sua economia! #consorcio #taxaadministração #economia",
+  "tags": [
+    "consorcio",
+    "taxa administração",
+    "economia",
+    "investimento",
+    "finanças",
+    "compra planejada"
+  ],
+  "targetDurationSeconds": 725,
+  "disclaimer": "Conteúdo educativo. Valores ilustrativos, não é recomendação de investimento.",
+  "scenes": [
+    {
+      "id": "hook",
+      "template": "hook",
+      "narration": "Imagine que você quer comprar um carro, mas o consórcio parece uma opção. E se eu disser que tem coisas que você nunca viu nele? Descobrimos por que isso importa agora e o problema que todos ignoram! Aproveite até o fim para descobrir a resposta de uma curiosidade.",
+      "data": {
+        "kicker": "570",
+        "title": "Consórcio funciona?",
+        "subtitle": "Descubra as taxas que você não viu"
+      }
+    },
+    {
+      "id": "split",
+      "template": "split",
+      "narration": "Vamos imaginar a Ana, uma profissional de trinta anos que ganha cinco reais. zero por mês. Ela quer comprar um carro com valor de quarenta reais. Consórcio ou financiamento? Vamos comparar. No consórcio, a taxa de administração é dois por cento. No financiamento, o juros são doze por cento ao ano. Olha só: - Consórcio: oitocentos reais mensais (quarenta reais. zero + dois por cento) - Financiamento: trezentos e cinquenta e sete reais mensais.",
+      "data": {
+        "left": {
+          "label": "Consórcio",
+          "points": [
+            "R$ 800 mensais"
+          ]
+        },
+        "right": {
+          "label": "Financiamento",
+          "points": [
+            "R$ 357 mensais"
+          ]
+        }
+      }
+    },
+    {
+      "id": "counter",
+      "template": "counter",
+      "narration": "Agora, olha só essa diferença. - Consórcio: quarenta e oito reais. zero ao final (cinco reais. zero x doze meses x quatro anos) - Financiamento: trinta e seis reais. oitocentos e sessenta e quatro (trezentos e cinquenta e sete reais x doze meses x dez vírgula três anos) Parece pouco, né? Mas vamos ver mais detalhes no próximo vídeo, que vai explicar tudo isso e muito mais sobre consórcio!",
+      "data": {
+        "label": "Diferença final",
+        "from": 48000,
+        "to": 36864,
+        "prefix": "R$ ",
+        "suffix": "",
+        "decimals": 0,
+        "trend": "down",
+        "caption": "Consórcio x Financiamento",
+        "badge": "+57%"
+      }
+    },
+    {
+      "id": "linechart",
+      "template": "lineChart",
+      "narration": "E aí vem a parte que ninguém te conta. Vamos mostrar como o consórcio se comporta ao longo do tempo. No gráfico, temos dois cenários: Consórcio e Financiamento. Olha só: - Consórcio: quatro anos pagando oitocentos reais mensais. - Financiamento: dez vírgula três anos pagando trezentos e cinquenta e sete reais mensais. O que você faria?",
+      "data": {
+        "title": "Comparação de prazos",
+        "xLabels": [
+          "4",
+          "8",
+          "12",
+          "16",
+          "20",
+          "24"
+        ],
+        "valuePrefix": "R$ ",
+        "valueSuffix": "",
+        "series": [
+          {
+            "label": "Consórcio",
+            "values": [
+              3200,
+              3520,
+              3840,
+              4160,
+              4480,
+              4800
+            ]
+          },
+          {
+            "label": "Financiamento",
+            "values": [
+              3570,
+              3912.4,
+              4254.8,
+              4597.2,
+              4939.6,
+              5282
+            ]
+          }
+        ],
+        "caption": "Consórcio x Financiamento"
+      }
+    },
+    {
+      "id": "bars",
+      "template": "bars",
+      "narration": "Agora vamos ver os erros mais comuns. - Erro um: Ignorar a taxa de administração - Erro dois: Não considerar o prazo total - E o terceiro erro é o mais caro de todos: - Erro três: Pensar que vai comprar no primeiro mês. O consórcio gera juros a cada parcela, e você só compra no final!",
+      "data": {
+        "title": "Erros comuns",
+        "valuePrefix": "",
+        "valueSuffix": "",
+        "items": [
+          {
+            "label": "Erro 1",
+            "value": 3500,
+            "color": "red"
+          },
+          {
+            "label": "Erro 2",
+            "value": 4000,
+            "color": "red"
+          },
+          {
+            "label": "Erro 3",
+            "value": 6000,
+            "color": "red"
+          }
+        ],
+        "caption": "Pensa comigo: O consórcio tem lados bons e ruins"
+      }
+    },
+    {
+      "id": "introducao",
+      "template": "list",
+      "narration": "Imagina que você quer comprar um carro, mas o consórcio parece uma opção. E se eu disser que isso pode custar mais do que você imagina? Vamos descobrir juntos se vale a pena e quais erros podem te deixar no prejuízo.",
+      "data": {
+        "title": "Descubra a taxa que você nunca viu",
+        "items": [
+          "Consórcio Funciona?",
+          "Vamos analisar se vale a pena e quais erros podem "
+        ]
+      }
+    },
+    {
+      "id": "consorcio-exemplo",
+      "template": "split",
+      "narration": "Agora, olha só essa diferença. Consórcio: quarenta e oito reais. zero ao final (cinco reais por mês). No crédito convencional: cinquenta e cinco reais. zero ao final (trinta reais por mês). Esse é o preço que você paga? Lado A: Consórcio.",
+      "data": {
+        "left": {
+          "label": "48,00 R$ /mês",
+          "points": [
+            "É um custo extra que você não viaja no \n"
+          ]
+        },
+        "right": {
+          "label": "55,00 R$ /mês",
+          "points": [
+            "O valor é maior, mas sem juros."
+          ]
+        }
+      }
+    },
+    {
+      "id": "taxa-administracao",
+      "template": "counter",
+      "narration": "Agora vamos ver os erros mais comuns. - Erro um: Ignorar a taxa de administração - Erro dois: Não considerar o prazo total Taxa administrativa do consórcio vai de zero vírgula quarenta e cinco por cento a dois por cento. Vamos assumir um valor médio de um vírgula trinta e cinco por cento ao mês. Isso significa que no primeiro mês você já paga cento e trinta e cinco reais por dez reais.",
+      "data": {
+        "label": "Taxa administrativa do consórcio",
+        "from": 0.45,
+        "to": 2,
+        "prefix": "0,45%",
+        "suffix": "%",
+        "decimals": 1,
+        "trend": "up",
+        "caption": "Varia de 0,45% a 2% ao mês",
+        "badge": "1,35%"
+      }
+    },
+    {
+      "id": "exemplo-taxa-administracao",
+      "template": "lineChart",
+      "narration": "Vamos ver como isso impacta no custo total. Suponha que Ana quer comprar um carro no valor de dez mil reais em sessenta meses.",
+      "data": {
+        "title": "Impacto da taxa administrativa",
+        "xLabels": [
+          "12",
+          "24",
+          "36",
+          "48",
+          "60"
+        ],
+        "valuePrefix": "R$ ",
+        "valueSuffix": "",
+        "series": [
+          {
+            "label": "Consórcio",
+            "values": [
+              597,
+              1192,
+              1787,
+              2382,
+              2976
+            ],
+            "color": "green"
+          },
+          {
+            "label": "Crédito Convencional",
+            "values": [
+              10048,
+              10048,
+              10048,
+              10048,
+              10048
+            ],
+            "color": "white"
+          }
+        ],
+        "caption": "O consórcio pode custar mais do que o crédito convencional"
+      }
+    },
+    {
+      "id": "prazo-total",
+      "template": "bars",
+      "narration": "Erro dois: Não considerar o prazo total. O consórcio geralmente tem um prazo maior que o crédito convencional.",
+      "data": {
+        "title": "Comparação de prazos",
+        "valuePrefix": "",
+        "valueSuffix": "",
+        "items": [
+          {
+            "label": "Consórcio",
+            "value": 60,
+            "color": "green"
+          },
+          {
+            "label": "Crédito Convencional",
+            "value": 36,
+            "color": "white"
+          }
+        ],
+        "caption": "Prazo maior = mais parcelas e juros"
+      }
+    },
+    {
+      "id": "compra-final",
+      "template": "list",
+      "narration": "Erro três: Pensar que vai comprar no primeiro mês. O consórcio gera juros a cada parcela, e você só compra no final.",
+      "data": {
+        "title": "Erro três: Compra no primeiro mês",
+        "items": [
+          "Juros gerados a cada parcela",
+          "Só compra no último mês",
+          "Custo extra sem o carro durante todo o prazo"
+        ]
+      }
+    },
+    {
+      "id": "novo-caso-concreto",
+      "template": "list",
+      "narration": "Imagina que você é a Ana, uma profissional de trinta anos que ganha cinco mil reais por mês. E quer comprar um carro. Mas o consórcio parece ser uma boa opção. E se eu disser que isso não é tão simples assim? Vamos ver como ele realmente funciona e descobrir os erros mais comuns.",
+      "data": {
+        "title": "Consórcio: Não é tão simples quanto parece",
+        "items": [
+          "5 mil reais por mês",
+          "Descubra os erros que podem custar caro"
+        ]
+      }
+    },
+    {
+      "id": "erro-tres",
+      "template": "split",
+      "narration": "Erro três: Pensar que vai comprar no primeiro mês. O consórcio gera juros a cada parcela, e você só compra no final. Agora, olha só essa diferença. Consórcio: quarenta e oito reais. zero ao final (cinco mil cem reais). Consórcio: quatrocentos e cinquenta reais ao mês, vinte e um meses (oito mil e setecentos reais).",
+      "data": {
+        "left": {
+          "label": "50 reais/mês",
+          "points": [
+            "você só compra no final"
+          ]
+        },
+        "right": {
+          "label": "480 reais/mês",
+          "points": [
+            "você compra em 21 meses"
+          ]
+        }
+      }
+    },
+    {
+      "id": "grafico-custo-total",
+      "template": "lineChart",
+      "narration": "Agora vamos ver como isso impacta no custo total. Suponha que Ana quer comprar um carro no valor de dez mil reais. Vamos comparar o consórcio com uma compra à vista e um financiamento bancário. No consórcio, ela paga quarenta e oito reais ao mês por trinta meses. No fim, ela pagará mil quatrocentos e quarenta reais a mais que o valor inicial.",
+      "data": {
+        "title": "Comparação de custos",
+        "xLabels": [
+          "12",
+          "24",
+          "36"
+        ],
+        "valuePrefix": "R$ ",
+        "valueSuffix": "",
+        "series": [
+          {
+            "label": "Compra à vista",
+            "values": [
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "label": "Financiamento bancário",
+            "values": [
+              240,
+              480,
+              720
+            ]
+          },
+          {
+            "label": "Consórcio",
+            "values": [
+              1440,
+              1440,
+              1440
+            ]
+          }
+        ],
+        "caption": "Cada linha representa o custo total de cada opção"
+      }
+    },
+    {
+      "id": "resumo-erros",
+      "template": "list",
+      "narration": "E agora vamos relembrar os erros mais comuns que podem te fazer perder dinheiro no consórcio. - Erro um: Ignorar a taxa de administração. Ela pode aumentar drasticamente o custo total. - Erro dois: Não considerar o prazo total. O consórcio geralmente tem um prazo maior que o da compra à vista ou financiamento bancário. - Erro três: Pensar que vai comprar no primeiro mês. O consórcio gera juros a cada parcela, e você só compra no final.",
+      "data": {
+        "title": "Erros comuns em consórcios",
+        "items": [
+          "- Ignorar a taxa de administração",
+          "- Não considerar o prazo total",
+          "- Pensar que vai comprar no primeiro mês"
+        ]
+      }
+    },
+    {
+      "id": "plano-pratico",
+      "template": "counter",
+      "narration": "E para evitar esses erros, aqui está um plano prático em três passos: um. Calcule o custo real do consórcio. Compare com outras opções como compra à vista ou financiamento bancário. Verifique se o prazo total é vantajoso para você. Sabe por quê? Só eu acho isso absurdo?",
+      "data": {
+        "label": "Plano Prático",
+        "from": 1,
+        "to": 3,
+        "prefix": "",
+        "suffix": "",
+        "decimals": 0,
+        "trend": "up",
+        "caption": "Passos simples para tomar a decisão certa",
+        "badge": "Pratico"
+      }
+    },
+    {
+      "id": "resumo-final",
+      "template": "bars",
+      "narration": "E aí, você viu que o consórcio pode não ser tão vantajoso quanto parece. Aqui está um resumo dos pontos principais: - Consórcio: quarenta e oito reais ao mês por trinta meses (mil quatrocentos e quarenta reais a mais do que o valor inicial). - Erro um: Ignorar a taxa de administração. - Erro dois: Não considerar o prazo total. - Erro três: Pensar que vai comprar no primeiro mês.",
+      "data": {
+        "title": "Resumo dos pontos principais",
+        "valuePrefix": "R$ ",
+        "valueSuffix": "",
+        "items": [
+          {
+            "label": "Custo real do consórcio",
+            "value": 1440
+          },
+          {
+            "label": "Taxa de administração",
+            "value": 2,
+            "color": "red"
+          },
+          {
+            "label": "Prazo total",
+            "value": 36
+          }
+        ],
+        "caption": "Eis o que você precisa saber antes de escolher"
+      }
+    },
+    {
+      "id": "funciona-consorcio",
+      "template": "list",
+      "narration": "Imagine que você quer comprar um carro, mas o consórcio parece uma opção. E se eu disser que. o consórcio pode não ser tão vantajoso quanto você imagina? Vamos descobrir juntos! Olha só esse fato surpreendente: Consórcio: quarenta e oito reais ao mês por trinta meses (mil quatrocentos e quarenta reais a mais do que o valor inicial).",
+      "data": {
+        "title": "Consórcio Funciona?",
+        "items": [
+          "Descubra a verdade sobre o consórcio!",
+          "Ignorar taxas, prazos e compras iniciais pode te c"
+        ]
+      }
+    },
+    {
+      "id": "diferenca-taxa-administracao",
+      "template": "split",
+      "narration": "Vamos imaginar a Ana, uma profissional de trinta anos que ganha cinco mil reais por mês. Olha só essa diferença. Consórcio: quarenta e oito reais ao mês (cinco reais zero). O consórcio tem uma taxa de administração que você NUNCA viu! Vamos ver como isso se compara com outras opções.",
+      "data": {
+        "left": {
+          "label": "Consórcio",
+          "points": [
+            "Quarenta e oito reais ao mês",
+            "Taxa de administração"
+          ]
+        },
+        "right": {
+          "label": "Financiamento",
+          "points": [
+            "Trinta e seis reais ao mês",
+            "Sem taxa de administração"
+          ]
+        }
+      }
+    },
+    {
+      "id": "taxa-administracao-20",
+      "template": "counter",
+      "narration": "E aí vem a parte que ninguém te conta. Vamos mostrar como o consórcio se comporta ao longo do tempo. Consórcio: quarenta e oito reais ao mês por trinta meses (mil quatrocentos e quarenta reais a mais do que o valor inicial). Olha só essa diferença! Considere isso antes de tomar uma decisão!",
+      "data": {
+        "label": "Custo total com consórcio",
+        "from": 1480,
+        "to": 1480,
+        "prefix": "R$ ",
+        "suffix": "",
+        "decimals": 2,
+        "trend": "up",
+        "caption": "Mil quatrocentos e quarenta reais a mais do que o valor inicial. Isso vale a pen",
+        "badge": "ATENÇÃO"
+      }
+    },
+    {
+      "id": "erros-comuns",
+      "template": "list",
+      "narration": "Agora vamos ver os erros mais comuns. Erro um: Ignorar a taxa de administração. Erro dois: Não considerar o prazo total. Erro três: Pensar que vai comprar no primeiro mês. Vamos analisar cada um desses erros para entender melhor o impacto no custo total. Olha só essas diferenças!",
+      "data": {
+        "title": "Erros comuns no consórcio",
+        "items": [
+          "Erro um: Ignorar a taxa de administração (cinco re",
+          "Erro dois: Não considerar o prazo total (trinta m",
+          "Erro três: Pensar que vai comprar no primeiro mês"
+        ]
+      }
+    },
+    {
+      "id": "impacto-taxa-administracao",
+      "template": "lineChart",
+      "narration": "Vamos ver como isso impacta no custo total. Suponha que Ana quer comprar um carro no valor de dez mil reais, com uma taxa de administração de cinco por cento. Olhe só a diferença! Consórcio: custo total de quatorze mil e oitenta reais (quatrocentos e oito reais a mais). Financiamento: custo total de dez mil e trinta e seis reais. O consórcio pode custar muito mais!",
+      "data": {
+        "title": "Custo total com consórcio",
+        "xLabels": [
+          "0",
+          "12",
+          "24",
+          "36"
+        ],
+        "valuePrefix": "R$ ",
+        "valueSuffix": "",
+        "series": [
+          {
+            "label": "Consórcio",
+            "values": [
+              10000,
+              10500,
+              11000,
+              11500
+            ],
+            "color": "red"
+          },
+          {
+            "label": "Financiamento",
+            "values": [
+              10360,
+              10724,
+              11098,
+              11478
+            ],
+            "color": "gold"
+          }
+        ],
+        "caption": "Custo total de quatorze mil e oitenta reais (quatrocentos e oito reais a mais)."
+      }
+    },
+    {
+      "id": "resumo-erros-23",
+      "template": "bars",
+      "narration": "E agora vamos relembrar os erros mais comuns que podem te fazer perder dinheiro no consórcio. Erro um: Ignorar a taxa de administração. Erro dois: Não considerar o prazo total. Erro três: Pensar que vai comprar no primeiro mês. Olha só essas diferenças! Compreendendo melhor, você pode evitar esses erros e tomar decisões mais informadas.",
+      "data": {
+        "title": "Erros comuns no consórcio",
+        "valuePrefix": "R$ ",
+        "valueSuffix": "",
+        "items": [
+          {
+            "label": "Taxa de administração",
+            "value": 480,
+            "color": "red"
+          },
+          {
+            "label": "Prêmio final",
+            "value": 1524,
+            "color": "gold"
+          },
+          {
+            "label": "Juros acumulados",
+            "value": 678,
+            "color": "white"
+          }
+        ],
+        "caption": "Compreendendo melhor, você pode evitar esses erros e tomar decisões mais inform"
+      }
+    },
+    {
+      "id": "plano-pratico-24",
+      "template": "list",
+      "narration": "E para evitar esses erros, aqui está um plano prático em três passos: Um. Calcule o custo total antes de decidir. Dois. Considere outras opções de financiamento. Três. Avalie a sua capacidade real de pagamento. Olha só essas diferenças! Compartilhe suas impressões nos comentários!",
+      "data": {
+        "title": "Plano prático para evitar erros",
+        "items": [
+          "Um. Calcule o custo total antes de decidir.",
+          "Dois. Considere outras opções de financiamento.",
+          "Três. Avalie a sua capacidade real de pagamento."
+        ]
+      }
+    },
+    {
+      "id": "hook-25",
+      "template": "list",
+      "narration": "Imagine que você quer comprar um carro, mas o consórcio parece uma opção. E se eu disser que isso pode não ser tão vantajoso quanto você pensa? Olha só essa diferença na conta de Ana, uma profissional de trinta anos que ganha cinco mil reais por mês. Sabe por quê?",
+      "data": {
+        "title": "Consórcio funciona?",
+        "items": [
+          "Descubra a verdade sobre consórcio",
+          "Entenda o que é, taxas e se vale a pena"
+        ]
+      }
+    },
+    {
+      "id": "split-26",
+      "template": "split",
+      "narration": "Consórcio: quarenta e oito reais. zero ao final (cinco mil reais por mês). Financiamento convencional: trinta e cinco reais. Sabe por quê essa diferença? Vamos ver como o consórcio se comporta ao longo do tempo. E aí vem a parte que ninguém te conta.",
+      "data": {
+        "left": {
+          "label": "Consórcio",
+          "points": [
+            "quarenta e oito reais. zero",
+            "cinco mil reais por mês"
+          ]
+        },
+        "right": {
+          "label": "Financiamento conv.",
+          "points": [
+            "trinta e cinco reais. zero",
+            "cinco mil reais por mês"
+          ]
+        }
+      }
+    },
+    {
+      "id": "counter-27",
+      "template": "counter",
+      "narration": "E aí vem a parte que ninguém te conta. Vamos mostrar como o consórcio se comporta ao longo do tempo. Consórcio: cinquenta e dois reais. zero (cinco mil reais por mês). Sabe por quê essa diferença? Vamos ver os erros mais comuns. Erro um: Ignorar a taxa de administração. Olha só essa conta! E o terceiro erro é o mais caro de todos.",
+      "data": {
+        "label": "Taxa total ao final",
+        "from": 48,
+        "to": 52,
+        "prefix": "R$ ",
+        "suffix": " zero",
+        "decimals": 0,
+        "trend": "up",
+        "caption": "Como essa taxa impacta no custo do consórcio?",
+        "badge": "CUIDADO!"
+      }
+    },
+    {
+      "id": "linechart-28",
+      "template": "lineChart",
+      "narration": "E agora vamos ver como isso impacta no custo total. Suponha que Ana quer comprar um carro no valor de cem mil reais. Consórcio: quarenta e cinco reais por mês. Financiamento convencional: trinta e cinco reais por mês. Sabe por quê essa diferença? Vamos ver os erros mais comuns.",
+      "data": {
+        "title": "Comparação de custos",
+        "xLabels": [
+          "0",
+          "36",
+          "72",
+          "108"
+        ],
+        "valuePrefix": "R$ ",
+        "valueSuffix": "/mês",
+        "series": [
+          {
+            "label": "Consórcio",
+            "values": [
+              45,
+              45,
+              45,
+              45
+            ]
+          },
+          {
+            "label": "Financiamento conv.",
+            "values": [
+              35,
+              35,
+              35,
+              35
+            ]
+          }
+        ],
+        "caption": "Veja como o consórcio impacta no seu bolso ao longo do tempo."
+      }
+    },
+    {
+      "id": "bars-29",
+      "template": "bars",
+      "narration": "E agora vamos relembrar os erros mais comuns que podem te fazer perder dinheiro no consórcio. Erro um: Ignorar a taxa de administração. Erro dois: Não considerar o prazo total. Olha só essa conta! E o terceiro erro é o mais caro de todos. Vamos ver como isso impacta no custo total.",
+      "data": {
+        "title": "Erros comuns em consórcio",
+        "valuePrefix": "R$ ",
+        "valueSuffix": "/mês",
+        "items": [
+          {
+            "label": "Taxa de administração",
+            "value": 10
+          },
+          {
+            "label": "Prazo maior que o desejá",
+            "value": 20
+          },
+          {
+            "label": "Compra no primeiro mês",
+            "value": 30
+          }
+        ],
+        "caption": "Compreenda esses erros para evitar perdas desnecessárias."
+      }
+    },
+    {
+      "id": "outro",
+      "template": "outro",
+      "narration": "Com essa análise, você pode tomar decisões informadas sobre consórcio. O importante é sempre avaliar com cuidado as opções disponíveis e não se deixar levar apenas por uma promoção inicial. Comenta aí: você faria isso? Se isso te ajudou, se inscreve aí que toda semana tem mais!",
+      "data": {
+        "title": "Avalie suas opções com cuidado",
+        "points": [
+          "Compreenda o consórcio",
+          "Calcule custos",
+          "Considere outras alternativas"
+        ],
+        "cta": "Inscreva-se"
+      }
+    }
+  ]
+}
