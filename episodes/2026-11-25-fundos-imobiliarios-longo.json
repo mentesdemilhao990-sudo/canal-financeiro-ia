@@ -1,0 +1,517 @@
+{
+  "id": "2026-11-25-fundos-imobiliarios-longo",
+  "formato": "longo",
+  "title": "FII ou CDB: QUAL RENDIMENTO vale a PENA em TEMPOS de CRONOGRAMA?",
+  "description": "Conheça os riscos e benefícios dos Fundos Imobiliários (FIIs) e CDBs. Descubra qual rendimento é mais adequado para você no atual cenário econômico. #investimentos #FIIs #CDBs",
+  "tags": [
+    "investimentos",
+    "FIIs",
+    "CDBs",
+    "rendimentos",
+    "cronograma",
+    "riscos"
+  ],
+  "targetDurationSeconds": 677,
+  "disclaimer": "Conteúdo educativo. Valores ilustrativos, não é recomendação de investimento.",
+  "scenes": [
+    {
+      "id": "hook",
+      "template": "hook",
+      "narration": "Imagina a Ana, que ganha três mil reais por mês. Seu sonho é comprar um apartamento. Mas como investir e juntar dinheiro? Vamos descobrir qual rendimento vale a pena agora! investimentos FIIs CDBs Neste vídeo, você vai entender os FIIs e CDBs sem nenhum golpe ou promessa de enriquecimento rápido.",
+      "data": {
+        "kicker": "3 mil reais",
+        "title": "R$ 3.000 por mês: Qual rendimento vale a pena?",
+        "subtitle": "Descubra o melhor caminho para juntar dinheiro e investir no atual cenário econômico"
+      }
+    },
+    {
+      "id": "split",
+      "template": "split",
+      "narration": "Primeiro, vamos entender as diferenças entre FIIs e CDBs. Os FIIs são como propriedades imobiliárias listadas no mercado de ações. Enquanto os CDBs são investimentos em títulos de dívida do banco. E aí vem a parte que ninguém te conta: - FIIs têm maior potencial de lucro, mas também de perda - CDBs são mais seguros, mas com rendimento menor.",
+      "data": {
+        "left": {
+          "label": "FIIs",
+          "points": [
+            "maior potencial de lucro",
+            "maior risco"
+          ]
+        },
+        "right": {
+          "label": "CDBs",
+          "points": [
+            "menos risco",
+            "rendimento mais baixo"
+          ]
+        }
+      }
+    },
+    {
+      "id": "counter",
+      "template": "counter",
+      "narration": "Agora, vamos ver um exemplo prático. Ana tem dez mil reais para investir por mês em FIIs e CDBs. Vamos comparar os rendimentos nos próximos cinco anos. E aí vem a surpresa: Parece pouco, né? Mas o resultado pode te chamar atenção. E se a Selic estiver no nível atual de treze vírgula setenta e cinco por cento ao ano?",
+      "data": {
+        "label": "Rendimento em 5 anos",
+        "from": 10000,
+        "to": 68000,
+        "prefix": "R$ ",
+        "suffix": "",
+        "decimals": 2,
+        "trend": "up",
+        "caption": "Só nos FIIs com taxa de 13,75% ao ano. CDBs rendem menos.",
+        "badge": "atenção"
+      }
+    },
+    {
+      "id": "linechart",
+      "template": "lineChart",
+      "narration": "Vamos ver como os rendimentos se comportam nos próximos cinco anos, com Selic em treze vírgula setenta e cinco por cento ao ano. Veja que a linha do FIIs sobe mais rápido, mas também pode descer. O CDB mantém um crescimento constante, mas mais lento. E o terceiro erro é o mais caro de todos. Agora repara numa coisa: O risco de perder dinheiro nos FIIs é maior.",
+      "data": {
+        "title": "Rendimento nos próximos 5 anos",
+        "xLabels": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5"
+        ],
+        "valuePrefix": "R$ ",
+        "valueSuffix": "",
+        "series": [
+          {
+            "label": "FIIs",
+            "values": [
+              10000,
+              21765,
+              35985,
+              53438,
+              74060
+            ],
+            "color": "gold"
+          },
+          {
+            "label": "CDBs",
+            "values": [
+              10000,
+              11940,
+              13960,
+              16140,
+              18480
+            ],
+            "color": "white"
+          }
+        ],
+        "caption": "Selic em 13,75% ao ano"
+      }
+    },
+    {
+      "id": "bars",
+      "template": "bars",
+      "narration": "E o terceiro erro é o mais caro de todos: Investir sem entender o risco pode te custar caro. É importante saber que os FIIs têm maior volatilidade, então se você for conservador. Vamos ver os erros comuns nos próximos minutos. Você faria isso? Comenta aí: você faria investimentos sem entender bem o risco?",
+      "data": {
+        "title": "Erros mais comuns",
+        "valuePrefix": "",
+        "valueSuffix": "",
+        "items": [
+          {
+            "label": "Investir sem conhecer",
+            "value": 15,
+            "color": "red"
+          },
+          {
+            "label": "Esquecer de diversificar",
+            "value": 20,
+            "color": "red"
+          },
+          {
+            "label": "Ignorar o risco",
+            "value": 30,
+            "color": "red"
+          }
+        ],
+        "caption": "Investir sem entender pode te custar caro"
+      }
+    },
+    {
+      "id": "list",
+      "template": "list",
+      "narration": "Então, qual caminho seguir? Aqui estão três passos práticos para investir com segurança: um. Conheça bem o FIIs e CDBs dois. Diversifique seus investimentos três. Comenta aí: você faria investimentos sem entender bem o risco?",
+      "data": {
+        "title": "Passos para Investir com Segurança",
+        "items": [
+          "Conheça bem o FIIs e CDBs",
+          "Diversifique seus investimentos",
+          "Tenha noção do risco"
+        ]
+      }
+    },
+    {
+      "id": "introducao",
+      "template": "list",
+      "narration": "Imagine que você ganha três mil reais por mês. Seu sonho é comprar um apartamento, mas parece longe de se concretizar. Até que entra em sua mente a ideia: investir! Mas qual caminho seguir? FII ou CDB? Vamos descobrir juntos como escolher o melhor para você.",
+      "data": {
+        "title": "Entenda as diferenças",
+        "items": [
+          "FII ou CDB?",
+          "Descubra qual rendimento vale a pena"
+        ]
+      }
+    },
+    {
+      "id": "diferenca-fii-cdb",
+      "template": "split",
+      "narration": "Os FIIs são como propriedades imobiliárias, mas você compra cotas. Já os CDBs são títulos de dívida emitidos por bancos e empresas. Ambos rendem dividendos, mas a maneira como funciona é bem diferente. FIIs: Renda variável, depende do desempenho das propriedades. CDBs: Renda fixa, rendimento previsto no contrato.",
+      "data": {
+        "left": {
+          "label": "FIIs",
+          "points": [
+            "Renda variável",
+            "Depende do mercado imobiliário"
+          ],
+          "icon": "chart"
+        },
+        "right": {
+          "label": "CDBs",
+          "points": [
+            "Renda fixa",
+            "Previsão de rendimento no contrato"
+          ],
+          "icon": "piggy"
+        }
+      }
+    },
+    {
+      "id": "exemplo-pratico",
+      "template": "counter",
+      "narration": "Vamos ver um exemplo prático. Ana tem dez mil reais para investir por mês em FIIs e CDBs nos próximos cinco anos. Veja como seus rendimentos se comportam com Selic em treze vírgula cinco por cento ao ano. dez reais. zero x sessenta meses = seiscentos reais. zero Selic: treze vírgula cinco por cento a. a. CDB: Renda fixa de oito vírgula vinte e cinco por cento FII: Renda variável de sete vírgula cinco por cento em média.",
+      "data": {
+        "label": "Investindo R$ 60.000 ao mês nos próximos 5 anos",
+        "from": 10000,
+        "to": 600000,
+        "prefix": "R$ ",
+        "suffix": "%",
+        "decimals": 2,
+        "trend": "up",
+        "caption": "CDBs rendem mais, mas são menos arriscados",
+        "badge": "Investindo"
+      }
+    },
+    {
+      "id": "erros-investimento",
+      "template": "bars",
+      "narration": "E o terceiro erro é o mais caro de todos: investir sem entender o risco pode te custar caro. Escolher a opção errada ou não diversificar podem te fazer perder dinheiro. Não conhecer bem os FIIs e CDBs dois. Investir tudo em um único lugar três. Negligenciar a liquidez do investimento.",
+      "data": {
+        "title": "Os três erros mais caros de investimento",
+        "valuePrefix": "R$ ",
+        "valueSuffix": "",
+        "items": [
+          {
+            "label": "Não conhecer bem os FIIs",
+            "value": 1500,
+            "color": "red"
+          },
+          {
+            "label": "Investir tudo em um FII",
+            "value": 2000,
+            "color": "gold"
+          },
+          {
+            "label": "Negligenciar a liquidez",
+            "value": 3000,
+            "color": "white"
+          }
+        ],
+        "caption": "Escolha com sabedoria"
+      }
+    },
+    {
+      "id": "passos-praticos",
+      "template": "list",
+      "narration": "Então, qual caminho seguir? Aqui estão três passos práticos para investir com segurança: um. Conheça bem o FIIs e CDBs. Diversifique seus investimentos. Comenta aí: você faria investimentos sem entender bem o risco? Agora, é sua vez! Deixe seu comentário e compartilhe com outros apaixonados por finanças.",
+      "data": {
+        "title": "Passos práticos para investir com segurança",
+        "items": [
+          "Conheça bem o FIIs e CDBs",
+          "Diversifique seus investimentos",
+          "Comenta aí: você faria investimentos sem entender\n",
+          "bem o risco?"
+        ]
+      }
+    },
+    {
+      "id": "cena-fii-tijolo-papel",
+      "template": "split",
+      "narration": "Mas calma aí, porque tem um detalhe que muita gente deixa passar batido: nem todo fundo imobiliário funciona igual. A maioria acha que é só prédio de tijolo, como lajes corporativas ou shoppings. Só que no mercado existem duas famílias principais: os fundos de tijolo, donos de imóveis físicos, e os fundos de papel, que aplicam em títulos de dívida do setor. Essa divisão muda o jogo, porque o risco de cada um vem de lugares bem diferentes.",
+      "data": {
+        "left": {
+          "label": "Fundos de Tijolo",
+          "icon": "safe",
+          "points": [
+            "Imóveis físicos reais",
+            "Aluguéis mensais",
+            "Risco de vacância"
+          ]
+        },
+        "right": {
+          "label": "Fundos de Papel",
+          "icon": "chart",
+          "points": [
+            "Títulos de dívida",
+            "Juros e correção",
+            "Risco de inadimplência"
+          ]
+        }
+      }
+    },
+    {
+      "id": "cena-caso-carlos",
+      "template": "counter",
+      "narration": "Pra você ver isso na prática, pensa no caso do Carlos. Ele juntou trinta mil reais e decidiu aplicar tudo num fundo de escritórios em São Paulo, querendo aluguel caindo todo mês na conta. Nas notícias recentes, a gente até vê fundos pagando dezenas de milhões de reais por andares inteiros de olho nas luzes acesas dos escritórios. No começo, o Carlos recebia duzentos e setenta reais por mês. Parecia a renda passiva dos sonhos. Mas aí veio uma surpresa desagradável.",
+      "data": {
+        "label": "Aplicação do Carlos em FII",
+        "from": 0,
+        "to": 30000,
+        "prefix": "R$ ",
+        "trend": "up",
+        "caption": "Capital investido de uma vez só",
+        "badge": "Exemplo"
+      }
+    },
+    {
+      "id": "cena-impacto-vacancia",
+      "template": "bars",
+      "narration": "Um inquilino gigante que ocupava três andares entregou as chaves. Isso é o que o mercado chama de vacância, ou seja, imóvel desocupado. Em três meses, a renda do Carlos caiu de duzentos e setenta reais pra apenas cento e vinte reais mensais. Repara bem: no CDB, o banco segue pagando o combinado faça chuva ou faça sol. No fundo de tijolo, se o inquilino sai ou pede desconto no aluguel, o dinheiro que pinga na sua conta encolhe na mesma hora.",
+      "data": {
+        "title": "Impacto da desocupação no dividendo",
+        "valuePrefix": "R$ ",
+        "items": [
+          {
+            "label": "Ocupação total",
+            "value": 270,
+            "color": "green"
+          },
+          {
+            "label": "Saída de locatário",
+            "value": 210,
+            "color": "gold"
+          },
+          {
+            "label": "Três andares vagos",
+            "value": 120,
+            "color": "red"
+          }
+        ],
+        "caption": "Renda mensal recebida por cota"
+      }
+    },
+    {
+      "id": "cena-queda-patrimonio",
+      "template": "lineChart",
+      "narration": "E tem outro ponto que assusta quem tá começando: a oscilação das cotas na bolsa. Como o fundo passou a render menos por cota, muitos investidores venderam com medo. O patrimônio do Carlos, que começou em trinta mil reais, caiu na cotação pra vinte e quatro mil reais em poucos meses. Se ele precisasse resgatar esse valor pra uma urgência qualquer, amargaria um prejuízo de seis mil reais. A renda variável oscila tanto nos proventos quanto no valor das cotas.",
+      "data": {
+        "title": "Cotação do patrimônio ao longo de 6 meses",
+        "xLabels": [
+          "Mês 1",
+          "Mês 2",
+          "Mês 3",
+          "Mês 4",
+          "Mês 5",
+          "Mês 6"
+        ],
+        "valuePrefix": "R$ ",
+        "series": [
+          {
+            "label": "Valor em carteira",
+            "color": "red",
+            "values": [
+              30000,
+              29200,
+              27500,
+              25800,
+              24300,
+              24000
+            ]
+          }
+        ],
+        "caption": "Oscilação das cotas após desocupação"
+      }
+    },
+    {
+      "id": "cena-filtros-seguranca",
+      "template": "list",
+      "narration": "Só que isso não quer dizer que fundos imobiliários sejam ruins. Significa apenas que não dá pra tratar fundo como se fosse poupança. Pra não cair na mesma armadilha do Carlos, avalie três coisas antes de investir: a localização dos imóveis, o histórico de vacância dos últimos anos e a quantidade de inquilinos. Um fundo com dez galpões alugados pra grandes empresas é infinitamente mais seguro do que um fundo dono de um prédio com um único locatário.",
+      "data": {
+        "title": "3 cuidados antes de investir em FIIs",
+        "items": [
+          "Localização nobre dos imóveis",
+          "Histórico recente de vacância",
+          "Diversificação de locatários"
+        ]
+      }
+    },
+    {
+      "id": "cena-equilibrio-carteira",
+      "template": "split",
+      "narration": "E repara como isso se encaixa perfeitamente: enquanto o CDB oferece previsibilidade total no vencimento, sem susto pelo caminho, os fundos trazem potencial de renda isenta e ganho patrimonial no longo prazo. O segredo de quem investe com inteligência não é escolher um e abandonar o outro, mas sim entender o papel exato de cada aplicação. Agora você já tem a visão completa pra saber como dosar o risco e montar uma carteira equilibrada.",
+      "data": {
+        "left": {
+          "label": "CDB e Renda Fixa",
+          "icon": "safe",
+          "points": [
+            "Previsibilidade no resgate",
+            "Ideal para reserva",
+            "Sem oscilação diária"
+          ]
+        },
+        "right": {
+          "label": "Fundos Imobiliários",
+          "icon": "growth",
+          "points": [
+            "Rendimento todo mês",
+            "Potencial de longo prazo",
+            "Cota oscila no pregão"
+          ]
+        }
+      }
+    },
+    {
+      "id": "intro-fundos-imobiliarios",
+      "template": "list",
+      "narration": "Imagina a Ana, que ganha três mil reais por mês. Seu sonho é comprar um apartamento, mas parar aqui pode te custar caro. Sabe por quê? Pra você ver isso na prática, pensa no caso de Ana e Carlos. Agora vem a parte que ninguém te conta. E o terceiro erro é o mais caro de todos: investir sem entender o risco pode te custar caro.",
+      "data": {
+        "title": "Ana e Carlos, um caso concreto",
+        "items": [
+          "Investindo com inteligência",
+          "Descubra qual caminho seguir para aposentar renden"
+        ]
+      }
+    },
+    {
+      "id": "diferenca-fundos-cdb",
+      "template": "split",
+      "narration": "Os FIIs são como propriedades imobiliárias, mas você compra cotas. Já os CDBs são títulos de crédito emitidos por bancos. Parece pouco, né? E aí vem a parte que ninguém te conta: enquanto um oferece rentabilidade variável, o outro garante renda fixa no vencimento.",
+      "data": {
+        "left": {
+          "label": "FIIs",
+          "points": [
+            "Propriedades imobiliárias",
+            "Rentabilidade variável"
+          ]
+        },
+        "right": {
+          "label": "CDBs",
+          "points": [
+            "Títulos de crédito",
+            "Renda fixa no vencimento"
+          ]
+        }
+      }
+    },
+    {
+      "id": "exemplo-investimentos",
+      "template": "counter",
+      "narration": "Vamos ver um exemplo prático. Ana tem dez mil reais para investir por mês em FIIs e CDBs nos próximos cinco anos, com Selic em treze vírios. Parece pouco, né? E o terceiro erro é o mais caro de todos: investir sem entender o risco pode te custar caro. Agora você já tem a visão completa pra saber como dosar o risco e montar uma carteira equilibrada.",
+      "data": {
+        "label": "Investimentos em 5 anos",
+        "from": 10000,
+        "to": 65000,
+        "prefix": "R$",
+        "suffix": "",
+        "decimals": 2,
+        "trend": "up",
+        "caption": "Compre um apartamento com mais de R$ 65.000!",
+        "badge": "CDB x FIIs"
+      }
+    },
+    {
+      "id": "riscos-fundos-imobiliarios",
+      "template": "bars",
+      "narration": "E o terceiro erro é o mais caro de todos: investir sem entender o risco pode te custar caro. Os FIIs têm riscos que você precisa conhecer: um) O inquilino gigante que ocupava três andares entregou as chaves. dois) A oscilação das cotas na bolsa, nem todo fundo imobiliário é estável.",
+      "data": {
+        "title": "Riscos dos Fundos Imobiliários",
+        "valuePrefix": "R$",
+        "valueSuffix": "",
+        "items": [
+          {
+            "label": "Inquilino gigante que sa",
+            "value": 10,
+            "color": "red"
+          },
+          {
+            "label": "Oscilação das cotas na B",
+            "value": 5,
+            "color": "red"
+          }
+        ],
+        "caption": "Entenda antes de investir!"
+      }
+    },
+    {
+      "id": "conclusao-investimentos",
+      "template": "lineChart",
+      "narration": "Só que isso não quer dizer que fundos imobiliários sejam ruins. Significa apenas que não devem ser a única opção. Parece pouco, né? E repara como isso se encaixa perfeitamente: enquanto o CDB oferece previsibilidade total no vencimento, sem susto pelo caminho, os fundos trazem potencial de renda isenta e ganho patrimonial no longo prazo. O segredo de quem investe com inteligência não é escolher um e abandonar o outro, mas sim entender o papel exato de cada aplicação.",
+      "data": {
+        "title": "Comparação entre FIIs e CDBs",
+        "xLabels": [
+          "01/2023",
+          "06/2023",
+          "12/2023",
+          "18/2024",
+          "24/2025"
+        ],
+        "valuePrefix": "R$",
+        "valueSuffix": "",
+        "series": [
+          {
+            "label": "FIIs",
+            "values": [
+              500,
+              600,
+              700,
+              800,
+              900
+            ],
+            "color": "red"
+          },
+          {
+            "label": "CDBs",
+            "values": [
+              1000,
+              1200,
+              1400,
+              1600,
+              1800
+            ],
+            "color": "gold"
+          }
+        ],
+        "caption": "Renda Fixa x Rendimentos Variáveis"
+      }
+    },
+    {
+      "id": "passos-investir",
+      "template": "list",
+      "narration": "Então, qual caminho seguir? Aqui estão três passos práticos para investir com segurança: Pense em diversificar sua carteira. Foque na previsibilidade do seu rendimento. E não deixe de pesquisar o fundo imobiliário antes de investir. Parece pouco, né? Comenta aí: você faria isso?",
+      "data": {
+        "title": "3 Passos para Investir com Segurança",
+        "items": [
+          "Diversifique sua carteira",
+          "Pesquise sobre o fundo imobiliário",
+          "Foque na previsibilidade do rendimento"
+        ]
+      }
+    },
+    {
+      "id": "inscreva-se",
+      "template": "outro",
+      "narration": "Comenta aí: você faria isso? Inscreva-se e receba mais dicas de investimentos inteligentes toda semana. E não perca nossa próxima aula, sobre como planejar férias sem dívidas em doze meses! investimento FIIS CDB.",
+      "data": {
+        "title": "FII ou CDB: QUAL RENDIMENTO vale a PENA em TEMPOS de CRONOGRAMA?",
+        "points": [
+          "Descubra quais são os melhores caminhos para ",
+          "montar sua carteira equilibrada"
+        ],
+        "cta": "Se inscreve aí!"
+      }
+    }
+  ]
+}

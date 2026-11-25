@@ -387,6 +387,23 @@
         "CONSÓRCIO FUNCIONA? Descubra a TAXA QUE VOCÊ NUNCA VIU"
       ],
       "modelo": "ollama:qwen2.5:7b"
+    },
+    {
+      "data": "2026-11-25",
+      "tema": "fundos-imobiliarios",
+      "nome": "Fundos imobiliários",
+      "pontos": 4.8,
+      "manchetes": [
+        "De olho nas 'luzes acesas', FII desembolsa R$ 73,5 milhões por escritórios em SP; veja quanto pode render por cota - Seu Dinheiro",
+        "Hora de arrumar a casa: a fase 3.0 dos fundos imobiliários, os dividendos da Petrobras e o que agita os mercados hoje - Seu Dinheiro"
+      ],
+      "episodios": [
+        "2026-11-25-fundos-imobiliarios-longo"
+      ],
+      "titulos": [
+        "FII ou CDB: QUAL RENDIMENTO vale a PENA em TEMPOS de CRONOGRAMA?"
+      ],
+      "modelo": "ollama:qwen2.5:7b + gemini:gemini-3.8-flash"
     }
   ]
 }
