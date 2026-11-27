@@ -1,0 +1,425 @@
+{
+  "id": "2026-11-27-cartao-de-credito-longo",
+  "formato": "longo",
+  "title": "Cartão de crédito: SAIA DO ROTATIVO e ganhe mais",
+  "description": "Entenda como usar o cartão de crédito a seu favor, evitando o rotativo caro. Descubra os erros comuns e aprenda um plano simples para sair das dívidas no cartão.",
+  "tags": [
+    "cartão de crédito",
+    "rotativo",
+    "dívida",
+    "renda",
+    "juros"
+  ],
+  "targetDurationSeconds": 637,
+  "disclaimer": "Conteúdo educativo. Valores ilustrativos, não é recomendação de investimento.",
+  "scenes": [
+    {
+      "id": "hook",
+      "template": "hook",
+      "narration": "Imagina a Ana, que ganha três mil reais por mês. Ela tem um problema com o cartão de crédito. Sabe por quê? Olha só: duzentos e cinquenta reais em juros, só no rotativo! E aí vem a parte que ninguém te conta: é possível usar o cartão a favor e sair disso. Vamos mostrar como no vídeo!",
+      "data": {
+        "kicker": "Só eu acho isso absurdo?",
+        "title": "Cartão de crédito",
+        "subtitle": "SAIA DO ROTATIVO e ganhe mais"
+      }
+    },
+    {
+      "id": "split",
+      "template": "split",
+      "narration": "Ana tem três reais. zero por mês. Ela gasta dois reais. quinhentos na renda, alimentação e outras despesas fixas. Isso deixa quinhentos reais para o cartão. Ela compra no cartão quatrocentos reais, paga a fatura inteira e fica com cem reais sobrando. Mas se ela não pagar, fica com duzentos e cinquenta reais em dívidas e duzentos e cinquenta reais em juros. E o terceiro erro é o mais caro de todos.",
+      "data": {
+        "left": {
+          "label": "Comprar",
+          "points": [
+            "R$ 400 no cartão",
+            "Pagar tudo"
+          ]
+        },
+        "right": {
+          "label": "Não pagar",
+          "points": [
+            "Deixa R$ 250 na dívida",
+            "Acumula R$ 250 em juros"
+          ]
+        }
+      }
+    },
+    {
+      "id": "counter",
+      "template": "counter",
+      "narration": "Sabe por que é tão caro? Olha só: no primeiro mês, Ana tem duzentos e cinquenta reais em juros. No segundo mês, esses duzentos e cinquenta reais juros se transformam em sessenta e dois reais e cinquenta centavos mais juros. E o terceiro erro é o mais caro de todos. Essa conta vira uma armadilha: cem reais sobrando na mão, mas trezentos e doze reais e cinquenta centavos no cartão!",
+      "data": {
+        "label": "R$ 250 em juros no primeiro mês",
+        "from": 250,
+        "to": 62.5,
+        "prefix": "R$ ",
+        "suffix": "%",
+        "decimals": 1,
+        "trend": "down",
+        "caption": "Essa conta vira uma armadilha: R$ 100 sobrando na mão, mas R$ 312,50 no cartão!",
+        "badge": "O terceiro"
+      }
+    },
+    {
+      "id": "linechart",
+      "template": "lineChart",
+      "narration": "Imagine que Ana sempre paga a fatura toda. Olha só como as coisas ficam: o limite do cartão cai, mas ela tem mais dinheiro para guardar ou gastar no mês seguinte. E o terceiro erro é o mais caro de todos. A curva do limite sobe e desce com a fatura paga. E o dinheiro que sobra no mês acaba indo direto para economia.",
+      "data": {
+        "title": "Limite do cartão",
+        "xLabels": [
+          ": R$ 10.00",
+          ": R$ 20.00",
+          ": R$ 30.00",
+          ": R$ 40.00",
+          ": R$ 50.00"
+        ],
+        "valuePrefix": "R$ ",
+        "valueSuffix": "",
+        "series": [
+          {
+            "label": "Fatura paga",
+            "values": [
+              10,
+              20,
+              30,
+              40,
+              50
+            ],
+            "color": "green"
+          },
+          {
+            "label": "Limite do cartão",
+            "values": [
+              50,
+              40,
+              30,
+              20,
+              10
+            ],
+            "color": "red"
+          }
+        ],
+        "caption": "A curva do limite sobe e desce com a fatura paga. E o dinheiro que sobra no mês,"
+      }
+    },
+    {
+      "id": "bars",
+      "template": "bars",
+      "narration": "E agora repara numa coisa: se Ana usar o cartão para comprar mais de duzentos e cinquenta reais, os juros vão acumulando. Então a melhor estratégia é gastar no limite do cartão e pagar sempre na íntegra. E o terceiro erro é o mais caro de todos. Aqui está o problema: se ela não paga, acaba com duzentos e cinquenta reais em juros.",
+      "data": {
+        "title": "Dinheiro que sobra",
+        "valuePrefix": "R$ ",
+        "valueSuffix": "",
+        "items": [
+          {
+            "label": "Gasta até R$ 250",
+            "value": 100,
+            "color": "green"
+          },
+          {
+            "label": "Acumula R$ 250 em juros",
+            "value": -250,
+            "color": "red"
+          }
+        ],
+        "caption": "Aqui está o problema: se ela não paga, acaba com R$ 250 em juros."
+      }
+    },
+    {
+      "id": "list",
+      "template": "list",
+      "narration": "E os erros mais comuns? Olha só: um. Gasta mais do que pode pagar dois. Paga apenas a parcela mínima três. Não entende o rotativo quatro. Deixa as faturas para depois cinco. Usa cartão sem renda provada E o terceiro erro é o mais caro de todos. Agora, vamos a um plano prático.",
+      "data": {
+        "title": "Erros comuns no cartão",
+        "items": [
+          "Gasta mais do que pode pagar",
+          "Paga apenas a parcela mínima",
+          "Não entende o rotativo",
+          "Deixa as faturas para depois",
+          " Usa cartão sem renda provada"
+        ]
+      }
+    },
+    {
+      "id": "introducao-ana-rotativo",
+      "template": "list",
+      "narration": "Imagina a Ana, que ganha três mil reais por mês. Ela tem um problema com o cartão de crédito. E os erros mais comuns? Olha só: um. Gasta mais do que pode pagar dois. Paga apenas a parcela mínima três. Não entende o rotativo quatro. Deixa as faturas para depois cinco.",
+      "data": {
+        "title": "Cartão de crédito: SAIA DO ROTATIVO e ganhe mais",
+        "items": [
+          "3 mil reais",
+          "Descubra por que é tão caro ficar no rotativo do c"
+        ]
+      }
+    },
+    {
+      "id": "erro-um-gasta-mais-do-que-pode",
+      "template": "split",
+      "narration": "Um. Gasta mais do que pode pagar. Isso quer dizer que se Ana gastar mais de duzentos e cinquenta reais, ela vai entrar no rotativo. E o segundo erro? Paga apenas a parcela mínima. Se ela só pagar isso, vai ficar cada vez mais endividada. Aí vem a parte que ninguém te conta.",
+      "data": {
+        "left": {
+          "label": "Gasta mais do que",
+          "points": [
+            "pode pagar"
+          ]
+        },
+        "right": {
+          "label": "Paga apenas",
+          "points": [
+            "parcela mínima"
+          ]
+        }
+      }
+    },
+    {
+      "id": "erro-dois-rotativo",
+      "template": "counter",
+      "narration": "Quando Ana deixa o cartão no rotativo, ela paga duzentos e cinquenta por cento a mais em juros. Isso mesmo: duzentos e cinquenta por cento. Imagine que Ana compra um celular por cem reais. Se ela não pagar a fatura inteira, vai pagar quinhentos reais só em juros! Só eu acho isso absurdo?",
+      "data": {
+        "label": "Juros do rotativo",
+        "from": 100,
+        "to": 250,
+        "prefix": "R$ ",
+        "suffix": "%",
+        "decimals": 0,
+        "trend": "up",
+        "caption": "Gastou 100 reais? Vai pagar 250% a mais em juros!",
+        "badge": "absurdo"
+      }
+    },
+    {
+      "id": "erro-tres-faturas-para-depois",
+      "template": "split",
+      "narration": "E agora repara numa coisa: se Ana usar o cartão para comprar mais de duzentos e cinquenta reais, ela vai entrar no rotativo. Mas isso não é tudo. O terceiro erro é o mais caro de todos. E o quarto? Deixa as faturas para depois. Sempre lembra do prazo da fatura?",
+      "data": {
+        "left": {
+          "label": "Gasta mais do que",
+          "points": [
+            "pode pagar"
+          ]
+        },
+        "right": {
+          "label": "Paga apenas a parcel",
+          "points": [
+            "mina"
+          ]
+        }
+      }
+    },
+    {
+      "id": "exemplo-faturas-para-depois",
+      "template": "counter",
+      "narration": "Se Ana deixa as faturas para depois, ela vai perder a chance de conseguir descontos. E se ela não pagar em tempo, vai ter que suportar juros ainda maiores. Imagine que Ana compra um produto por cem reais e só paga no mês seguinte. Ela vai pagar mais vinte reais só em juros!",
+      "data": {
+        "label": "Juros de atraso",
+        "from": 100,
+        "to": 120,
+        "prefix": "R$ ",
+        "suffix": "",
+        "decimals": 0,
+        "trend": "up",
+        "caption": "Gastou 100 reais? Vai pagar 20% a mais em juros!",
+        "badge": "mais caro"
+      }
+    },
+    {
+      "id": "plano-pratico",
+      "template": "list",
+      "narration": "Agora, vamos a um plano prático para sair do rotativo. Passo um: Verifique seu orçamento. Passo dois: Corte gastos desnecessários. Passo três: Faça uma lista de prioridades. Passo quatro: Pague sempre a fatura inteira. E passo cinco: Use o cartão com moderação. Só eu acho isso simples?",
+      "data": {
+        "title": "Plano prático para sair do rotativo",
+        "items": [
+          "Verifique seu orçamento",
+          "Corte gastos desnecessários",
+          "Faça uma lista de prioridades",
+          "Pague sempre a fatura inteira",
+          "Use o cartão com moderação"
+        ]
+      }
+    },
+    {
+      "id": "erro1",
+      "template": "counter",
+      "narration": "Sabe por que é tão caro? Olha só: no primeiro mês, Ana tem duzentos e cinquenta reais em juros se ela usar o cartão para comprar mais de duzentos e cinquenta reais. Isso quer dizer que se Ana gastar mais de duzentos e cinquenta reais, ela paga duzentos e cinquenta por cento a mais em juros.",
+      "data": {
+        "label": "JUROS DE ROTATIVO",
+        "from": 0,
+        "to": 250,
+        "prefix": "R$",
+        "suffix": "%",
+        "decimals": 0,
+        "trend": "up",
+        "caption": "E isso pode te custar caro!",
+        "badge": "Warning"
+      }
+    },
+    {
+      "id": "erro2",
+      "template": "split",
+      "narration": "Um. Gasta mais do que pode pagar. Isso quer dizer que se Ana gastar mais de duzentos e cinquenta reais, ela paga duzentos e cinquenta por cento a mais em juros. E isso gera um segundo erro: dois. Paga apenas a parcela mínima. Olha só como as coisas ficam: se Ana sempre pagar apenas a parcela mínima, os juros acabam acumulando e te prendendo no rotativo.",
+      "data": {
+        "left": {
+          "label": "PAGANDO A PARCELA MÍ",
+          "points": [
+            "Apenas 50% do que deve",
+            "Acumula juros"
+          ]
+        },
+        "right": {
+          "label": "PAGANDO A FATURA IN",
+          "points": [
+            "100% do que você deve",
+            "Nunca mais no rotativo"
+          ]
+        }
+      }
+    },
+    {
+      "id": "plano-pratico-15",
+      "template": "list",
+      "narration": "Agora, vamos a um plano prático para sair do rotativo. Passo um: Verifique seu orçamento. Passo dois: Corte gastos desnecessários. Passo três: Faça uma lista de prioridades. Passo quatro: Pague sempre a fatura inteira. E passo cinco: Use o cartão com moderação.",
+      "data": {
+        "title": "PLANO PRÁTICO",
+        "items": [
+          "Verifique seu orçamento",
+          "Corte gastos desnecessários",
+          "Faça uma lista de prioridades",
+          "Pague sempre a fatura inteira",
+          "Use o cartão com moderação"
+        ]
+      }
+    },
+    {
+      "id": "exemplo-novo",
+      "template": "counter",
+      "narration": "Imagina um novo caso: João ganha quatro mil reais por mês. Ele quer economizar e fugir do rotativo. Olha só como as coisas ficam se ele seguir o plano prático: se João gastar mais de duzentos e cinquenta reais, ele paga duzentos e cinquenta por cento a mais em juros.",
+      "data": {
+        "label": "JUROS DE ROTATIVO",
+        "from": 0,
+        "to": 250,
+        "prefix": "R$",
+        "suffix": "%",
+        "decimals": 0,
+        "trend": "up",
+        "caption": "Só para comprar mais do que pode pagar!",
+        "badge": "Warning"
+      }
+    },
+    {
+      "id": "resumo",
+      "template": "bars",
+      "narration": "E o terceiro erro é o mais caro de todos: três. Paga apenas a parcela mínima, acumulando juros e ficando no rotativo. Isso pode te custar muito dinheiro ao longo do tempo. Comente aqui: você faria isso? Saiba que a solução é simples: faça um orçamento, corte gastos desnecessários, priorize suas despesas e pague sempre a fatura inteira.",
+      "data": {
+        "title": "ERROS MAIS CAROS",
+        "valuePrefix": "R$",
+        "valueSuffix": "%",
+        "items": [
+          {
+            "label": "GASTA MAIS DO QUE PODE",
+            "value": 250,
+            "color": "red"
+          },
+          {
+            "label": "PAGA A PARCELA MÍNIMA",
+            "value": 150,
+            "color": "red"
+          }
+        ],
+        "caption": "Terceiro erro é o mais caro!"
+      }
+    },
+    {
+      "id": "cena-16-comparacao-rotativo",
+      "template": "split",
+      "narration": "E olha só por que pagar esse valor mínimo é uma verdadeira bola de neve. Quando você entra no rotativo, o banco te cobra uma das taxas mais altas do mercado financeiro. Segundo as notícias recentes, o Banco Central até aprovou novas medidas para limitar essa bola de neve e reduzir limites de quem tá superendividado, afetando milhões de pessoas. Mas a melhor proteção não é regra do banco, é a sua estratégia. De um lado, pagar o mínimo parece um alívio momentâneo de cem reais. Do outro lado, vira uma dívida que dobra em poucos meses e come todo o seu salário.",
+      "data": {
+        "left": {
+          "label": "Pagar o Mínimo",
+          "icon": "warning",
+          "points": [
+            "Falsa sensação de alívio",
+            "Juros astronômicos todo mês",
+            "Limite travado e bloqueado"
+          ]
+        },
+        "right": {
+          "label": "Fatura Integral",
+          "icon": "safe",
+          "points": [
+            "Zero juros adicionais",
+            "Histórico de crédito limpo",
+            "Controle total do salário"
+          ]
+        }
+      }
+    },
+    {
+      "id": "cena-17-grafico-custo-divida",
+      "template": "bars",
+      "narration": "Pra você ter uma ideia do perigo real, pensa comigo. Se você deixar mil reais rolarem no rotativo por um ano com as taxas médias de mercado, esse valor pode facilmente virar mais de quatro mil reais só de juros e encargos. Agora compara isso com um empréstimo pessoal ou consignado, onde a taxa anual pode ser muito menor. Só eu acho um absurdo tanta gente perder o sono pagando juros abusivos sem saber que dá pra trocar essa dívida cara por uma opção três ou quatro vezes mais barata no próprio banco?",
+      "data": {
+        "title": "Custo de R$ 1.000 em dívida após 12 meses",
+        "valuePrefix": "R$ ",
+        "items": [
+          {
+            "label": "Crédito Rotativo",
+            "value": 4400,
+            "color": "red"
+          },
+          {
+            "label": "Parcelamento Fatura",
+            "value": 2100,
+            "color": "gold"
+          },
+          {
+            "label": "Empréstimo Pessoal",
+            "value": 1450,
+            "color": "green"
+          }
+        ],
+        "caption": "Valores ilustrativos baseados em médias de taxas do mercado"
+      }
+    },
+    {
+      "id": "cena-18-passos-praticos",
+      "template": "list",
+      "narration": "Então anota aí o plano prático em três passos pra nunca mais cair nessa cilada. Passo um: trava o uso do cartão imediatamente até zerar o saldo pendente. Nada de novas comprinhas fingindo que não tem fatura aberta. Passo dois: renegocie a dívida atual em parcelas fixas com juros menores. As novas regras obrigam as instituições a oferecer alternativas ao rotativo em trinta dias. E passo três: ajuste o limite no aplicativo pra metade da sua renda mensal. Se você ganha três mil reais, seu limite não pode passar de mil e quinhentos.",
+      "data": {
+        "title": "Plano Prático em 3 Passos",
+        "items": [
+          "1. Congele o cartão até zerar pendências",
+          "2. Troque o rotativo por parcelas fixas",
+          "3. Limite ajustado a até 50% da sua renda"
+        ]
+      }
+    },
+    {
+      "id": "cena-19-virada-do-jogo",
+      "template": "counter",
+      "narration": "Quando você assume esse controle, a mágica acontece ao contrário. Em vez de pagar juros, é o cartão que começa a te dar vantagens. Se você concentrar os gastos básicos do mês, como mercado e contas, e pagar cem por cento da fatura em dia, você ganha até quarenta dias de prazo sem pagar um centavo a mais por isso, além de acumular pontos e cashback. Imagina receber de volta cinquenta ou cem reais todo mês só por pagar suas contas no prazo. O cartão vira um aliado poderoso, e não um monstro debaixo da cama.",
+      "data": {
+        "label": "Dias para pagar sem juros na fatura integral",
+        "from": 0,
+        "to": 40,
+        "suffix": " dias",
+        "trend": "up",
+        "caption": "Comprando na melhor data de corte da sua fatura",
+        "badge": "Vantagem"
+      }
+    },
+    {
+      "id": "cena-20-fechamento",
+      "template": "outro",
+      "narration": "Resumindo o que vimos hoje: o cartão não é renda extra, o rotativo é uma das dívidas mais caras que existem e pagar o valor integral da fatura é regra básica de sobrevivência financeira. Se você organizar os gastos, o cartão trabalha pra você e seu dinheiro finalmente rende. Agora me conta aqui embaixo nos comentários: você costuma pagar a fatura completa ou já se enrolou com o rotativo alguma vez? Se esse vídeo te ajudou a clarear as coisas, se inscreve aí no canal que toda semana tem conteúdo direto ao ponto pra te ajudar a prosperar.",
+      "data": {
+        "title": "Cartão sob controle:\nseu dinheiro trabalhando por você",
+        "points": [
+          "Pague 100% da fatura sempre em dia",
+          "Nunca veja o limite como renda extra",
+          "Negocie dívidas caras imediatamente"
+        ],
+        "cta": "Inscreva-se"
+      }
+    }
+  ]
+}

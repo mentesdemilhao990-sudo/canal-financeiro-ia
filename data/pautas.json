@@ -404,6 +404,26 @@
         "FII ou CDB: QUAL RENDIMENTO vale a PENA em TEMPOS de CRONOGRAMA?"
       ],
       "modelo": "ollama:qwen2.5:7b + gemini:gemini-3.8-flash"
+    },
+    {
+      "data": "2026-11-27",
+      "tema": "cartao-de-credito",
+      "nome": "Cartão de crédito",
+      "pontos": 13.3,
+      "manchetes": [
+        "O que muda no rotativo do cartão de crédito com as novas medidas do Banco Central? Entenda",
+        "Novas regras do BC para limitação de crédito afetam 20 milhões de pessoas",
+        "Febraban apoia restrições ao crédito para clientes endividados",
+        "Medidas do BC para cartão de crédito e modalidades sem garantias atingem 20 milhões de clientes, diz Vivan - Valor Econômico",
+        "Cartão de crédito sem comprovar renda: veja como conseguir e quais documentos podem ajudar - Diário do Pará"
+      ],
+      "episodios": [
+        "2026-11-27-cartao-de-credito-longo"
+      ],
+      "titulos": [
+        "Cartão de crédito: SAIA DO ROTATIVO e ganhe mais"
+      ],
+      "modelo": "ollama:qwen2.5:7b + gemini:gemini-flash-latest"
     }
   ]
 }
