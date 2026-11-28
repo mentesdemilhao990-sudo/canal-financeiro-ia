@@ -1,0 +1,400 @@
+{
+  "id": "2026-11-28-educacao-financeira-filhos-longo",
+  "formato": "longo",
+  "title": "Como ENSINAR CRIANÇAS a cuidar do dinheiro do jeito certo",
+  "description": "Seu filho acha que dinheiro nasce no cartão ou no aplicativo do celular? Veja como ensinar educação financeira para os pequenos de um jeito prático, sem brigas e preparando eles de verdade para o futuro.",
+  "tags": [
+    "educação financeira infantil",
+    "como dar mesada",
+    "ensinar filhos sobre dinheiro",
+    "mente de milhao",
+    "finanças para pais",
+    "mesada educativa",
+    "dinheiro e crianças"
+  ],
+  "targetDurationSeconds": 558,
+  "disclaimer": "Conteúdo educativo. Valores ilustrativos, não é recomendação de investimento.",
+  "scenes": [
+    {
+      "id": "cena-1-gancho",
+      "template": "hook",
+      "narration": "Você já reparou na cara que uma criança faz quando você diz que não tem dinheiro pra comprar um brinquedo? Quase sempre ela responde a mesma coisa: passa no cartão, ué, ou paga no celular. Pra ela, aquela maquininha ou o aplicativo parecem mágicos, onde o dinheiro nunca acaba. Só que essa ilusão inocente cobra uma conta altíssima lá na frente, quando esse menino ou essa menina vira um adulto atolado em faturas e sem entender pra onde o próprio salário foi.",
+      "data": {
+        "kicker": "Educação Financeira Infantil",
+        "title": "Dinheiro não nasce no celular",
+        "subtitle": "Como ensinar seus filhos a valorizar cada centavo desde cedo"
+      }
+    },
+    {
+      "id": "cena-2-contexto-pix",
+      "template": "split",
+      "narration": "Antigamente era fácil entender o dinheiro acabando porque a gente via a nota saindo da carteira. A moeda tilintava no cofrinho e o troco vinha amassado na mão. Hoje em dia, a criança só enxerga uma aproximação de tela ou um clique no Pix. Ela não vê o suor do trabalho que colocou aquele saldo ali. E manchetes recentes mostram exatamente essa preocupação dos especialistas: será que a mesada tradicional ainda funciona pra ensinar a esperar e planejar num mundo onde tudo é instantâneo?",
+      "data": {
+        "left": {
+          "label": "Antes",
+          "icon": "coin",
+          "points": [
+            "Dinheiro em cédula física",
+            "Cofrinho visível no quarto",
+            "Espera real pelo troco"
+          ]
+        },
+        "right": {
+          "label": "Hoje",
+          "icon": "warning",
+          "points": [
+            "Tudo no Pix e cartão",
+            "Sensação de saldo infinito",
+            "Consumo em um só clique"
+          ]
+        }
+      }
+    },
+    {
+      "id": "cena-3-caso-concreto",
+      "template": "counter",
+      "narration": "Pensa no caso do Marcos, que tem um filho de oito anos chamado Lucas. Todo fim de semana era a mesma ladainha: o Lucas pedia figurinha na banca, skin dentro do joguinho de celular e lanche por aplicativo. O Marcos ia passando o cartão sem fazer conta, achando que eram só pedidinhos bobos de dez ou quinze reais. Quando ele sentou pra somar no fim do mês, viu que tinha gastado quatrocentos reais redondos só com esses caprichos que sumiam em dois minutos.",
+      "data": {
+        "label": "Gasto mensal com pequenos caprichos",
+        "from": 0,
+        "to": 400,
+        "prefix": "R$ ",
+        "decimals": 0,
+        "trend": "up",
+        "caption": "Pequenos pedidos diários que pesam no orçamento",
+        "badge": "Alerta"
+      }
+    },
+    {
+      "id": "cena-4-o-problema",
+      "template": "list",
+      "narration": "E o pior não era o valor em si, mas a mensagem que o Lucas tava aprendendo sem querer. Três erros gravíssimos estavam sendo alimentados dentro de casa: primeiro, a ideia de que todo desejo precisa ser atendido na mesma hora; segundo, que o dinheiro é infinito e basta pedir com jeitinho; e terceiro, a total falta de responsabilidade pelas escolhas feitas. Se o joguinho enjoava no dia seguinte, o prejuízo não parecia de ninguém.",
+      "data": {
+        "title": "Os 3 erros comuns do dia a dia",
+        "items": [
+          "Desejo atendido na hora sem espera",
+          "Ideia de que dinheiro nunca acaba",
+          "Nenhuma consequência pelas escolhas"
+        ]
+      }
+    },
+    {
+      "id": "cena-5-comparacao-comportamento",
+      "template": "bars",
+      "narration": "O Marcos percebeu que precisava mudar a rota. Ele decidiu testar um modelo combinado com o filho: em vez de pagar tudo no impulso, o Lucas passou a receber uma quantia combinada e fixa. No primeiro mês, o menino torrou todos os sessenta reais da semana em doces no primeiro dia e ficou sem nada pro restante. No segundo mês, a mágica aconteceu: ele mesmo preferiu segurar cem reais pra juntar e comprar um jogo que realmente queria.",
+      "data": {
+        "title": "Mudança de comportamento do Lucas",
+        "valuePrefix": "R$ ",
+        "items": [
+          {
+            "label": "Gasto por impulso",
+            "value": 400,
+            "color": "red"
+          },
+          {
+            "label": "Primeiro teste com erro",
+            "value": 60,
+            "color": "gold"
+          },
+          {
+            "label": "Economizado com foco",
+            "value": 100,
+            "color": "green"
+          }
+        ],
+        "caption": "Aprender com pequenos erros evita rombos no futuro"
+      }
+    },
+    {
+      "id": "cena-6-curiosidade-em-aberto",
+      "template": "split",
+      "narration": "Olha que virada interessante! Mas aí surge uma dúvida clássica que divide pais e educadores pelo país afora: dar mesada deve ter ligação com as tarefas de casa, como arrumar a cama e tirar nota boa, ou isso é um perigo que transforma a convivência familiar num balcão de negócios? Existe uma regrinha muito prática que responde essa charada e quase ninguém te conta, e é exatamente ela que a gente vai desvendar agora no passo a passo.",
+      "data": {
+        "left": {
+          "label": "Pagar por tarefas?",
+          "icon": "safe",
+          "points": [
+            "Estimula o esforço?",
+            "Cria senso de trabalho?",
+            "Ou vira cobrança fria?"
+          ]
+        },
+        "right": {
+          "label": "Mesada educativa?",
+          "icon": "growth",
+          "points": [
+            "Ensina a gerenciar limites",
+            "Separa obrigação de renda",
+            "A resposta no próximo passo"
+          ]
+        }
+      }
+    },
+    {
+      "id": "introducao",
+      "template": "list",
+      "narration": "Você já reparou na cara que uma criança faz quando você diz que não tem dinheiro pra comprar o que ela quer? Antigamente era fácil entender o dinheiro acabando porque a gente via a nota saindo da carteira. Hoje é diferente, né? Mas isso pode ser um bom jeito de ensinar finanças para as crianças.",
+      "data": {
+        "title": "Como ENSENGAR CRIANÇAS a cuidar do dinheiro do jei",
+        "items": [
+          "Ensinar Finanças",
+          "Descubra o melhor modelo para dar mesada e constru"
+        ]
+      }
+    },
+    {
+      "id": "caso-marcos-lucas",
+      "template": "split",
+      "narration": "Pensa no caso do Marcos, que tem um filho de oito anos chamado Lucas. Todo fim de semana ele dava cem reais, mas a coisa ia se complicando. E o pior não era o valor em si, mas a mensagem que o Lucas tava aprendendo sem querer: que dinheiro é troco para tudo. O Marcos percebeu que precisava mudar a rota.",
+      "data": {
+        "left": {
+          "label": "Antes",
+          "points": [
+            "Mesada fixa",
+            "Dinheiro com troco"
+          ]
+        },
+        "right": {
+          "label": "Depois",
+          "points": [
+            "Modelo combinado",
+            "Ensinar valores"
+          ]
+        }
+      }
+    },
+    {
+      "id": "modelo-combinado",
+      "template": "counter",
+      "narration": "Com esse novo modelo, o Marcos começou a separar trinta reais para Lucas guardar. E isso não era tudo: ele também fazia tarefas como arrumar a cama e tirar nota boa na escola. Sabe por quê? Olha só! A mesada passou a ser um incentivo para o Lucas tomar decisões financeiras conscientes.",
+      "data": {
+        "label": "Mesada sem compromissos",
+        "from": 0,
+        "to": 30,
+        "prefix": "R$ ",
+        "suffix": "",
+        "decimals": 0,
+        "trend": "up",
+        "caption": "E o primeiro passo foi esse.",
+        "badge": "Novo Compr"
+      }
+    },
+    {
+      "id": "dificuldade-negocios-familiares",
+      "template": "split",
+      "narration": "Aí surgiu uma dúvida clássica que divide pais e educadores pelo país afora: dar mesada deve ter ligação com as tarefas de casa, como arrumar a cama e tirar nota boa, ou isso é um perigo que transforma a convivência familiar num balcão de negócios? Existe uma regra muito prática que responde essa charada e quase ninguém te conta, e é exatamente ela que a gente vai desvendar agora no passo a passo.",
+      "data": {
+        "left": {
+          "label": "Negociação",
+          "points": [
+            "Mesada x Tarefas"
+          ]
+        },
+        "right": {
+          "label": "Independência",
+          "points": [
+            "Ensinar valores",
+            "Decisões conscientes"
+          ]
+        }
+      }
+    },
+    {
+      "id": "passo-a-passo",
+      "template": "lineChart",
+      "narration": "E aí vem a parte que ninguém te conta. O passo a passo é simples, mas muda tudo! Olha só: primeiro você define o valor da mesada (cinquenta reais), depois estabelece as tarefas (arrumar a cama e lavar os pratos). Depois vem a parte mais importante: ensinar o filho a guardar uma porcentagem (vinte por cento) e investir outra (dez por cento). O restante pode ser usado livremente.",
+      "data": {
+        "title": "Passo a Passo",
+        "xLabels": [
+          "Definir",
+          "Tarefas",
+          "Guardar",
+          "Investir"
+        ],
+        "valuePrefix": "R$ ",
+        "valueSuffix": "",
+        "series": [
+          {
+            "label": "Mesada",
+            "values": [
+              50,
+              50,
+              10,
+              5
+            ]
+          },
+          {
+            "label": "Guardado (20%)",
+            "values": [
+              10,
+              10,
+              2,
+              1
+            ]
+          },
+          {
+            "label": "Investido (10%)",
+            "values": [
+              5,
+              5,
+              1,
+              0.5
+            ]
+          }
+        ],
+        "caption": "Cada passo é crucial para o crescimento financeiro do seu filho."
+      }
+    },
+    {
+      "id": "erros-caros",
+      "template": "bars",
+      "narration": "O terceiro erro é o mais caro de todos. Muitos pais cometem esse erro sem perceber: dar mesada para tudo, sem limites ou regras claras. Isso pode criar dependência financeira e dificultar a formação de hábitos saudáveis. O Marcos aprendeu isso na prática com o Lucas.",
+      "data": {
+        "title": "Erros mais caros",
+        "valuePrefix": "R$ ",
+        "valueSuffix": "",
+        "items": [
+          {
+            "label": "Mesada ilimitada",
+            "value": 100
+          },
+          {
+            "label": "Sem regras claras",
+            "value": 50
+          },
+          {
+            "label": "Dependência financeira",
+            "value": 20
+          }
+        ],
+        "caption": "Cuidado com esses erros na educação financeira de seus filhos."
+      }
+    },
+    {
+      "id": "plano-pratico",
+      "template": "list",
+      "narration": "E aí está o plano prático em passos simples: um. Defina o valor da mesada dois. Estabeleça as tarefas três. Ensine a guardar uma porcentagem quatro. Incentive investimentos conscientes cinco. Deixe espaço para liberdade de gastos Essa é a chave para criar um futuro financeiramente saudável.",
+      "data": {
+        "title": "Plano Prático",
+        "items": [
+          "Defina o valor da mesada",
+          "Estabeleça as tarefas",
+          "Ensine a guardar uma porcentagem",
+          "Incentive investimentos conscientes",
+          "Deixe espaço para liberdade de gastos"
+        ]
+      }
+    },
+    {
+      "id": "resumo-final",
+      "template": "list",
+      "narration": "Com essa abordagem, você ajuda seu filho a entender o valor do dinheiro e a importância das finanças pessoais. Mas não paramos por aí! Deixe sua opinião nos comentários: faria isso com seus filhos?",
+      "data": {
+        "title": "Plano Prático para ENSINAR FINANÇAS a CRIANÇAS",
+        "items": [
+          "Resumo",
+          "Compartilhe sua experiência e descubra mais dicas!"
+        ]
+      }
+    },
+    {
+      "id": "passos-simples",
+      "template": "list",
+      "narration": "Com essa abordagem, você ajuda seu filho a entender o valor do dinheiro e a importância das finanças pessoais. Mas não paramos por aí! Deixe sua opinião nos comentários: faria isso com seus filhos? Aqui está um passo a passo simples para ensinar seus filhos sobre dinheiro.",
+      "data": {
+        "title": "Passo a Passo",
+        "items": [
+          "Um. Defina o valor da mesada",
+          "Dois. Estabeleça regras claras",
+          "Três. Incentive a poupança",
+          "Quatro. Faça acompanhamento regular"
+        ]
+      }
+    },
+    {
+      "id": "passo-um",
+      "template": "list",
+      "narration": "Um. Defina o valor da mesada Tudo começa com um número - mas qual? Aí vem a parte que ninguém te conta: não importa muito o quanto você dá, é mais importante como você faz isso. Sabe por quê? Olha só essa comparação surpreendente: Com cem reais, seu filho pode comprar cinco brinquedos pequenos Mas com vinte reais mensalmente, ele aprende a gerir o dinheiro.",
+      "data": {
+        "title": "Não importa quanto",
+        "items": [
+          "Defina o valor da mesada",
+          "É mais importante como você faz"
+        ]
+      }
+    },
+    {
+      "id": "passo-dois",
+      "template": "split",
+      "narration": "Dois. Estabeleça regras claras Agora é hora de definir as regras do jogo. Lado a lado, veja como duas famílias agem: Família A: Mesada livre e sem restrições Família B: Mesada com três categorias - necessário, desejo e poupança Parece pouco, né? Mas o segredo está nos detalhes.",
+      "data": {
+        "left": {
+          "label": "Família A",
+          "points": [
+            "Mesada livre",
+            "Sem restrições"
+          ]
+        },
+        "right": {
+          "label": "Família B",
+          "points": [
+            "3 categorias",
+            "Necessário, desejo e poupança"
+          ]
+        }
+      }
+    },
+    {
+      "id": "passo-tres",
+      "template": "bars",
+      "narration": "Três. Incentive a poupança Aqui está a parte mais importante: ensine seu filho a poupar. Veja como essas crianças se saem com uma pequena quantia: Lucas (vinte reais): Poupa cinco reais Juliana (trinta reais): Poupa dez reais Parece pouco, né? Mas isso ensina o valor do dinheiro e a importância da economia.",
+      "data": {
+        "title": "Crianças e poupança",
+        "valuePrefix": "R$ ",
+        "valueSuffix": "%",
+        "items": [
+          {
+            "label": "Lucas",
+            "value": 25,
+            "color": "gold"
+          },
+          {
+            "label": "Juliana",
+            "value": 33,
+            "color": "gold"
+          }
+        ],
+        "caption": "Só isso muda tudo!"
+      }
+    },
+    {
+      "id": "passo-quatro",
+      "template": "counter",
+      "narration": "Quatro. Faça acompanhamento regular Agora é hora de monitorar o progresso. Veja como a frequência do controle pode influenciar: Meses um-três: Poupança zero reais Meses quatro-seis: Poupança vinte e cinco reais Parece pouco, né? Mas isso muda tudo no longo prazo! O valor final depende muito disso.",
+      "data": {
+        "label": "Com acompanhamento regular",
+        "from": 0,
+        "to": 100,
+        "prefix": "R$ ",
+        "suffix": "%",
+        "decimals": 2,
+        "trend": "up",
+        "caption": "O segredo está aqui!",
+        "badge": "NUNCA CORT"
+      }
+    },
+    {
+      "id": "conclusao",
+      "template": "outro",
+      "narration": "Com essa abordagem, você ajuda seu filho a entender o valor do dinheiro e a importância das finanças pessoais. Mas não paramos por aí! Deixe sua opinião nos comentários: faria isso com seus filhos? Se isso te ajudou, se inscreve aí que toda semana tem mais! Tá?",
+      "data": {
+        "title": "E aí, já ensinou seu filho?",
+        "points": [
+          "Ensine seu filho a gerir o dinheiro",
+          "Aprenda com a experiência dos outros"
+        ],
+        "cta": "Inscreva-se"
+      }
+    }
+  ]
+}

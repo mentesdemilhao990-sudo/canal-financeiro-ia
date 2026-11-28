@@ -424,6 +424,22 @@
         "Cartão de crédito: SAIA DO ROTATIVO e ganhe mais"
       ],
       "modelo": "ollama:qwen2.5:7b + gemini:gemini-flash-latest"
+    },
+    {
+      "data": "2026-11-28",
+      "tema": "educacao-financeira-filhos",
+      "nome": "Educação financeira para crianças",
+      "pontos": 3,
+      "manchetes": [
+        "Mesada ainda vale para ensinar os filhos a esperar, planejar e conquistar? - UOL Economia"
+      ],
+      "episodios": [
+        "2026-11-28-educacao-financeira-filhos-longo"
+      ],
+      "titulos": [
+        "Como ENSINAR CRIANÇAS a cuidar do dinheiro do jeito certo"
+      ],
+      "modelo": "gemini:gemini-flash-latest + ollama:qwen2.5:7b"
     }
   ]
 }

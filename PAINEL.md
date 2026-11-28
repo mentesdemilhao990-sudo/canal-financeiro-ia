@@ -1,6 +1,6 @@
 # 📊 Painel · Mente de Milhão
 
-_Atualizado em 28/11/2026, 07:10 (Brasília). Este arquivo é gerado sozinho: não edite à mão._
+_Atualizado em 28/11/2026, 08:34 (Brasília). Este arquivo é gerado sozinho: não edite à mão._
 
 ## Chaves de segurança
 
@@ -64,6 +64,7 @@ Com tudo desligado, os workflows só **simulam**: nada é enviado nem respondido
 | `2026-11-24-consorcio-longo` | sem data: só envio manual |
 | `2026-11-25-fundos-imobiliarios-longo` | sem data: só envio manual |
 | `2026-11-27-cartao-de-credito-longo` | sem data: só envio manual |
+| `2026-11-28-educacao-financeira-filhos-longo` | sem data: só envio manual |
 | `exemplo-estilo-novo-13-salario` | sem data: só envio manual |
 
 ## Comentários
